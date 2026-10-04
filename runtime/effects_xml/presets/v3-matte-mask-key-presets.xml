@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:15 PM
+3.6.0 (146)
+-->
+<scene title="V3-Matte mask key-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FFFFFFFF" totalTime="29664" fps="30" modifiedTime="1606907743576" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png" filename="D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.PNG" title="Transition Out: 5-Way Wipe; t:end, c:R5W" type="image/png" size="1248265" sig="D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A" infoUpdated="1606907743567"/>
+  <media uri="am-internal:///F8AAE2E46ED279C04C269A58526116AAA822E209.png" filename="F8AAE2E46ED279C04C269A58526116AAA822E209.PNG" title="Transition In: Dark; t:start, c:LDI" type="image/png" size="1772444" sig="F8AAE2E46ED279C04C269A58526116AAA822E209" infoUpdated="1606907743568"/>
+  <media uri="am-internal:///1E91C907C0794CE433701A6E5134D17A640A5412.jpeg" filename="1E91C907C0794CE433701A6E5134D17A640A5412.JPEG" title="Green Screen; c:CGS" type="image/jpeg" size="177121" sig="1E91C907C0794CE433701A6E5134D17A640A5412"/>
+  <media uri="am-internal:///DD746B63760422B6C61A711EAC9BE641C22C488B.png" filename="DD746B63760422B6C61A711EAC9BE641C22C488B.PNG" title="Blue Screen; c:CBS" type="image/png" size="279606" sig="DD746B63760422B6C61A711EAC9BE641C22C488B"/>
+  <bookmark t="1067"/>
+  <bookmark t="1967"/>
+  <bookmark t="2867"/>
+  <bookmark t="4967"/>
+  <bookmark t="5867"/>
+  <bookmark t="6800"/>
+  <bookmark t="7900"/>
+  <bookmark t="8834"/>
+  <bookmark t="9900"/>
+  <bookmark t="10834"/>
+  <shape id="5" label="Transition Out: Right; t:end, c:WOR" startTime="0" endTime="1999" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wipe2" locallyApplied="true">
+      <property name="start" type="float">
+        <kf t="0.533767" v="0.000000"/>
+        <kf t="0.983992" v="1.003000" e="cubicBezier 0.5712605 0.0 0.47635856 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="6" label="Transition In: Right; t:start, c:WIR" startTime="1964" endTime="3963" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wipe2" locallyApplied="true">
+      <property name="end" type="float">
+        <kf t="0.001501" v="-0.003000"/>
+        <kf t="0.451726" v="1.000000" e="cubicBezier 0.5712605 0.0 0.47635856 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="7" label="Transition Out: Down; t:end, c:WOD" startTime="3931" endTime="5930" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wipe2" locallyApplied="true">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="start" type="float">
+        <kf t="0.518259" v="0.000000"/>
+        <kf t="0.968484" v="1.010000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="8" label="Transition In: Down; t:start, c:WID" startTime="5898" endTime="7897" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wipe2" locallyApplied="true">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="end" type="float">
+        <kf t="-0.015508" v="0.000000"/>
+        <kf t="0.451226" v="1.009000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="9" label="Transition In: Vertical Split; t:start, c:WVW" startTime="7865" endTime="9864" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wipe" hidden="true" locallyApplied="true">
+      <property name="end" type="float">
+        <kf t="0.017509" v="0.500000"/>
+        <kf t="0.494500" v="1.003000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="0.017509" v="0.500000"/>
+        <kf t="0.494500" v="0.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+    </effect>
+    <effect id="com.alightcreative.effects.wipe2" locallyApplied="true">
+      <property name="end" type="float">
+        <kf t="0.484742" v="1.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+        <kf t="0.017509" v="0.500000"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="0.484742" v="0.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+        <kf t="0.017509" v="0.500000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="10" label="Transition In: Horizontal Split; t:start, c:WHW" startTime="9865" endTime="11864" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wipe" hidden="true" locallyApplied="true">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="end" type="float">
+        <kf t="0.017509" v="0.500000"/>
+        <kf t="0.494000" v="1.001000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="0.017509" v="0.500000"/>
+        <kf t="0.494000" v="0.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+    </effect>
+    <effect id="com.alightcreative.effects.wipe2" locallyApplied="true">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="end" type="float">
+        <kf t="0.484742" v="1.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+        <kf t="0.017509" v="0.490000"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="0.484742" v="0.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+        <kf t="0.017509" v="0.500000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="11" label="Transition Out: Clock Wipe; t:end, c:RCW" startTime="11733" endTime="13732" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.radialwipe" locallyApplied="true">
+      <property name="progress" type="float">
+        <kf t="0.983992" v="360.000000" e="cubicBezier 0.5180392 0.0 0.4903641 1.0"/>
+        <kf t="0.527000" v="0.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="12" label="Transition Out: Split Wipe; t:end, c:RSW" startTime="13697" endTime="15696" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.radialwipe" locallyApplied="true">
+      <property name="direction" type="int" value="2"/>
+      <property name="progress" type="float">
+        <kf t="0.983992" v="360.000000" e="cubicBezier 0.56985986 0.0 0.4287395 1.0"/>
+        <kf t="0.511500" v="0.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="13" label="Transition Out: 5-Way Wipe; t:end, c:R5W" startTime="15667" endTime="17666" fillType="media" fillImage="am-internal:///D16FEC7E71281A1D83FB6BEF79747BEAD3E55A1A.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.radialwipe" locallyApplied="true">
+      <property name="direction" type="int" value="2"/>
+      <property name="progress" type="float">
+        <kf t="-0.016508" v="0.000000"/>
+        <kf t="0.983992" v="360.000000" e="cubicBezier 0.4942297 0.102777734 0.9805603 0.548148"/>
+        <kf t="0.526500" v="0.000000" e="cubicBezier 0.56145656 0.0 0.4665546 0.9888888"/>
+      </property>
+      <property name="repeatCount" type="float" value="5.000000"/>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="17" label="Transition Out: Dark; t:end, c:LDO" startTime="17667" endTime="19666" fillType="media" fillImage="am-internal:///F8AAE2E46ED279C04C269A58526116AAA822E209.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumakey3" locallyApplied="false">
+      <property name="lowThreshold" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="22" label="Transition Out: Light; t:end, c:LLO" startTime="19666" endTime="21665" fillType="media" fillImage="am-internal:///F8AAE2E46ED279C04C269A58526116AAA822E209.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumakey3" locallyApplied="false">
+      <property name="highThreshold" type="float">
+        <kf t="0.017009" v="1.000000"/>
+        <kf t="0.984492" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="18" label="Transition In: Light; t:start, c:LLI" startTime="21667" endTime="23665" fillType="media" fillImage="am-internal:///F8AAE2E46ED279C04C269A58526116AAA822E209.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumakey3" locallyApplied="false">
+      <property name="lowThreshold" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.950951" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="23" label="Transition In: Dark; t:start, c:LDI" startTime="23665" endTime="25664" fillType="media" fillImage="am-internal:///F8AAE2E46ED279C04C269A58526116AAA822E209.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumakey3" locallyApplied="false">
+      <property name="highThreshold" type="float">
+        <kf t="0.951476" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="-0.015508" v="0.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="20" label="Green Screen; c:CGS" startTime="25665" endTime="27664" fillType="media" fillImage="am-internal:///1E91C907C0794CE433701A6E5134D17A640A5412.jpeg">
+    <transform>
+      <location value="539.447449,356.686890"/>
+      <scale value="1.547648,1.547648"/>
+    </transform>
+    <effect id="com.alightcreative.effects.chromakey" locallyApplied="true">
+      <property name="defringe" type="bool" value="true"/>
+      <property name="keyColor" type="color" value="#FF00B140"/>
+      <property name="threshold" type="float" value="0.200000"/>
+    </effect>
+    <path d="M -360.0 -540.0L 360.0 -540.0L 360.0 540.0L -360.0 540.0L -360.0 -540.0Z"/>
+  </shape>
+  <shape id="21" label="Blue Screen; c:CBS" startTime="27665" endTime="29664" fillType="media" fillImage="am-internal:///DD746B63760422B6C61A711EAC9BE641C22C488B.png">
+    <transform>
+      <location value="588.036438,532.270020"/>
+      <scale value="1.551161,1.551161"/>
+    </transform>
+    <effect id="com.alightcreative.effects.chromakey" locallyApplied="true">
+      <property name="defringe" type="bool" value="true"/>
+      <property name="keyColor" type="color" value="#FF0047BB"/>
+      <property name="threshold" type="float" value="0.209600"/>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+</scene>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?><!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2026-10-03 08:34 AM
+5.0.273.1028425 (1028425)
+2d5c0f8 (20 Mei 2026 04.16.19)
+-->
+<scene title="Proyek Baru 1" width="1080" height="1350" exportWidth="1080" exportHeight="1350" precompose="dynamicResolution" bgcolor="#ffd8d8d8" totalTime="2032" fps="30" modifiedTime="1790991248751" amver="1028425" ffver="106" am="com.alightcreative.motion/5.0.273.1028425" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <media uri="content://media/external/images/media/1000943531" filename="IMG-20261002-WA0040.jpg" title="IMG-20261002-WA0040.jpg" type="image/jpeg" size="77267" orientation="0" infoUpdated="1790991214653" width="720" height="1280" />
+  <shape id="205153572" label="IMG-20261002-WA0040.jpg" startTime="0" endTime="2032" fillType="media" fillImage="content://media/external/images/media/1000943531" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="540.000000,675.000000,0.000000" />
+      <scale value="1.472593,1.472593" />
+    </transform>
+    <property name="size" type="vec2" value="379.500000,675.000000" />
+  </shape>
+  <shape id="205153573" label="Persegi panjang 1" startTime="0" endTime="932" fillType="color" blending="mask" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="532.500000,641.999939,0.000000" />
+    </transform>
+    <fillColor value="#ffaac9af" />
+    <property name="size" type="vec2" value="496.750000,496.750031" />
+  </shape>
+  <shape id="205153574" label="Persegi panjang 1" startTime="900" endTime="2032" fillType="color" blending="exclude" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="532.500000,641.999939,0.000000" />
+    </transform>
+    <fillColor value="#ffaac9af" />
+    <property name="size" type="vec2" value="496.750000,496.750031" />
+  </shape>
+</scene>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<project version="4">
+  <scene width="540" height="960" duration="3000" bgcolor="#000000ff">
+    <layers>
+      <layer id="L1" tag="media" startTime="0" endTime="3000" blendMode="normal">
+        <location x="270" y="480"/>
+        <size x="135" y="135"/>
+        <scale x="1.0" y="1.0"/>
+        <rotation>0</rotation>
+        <opacity>1.0</opacity>
+        <mediaUri>preset/mvz3k2.jpg</mediaUri>
+        <mediaFillMode>fit</mediaFillMode>
+        <effects>
+          <effect id="com.alightcreative.effects.tile" locallyApplied="true">
+            <params>
+              <param id="scale" value="1.0"/>
+              <param id="phase" value="0.0"/>
+              <param id="mirror" value="false"/>
+              <param id="vertoffs" value="false"/>
+              <param id="angle" value="0.0"/>
+            </params>
+          </effect>
+        </effects>
+      </layer>
+    </layers>
+  </scene>
+</project>

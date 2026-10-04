@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?><!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2026-09-27 10:52 AM
+5.0.273.1028425 (1028425)
+2d5c0f8 (20 Mei 2026 04.16.19)
+-->
+<scene title="Proyek Baru 16" width="720" height="900" exportWidth="720" exportHeight="900" precompose="dynamicResolution" bgcolor="#ff000000" totalTime="13566" fps="30" modifiedTime="1790481145630" amver="1028425" ffver="106" am="com.alightcreative.motion/5.0.273.1028425" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <media uri="content://media/external/images/media/1000866410" filename="rounys.jpg" title="rounys.jpg" type="image/webp" size="37356" orientation="0" infoUpdated="1790480194524" width="590" height="782" />
+  <media uri="content://media/external/audio/media/1000718730" filename="DJ unity remix lampung.mp3" title="DJ unity remix lampung.mp3" type="audio/mpeg" duration="14942000" size="239880" infoUpdated="1790480760234" />
+  <media uri="content://media/external/video/media/1000909581" filename="Yuraprst_9_16-720p30fps.mp4" title="Yuraprst_9_16-720p30fps.mp4" type="video/mp4" duration="23359270" size="3241657" fps="0.30" orientation="0" infoUpdated="1790480773949" width="404" height="720" />
+  <shape id="1787713685942" label="rounys.jpg" startTime="0" endTime="832" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+      <scale value="0.951111,0.951111" />
+    </transform>
+    <property name="size" type="vec2" value="339.500000,450.000000" />
+  </shape>
+  <shape id="1787713685943" label="rounys.jpg" startTime="800" endTime="1332" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="fit" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+      <scale value="0.951111,0.951111" />
+    </transform>
+    <property name="size" type="vec2" value="339.500000,450.000000" />
+  </shape>
+  <shape id="1787713685944" label="rounys.jpg" startTime="1300" endTime="2032" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="stretch" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+      <scale value="0.951111,0.951111" />
+    </transform>
+    <property name="size" type="vec2" value="339.500000,450.000000" />
+  </shape>
+  <shape id="1787713685941" label="Persegi panjang 1" startTime="2033" endTime="2499" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+      <scale value="2.190000,2.190000" />
+    </transform>
+    <fillColor value="#ff5e689b" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+  <shape id="1787713685945" label="Persegi panjang 1" startTime="2466" endTime="2899" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="fit" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+      <scale value="2.190000,2.190000" />
+    </transform>
+    <fillColor value="#ff5e689b" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+  <shape id="1787713685946" label="Persegi panjang 1" startTime="2866" endTime="3666" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="stretch" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+      <scale value="2.190000,2.190000" />
+    </transform>
+    <fillColor value="#ff5e689b" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+  <shape id="1787713685947" label="rounys.jpg" startTime="3666" endTime="5699" fillType="media" fillImage="content://media/external/images/media/1000866410" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="362.000031,473.000000,0.000000" />
+      <scale value="1.025555,1.025555" />
+    </transform>
+    <effect id="com.alightcreative.effects.tile" locallyApplied="true">
+      <property name="scale" type="float" value="1.000000" />
+      <property name="phase" type="float" value="0.000000" />
+      <property name="mirror" type="bool" value="true" />
+      <property name="vertoffs" type="bool" value="false" />
+      <property name="angle" type="float" value="0.000000" />
+    </effect>
+    <property name="size" type="vec2" value="339.500000,450.000000" />
+  </shape>
+  <shape id="1787713685949" label="Persegi panjang 2" startTime="3666" endTime="5699" fillType="color" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="145.000153,494.000061,0.000000" />
+    </transform>
+    <fillColor value="#ffef57d7" />
+    <effect id="com.alightcreative.effects.lift" locallyApplied="true">
+      <property name="fill" type="float" value="0.000000" />
+    </effect>
+    <effect id="com.alightcreative.effects.mirror" locallyApplied="true">
+      <property name="type" type="int" value="0" />
+      <property name="blendMode" type="int" value="0" />
+      <property name="alpha" type="float" value="1.000000" />
+      <property name="offset" type="float" value="0.000000" />
+    </effect>
+    <property name="size" type="vec2" value="435.500000,285.500000" />
+  </shape>
+  <audio id="1787713685950" label="DJ unity remix lampung.mp3" startTime="4766" endTime="9332" src="content://media/external/audio/media/1000718730" inTime="1066" outTime="5632" mediaFillMode="fill" />
+  <shape id="1787713685951" label="Yuraprst_9_16-720p30fps.mp4" startTime="7866" endTime="9932" fillType="media" fillVideo="content://media/external/video/media/1000909581" inTime="9633" outTime="11699" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,450.000000,0.000000" />
+    </transform>
+    <gain>
+      <kf t="0.331075" v="0.580000" />
+      <kf t="0.573088" v="0.900000" />
+    </gain>
+    <property name="size" type="vec2" value="252.500000,450.000000" />
+  </shape>
+  <shape id="1787713685952" label="Persegi panjang 3" startTime="9933" endTime="13566" fillType="color" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location>
+        <kf t="-0.004679" v="360.000000,450.000000,0.000000" />
+        <kf t="0.132948" v="431.500000,441.500000,0.000000" e="cubicBezier 0.35617283 0.07352941 0.6808642 0.9735294" />
+        <kf t="0.270575" v="431.500000,374.000000,0.000000" e="bounce 0.31921425 0.81" />
+        <kf t="0.390036" v="396.574036,422.925903,0.000000" e="elastic 0.10564306 1.0 0.2327451 0.6590196" />
+        <kf t="0.490779" v="378.074036,374.000000,0.000000" e="cyclic 0.23880072 0.25105435 0.648449 0.40784314 0.0" />
+        <kf t="0.591797" v="378.074036,422.925903,0.000000" e="random 0.44753087 0.6141975 0.32941175 0.80864197 0.41604942 0.40000004" />
+        <kf t="0.701899" v="378.074036,374.000000,0.000000" e="step 0.27469137 0.3948498" />
+        <kf t="0.821084" v="396.574036,355.500000,0.000000" e="elasticStep 0.21234569 0.8913086" />
+      </location>
+    </transform>
+    <fillColor value="#ff594cf1" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+</scene>

@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:41 PM
+3.6.0 (146)
+-->
+<scene title="V4-Warp-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FFD8D8D8" totalTime="25564" fps="30" modifiedTime="1606909297363" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///403927718148DB9BD822CB2F643F89A2E361EEB1.jpg" filename="403927718148DB9BD822CB2F643F89A2E361EEB1.jpg" title="Water Ripple; t:extend, c:WWR" type="image/jpeg" size="4598416" sig="403927718148DB9BD822CB2F643F89A2E361EEB1" infoUpdated="1606909297350"/>
+  <media uri="am-internal:///2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg" filename="2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg" title="Transition In; t:start, c:TI" type="image/jpeg" size="2878762" sig="2862376F76EBC6CBD1FEC6AF6E81FE544F17848A" infoUpdated="1606909297352"/>
+  <media uri="am-internal:///3804C519534C8745E251509FB50879D383A13017.png" filename="3804C519534C8745E251509FB50879D383A13017.PNG" title="180° Spin; c:K1S" type="image/png" size="1479687" sig="3804C519534C8745E251509FB50879D383A13017" infoUpdated="1606909297355"/>
+  <media uri="am-internal:///E5E28C99F36C8EE9BDC1A6D1A16DCB847EACB643.jpeg" filename="E5E28C99F36C8EE9BDC1A6D1A16DCB847EACB643.JPEG" title="Water Reflection; t:extend, c:TWR" type="image/jpeg" size="363640" sig="E5E28C99F36C8EE9BDC1A6D1A16DCB847EACB643" infoUpdated="1606909297354"/>
+  <shape id="1" label="Flag Wave-Left; t:extend, c:WFL" startTime="0" endTime="1999" fillType="gradient" s=".rect">
+    <transform>
+      <location value="432.883362,231.901886"/>
+    </transform>
+    <fillColor value="#FFC7386F"/>
+    <gradient type="linear" startColor="#FF000000" endColor="#FFFFFFFF" start="0.007042,-0.269206" end="0.852118,1.274701"/>
+    <effect id="com.alightcreative.effects.wavewarp2" locallyApplied="false">
+      <property name="damping" type="float" value="1.000000"/>
+      <property name="dampingOrigin" type="float" value="0.000000"/>
+      <property name="m2" type="float" value="1.700000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="100.000000"/>
+        <kf t="0.983992" v="98.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="313.128723,100.000000"/>
+  </shape>
+  <shape id="2" label="Flag Wave-Right; t:extend, c:WFR" startTime="0" endTime="1999" fillType="gradient" s=".rect">
+    <transform>
+      <location value="431.779083,505.766968"/>
+    </transform>
+    <fillColor value="#FFC7386F"/>
+    <gradient type="linear" startColor="#FF000000" endColor="#FFFFFFFF" start="0.007042,-0.269206" end="0.852118,1.274701"/>
+    <effect id="com.alightcreative.effects.wavewarp2" locallyApplied="false">
+      <property name="damping" type="float" value="1.000000"/>
+      <property name="dampingOrigin" type="float" value="1.000000"/>
+      <property name="m2" type="float" value="1.700000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="100.000000"/>
+        <kf t="0.983992" v="102.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="313.128723,100.000000"/>
+  </shape>
+  <shape id="3" label="Water Ripple; t:extend, c:WWR" startTime="2000" endTime="3999" fillType="media" fillImage="am-internal:///403927718148DB9BD822CB2F643F89A2E361EEB1.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.wavewarp2" locallyApplied="false">
+      <property name="a1d" type="float" value="90.000000"/>
+      <property name="a2d" type="float" value="0.000000"/>
+      <property name="damping" type="float" value="1.000000"/>
+      <property name="dampingOrigin" type="float" value="1.000000"/>
+      <property name="dampingSpace" type="float" value="0.440000"/>
+      <property name="m1" type="float" value="38.400002"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="50.000000"/>
+        <kf t="0.983992" v="49.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -405.0L 540.0 -405.0L 540.0 405.0L -540.0 405.0L -540.0 -405.0Z"/>
+  </shape>
+  <shape id="4" label="Heat Wave; c:FHW" startTime="4000" endTime="5999" fillType="media" fillImage="am-internal:///2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fractalwarp4" locallyApplied="false">
+      <property name="mag" type="float" value="0.025000"/>
+      <property name="octaves" type="float" value="4.000000"/>
+      <property name="offs" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,-893.000000"/>
+      </property>
+      <property name="parr" type="vec2" value="0.000000,-1038.000000"/>
+      <property name="scale" type="float" value="3.600000"/>
+    </effect>
+    <path d="M -540.0 -405.0L 540.0 -405.0L 540.0 405.0L -540.0 405.0L -540.0 -405.0Z"/>
+  </shape>
+  <shape id="5" label="Rings in Water; t:extend, c:CRW" startTime="6000" endTime="7999" fillType="media" fillImage="am-internal:///2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.circularripple2" locallyApplied="true">
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="-3.000000"/>
+      </property>
+      <property name="radius" type="float" value="0.800000"/>
+      <property name="strength" type="float" value="0.032000"/>
+    </effect>
+    <path d="M -540.0 -405.0L 540.0 -405.0L 540.0 405.0L -540.0 405.0L -540.0 -405.0Z"/>
+  </shape>
+  <shape id="6" label="Dream Sequence; t:extend, c:CDS" startTime="7999" endTime="10033" fillType="media" fillImage="am-internal:///2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.circularripple2" locallyApplied="true">
+      <property name="feather" type="float" value="1.000000"/>
+      <property name="frequency" type="float" value="5.840000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.993860" v="-6.000000"/>
+      </property>
+      <property name="radius" type="float" value="0.610000"/>
+      <property name="strength" type="float">
+        <kf t="0.000492" v="0.000000"/>
+        <kf t="0.993860" v="0.089000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -405.0L 540.0 -405.0L 540.0 405.0L -540.0 405.0L -540.0 -405.0Z"/>
+  </shape>
+  <shape id="7" label="Transition Out; t:end, c:TO" startTime="10034" endTime="11533" fillType="media" fillImage="am-internal:///2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.tileshift2" locallyApplied="true">
+      <property name="angle" type="float" value="45.000000"/>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.977985" v="0.131000" e="cubicBezier 0.0 0.675 0.49089634 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -405.0L 540.0 -405.0L 540.0 405.0L -540.0 405.0L -540.0 -405.0Z"/>
+  </shape>
+  <shape id="8" label="Transition In; t:start, c:TI" startTime="11534" endTime="13033" fillType="media" fillImage="am-internal:///2862376F76EBC6CBD1FEC6AF6E81FE544F17848A.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.tileshift2" locallyApplied="true">
+      <property name="angle" type="float" value="45.000000"/>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.131000"/>
+        <kf t="0.977985" v="0.000000" e="cubicBezier 0.0 0.675 0.49089634 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -405.0L 540.0 -405.0L 540.0 405.0L -540.0 405.0L -540.0 -405.0Z"/>
+  </shape>
+  <shape id="10" label="Transition Out; t:end, c:IO" startTime="13033" endTime="14333" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pinchbulgeinside" locallyApplied="false">
+      <property name="feather" type="float">
+        <kf t="0.000000" v="0.100000"/>
+        <kf t="0.989505" v="0.000000" e="cubicBezier 0.0 0.0 0.3377031 0.9916667"/>
+      </property>
+      <property name="radius" type="float">
+        <kf t="0.000000" v="0.300000"/>
+        <kf t="0.989505" v="0.725000" e="cubicBezier 0.0 0.0 0.3377031 0.9916667"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.989505" v="-1.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="11" label="Transition In; t:start, c:II" startTime="14366" endTime="15666" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pinchbulgeinside" locallyApplied="false">
+      <property name="feather" type="float">
+        <kf t="0.000769" v="0.030000"/>
+        <kf t="0.990274" v="0.000000" e="cubicBezier 0.0 0.0 0.3377031 0.9916667"/>
+      </property>
+      <property name="radius" type="float">
+        <kf t="0.000000" v="0.920000"/>
+        <kf t="0.990274" v="0.000000" e="cubicBezier 0.0 0.0 0.3377031 0.9916667"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.990274" v="0.000000" e="cubicBezier 0.0 0.0 0.3377031 0.9916667"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="12" label="Horizontal Stretch; t:split, c:SH" startTime="15667" endTime="17666" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.stretchsegment" locallyApplied="false">
+      <property name="smooth" type="float" value="0.200000"/>
+      <property name="stretch" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.333667" v="220.000000" e="cubicBezier 0.5530532 0.0 0.43714285 1.0"/>
+        <kf t="0.666833" v="220.000000"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.5530532 0.0 0.43714285 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="13" label="Vertical Stretch; t:split, c:SV" startTime="17667" endTime="19666" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.stretchsegment" locallyApplied="false">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="smooth" type="float" value="0.200000"/>
+      <property name="stretch" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.333667" v="220.000000" e="cubicBezier 0.5530532 0.0 0.43714285 1.0"/>
+        <kf t="0.666833" v="220.000000"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.5530532 0.0 0.43714285 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="23" label="Water Reflection; t:extend, c:TWR" startTime="19634" endTime="21633" fillType="media" fillImage="am-internal:///E5E28C99F36C8EE9BDC1A6D1A16DCB847EACB643.jpeg">
+    <transform>
+      <location value="510.736053,535.030823"/>
+      <scale value="1.541557,1.541557"/>
+    </transform>
+    <effect id="com.alightcreative.effects.turbulentdisplace3" locallyApplied="false">
+      <property name="direction" type="int" value="2"/>
+      <property name="evolution" type="float" value="0.050000"/>
+      <property name="intensity" type="float" value="0.200000"/>
+      <property name="offs" type="float" value="0.005000"/>
+      <property name="parr" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983492" v="30.000000,20.000000"/>
+      </property>
+      <property name="scale" type="float" value="1.080000"/>
+      <property name="screenSpace" type="bool" value="true"/>
+      <property name="seed" type="float" value="0.010000"/>
+    </effect>
+    <path d="M -540.0 -359.4375L 540.0 -359.4375L 540.0 359.4375L -540.0 359.4375L -540.0 -359.4375Z"/>
+  </shape>
+  <shape id="24" label="Liquid Drop; t:end, c:TDW" startTime="21635" endTime="22167" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFFF4444"/>
+    <effect id="com.alightcreative.effects.turbulentdisplace3" locallyApplied="false">
+      <property name="intensity" type="float">
+        <kf t="0.937970" v="0.557000" e="cubicBezier 0.4788235 0.0 1.0 1.0"/>
+        <kf t="-0.001880" v="0.000000"/>
+      </property>
+      <property name="octaves" type="float" value="4.000000"/>
+      <property name="offs" type="float" value="-0.039000"/>
+      <property name="screenSpace" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="345.153351,345.153351"/>
+  </shape>
+  <shape id="27" label="Transition Out; t:end, c:SO" startTime="22168" endTime="22867" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.swirl4" locallyApplied="true">
+      <property name="radius" type="float">
+        <kf t="0.954220" v="0.710000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.000000" v="0.300000"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.954220" v="0.256000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="28" label="Transition In; t:start, c:SI" startTime="22867" endTime="23566" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.swirl4" locallyApplied="true">
+      <property name="radius" type="float">
+        <kf t="0.954220" v="0.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.000000" v="0.710000"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="0.954220" v="0.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.000000" v="0.256000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="30" label="180° Spin; c:K1S" startTime="23565" endTime="25564" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.kaleidoscope" locallyApplied="true">
+      <property name="offsetAngle" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983492" v="180.500000"/>
+      </property>
+      <property name="rcount" type="float" value="5.000000"/>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+</scene>

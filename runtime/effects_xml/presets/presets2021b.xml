@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2021-03-08 08:25 AM
+3.7.0 (166)
+-->
+<scene title="Presets-Doug JJReview SYReview JJfinal " width="1920" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="48965" fps="30" modifiedTime="1615159537413" amver="166" ffver="101" am="com.alightcreative.motion/3.7.0" amplatform="ios">
+  <media uri="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" filename="3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" title="Square Rings; t:stretch" type="image/jpeg" size="44089" sig="3BFE8488191469ABDAA81FA8125686689B4918C2" infoUpdated="1615159537409"/>
+  <media uri="am-internal:///04D17559516A17F2CF17982C0CBA4473EAFCB99C.jpg" filename="04D17559516A17F2CF17982C0CBA4473EAFCB99C.jpg" title="Fly Through Tunnel; t:stretch" type="image/jpeg" size="2605770" sig="04D17559516A17F2CF17982C0CBA4473EAFCB99C"/>
+  <media uri="am-internal:///0A4E2BC56C214853CBF134F0F9C0C937FF5E0EB6.jpg" filename="0A4E2BC56C214853CBF134F0F9C0C937FF5E0EB6.jpg" title="Portrait; t:split" type="image/jpeg" size="225498" sig="0A4E2BC56C214853CBF134F0F9C0C937FF5E0EB6"/>
+  <shape id="1" label="Transition In; t:start" startTime="0" endTime="1999" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="962.051758,566.909363"/>
+      <scale value="0.839725,0.839725"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pagecurl" locallyApplied="true">
+      <property name="progress" type="float">
+        <kf t="0.000000" v="2.000000"/>
+        <kf t="0.486667" v="0.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="2" label="Transition Out; t:end" startTime="2479" endTime="4478" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="967.285889,529.526184"/>
+      <scale value="0.425672,0.425672"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pagecurl" locallyApplied="true">
+      <property name="progress" type="float">
+        <kf t="0.983992" v="2.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.509167" v="0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="1814.714478,912.010132"/>
+  </shape>
+  <shape id="3" label="Peek Behind; t:split" startTime="4958" endTime="6957" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="1050.275879,534.759644"/>
+      <scale value="0.472251,0.472251"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pagecurl" locallyApplied="true">
+      <property name="progress" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.250125" v="0.400000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.750375" v="0.400000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="1632.081055,820.225647"/>
+  </shape>
+  <shape id="5" label="Dipyramid; t:stretch" startTime="7436" endTime="9435" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="1004.669067,549.712830"/>
+      <scale value="0.787434,0.787434"/>
+    </transform>
+    <effect id="com.alightcreative.effects.starpoly" locallyApplied="true">
+      <property name="pointCount" type="float" value="3.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="6" label="Smooth Star; t:stretch" startTime="9915" endTime="11914" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="940.368835,508.591370"/>
+      <scale value="0.737980,0.737980"/>
+    </transform>
+    <effect id="com.alightcreative.effects.starpoly" locallyApplied="true">
+      <property name="smooth" type="float" value="0.100000"/>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="8" label="Rain; t:extend" startTime="12394" endTime="14393" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF86F4FC"/>
+    <effect id="com.alightcreative.effects.shapefield" locallyApplied="true">
+      <property name="pos" type="vec3">
+        <kf t="0.000000" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,-500.000000,0.000000"/>
+      </property>
+    </effect>
+    <path d="M -1.365945 269.99997C -207.59186 155.9638, -269.6425 3.2425385, -269.6425 -242.91357C -206.27394 -226.45299, -56.096645 -253.73174, -0.49235174 -270.00003L 0.49235174 -270.00003C 56.096645 -253.73174, 206.27394 -226.45299, 269.6425 -242.91357C 269.6425 3.2425385, 207.59186 155.9638, 1.365945 269.99997L -1.365945 269.99997Z"/>
+  </shape>
+  <shape id="34" label="Blizzard; t:extend" startTime="14867" endTime="16866" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFE9F1F8"/>
+    <effect id="com.alightcreative.effects.shapefield" locallyApplied="true">
+      <property name="density" type="float" value="0.475000"/>
+      <property name="evolution" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="5.530000"/>
+      </property>
+      <property name="fade" type="float" value="0.456000"/>
+      <property name="layerCount" type="float" value="14.000000"/>
+      <property name="pos" type="vec3">
+        <kf t="0.000000" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.983992" v="2001.666870,-3624.001953,0.000000"/>
+      </property>
+      <property name="scale" type="float" value="1.030000"/>
+      <property name="shapeSize" type="float" value="0.272000"/>
+    </effect>
+  </shape>
+  <shape id="10" label="Fly Forward; t:extend" startTime="17352" endTime="19351" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF86F4FC"/>
+    <effect id="com.alightcreative.effects.shapefield" locallyApplied="true">
+      <property name="pos" type="vec3">
+        <kf t="0.000000" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,0.000000,500.000000"/>
+      </property>
+    </effect>
+    <path d="M -1.365945 269.99997C -207.59186 155.9638, -269.6425 3.2425385, -269.6425 -242.91357C -206.27394 -226.45299, -56.096645 -253.73174, -0.49235174 -270.00003L 0.49235174 -270.00003C 56.096645 -253.73174, 206.27394 -226.45299, 269.6425 -242.91357C 269.6425 3.2425385, 207.59186 155.9638, 1.365945 269.99997L -1.365945 269.99997Z"/>
+  </shape>
+  <shape id="11" label="Pipe; t:stretch" startTime="19831" endTime="21830" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="962.990906,534.018372"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ring" locallyApplied="true">
+      <property name="height" type="float" value="2.999000"/>
+      <property name="orient" type="quat" value="0.353554,-0.146447,-0.353554,0.853553"/>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,463.461548"/>
+  </shape>
+  <shape id="12" label="Band; t:stretch" startTime="22309" endTime="24308" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="1112.523193,538.504395"/>
+      <scale value="2.174284,2.174284"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ring" locallyApplied="true">
+      <property name="height" type="float" value="0.300000"/>
+      <property name="orient" type="quat" value="-0.354818,-0.143356,0.346091,0.856606"/>
+      <property name="smooth" type="float" value="0.050000"/>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="30" label="Fly Through Tunnel; t:stretch" startTime="24788" endTime="26777" fillType="media" fillImage="am-internal:///04D17559516A17F2CF17982C0CBA4473EAFCB99C.jpg" s=".rect">
+    <transform>
+      <location value="942.243408,544.485962"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ring" locallyApplied="true">
+      <property name="height" type="float" value="6.299000"/>
+      <property name="mirror" type="bool" value="true"/>
+      <property name="position" type="vec3">
+        <kf t="0.000000" v="0.000000,100.000000,3527.000000"/>
+        <kf t="0.991349" v="0.000000,100.000000,-651.000000" e="cubicBezier 0.0 0.6424246 0.9589947 0.89696956"/>
+      </property>
+      <property name="rotate" type="vec3" value="90.000000,0.000000,0.000000"/>
+      <property name="shadingType" type="int" value="0"/>
+      <property name="texRepeatX" type="float" value="3.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,394.615387"/>
+  </shape>
+  <shape id="32" label="Fly Through Ring; t:stretch" startTime="27267" endTime="29266" fillType="color" s=".rect">
+    <transform>
+      <location value="973.645081,538.504761"/>
+    </transform>
+    <fillColor value="#FFD19CA2"/>
+    <effect id="com.alightcreative.effects.ring" locallyApplied="true">
+      <property name="height" type="float" value="0.285000"/>
+      <property name="orient" type="quat">
+        <kf t="0.957979" v="-0.707107,0.000000,-0.000000,0.707107"/>
+        <kf t="0.007504" v="0.707107,-0.000000,-0.000000,0.707107"/>
+      </property>
+      <property name="position" type="vec3">
+        <kf t="0.983992" v="0.000000,100.000000,-203.000000"/>
+        <kf t="-0.006500" v="0.000000,100.000000,3040.000000"/>
+      </property>
+      <property name="rotate" type="vec3">
+        <kf t="0.007504" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.957979" v="0.000000,0.000000,360.000000"/>
+      </property>
+      <property name="smooth" type="float" value="0.133000"/>
+      <property name="thickness" type="float" value="0.196000"/>
+    </effect>
+    <property name="size" type="vec2" value="425.000000,423.000000"/>
+  </shape>
+  <shape id="13" label="Transition Out; t:end" startTime="29746" endTime="31745" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="969.625854,520.398621"/>
+      <scale value="0.453706,0.453706"/>
+    </transform>
+    <effect id="com.alightcreative.effects.streakstrips" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.500250" v="0.000000"/>
+        <kf t="0.750375" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="amount" type="float">
+        <kf t="0.500250" v="100.000000"/>
+        <kf t="0.983992" v="14.900001" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="maskToLayer" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="1719.367920,864.092468"/>
+  </shape>
+  <shape id="14" label="Transition In; t:stretch" startTime="32225" endTime="34224" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="950.683044,536.585693"/>
+      <scale value="0.477221,0.477221"/>
+    </transform>
+    <effect id="com.alightcreative.effects.streakstrips" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.500250" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.253667" v="1.000000"/>
+      </property>
+      <property name="amount" type="float">
+        <kf t="0.500250" v="100.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.003667" v="14.900001"/>
+      </property>
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="maskToLayer" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="1708.770508,858.766724"/>
+  </shape>
+  <shape id="15" label="Digital Interference; t:extend" startTime="34703" endTime="36702" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="964.887573,565.744995"/>
+      <scale value="0.930962,0.930962"/>
+    </transform>
+    <effect id="com.alightcreative.effects.streakstrips" locallyApplied="true">
+      <property name="amount" type="float" value="100.000000"/>
+      <property name="angle" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="360.000000"/>
+      </property>
+      <property name="maskToLayer" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <text id="22" label="Isometric Slicing; t:extend" startTime="36734" endTime="38733" fillType="color" size="96.000000" font="googlefonts?name=Montserrat&amp;weight=800" wrapWidth="960" align="left">
+    <transform>
+      <location value="1194.765259,525.047668"/>
+      <scale value="2.190402,2.190402"/>
+    </transform>
+    <effect id="com.alightcreative.effects.contourstrips" locallyApplied="true">
+      <property name="amount" type="float" value="40.000000"/>
+      <property name="angle" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="359.500000"/>
+      </property>
+      <property name="thickness" type="float" value="0.000000"/>
+      <property name="width" type="float" value="1.130000"/>
+    </effect>
+    <content>hello</content>
+</text>
+  <shape id="17" label="Explode; t:split" startTime="38733" endTime="40732" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="984.326599,532.847717"/>
+      <scale value="0.930962,0.930962"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hollowbox" locallyApplied="true">
+      <property name="orient" type="quat" value="0.353554,0.353554,-0.146447,0.853553"/>
+      <property name="outset" type="float">
+        <kf t="0.250125" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.750375" v="1.000000"/>
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="23" label="Show Off; t:stretch" startTime="40799" endTime="42798" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="984.326599,532.847717"/>
+      <scale value="0.930962,0.930962"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hollowbox" locallyApplied="true">
+      <property name="orient" type="quat" value="0.353554,0.353554,-0.146447,0.853553"/>
+      <property name="outset" type="float">
+        <kf t="0.250125" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.750375" v="1.000000"/>
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="rotate" type="vec3">
+        <kf t="-0.004502" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.978989" v="360.000000,360.000000,360.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="18" label="Square Rings; t:stretch" startTime="42866" endTime="44865" fillType="media" fillImage="am-internal:///3BFE8488191469ABDAA81FA8125686689B4918C2.jpg" s=".rect">
+    <transform>
+      <location value="1009.747559,520.885376"/>
+      <scale value="0.930962,0.930962"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hollowbox" locallyApplied="true">
+      <property name="backMode" type="int" value="2"/>
+      <property name="bottomMode" type="int" value="2"/>
+      <property name="frontMode" type="int" value="2"/>
+      <property name="leftMode" type="int" value="2"/>
+      <property name="orient" type="quat" value="0.353554,0.353554,-0.146447,0.853553"/>
+      <property name="outset" type="float" value="1.000000"/>
+      <property name="rightMode" type="int" value="2"/>
+      <property name="thick" type="float" value="0.099000"/>
+      <property name="topMode" type="int" value="2"/>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,482.461548"/>
+  </shape>
+  <shape id="25" label="Portrait; t:split" startTime="44933" endTime="46932" fillType="media" fillImage="am-internal:///0A4E2BC56C214853CBF134F0F9C0C937FF5E0EB6.jpg" s=".rect">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hollowbox" locallyApplied="true">
+      <property name="backMode" type="int" value="5"/>
+      <property name="bottomMode" type="int" value="5"/>
+      <property name="frontMode" type="int" value="5"/>
+      <property name="leftMode" type="int" value="5"/>
+      <property name="position" type="vec3">
+        <kf t="0.467234" v="0.000000,100.000000,600.000000" e="cubicBezier 0.0 0.0 0.0 1.0"/>
+        <kf t="0.000000" v="-600.000000,100.000000,600.000000"/>
+        <kf t="0.983992" v="600.000000,100.000000,600.000000" e="cubicBezier 1.0 0.0 1.0 1.0"/>
+      </property>
+      <property name="rightMode" type="int" value="5"/>
+      <property name="rotate" type="vec3">
+        <kf t="0.467234" v="0.000000,0.000000,0.000000" e="cubicBezier 0.0 0.0 0.0 1.0"/>
+        <kf t="0.000000" v="-90.000000,-90.000000,-90.000000"/>
+        <kf t="0.983992" v="90.000000,90.000000,90.000000" e="cubicBezier 1.0 0.0 1.0 1.0"/>
+      </property>
+      <property name="scale" type="float">
+        <kf t="0.467234" v="2.500000" e="cubicBezier 0.0 0.0 0.0 1.0"/>
+        <kf t="0.000000" v="1.490000"/>
+        <kf t="0.983992" v="1.500000" e="cubicBezier 1.0 0.0 1.0 1.0"/>
+      </property>
+      <property name="topMode" type="int" value="5"/>
+    </effect>
+    <property name="size" type="vec2" value="810.633301,540.000000"/>
+  </shape>
+  <shape id="33" label="Reward Star" startTime="46966" endTime="48965" fillType="color" s=".rect">
+    <transform>
+      <location value="877.000122,533.335938"/>
+    </transform>
+    <fillColor value="#FFFCB455"/>
+    <effect id="com.alightcreative.effects.starpoly" locallyApplied="true">
+      <property name="ambient" type="float" value="0.190000"/>
+      <property name="lightDepth" type="float" value="149.000000"/>
+      <property name="lightDir" type="vec2">
+        <kf t="0.000000" v="356.000000,-35.000000"/>
+        <kf t="0.600300" v="89.000000,-108.000000"/>
+        <kf t="0.167084" v="51.684998,2.681664"/>
+        <kf t="0.367184" v="147.920563,-187.441513"/>
+      </property>
+      <property name="lightIntensity" type="float" value="1.074000"/>
+      <property name="position" type="vec3">
+        <kf t="0.250125" v="0.000000,100.000000,500.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.000000" v="0.000000,100.000000,2866.000000"/>
+        <kf t="0.167084" v="0.000000,100.000000,399.000000" e="cubicBezier 0.54301584 0.0 0.58 1.0"/>
+      </property>
+      <property name="shine" type="float" value="1.000000"/>
+      <property name="smooth" type="float" value="0.014000"/>
+      <property name="spec" type="float" value="36.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="409.000000,412.000000"/>
+  </shape>
+</scene>

@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:17 PM
+3.6.0 (146)
+-->
+<scene title="text-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="26000" fps="30" modifiedTime="1606907846766" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <bookmark t="21967"/>
+  <bookmark t="22734"/>
+  <text id="1" label="Quick Count Up; t: stretch, c: CUDQCU" startTime="0" endTime="1999" fillType="color" size="48.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="632" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.counter" locallyApplied="true">
+      <property name="scale" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+    </effect>
+    <content>1000000</content>
+</text>
+  <text id="2" label="Slow Count Down; t: stretch, c:CUDSCD" startTime="1998" endTime="3997" fillType="color" size="48.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="632" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.counter" locallyApplied="true">
+      <property name="offset" type="float">
+        <kf t="0.001001" v="0.000000"/>
+        <kf t="0.984993" v="-10.000000"/>
+      </property>
+    </effect>
+    <content>10</content>
+</text>
+  <text id="3" label="Type In; t:start, c:TPTI" startTime="4000" endTime="5999" fillType="color" size="48.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="660" align="left">
+    <transform>
+      <location value="600.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.textprogress" locallyApplied="true">
+      <property name="cursor" type="int" value="1"/>
+      <property name="end" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.262017" v="1.000000"/>
+      </property>
+    </effect>
+    <content>Hello!</content>
+</text>
+  <text id="4" label="Decode; t:start, c:TRD" startTime="6000" endTime="7999" fillType="color" size="48.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="655" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.textrand" locallyApplied="true">
+      <property name="amount" type="float" value="1.000000"/>
+      <property name="charset" type="int" value="4"/>
+      <property name="evo" type="float">
+        <kf t="0.010000" v="0.540000"/>
+        <kf t="0.262017" v="3.320000"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="0.017009" v="0.000000"/>
+        <kf t="0.262017" v="1.000000"/>
+      </property>
+    </effect>
+    <content>Hello!</content>
+</text>
+  <text id="5" label="Uncensor; t:start, c:TTU" startTime="7997" endTime="9996" fillType="color" size="18.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="540" align="left">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.textrand" locallyApplied="true">
+      <property name="amount" type="float">
+        <kf t="0.018509" v="1.000000"/>
+        <kf t="0.263518" v="0.000000"/>
+      </property>
+      <property name="charset" type="int" value="6"/>
+      <property name="preserveSpace" type="bool" value="false"/>
+    </effect>
+    <content>Hello, there!</content>
+</text>
+  <text id="17" label="Password Reveal; t:start, c:TRPR" startTime="7997" endTime="9996" fillType="color" size="18.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="540" align="left">
+    <transform>
+      <location value="541.000000,425.500000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.textrand" locallyApplied="true">
+      <property name="amount" type="float" value="1.000000"/>
+      <property name="charset" type="int" value="6"/>
+      <property name="preserveSpace" type="bool" value="false"/>
+      <property name="start" type="float">
+        <kf t="0.018509" v="0.000000"/>
+        <kf t="0.247010" v="1.000000"/>
+      </property>
+    </effect>
+    <content>Hello, there!</content>
+</text>
+  <text id="6" label="Title Spread; t:stretch, c: TSTS" startTime="10000" endTime="11999" fillType="color" size="51.000000" font="googlefonts?name=Roboto Mono&amp;weight=700" wrapWidth="1073" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.textspacing" locallyApplied="false">
+      <property name="letterspacing" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.995855" v="2.000000" e="cubicBezier 0.07850242 0.65909094 0.4311594 0.94772726"/>
+      </property>
+    </effect>
+    <content>Title</content>
+</text>
+  <text id="9" label="Fade Up by Letter; t:start, c:TTFUBL" startTime="14000" endTime="15999" fillType="color" size="31.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="912" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.texttransform" locallyApplied="false">
+      <property name="alpha" type="float" value="1.000000"/>
+      <property name="anchor" type="int" value="1"/>
+      <property name="easeOut" type="float" value="1.000000"/>
+      <property name="end" type="float">
+        <kf t="0.000000" v="0.062000"/>
+        <kf t="0.345555" v="1.000000"/>
+      </property>
+      <property name="offset" type="vec2" value="0.000000,-100.000000"/>
+      <property name="overlap" type="float" value="0.640000"/>
+    </effect>
+    <content>Blahdy Blah!</content>
+</text>
+  <text id="10" label="Wave Right; t:start, c:TTWR" startTime="16000" endTime="17999" fillType="color" size="31.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="912" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.texttransform" locallyApplied="false">
+      <property name="alpha" type="float" value="-0.001000"/>
+      <property name="anchor" type="int" value="1"/>
+      <property name="angle" type="float">
+        <kf t="-0.016508" v="-0.100000"/>
+        <kf t="0.262017" v="0.100000"/>
+      </property>
+      <property name="easeOut" type="float" value="1.000000"/>
+      <property name="end" type="float">
+        <kf t="0.000000" v="0.062000"/>
+        <kf t="0.262017" v="1.000000"/>
+      </property>
+      <property name="offset" type="vec2" value="0.000000,-10.000000"/>
+      <property name="overlap" type="float" value="0.640000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.262017" v="-0.803000"/>
+      </property>
+      <property name="scale" type="float" value="0.200000"/>
+      <property name="shape" type="int" value="1"/>
+    </effect>
+    <content>Blahdy Blah!</content>
+</text>
+  <text id="11" label="Spin Cascade; t:start, c:TTSC" startTime="18000" endTime="19999" fillType="color" size="31.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="912" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.texttransform" locallyApplied="false">
+      <property name="anchor" type="int" value="1"/>
+      <property name="angle" type="float" value="6.300000"/>
+      <property name="end" type="float">
+        <kf t="0.000000" v="0.062000"/>
+        <kf t="0.429094" v="1.000000"/>
+      </property>
+      <property name="overlap" type="float" value="6.000000"/>
+    </effect>
+    <content>한국어도 되나요?</content>
+</text>
+  <text id="12" label="Scale Up by Word; t:stretch, c:TTSUBW" startTime="20000" endTime="21999" fillType="color" size="12.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="1085" align="center">
+    <transform>
+      <location value="535.333374,556.666931"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.texttransform" locallyApplied="false">
+      <property name="alpha" type="float" value="0.400000"/>
+      <property name="component" type="int" value="2"/>
+      <property name="end" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.760492" v="1.000000"/>
+      </property>
+      <property name="scale" type="float">
+        <kf t="0.983992" v="3.000000" e="cubicBezier 0.09299517 0.24659091 0.3683575 0.80795455"/>
+        <kf t="0.000000" v="2.000000"/>
+      </property>
+    </effect>
+    <content>A quote with
+vague meaning 
+maybe a haiku?</content>
+</text>
+  <text id="13" label="Letter Scale Out; t:start, c:TTLSO" startTime="22000" endTime="23999" fillType="color" size="48.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="981" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.texttransform" locallyApplied="false">
+      <property name="alpha" type="float" value="-1.000000"/>
+      <property name="anchor" type="int" value="1"/>
+      <property name="easeIn" type="float" value="1.000000"/>
+      <property name="overlap" type="float" value="5.000000"/>
+      <property name="randomOrder" type="bool" value="true"/>
+      <property name="scale" type="float" value="10.000000"/>
+      <property name="start" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.345555" v="1.000000"/>
+      </property>
+    </effect>
+    <content>Randomization</content>
+</text>
+  <text id="16" label="Seconds; c:TS" startTime="24001" endTime="26000" fillType="color" size="18.000000" font="googlefonts?name=Roboto&amp;weight=400" wrapWidth="540" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7F7F7F"/>
+    <effect id="com.alightcreative.effects.timecode" locallyApplied="true">
+      <property name="frames" type="bool" value="false"/>
+    </effect>
+    <content>Timecode - Seconds</content>
+</text>
+</scene>

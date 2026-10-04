@@ -1,0 +1,58 @@
+<shape id="com.alightcreative.shapes.moon"  name="@am:string/shape_moon">
+
+    <params>
+        <spinner id="radius" min="0" max="2000" default="100" step="1" label="@am:string/effect_param_radius"  />
+        <spinner id="offset" min="0" max="1000" default="250" step="1" label="@am:string/effect_param_offset" />
+    </params>
+
+    <handle id="r" param="radius" type="radius" icon="grip" />
+    <handle id="o" param="offset" type="x" style="square" icon="grip" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            let radius = params.radius;
+            let width = radius;
+            let height = radius;
+            let offset = params.offset / 1000.0;
+            return {
+                r: [0, radius],
+                o: [-width + (2*width*offset),0]
+            }
+        }
+
+        function getPath(params) {
+            let radius = params.radius;
+            let offset = params.offset / 1000.0;
+            let width = radius;
+            let height = radius;
+            let cw = 0.551915024494 * width;
+            let ch = 0.551915024494 * height;
+            return [
+                {   // TOP
+                    in:[-cw,-height],
+                    p:[0,-height],
+                    out:[-cw + (2*cw*offset),-height],
+                },
+                {  // RIGHT
+                    in:[-width + (2*width*offset),-ch],
+                    p:[-width + (2*width*offset),0],
+                    out:[-width + (2*width*offset),ch]
+                },
+                {  // BOTTOM
+                    in:[-cw + (2*cw*offset),height],
+                    p:[0,height],
+                    out:[-cw,height]
+                },
+                {  // LEFT
+                    in:[-width,ch],
+                    p:[-width,0],
+                    out:[-width,-ch]
+                },
+                {closed:true}
+            ];
+        }
+
+    ]]></script>
+
+</shape>

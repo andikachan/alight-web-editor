@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:18 PM
+3.6.0 (146)
+-->
+<scene title="v3 3d-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#00000000" totalTime="41999" fps="30" modifiedTime="1606907895796" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///52B7417DCEF4CCC003027E74514A1298A15A92F6.jpg" filename="52B7417DCEF4CCC003027E74514A1298A15A92F6.JPG" title="Sphere Morph; t:start, c:BSM" type="image/jpeg" size="243988" sig="52B7417DCEF4CCC003027E74514A1298A15A92F6"/>
+  <media uri="am-internal:///A5F0CA8D1CBC6BC60091B3FC2832E4B4091FADBA.jpg" filename="A5F0CA8D1CBC6BC60091B3FC2832E4B4091FADBA.JPG" title="Flat Cuboid; c:CFC" type="image/jpeg" size="18753803" sig="A5F0CA8D1CBC6BC60091B3FC2832E4B4091FADBA"/>
+  <media uri="am-internal:///4EAA91E6180B395859444D8CFE6551149BE70268.jpg" filename="4EAA91E6180B395859444D8CFE6551149BE70268.jpg" title="Transition Out; t:stretch, c:FLFTO" type="image/jpeg" size="405874" sig="4EAA91E6180B395859444D8CFE6551149BE70268" infoUpdated="1606907895781"/>
+  <media uri="am-internal:///0DCDD638B084991237B5A6586DE85DAECE0199EA.jpg" filename="0DCDD638B084991237B5A6586DE85DAECE0199EA.JPG" title="Transition In; t:stretch, c:FLFTI" type="image/jpeg" size="214481" sig="0DCDD638B084991237B5A6586DE85DAECE0199EA"/>
+  <media uri="am-internal:///5F1E3115E5C7D1D60575B7EED57D10E415252CA0.png" filename="5F1E3115E5C7D1D60575B7EED57D10E415252CA0.PNG" title="Spotlight; t:stretch, c:SS" type="image/png" size="1738518" sig="5F1E3115E5C7D1D60575B7EED57D10E415252CA0"/>
+  <media uri="am-internal:///8A607FDFEA6830762FD2B5BAE5066AE215853CCD.jpg" filename="8A607FDFEA6830762FD2B5BAE5066AE215853CCD.JPG" title="Forward; t:extend, c:TF" type="image/jpeg" size="9239217" sig="8A607FDFEA6830762FD2B5BAE5066AE215853CCD" infoUpdated="1606907895785"/>
+  <shape id="1" label="Six-Sided Die; c:BSSD" startTime="0" endTime="1999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFE3914C"/>
+    <effect id="com.alightcreative.effects.box" locallyApplied="false">
+      <property name="height" type="float" value="1.000000"/>
+      <property name="orient" type="quat" value="0.203387,0.333913,-0.074027,0.917418"/>
+      <property name="smooth" type="float" value="0.071000"/>
+    </effect>
+    <property name="size" type="vec2" value="567.830139,567.830200"/>
+  </shape>
+  <shape id="2" label="Sphere Morph; t:start, c:BSM" startTime="2000" endTime="3999" fillType="media" fillImage="am-internal:///52B7417DCEF4CCC003027E74514A1298A15A92F6.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFE3914C"/>
+    <effect id="com.alightcreative.effects.box" locallyApplied="false">
+      <property name="height" type="float" value="1.000000"/>
+      <property name="mirror" type="bool" value="true"/>
+      <property name="orient" type="quat" value="0.203387,0.333913,-0.074027,0.917418"/>
+      <property name="smooth" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.254018" v="0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="567.830139,567.830200"/>
+  </shape>
+  <shape id="15" label="Flat Cuboid; c:CFC" startTime="4000" endTime="5999" fillType="media" fillImage="am-internal:///A5F0CA8D1CBC6BC60091B3FC2832E4B4091FADBA.jpg" s=".rect">
+    <transform>
+      <location value="554.434021,527.264099"/>
+      <scale value="0.089861,0.089861"/>
+    </transform>
+    <fillColor value="#FF4BD04E"/>
+    <effect id="com.alightcreative.effects.cube2" locallyApplied="false">
+      <property name="depth" type="float" value="0.100000"/>
+      <property name="orient" type="quat" value="0.353553,-0.353554,0.146447,0.853553"/>
+    </effect>
+    <property name="size" type="vec2" value="1816.177002,1816.177490"/>
+  </shape>
+  <shape id="16" label="Candy; c:EC" startTime="6000" endTime="7999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="1.551389,1.551389"/>
+    </transform>
+    <fillColor value="#FFD2909D"/>
+    <effect id="com.alightcreative.effects.ellipsoid" locallyApplied="false">
+      <property name="flatten" type="float" value="0.400000"/>
+      <property name="orient" type="quat" value="0.800103,-0.461940,-0.191342,0.331413"/>
+      <property name="rotate" type="vec3" value="180.000000,0.000000,0.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="-88.490540,100.000000"/>
+  </shape>
+  <shape id="18" label="Flip Horizontal; t:stretch, c:FLFH" startTime="8000" endTime="9999" fillType="media" fillImage="am-internal:///4EAA91E6180B395859444D8CFE6551149BE70268.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.flip3" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="180.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="19" label="Flip Vertical; t:stretch, c: FLFV" startTime="10000" endTime="11999" fillType="media" fillImage="am-internal:///4EAA91E6180B395859444D8CFE6551149BE70268.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.flip3" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="180.000000"/>
+      </property>
+      <property name="axis" type="float" value="90.000000"/>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="20" label="Transition Out; t:stretch, c:FLFTO" startTime="12000" endTime="13999" fillType="media" fillImage="am-internal:///4EAA91E6180B395859444D8CFE6551149BE70268.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.flip3" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="0.983992" v="90.000000"/>
+        <kf t="0.000000" v="0.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="21" label="Transition In; t:stretch, c:FLFTI" startTime="14000" endTime="15999" fillType="media" fillImage="am-internal:///0DCDD638B084991237B5A6586DE85DAECE0199EA.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.flip3" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="0.000000" v="-90.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="22" label="Heartbeat; t:stretch, c:HH" startTime="16000" endTime="17999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7EB387"/>
+    <effect id="com.alightcreative.effects.heart2" locallyApplied="false">
+      <property name="scale" type="float">
+        <kf t="0.000000" v="1.300000"/>
+        <kf t="1.001746" v="1.000000" e="cyclic 0.1673568 0.0 0.5 0.0 0.0"/>
+      </property>
+      <property name="shape" type="float">
+        <kf t="0.000000" v="0.500000"/>
+        <kf t="1.001746" v="1.250000" e="cyclic 0.33643895 0.0 0.5 0.0 0.0"/>
+      </property>
+      <property name="size" type="float">
+        <kf t="0.000000" v="2.500000"/>
+        <kf t="1.001746" v="3.000000" e="cyclic 0.33643895 0.0 0.5 0.0 0.0"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="24" label="Flat Hexagon; c:HPFH" startTime="18000" endTime="19999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF8F4B87"/>
+    <effect id="com.alightcreative.effects.hexprism" locallyApplied="true">
+      <property name="height" type="float" value="0.100000"/>
+      <property name="orient" type="quat" value="-0.425548,-0.564721,0.086174,0.701836"/>
+      <property name="smooth" type="float" value="0.099000"/>
+    </effect>
+    <property name="size" type="vec2" value="455.754700,455.754761"/>
+  </shape>
+  <shape id="25" label="Eight-Sided Die; c:TESD" startTime="20000" endTime="21999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7E37B4"/>
+    <effect id="com.alightcreative.effects.octahedron" locallyApplied="false">
+      <property name="smooth" type="float" value="0.199000"/>
+    </effect>
+    <property name="size" type="vec2" value="291.886780,291.886780"/>
+  </shape>
+  <shape id="26" label="Spin Right; t:extend, c:PSR" startTime="22000" endTime="23999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFFDCE66"/>
+    <effect id="com.alightcreative.effects.pyramid" locallyApplied="false">
+      <property name="height" type="float" value="1.455000"/>
+      <property name="position" type="vec3" value="0.000000,29.000000,500.000000"/>
+      <property name="rotate" type="vec3">
+        <kf t="0.000000" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,-180.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="313.962219,313.962219"/>
+  </shape>
+  <shape id="27" label="Spotlight; t:stretch, c:SS" startTime="24000" endTime="25999" fillType="media" fillImage="am-internal:///5F1E3115E5C7D1D60575B7EED57D10E415252CA0.png" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="3.825000,3.825000"/>
+    </transform>
+    <fillColor value="#FFFE4B8A"/>
+    <effect id="com.alightcreative.effects.spherize2" locallyApplied="true">
+      <property name="lightDir" type="vec2">
+        <kf t="0.000000" v="-1500.000000,-75.000000"/>
+        <kf t="0.983992" v="1500.000000,-75.000000"/>
+      </property>
+      <property name="lightIntensity" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.250125" v="1.000000"/>
+        <kf t="0.883942" v="1.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="28" label="Horizontal Flip; t:extend, c:SPHF" startTime="26000" endTime="27999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF9DCC46"/>
+    <effect id="com.alightcreative.effects.starprism" locallyApplied="true">
+      <property name="rotate" type="vec3">
+        <kf t="0.000000" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,360.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="381.886810,381.886841"/>
+  </shape>
+  <shape id="35" label="Award Badge; c:SPAB" startTime="28000" endTime="29999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF9DCC46"/>
+    <effect id="com.alightcreative.effects.starprism" locallyApplied="true">
+      <property name="pointCount" type="float" value="11.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="381.886810,381.886841"/>
+  </shape>
+  <shape id="29" label="Cube Morph; t:start, c:TACCM" startTime="29999" endTime="31998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFA54095"/>
+    <effect id="com.alightcreative.effects.plus" locallyApplied="false">
+      <property name="orient" type="quat" value="0.354818,0.346091,-0.143356,0.856606"/>
+      <property name="ratio" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.334343" v="0.500000"/>
+      </property>
+      <property name="smooth" type="float" value="0.087000"/>
+    </effect>
+    <property name="size" type="vec2" value="507.547119,507.547119"/>
+  </shape>
+  <shape id="30" label="Thin Cross; c:TACTC" startTime="32000" endTime="33999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFA54095"/>
+    <effect id="com.alightcreative.effects.plus" locallyApplied="false">
+      <property name="orient" type="quat" value="0.353554,-0.353554,0.146447,0.853553"/>
+      <property name="ratio" type="float" value="0.100000"/>
+    </effect>
+    <property name="size" type="vec2" value="507.547119,507.547119"/>
+  </shape>
+  <shape id="31" label="Thick Cross; c:TACHC" startTime="34000" endTime="35999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFA54095"/>
+    <effect id="com.alightcreative.effects.plus" locallyApplied="false">
+      <property name="orient" type="quat" value="0.353554,-0.353554,0.146447,0.853553"/>
+    </effect>
+    <property name="size" type="vec2" value="507.547119,507.547119"/>
+  </shape>
+  <shape id="32" label="Ring; c:TTR" startTime="36000" endTime="37999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="4.153736,4.153736"/>
+    </transform>
+    <fillColor value="#FFF0B2E9"/>
+    <effect id="com.alightcreative.effects.torus" locallyApplied="false">
+      <property name="orient" type="quat" value="0.707107,0.000000,0.000000,0.707107"/>
+      <property name="thickness" type="float" value="0.100000"/>
+    </effect>
+  </shape>
+  <shape id="33" label="Donut; c:THR" startTime="38000" endTime="39999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="4.153736,4.153736"/>
+    </transform>
+    <fillColor value="#FFF0B2E9"/>
+    <effect id="com.alightcreative.effects.torus" locallyApplied="false">
+      <property name="orient" type="quat" value="0.707107,0.000000,0.000000,0.707107"/>
+    </effect>
+  </shape>
+  <shape id="34" label="Forward; t:extend, c:TF" startTime="40000" endTime="41999" fillType="media" fillImage="am-internal:///8A607FDFEA6830762FD2B5BAE5066AE215853CCD.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="4.974534,4.974534"/>
+    </transform>
+    <fillColor value="#FF66D69D"/>
+    <effect id="com.alightcreative.effects.tunnel" locallyApplied="true">
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="5.000000"/>
+      </property>
+    </effect>
+  </shape>
+</scene>

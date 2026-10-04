@@ -1,0 +1,30 @@
+<shape id="com.alightcreative.shapes.line" name="@am:string/shape_line">
+
+    <params>
+        <point id="p1" label="@am:string/effect_param_point_1" default="-100,100" />
+        <point id="p2" label="@am:string/effect_param_point_2" default="100,-100" />
+    </params>
+
+    <handle id="p1" param="p1" type="xy" icon="dot" />
+    <handle id="p2" param="p2" type="xy" icon="hollow-dot" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            return {
+                p1: params.p1,
+                p2: params.p2
+            }
+        }
+
+        function getPath(params) {
+            return [
+                [params.p1.x,params.p1.y],
+                [params.p2.x,params.p2.y],
+                {closed:false}
+            ];
+        }
+
+    ]]></script>
+
+</shape>

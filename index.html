@@ -1,0 +1,772 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM Web · Alight Motion Rendering Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#0b0e13;--text:#f7f8fa;--line:rgba(255,255,255,.09);--blue:#38bdf8;--green:#34d399}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",sans-serif}
+a{color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 50% 20%,transparent 0%,rgba(0,0,0,.12) 55%,rgba(0,0,0,.7) 100%)}
+.page{position:relative;z-index:5;width:min(1180px,calc(100% - 32px));margin:auto;padding:30px 0 70px}
+
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:56px;gap:12px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand-logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#fff,#aeb5c2);color:#090b10}
+.brand-logo svg{width:19px;height:19px;fill:currentColor}
+.brand-text{font-size:.78rem;font-weight:800;letter-spacing:-.02em}
+.brand-sub{color:rgba(255,255,255,.32);font-size:.65rem;margin-left:4px}
+nav{display:flex;gap:6px}
+nav a{padding:8px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:rgba(255,255,255,.65);font-size:.74rem;font-weight:700;text-decoration:none;transition:.25s}
+nav a:hover{color:#fff;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+
+/* INTRO */
+.intro{max-width:780px;margin-bottom:40px}
+h1{margin:0;font-family:Outfit,sans-serif;font-size:clamp(2.3rem,6vw,4.6rem);line-height:.92;letter-spacing:-.07em;font-weight:800}
+.gradient-text{background:linear-gradient(100deg,#fff 0%,#fff 38%,#fda4af 62%,#93c5fd 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro-title{color:rgba(255,255,255,.34);font-family:Outfit,sans-serif;font-size:clamp(1rem,2.5vw,1.4rem);margin-top:14px;letter-spacing:-.03em}
+.intro-desc{max-width:650px;margin:16px 0 0;color:rgba(255,255,255,.48);font-size:.87rem;line-height:1.75}
+
+/* GRID */
+.apps{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+
+/* ===== HERO: PRESET PLAYER ===== */
+.hero-wrap{grid-column:span 12;margin:4px 0 16px}
+.hero{position:relative;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:24px;min-height:380px;padding:48px;border-radius:14px 64px 14px 64px;text-decoration:none;overflow:hidden;color:#14161c;background:#f4f1ea;box-shadow:0 30px 80px rgba(0,0,0,.55);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.hero:hover{transform:translateY(-6px);box-shadow:0 40px 100px rgba(0,0,0,.62)}
+.hero::before{content:"";position:absolute;right:-40px;top:50%;width:440px;height:440px;transform:translateY(-50%);background:#f43f5e;clip-path:polygon(18% 6%,96% 50%,18% 94%);opacity:.13;transition:transform .5s}
+.hero:hover::before{transform:translateY(-50%) translateX(14px)}
+.hero>*{position:relative;z-index:2}
+.hero-kao{font-family:Outfit,sans-serif;font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:800;color:#e11d48;letter-spacing:-.02em}
+.hero-title{font-family:Outfit,sans-serif;font-size:clamp(2.6rem,7vw,4.8rem);font-weight:800;line-height:.92;letter-spacing:-.06em;margin:12px 0 0}
+.hero-title small{display:block;font-size:.4em;font-weight:600;letter-spacing:-.03em;margin-top:8px;color:rgba(20,22,28,.5)}
+.hero-quote{margin:22px 0 0;max-width:500px;padding-left:16px;border-left:3px solid #f43f5e;color:rgba(20,22,28,.75);font-size:.95rem;font-weight:600;line-height:1.6;font-style:italic}
+.hero-side{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.hero-btn{display:inline-flex;align-items:center;gap:12px;padding:20px 30px;border-radius:14px;background:#14161c;color:#fff;font-family:Outfit,sans-serif;font-size:clamp(1.05rem,2.6vw,1.35rem);font-weight:700;transition:background .25s,transform .25s}
+.hero-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;transition:transform .25s}
+.hero:hover .hero-btn{background:#e11d48}
+.hero:hover .hero-btn svg{transform:translateX(6px)}
+.hero-tap{font-size:.78rem;font-weight:600;color:rgba(20,22,28,.5)}
+
+/* ===== HERO: KLAIM ALIGHT MOTION PREMIUM (kartu terang, sejajar hero) ===== */
+.premium-wrap{grid-column:span 12;margin:0 0 16px}
+.premium{position:relative;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:24px;min-height:230px;padding:40px 48px;border-radius:64px 14px 64px 14px;text-decoration:none;overflow:hidden;color:#14161c;background:#f4f1ea;box-shadow:0 24px 70px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.premium:hover{transform:translateY(-6px);box-shadow:0 34px 90px rgba(0,0,0,.58)}
+.premium::before{content:"";position:absolute;left:-40px;top:50%;width:420px;height:420px;transform:translateY(-50%);background:#f59e0b;clip-path:polygon(82% 6%,4% 50%,82% 94%);opacity:.14;transition:transform .5s}
+.premium:hover::before{transform:translateY(-50%) translateX(-14px)}
+.premium>*{position:relative;z-index:2}
+.premium-kao{font-family:Outfit,sans-serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;color:#b45309;letter-spacing:-.02em}
+.premium-title{font-family:Outfit,sans-serif;font-size:clamp(1.7rem,4.5vw,2.7rem);font-weight:800;line-height:1;letter-spacing:-.05em;margin:10px 0 0}
+.premium-title small{display:block;font-size:.42em;font-weight:600;letter-spacing:-.02em;margin-top:8px;color:rgba(20,22,28,.55)}
+.premium-quote{margin:18px 0 0;max-width:520px;padding-left:16px;border-left:3px solid #f59e0b;color:rgba(20,22,28,.78);font-size:.92rem;font-weight:600;line-height:1.6;font-style:italic}
+.premium-side{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.premium-btn{display:inline-flex;align-items:center;gap:12px;padding:18px 28px;border-radius:14px;background:#14161c;color:#fff;font-family:Outfit,sans-serif;font-size:clamp(1rem,2.4vw,1.25rem);font-weight:700;transition:background .25s,transform .25s}
+.premium-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.5;transition:transform .25s}
+.premium:hover .premium-btn{background:#b45309}
+.premium:hover .premium-btn svg{transform:translateX(6px)}
+.premium-tap{font-size:.74rem;font-weight:600;color:rgba(20,22,28,.5)}
+
+/* responsif kartu premium */
+@media(max-width:680px){
+  .premium{grid-template-columns:1fr;min-height:0;padding:32px 24px;border-radius:42px 12px 42px 12px}
+  .premium-side{align-items:flex-start}
+}
+
+/* COMMUNITY */
+.community{
+  position:relative;
+  grid-column:span 12;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:32px;
+  min-height:180px;
+  padding:30px 36px;
+  margin:0 0 16px;
+  overflow:hidden;
+  border-radius:14px 48px 14px 48px;
+  border:1px solid rgba(20,22,28,.08);
+  background:#f4f1ea;
+  color:#15171c;
+}
+
+.community-info{
+  position:relative;
+  z-index:1;
+}
+
+.community-title{
+  font-family:Outfit,sans-serif;
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  font-weight:800;
+  letter-spacing:-.05em;
+  line-height:1.05;
+}
+
+.community-desc{
+  margin-top:10px;
+  color:rgba(21,23,28,.5);
+  font-size:.74rem;
+  line-height:1.6;
+}
+
+.community-links{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:280px;
+}
+
+.community-link{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border:1px solid rgba(20,22,28,.08);
+  border-radius:12px;
+  background:rgba(255,255,255,.65);
+  color:#15171c;
+  text-decoration:none;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+
+.community-link:hover{
+  background:#fff;
+  border-color:rgba(20,22,28,.15);
+  transform:translateX(3px);
+}
+
+.community-icon{
+  width:36px;
+  height:36px;
+  flex:none;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:rgba(20,22,28,.05);
+  font-size:16px;
+}
+
+.community-link.whatsapp .community-icon{color:#16a34a}
+.community-link.channel .community-icon{color:#0284c7}
+
+.community-link strong{
+  display:block;
+  font-family:Outfit,sans-serif;
+  font-size:.88rem;
+  line-height:1.2;
+}
+
+.community-link small{
+  display:block;
+  margin-top:3px;
+  color:rgba(21,23,28,.42);
+  font-size:.6rem;
+}
+
+.community-arrow{
+  margin-left:auto;
+  color:rgba(21,23,28,.3);
+  font-size:1rem;
+}
+
+/* OTHER CARDS */
+.card{
+  position:relative;
+  min-height:190px;
+  grid-column:span 4;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:24px;
+  border-radius:22px;
+  text-decoration:none;
+  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+  border:1px solid var(--line);
+  overflow:hidden;
+  transition:transform .3s,border-color .3s,background .3s
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.07)
+}
+
+.card-icon{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08)
+}
+
+.card-icon svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7
+}
+
+.sky .card-icon{color:var(--blue)}
+.emerald .card-icon{color:var(--green)}
+
+.card-title{
+  margin-top:18px;
+  font-family:Outfit,sans-serif;
+  font-size:1.3rem;
+  font-weight:700;
+  letter-spacing:-.035em
+}
+
+.card-desc{
+  margin-top:7px;
+  color:rgba(255,255,255,.4);
+  font-size:.76rem;
+  line-height:1.6
+}
+
+.card-arrow{
+  position:absolute;
+  right:22px;
+  bottom:22px;
+  color:rgba(255,255,255,.25);
+  font-size:1.1rem;
+  transition:.3s
+}
+
+.card:hover .card-arrow{
+  transform:translate(4px,-4px);
+  color:#fff
+}
+
+/* STATS */
+.stats{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.018)
+}
+
+.stat{
+  padding:17px 20px;
+  border-right:1px solid var(--line)
+}
+
+.stat:last-child{border-right:0}
+
+.stat-value{
+  font-family:Outfit,sans-serif;
+  font-size:1.25rem;
+  font-weight:700;
+  letter-spacing:-.03em
+}
+
+.stat-label{
+  margin-top:3px;
+  color:rgba(255,255,255,.3);
+  font-size:.6rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase
+}
+
+footer{
+  margin-top:55px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  color:rgba(255,255,255,.24);
+  font-size:.65rem
+}
+
+footer a{
+  color:rgba(255,255,255,.4);
+  text-decoration:none;
+  margin-left:14px
+}
+
+footer a:hover{color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .page{padding-top:20px}
+  .brand-sub{display:none}
+  .card{grid-column:span 6}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .hero{grid-template-columns:1fr;padding:30px 24px 34px;gap:26px}
+  .hero-side{align-items:stretch}
+  .hero-btn{justify-content:center;white-space:normal}
+
+  .community{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:26px;
+  }
+
+  .community-links{
+    min-width:0;
+  }
+}
+
+@media(max-width:600px){
+  .card{grid-column:span 12}
+
+  footer{
+    flex-direction:column;
+    align-items:flex-start
+  }
+
+  footer a{
+    margin:0 14px 0 0
+  }
+
+  .hero{
+    border-radius:12px 40px 12px 40px
+  }
+
+  .hero::before{
+    width:300px;
+    height:300px;
+    right:-60px
+  }
+
+  .community{
+    border-radius:12px 36px 12px 36px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important
+  }
+}
+</style>
+</head>
+
+<body>
+<canvas id="bg"></canvas>
+<div class="noise"></div>
+<div class="vignette"></div>
+
+<main class="page">
+
+<header>
+  <a class="brand" href="/">
+    <span class="brand-logo">
+      <svg viewBox="0 0 24 24">
+        <polygon points="6 4 20 12 6 20 6 4"/>
+      </svg>
+    </span>
+    <span class="brand-text">
+      Alight Motion Rendering Engine
+      <span class="brand-sub">AM Web</span>
+    </span>
+  </a>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/runtime/about.html">About</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <h1>
+    <span class="gradient-text">Alight Motion</span><br>
+    Rendering Engine
+  </h1>
+
+  <div class="intro-title">
+    A reverse-engineered rendering engine for Alight Motion.
+  </div>
+
+  <p class="intro-desc">
+    Browser-based runtime untuk memproses preset Alight Motion.
+  </p>
+</section>
+
+<section class="apps">
+
+  <!-- PRESET PLAYER -->
+  <div class="hero-wrap">
+    <a class="hero" href="/runtime/preset.html">
+      <div>
+        <span class="hero-kao">(¬_¬)</span>
+
+        <div class="hero-title">
+          Preset Player
+          <small>&amp; Video Exporter</small>
+        </div>
+
+        <p class="hero-quote">
+          "Hmph, yang lain boleh dilewatin. Tapi yang ini... ya, mending kamu klik dulu."
+          (⁄ ⁄•⁄ω⁄•⁄ ⁄)
+        </p>
+      </div>
+
+      <div class="hero-side">
+        <span class="hero-btn">
+          Buka Preset Player
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14"/>
+            <path d="m13 6 6 6-6 6"/>
+          </svg>
+        </span>
+
+        <span class="hero-tap">
+          Seluruh kartu ini bisa diklik
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <!-- KLAIM PREMIUM -->
+  <div class="premium-wrap">
+    <a class="premium" href="/runtime/amprem.html">
+      <div>
+        <span class="premium-kao">✦</span>
+
+        <div class="premium-title">
+          Klaim Alight Motion Premium
+          <small>Tutorial 5 langkah</small>
+        </div>
+
+        <p class="premium-quote">
+          "Login pakai Google, kirim link ke email, lalu tempel link-nya.
+          Ikuti saja langkahnya satu per satu."
+        </p>
+      </div>
+
+      <div class="premium-side">
+        <span class="premium-btn">
+          Buka Tutorial
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12h14"/>
+            <path d="m13 6 6 6-6 6"/>
+          </svg>
+        </span>
+
+        <span class="premium-tap">
+          Seluruh kartu ini bisa diklik
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="community">
+    <div class="community-info">
+      <div class="community-title">Ikuti &amp; terhubung</div>
+      <div class="community-desc">Update, preset, dan kontak langsung.</div>
+    </div>
+
+    <div class="community-links">
+      <a class="community-link whatsapp"
+         href="https://wa.me/6285174378627"
+         target="_blank"
+         rel="noopener">
+        <span class="community-icon">⌕</span>
+        <span>
+          <strong>WhatsApp</strong>
+          <small>Hubungi Kukuh</small>
+        </span>
+        <span class="community-arrow">↗</span>
+      </a>
+
+      <a class="community-link channel"
+         href="https://whatsapp.com/channel/0029Vb43th14Y9lkeL7fno04"
+         target="_blank"
+         rel="noopener">
+        <span class="community-icon">◉</span>
+        <span>
+          <strong>Saluran WA</strong>
+          <small>MAKAN SAJA</small>
+        </span>
+        <span class="community-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- OTHER CARDS -->
+  <a class="card sky" href="/runtime/preview.html">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/>
+        <circle cx="12" cy="12" r="2.5"/>
+      </svg>
+    </div>
+
+    <div>
+      <div class="card-title">Preview Efek</div>
+      <div class="card-desc">
+        Preview dan inspeksi effect XML secara langsung dengan WebGL renderer.
+      </div>
+    </div>
+
+    <div class="card-arrow">↗</div>
+  </a>
+
+  <a class="card" href="/runtime/docs.html">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="m8 9-3 3 3 3"/>
+        <path d="m16 9 3 3-3 3"/>
+        <path d="m14 5-4 14"/>
+      </svg>
+    </div>
+
+    <div>
+      <div class="card-title">API Automasi</div>
+      <div class="card-desc">
+        Endpoint dan tools untuk mengakses runtime secara programmatic.
+      </div>
+    </div>
+
+    <div class="card-arrow">↗</div>
+  </a>
+
+  <a class="card emerald" href="/runtime/ngehayal.html">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3v18"/>
+        <path d="M3 12h18"/>
+        <path d="M5.5 5.5 18.5 18.5"/>
+        <path d="M18.5 5.5 5.5 18.5"/>
+      </svg>
+    </div>
+
+    <div>
+      <div class="card-title">Ngehayal Player</div>
+      <div class="card-desc">
+        Experimental player untuk eksplorasi rendering dan visual effects.
+      </div>
+    </div>
+
+    <div class="card-arrow">↗</div>
+  </a>
+
+</section>
+
+<section class="stats">
+  <div class="stat">
+    <div class="stat-value">315</div>
+    <div class="stat-label">Effects</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-value">22</div>
+    <div class="stat-label">Presets</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-value">5</div>
+    <div class="stat-label">Assets</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-value">200 OK</div>
+    <div class="stat-label">API Status</div>
+  </div>
+</section>
+
+<footer>
+  <span>AM Web · Alight Motion Rendering Engine</span>
+
+  <span>
+    <a href="/">Home</a>
+    <a href="/runtime/about.html">About</a>
+    <a href="https://wa.me/6285174378627" target="_blank" rel="noopener">
+      Contact / Feedback ↗
+    </a>
+  </span>
+</footer>
+
+</main>
+
+<script>
+const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
+let w=0,h=0,dpr=1;
+const pointer={x:.5,y:.5,tx:.5,ty:.5},particles=[],count=90;
+
+function resize(){
+  dpr=Math.min(devicePixelRatio||1,2);
+  w=innerWidth;
+  h=innerHeight;
+  canvas.width=w*dpr|0;
+  canvas.height=h*dpr|0;
+  canvas.style.width=w+"px";
+  canvas.style.height=h+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0)
+}
+
+function reset(){
+  particles.length=0;
+
+  for(let i=0;i<count;i++){
+    const x=Math.random()*w,y=Math.random()*h;
+
+    particles.push({
+      x,
+      y,
+      px:x,
+      py:y,
+      vx:(Math.random()-.5)*.25,
+      vy:(Math.random()-.5)*.25,
+      size:Math.random()*1.7+.3,
+      alpha:Math.random()*.35+.08
+    })
+  }
+}
+
+function grad(){
+  const px=(pointer.x-.5)*80,py=(pointer.y-.5)*60;
+
+  let g=ctx.createRadialGradient(
+    w*.72+px,
+    h*.3+py,
+    0,
+    w*.72+px,
+    h*.3+py,
+    Math.max(w,h)*.7
+  );
+
+  g.addColorStop(0,"rgba(244,63,94,.055)");
+  g.addColorStop(.35,"rgba(168,85,247,.025)");
+  g.addColorStop(1,"rgba(0,0,0,0)");
+
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,w,h);
+
+  g=ctx.createRadialGradient(
+    w*.15-px,
+    h*.8-py,
+    0,
+    w*.15-px,
+    h*.8-py,
+    Math.max(w,h)*.55
+  );
+
+  g.addColorStop(0,"rgba(56,189,248,.035)");
+  g.addColorStop(1,"rgba(0,0,0,0)");
+
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,w,h)
+}
+
+function grid(t){
+  const s=80,o=(t*.012)%s;
+
+  ctx.save();
+  ctx.translate(
+    (pointer.x-.5)*-25,
+    (pointer.y-.5)*-18
+  );
+
+  ctx.globalAlpha=.07;
+  ctx.lineWidth=1;
+  ctx.strokeStyle="rgba(255,255,255,.16)";
+
+  for(let x=-s;x<w+s;x+=s){
+    ctx.beginPath();
+    ctx.moveTo(x+o,0);
+    ctx.lineTo(x+o,h);
+    ctx.stroke()
+  }
+
+  for(let y=-s;y<h+s;y+=s){
+    ctx.beginPath();
+    ctx.moveTo(0,y+o);
+    ctx.lineTo(w,y+o);
+    ctx.stroke()
+  }
+
+  ctx.restore()
+}
+
+function parts(t){
+  for(const p of particles){
+    p.px=p.x;
+    p.py=p.y;
+
+    const a=Math.sin(
+      p.x*.0022+p.y*.0017+t*.00018
+    )*Math.PI*2;
+
+    p.vx=(p.vx+Math.cos(a)*.002)*.994;
+    p.vy=(p.vy+Math.sin(a)*.002)*.994;
+
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    if(p.x<-20)p.x=w+20;
+    if(p.x>w+20)p.x=-20;
+    if(p.y<-20)p.y=h+20;
+    if(p.y>h+20)p.y=-20;
+
+    ctx.beginPath();
+    ctx.moveTo(p.px,p.py);
+    ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle=`rgba(255,255,255,${p.alpha*.55})`;
+    ctx.lineWidth=p.size;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${p.alpha})`;
+    ctx.fill()
+  }
+}
+
+function frame(t){
+  pointer.x+=(pointer.tx-pointer.x)*.035;
+  pointer.y+=(pointer.ty-pointer.y)*.035;
+
+  ctx.fillStyle="#0b0e13";
+  ctx.fillRect(0,0,w,h);
+
+  grad();
+  grid(t);
+  parts(t);
+
+  requestAnimationFrame(frame)
+}
+
+addEventListener("resize",()=>{
+  resize();
+  reset()
+});
+
+addEventListener("pointermove",e=>{
+  pointer.tx=e.clientX/innerWidth;
+  pointer.ty=e.clientY/innerHeight
+},{passive:true});
+
+resize();
+reset();
+requestAnimationFrame(frame);
+</script>
+
+
+</body>
+</html>

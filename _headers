@@ -1,0 +1,14 @@
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
+  Access-Control-Allow-Headers: *
+  X-Content-Type-Options: nosniff
+
+/runtime/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/preset/*
+  Cache-Control: public, max-age=86400
+
+/runtime/preset/*
+  Cache-Control: public, max-age=86400

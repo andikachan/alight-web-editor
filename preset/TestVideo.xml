@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?><!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2026-09-18 10:55 AM
+5.0.273.1028425 (1028425)
+2d5c0f8 (20 Mei 2026 04.16.19)
+-->
+<scene title="Proyek Baru 13" width="720" height="1280" exportWidth="720" exportHeight="1280" precompose="dynamicResolution" bgcolor="#ff000000" totalTime="61966" fps="30" modifiedTime="1789703736445" amver="1028425" ffver="106" am="com.alightcreative.motion/5.0.273.1028425" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <media uri="content://media/external/video/media/1000895592" filename="Cwlzypredet-1080p60fps.mp4" title="Cwlzypredet-1080p60fps.mp4" type="video/mp4" duration="27456006" size="20122108" fps="0.60" orientation="0" infoUpdated="1789703442230" width="608" height="1080" />
+  <media uri="content://media/external/video/media/1000897675" type="video/mp4" duration="24533333" orientation="0" infoUpdated="1789703442230" width="608" height="1080" />
+  <media uri="content://media/external/video/media/1000893689" type="video/webm" duration="17100000" orientation="0" infoUpdated="1789703680353" width="405" height="720" />
+  <shape id="2999473968" label="Cwlzypredet-1080p60fps.mp4" startTime="0" endTime="27488" fillType="media" fillVideo="content://media/external/video/media/1000895592" outTime="27456" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,640.000000,0.000000" />
+    </transform>
+    <property name="size" type="vec2" value="360.000000,639.000000" />
+  </shape>
+  <shape id="2999473969" label="Persegi panjang 1" startTime="27500" endTime="31699" fillType="media" fillVideo="content://media/external/video/media/1000897675" outTime="4199" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,640.000000,0.000000" />
+      <scale value="3.600000,6.400000" />
+    </transform>
+    <fillColor value="#ff6f45ae" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+  <shape id="2999473971" label="Persegi panjang 1" startTime="31666" endTime="36532" fillType="media" fillVideo="content://media/external/video/media/1000897675" inTime="4166" outTime="9032" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,640.000000,0.000000" />
+      <scale value="3.600000,6.400000" />
+    </transform>
+    <fillColor value="#ff6f45ae" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+  <shape id="2999473972" label="Persegi panjang 1" startTime="36500" endTime="41400" fillType="media" fillVideo="content://media/external/video/media/1000897675" inTime="9000" outTime="13900" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,640.000000,0.000000" />
+      <scale value="3.600000,6.400000" />
+    </transform>
+    <fillColor value="#ff6f45ae" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+  <shape id="2999473973" label="Persegi panjang 2" startTime="41366" endTime="61966" fillType="media" fillVideo="content://media/external/video/media/1000893689" outTime="20600" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="360.000000,640.000000,0.000000" />
+      <scale value="3.600000,3.600000" />
+    </transform>
+    <fillColor value="#ff8d7a79" />
+    <property name="size" type="vec2" value="100.000000,100.000000" />
+  </shape>
+</scene>

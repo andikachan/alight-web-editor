@@ -1,0 +1,1488 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2021-03-08 08:25 AM
+3.7.0 (166)
+-->
+<scene title="Presets-210303 JJReview SYReview JJfinal" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="117067" fps="30" modifiedTime="1615159537358" amver="166" ffver="101" am="com.alightcreative.motion/3.7.0" amplatform="ios">
+  <media uri="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg" filename="326EBC43F1897683792162BEAFF4251328AB4D89.jpeg" title="Aged Mural" type="image/jpeg" size="268495" sig="326EBC43F1897683792162BEAFF4251328AB4D89" infoUpdated="1615159537315"/>
+  <media uri="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" filename="4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" title="Sepia" type="image/jpeg" size="1694977" sig="4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3" infoUpdated="1615159537325"/>
+  <media uri="am-internal:///C40D618A7179ADAFA1607F2D8C1019E8E572055E.jpg" filename="C40D618A7179ADAFA1607F2D8C1019E8E572055E.jpg" title="Float Away; t:end" type="image/jpeg" size="2190689" sig="C40D618A7179ADAFA1607F2D8C1019E8E572055E" infoUpdated="1615159537320"/>
+  <media uri="am-internal:///9ABFCF5A205B0BC55825CA46C5326CF0651E473C.jpeg" filename="9ABFCF5A205B0BC55825CA46C5326CF0651E473C.jpeg" title="" type="image/jpeg" size="208032" sig="9ABFCF5A205B0BC55825CA46C5326CF0651E473C"/>
+  <media uri="am-internal:///51051EDD14AEDF839C2044DBDA8D11C648967D38.jpg" filename="51051EDD14AEDF839C2044DBDA8D11C648967D38.jpg" title="Dark on Light" type="image/jpeg" size="2130451" sig="51051EDD14AEDF839C2044DBDA8D11C648967D38"/>
+  <media uri="am-internal:///FEE99F71FA2D4BB633F0466418A812F8D77943AE.jpg" filename="FEE99F71FA2D4BB633F0466418A812F8D77943AE.jpg" title="Light on Dark" type="image/jpeg" size="2031275" sig="FEE99F71FA2D4BB633F0466418A812F8D77943AE"/>
+  <media uri="am-internal:///CF4BFD8771E4DFDF66D13BC60A03FD82F5A67A60.jpg" filename="CF4BFD8771E4DFDF66D13BC60A03FD82F5A67A60.jpg" title="Stamp Dark Colors" type="image/jpeg" size="17110" sig="CF4BFD8771E4DFDF66D13BC60A03FD82F5A67A60"/>
+  <media uri="am-internal:///F2E32BD92936474F46B130ACF831E61FF5A33BC7.png" filename="F2E32BD92936474F46B130ACF831E61FF5A33BC7.png" title="Stamp Light Colors" type="image/png" size="163181" sig="F2E32BD92936474F46B130ACF831E61FF5A33BC7"/>
+  <media uri="am-internal:///C4189603772C1CA837E006AE7D999FB323E018E6.mp4" filename="C4189603772C1CA837E006AE7D999FB323E018E6.mp4" title="Blurry Dark; t:stretch" type="video/mp4" size="34505579" sig="C4189603772C1CA837E006AE7D999FB323E018E6"/>
+  <media uri="am-internal:///F4CE93D39BD43DF28BF61193102AA5DA6C81155F.jpg" filename="F4CE93D39BD43DF28BF61193102AA5DA6C81155F.jpg" title="Quintuplicate Fade" type="image/jpeg" size="109905" sig="F4CE93D39BD43DF28BF61193102AA5DA6C81155F"/>
+  <media uri="am-internal:///5F76B29C21D994E4ED6DD1AE2639564A75E7A940.jpg" filename="5F76B29C21D994E4ED6DD1AE2639564A75E7A940.jpg" title="Blue Screen;" type="image/jpeg" size="58831" sig="5F76B29C21D994E4ED6DD1AE2639564A75E7A940" infoUpdated="1615159537325"/>
+  <shape id="2" label="Pulse Edges; t:split" startTime="0" endTime="2033" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.edgeglow" locallyApplied="true">
+      <property name="gamma" type="float" value="0.940000"/>
+      <property name="smoothing" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.164289" v="4.700000"/>
+        <kf t="0.245942" v="1.000000"/>
+        <kf t="0.410231" v="4.700000"/>
+        <kf t="0.590261" v="4.700000"/>
+        <kf t="0.754550" v="1.000000"/>
+        <kf t="0.918347" v="4.700000"/>
+        <kf t="0.983768" v="1.000000"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="38" label="Bold Edges" startTime="2033" endTime="4066" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="539.664551,533.292297"/>
+      <scale value="0.934658,0.934658"/>
+    </transform>
+    <effect id="com.alightcreative.effects.edgeglow" locallyApplied="true">
+      <property name="blend" type="float" value="1.000000"/>
+      <property name="fillColor" type="color" value="#FFFFFFFF"/>
+      <property name="gamma" type="float" value="0.185000"/>
+      <property name="smoothing" type="float" value="4.960000"/>
+      <property name="spread" type="float" value="1.660000"/>
+      <property name="strength" type="float" value="0.050000"/>
+      <property name="threshold" type="float" value="0.610000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="44" label="Pastel Dream" startTime="4067" endTime="6100" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="541.595154,510.650085"/>
+      <scale value="0.899748,0.899748"/>
+    </transform>
+    <effect id="com.alightcreative.effects.edgeglow" locallyApplied="true">
+      <property name="blend" type="float" value="1.000000"/>
+      <property name="fillColor" type="color" value="#FFF1647F"/>
+      <property name="invert" type="bool" value="true"/>
+      <property name="smoothing" type="float" value="3.360000"/>
+      <property name="spread" type="float" value="0.500000"/>
+      <property name="strength" type="float" value="0.200000"/>
+      <property name="threshold" type="float" value="0.580000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="4" label="Horror Movie; t:start" startTime="6098" endTime="8097" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ominodiff" locallyApplied="true">
+      <property name="alpha" type="float" value="0.800000"/>
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="blendMode" type="int" value="1"/>
+      <property name="color2" type="color" value="#FFFF4444"/>
+      <property name="color3" type="color" value="#FFFF4444"/>
+      <property name="color4" type="color" value="#FFFFFFFF"/>
+      <property name="errorFalloff" type="float" value="0.050000"/>
+      <property name="errorWeight" type="float" value="0.400000"/>
+      <property name="palette" type="int" value="14"/>
+      <property name="steps" type="float">
+        <kf t="0.478000" v="5.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="-0.015508" v="12.000000"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="-0.015508" v="0.010000"/>
+        <kf t="0.478000" v="0.690000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="48" label="Broken CGA" startTime="8096" endTime="10095" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ominodiff" locallyApplied="true">
+      <property name="angle" type="float" value="43.000000"/>
+      <property name="errorFalloff" type="float" value="0.270000"/>
+      <property name="errorWeight" type="float" value="0.817000"/>
+      <property name="palette" type="int" value="8"/>
+      <property name="steps" type="float" value="127.000000"/>
+      <property name="strength" type="float" value="0.980000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="9" label="Transition Out: Mono Glitch; t:end" startTime="12098" endTime="14097" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ominodiff" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.667334" v="0.000000"/>
+        <kf t="0.833917" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="color2" type="color" value="#FFFF4444"/>
+      <property name="color3" type="color" value="#FFFF4444"/>
+      <property name="color4" type="color" value="#FFFFFFFF"/>
+      <property name="errorFalloff" type="float">
+        <kf t="0.667334" v="0.500000"/>
+        <kf t="0.993500" v="1.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+      </property>
+      <property name="errorWeight" type="float" value="0.720000"/>
+      <property name="palette" type="int" value="0"/>
+      <property name="steps" type="float">
+        <kf t="0.667334" v="25.000000"/>
+        <kf t="0.983992" v="2.000000"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="0.667334" v="0.490000"/>
+        <kf t="0.917459" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="47" label="Transition In: Mono Glitch; t:start" startTime="10098" endTime="12097" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ominodiff" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.428000" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.261000" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="color2" type="color" value="#FFFF4444"/>
+      <property name="color3" type="color" value="#FFFF4444"/>
+      <property name="color4" type="color" value="#FFFFFFFF"/>
+      <property name="errorFalloff" type="float">
+        <kf t="0.427000" v="0.350000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.010000" v="1.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+      </property>
+      <property name="errorWeight" type="float" value="0.759000"/>
+      <property name="palette" type="int" value="0"/>
+      <property name="steps" type="float">
+        <kf t="0.010000" v="25.000000"/>
+        <kf t="0.427000" v="2.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="strength" type="float">
+        <kf t="0.010000" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.427000" v="0.490000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="7" label="Dream Glow; t:split" startTime="14099" endTime="16098" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="542.977661,526.666382"/>
+      <scale value="0.963274,0.963274"/>
+    </transform>
+    <effect id="com.alightcreative.effects.softglow" locallyApplied="true">
+      <property name="blend" type="float" value="0.200000"/>
+      <property name="brightness" type="float">
+        <kf t="-0.000500" v="0.000000"/>
+        <kf t="1.000000" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.766383" v="0.600000"/>
+        <kf t="0.277500" v="0.600000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="color" type="color" value="#FFFFFFFF"/>
+      <property name="contrast" type="float" value="0.000000"/>
+      <property name="highlights" type="float" value="0.700000"/>
+      <property name="outsideAlpha" type="float" value="0.600000"/>
+      <property name="strength" type="float">
+        <kf t="-0.000500" v="0.000000"/>
+        <kf t="1.000000" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.276000" v="1.200000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.766383" v="1.200000"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="10" label="Smoother Edges" startTime="16099" endTime="18098" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="540.000000,529.832214"/>
+      <scale value="0.869444,0.869444"/>
+    </transform>
+    <effect id="com.alightcreative.effects.smoothedges" locallyApplied="true">
+      <property name="strength" type="float" value="1.150000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="50" label="Eroded Edges" startTime="18066" endTime="20065" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="540.000000,529.832214"/>
+      <scale value="0.869444,0.869444"/>
+    </transform>
+    <effect id="com.alightcreative.effects.smoothedges" locallyApplied="true">
+      <property name="maskToLayer" type="bool" value="true"/>
+      <property name="strength" type="float" value="1.150000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="13" label="Transition Out; t:end" startTime="23998" endTime="26031" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.darkglow" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.961595" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.124426" v="0.000000"/>
+      </property>
+      <property name="blend" type="float">
+        <kf t="0.994092" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.124426" v="0.690000"/>
+      </property>
+      <property name="color" type="color" value="#FF010000"/>
+      <property name="strength" type="float">
+        <kf t="0.961595" v="2.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.124426" v="0.000000"/>
+      </property>
+      <property name="threshold" type="float">
+        <kf t="0.961595" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.124426" v="0.490000"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="8" label="Transition Out; t:end" startTime="26032" endTime="28031" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lightglow" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.543000" v="0.750000"/>
+        <kf t="0.993000" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="blend" type="float">
+        <kf t="0.993000" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.543000" v="0.140000"/>
+      </property>
+      <property name="color" type="color" value="#FFFFFFFF"/>
+      <property name="strength" type="float">
+        <kf t="0.533267" v="0.250000"/>
+        <kf t="0.993000" v="2.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="threshold" type="float">
+        <kf t="0.533267" v="1.000000"/>
+        <kf t="0.993000" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="14" label="Old Paper" startTime="28032" endTime="30031" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="541.873108,532.741028"/>
+      <scale value="0.944994,0.944994"/>
+    </transform>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="strength" type="float" value="0.150000"/>
+      <property name="t1blendMode" type="int" value="0"/>
+      <property name="t1burn" type="float" value="0.200000"/>
+      <property name="t1color" type="color" value="#FFCCA565"/>
+      <property name="t1contrast" type="float" value="0.200000"/>
+      <property name="t1gamma" type="float" value="0.075000"/>
+      <property name="t1grain" type="float" value="2.000000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="t1region" type="int" value="3"/>
+      <property name="t1scale" type="float" value="1.300000"/>
+      <property name="t2alpha" type="float" value="0.700000"/>
+      <property name="t2blendMode" type="int" value="1"/>
+      <property name="t2color" type="color" value="#FF735420"/>
+      <property name="t2contrast" type="float" value="0.600000"/>
+      <property name="t2gamma" type="float" value="1.110000"/>
+      <property name="t2grain" type="float" value="1.000000"/>
+      <property name="t2offset" type="vec2" value="-60.000000,0.000000"/>
+      <property name="t2active" type="bool" value="true"/>
+      <property name="t2region" type="int" value="3"/>
+      <property name="t3color" type="color" value="#FFCEAD76"/>
+      <property name="t3grain" type="float" value="4.000000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="3"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="12" label="Aged Mural" startTime="30032" endTime="32031" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="545.186340,530.531738"/>
+      <scale value="0.963604,0.963604"/>
+    </transform>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="t1alpha" type="float" value="0.600000"/>
+      <property name="t1burn" type="float" value="0.600000"/>
+      <property name="t1color" type="color" value="#FFCD5E47"/>
+      <property name="t1contrast" type="float" value="0.200000"/>
+      <property name="t1gamma" type="float" value="0.800000"/>
+      <property name="t1grain" type="float" value="6.000000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="t1region" type="int" value="3"/>
+      <property name="t1scale" type="float" value="1.500000"/>
+      <property name="t2alpha" type="float" value="0.500000"/>
+      <property name="t2burn" type="float" value="0.100000"/>
+      <property name="t2color" type="color" value="#FFCA9F91"/>
+      <property name="t2contrast" type="float" value="0.200000"/>
+      <property name="t2gamma" type="float" value="0.100000"/>
+      <property name="t2grain" type="float" value="6.000000"/>
+      <property name="t2active" type="bool" value="true"/>
+      <property name="t2region" type="int" value="3"/>
+      <property name="t2scale" type="float" value="1.700000"/>
+      <property name="t3alpha" type="float" value="0.400000"/>
+      <property name="t3burn" type="float" value="0.150000"/>
+      <property name="t3color" type="color" value="#FF888888"/>
+      <property name="t3contrast" type="float" value="0.700000"/>
+      <property name="t3gamma" type="float" value="0.850000"/>
+      <property name="t3grain" type="float" value="3.000000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="3"/>
+      <property name="t3scale" type="float" value="6.300000"/>
+      <property name="t3spread" type="float" value="0.940000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <text id="27" label="Gentle Perspective" startTime="20031" endTime="22030" fillType="color" size="56.000000" font="googlefonts?name=Archivo Black&amp;weight=400" wrapWidth="681" align="center">
+    <transform>
+      <location value="539.825256,541.319092"/>
+    </transform>
+    <effect id="com.alightcreative.effects.extrude" locallyApplied="true">
+      <property name="ambient" type="float" value="0.600000"/>
+      <property name="depth" type="float" value="0.180000"/>
+      <property name="fadeBlend" type="float" value="0.250000"/>
+      <property name="fadeColor" type="color" value="#FF000000"/>
+      <property name="interiorBlend" type="float" value="0.400000"/>
+      <property name="interiorColor" type="color" value="#FF444444"/>
+      <property name="lightDir" type="vec2" value="107.000000,-88.000000"/>
+      <property name="rotate" type="vec3" value="-9.000000,-20.000000,0.000000"/>
+      <property name="shine" type="float" value="0.200000"/>
+      <property name="spec" type="float" value="45.000000"/>
+    </effect>
+    <content>3D TEXT</content>
+</text>
+  <drawing id="29" label="3D Printer; t:start" startTime="21998" endTime="23997" fillType="none">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.extrude" locallyApplied="true">
+      <property name="ambient" type="float" value="0.600000"/>
+      <property name="depth" type="float">
+        <kf t="0.000000" v="0.010000"/>
+        <kf t="0.460000" v="0.300000" e="cubicBezier 0.48022404 0.0 1.0 1.0"/>
+      </property>
+      <property name="fadeBlend" type="float" value="0.250000"/>
+      <property name="fadeColor" type="color" value="#FF000000"/>
+      <property name="interiorBlend" type="float" value="0.400000"/>
+      <property name="interiorColor" type="color" value="#FF444444"/>
+      <property name="lightDir" type="vec2">
+        <kf t="0.000000" v="75.000000,-75.000000"/>
+        <kf t="0.266633" v="107.000000,-88.000000"/>
+      </property>
+      <property name="rotate" type="vec3" value="0.000000,-14.000000,0.000000"/>
+      <property name="shine" type="float" value="0.200000"/>
+      <property name="spec" type="float" value="45.000000"/>
+    </effect>
+<!--    <stroke color="#FF156AE0" width="17.0" hardness="1.0" opacity="1.0" type="BRUSH" points="-379.33,292.09,0.49;-383.98,286.01,0.72"/>-->
+  </drawing>
+  <text id="31" label="Transition In: Blue Lightning; t:start" startTime="42064" endTime="44063" fillType="color" size="64.000000" font="googlefonts?name=Archivo Black&amp;weight=400" wrapWidth="648" align="center">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.electricedges" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.486036" v="1.000000"/>
+        <kf t="0.764068" v="0.000000"/>
+      </property>
+      <property name="color1" type="color" value="#FF07AA61"/>
+      <property name="color2" type="color" value="#FF3D4CF5"/>
+      <property name="contourAngle" type="float" value="57.299999"/>
+      <property name="contourCount" type="float" value="32.200001"/>
+      <property name="contourOffset" type="float">
+        <kf t="-0.000417" v="-0.770000"/>
+        <kf t="0.833264" v="0.070000"/>
+      </property>
+      <property name="disort" type="float" value="0.800000"/>
+      <property name="distance" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.611505" v="0.205000"/>
+      </property>
+      <property name="evolution" type="float" value="-1.070000"/>
+      <property name="fill" type="float">
+        <kf t="0.633281" v="1.000000"/>
+        <kf t="0.494542" v="0.000000"/>
+      </property>
+      <property name="glowAlpha" type="float">
+        <kf t="0.486036" v="1.000000"/>
+        <kf t="0.764068" v="0.000000"/>
+      </property>
+      <property name="maskColor" type="color" value="#FF1E4AF6"/>
+      <property name="maskEvolution" type="float">
+        <kf t="0.000000" v="9.130000"/>
+        <kf t="0.819925" v="11.870000"/>
+      </property>
+      <property name="maskScale" type="float" value="0.930000"/>
+      <property name="maskStrength" type="float">
+        <kf t="0.000000" v="0.800000"/>
+        <kf t="0.128056" v="0.450000"/>
+      </property>
+      <property name="renderContours" type="bool" value="true"/>
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.819925" v="0.620000"/>
+      </property>
+      <property name="thickness" type="float" value="0.949000"/>
+    </effect>
+    <content>Hello</content>
+</text>
+  <shape id="11" label="Arcing Neon; t:extend" startTime="44031" endTime="46030" fillType="color">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFF5B6EF"/>
+    <effect id="com.alightcreative.effects.electricedges" locallyApplied="true">
+      <property name="color1" type="color" value="#FFF769B3"/>
+      <property name="color2" type="color" value="#FFF80505"/>
+      <property name="contourCount" type="float" value="14.800000"/>
+      <property name="contourOffset" type="float">
+        <kf t="-0.016508" v="0.070000"/>
+        <kf t="0.983992" v="-2.303000"/>
+      </property>
+      <property name="disort" type="float" value="0.200000"/>
+      <property name="distance" type="float" value="0.812000"/>
+      <property name="evolution" type="float" value="-1.070000"/>
+      <property name="fill" type="float" value="0.490000"/>
+      <property name="glowAlpha" type="float" value="0.300000"/>
+      <property name="maskColor" type="color" value="#FF1E4AF6"/>
+      <property name="maskEvolution" type="float">
+        <kf t="0.000000" v="9.130000"/>
+        <kf t="0.966980" v="11.870000"/>
+      </property>
+      <property name="maskScale" type="float" value="0.930000"/>
+      <property name="renderContours" type="bool" value="true"/>
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="1.000516" v="0.620000"/>
+      </property>
+      <property name="thickness" type="float" value="1.000000"/>
+    </effect>
+    <path d="M 29.716997 -253.83057C 44.185883 -258.56647, 56.87672 -254.6901, 67.18275 -243.68465C 76.738785 -233.47974, 81.87915 -220.79733, 84.27238 -207.34808L 85.17908 -202.16357C 87.24851 -190.04134, 88.932434 -177.75618, 88.932434 -165.56781C 88.932434 -153.15506, 79.460655 -86.8358, 77.27811 -66.055214C 75.280945 -56.431744, 81.12918 -48.392548, 89.85095 -48.459965L 93.71244 -48.317204L 100.4154 -48.11831C 144.76102 -46.96848, 223.32278 -47.846703, 235.60916 -47.339523L 237.2944 -47.243797L 238.88918 -47.106033C 249.24446 -46.054188, 273.01093 -40.518497, 270.0 -7.3453956C 267.51407 20.050283, 240.34596 28.603514, 226.22255 28.906887L 227.1069 29.50762L 228.0162 30.150982C 237.59401 37.065327, 252.51506 52.228325, 247.21384 75.102844C 241.67741 98.9761, 215.45303 104.50409, 203.92514 106.4254L 205.09784 106.88154L 206.06216 107.29076C 212.82448 110.27107, 232.69994 121.324265, 227.77309 148.74504C 221.61308 183.03387, 184.27374 178.58449, 184.27374 178.58449L 185.31932 178.96364L 186.24779 179.34088C 192.82732 182.12523, 213.24872 193.03368, 206.9925 219.20186C 199.70784 249.67252, 171.56456 253.6833, 162.41217 253.77553L 33.631535 253.83055C 19.358826 253.83055, 4.803035 253.81303, -10.318937 253.78566C -12.821705 253.77722, -15.594137 252.88397, -17.793554 251.62834C -42.492634 237.51341, -67.16642 223.33102, -91.72225 208.97166C -95.66264 206.66724, -99.56633 205.4859, -104.02252 205.51674L -106.105484 205.57571C -113.08305 205.72856, -141.13017 205.69026, -160.57994 205.64934L -160.57994 205.92908C -160.5796 216.5701, -169.16988 225.21542, -179.81065 225.28305L -258.23575 225.78151C -264.15842 225.81914, -269.02325 221.19409, -269.34805 215.34459L -269.3653 214.75072L -270.0 -33.484997C -270.0155 -39.576447, -265.10233 -44.533592, -259.01096 -44.57232L -180.19633 -45.073215C -169.67622 -45.140083, -161.02939 -36.791084, -160.7276 -26.275087L -160.57916 -21.103247L -105.93266 -22.894497C -95.63293 -23.26883, -87.57918 -23.63234, -84.71954 -23.963135C -74.01744 -26.457464, -68.47257 -28.842276, -63.500748 -37.816856C -42.43363 -75.872475, -7.1976547 -124.47253, 0.812916 -151.40228C 1.6115093 -154.08696, 2.9280627 -156.9977, 3.0376034 -159.84598C 3.9055743 -181.25015, 4.2763624 -202.67119, 5.312853 -224.06696C 6.0628457 -239.74089, 15.484048 -249.17894, 29.716997 -253.83057Z"/>
+  </shape>
+  <shape id="33" label="Electric Shock; t:extend" startTime="46030" endTime="48029" fillType="color">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF22AB7D"/>
+    <effect id="com.alightcreative.effects.electricedges" locallyApplied="true">
+      <property name="color1" type="color" value="#FF841C1C"/>
+      <property name="color2" type="color" value="#FFE621D0"/>
+      <property name="contourCount" type="float" value="14.800000"/>
+      <property name="contourOffset" type="float">
+        <kf t="-0.016508" v="0.070000"/>
+        <kf t="0.983992" v="-2.303000"/>
+      </property>
+      <property name="disort" type="float" value="0.200000"/>
+      <property name="distance" type="float" value="0.812000"/>
+      <property name="evolution" type="float" value="-1.070000"/>
+      <property name="glowAlpha" type="float" value="0.380000"/>
+      <property name="maskColor" type="color" value="#FFFF006A"/>
+      <property name="maskEvolution" type="float">
+        <kf t="0.000000" v="9.130000"/>
+        <kf t="0.983992" v="11.750000" e="cubicBezier 0.42927173 0.0 0.5021008 1.0"/>
+      </property>
+      <property name="maskScale" type="float" value="0.920000"/>
+      <property name="maskSeed" type="float" value="0.060000"/>
+      <property name="maskStrength" type="float" value="0.420000"/>
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983498" v="0.620000"/>
+      </property>
+      <property name="thickness" type="float" value="1.000000"/>
+    </effect>
+    <path d="M -133.26974 147.76271L -259.0638 147.76271C -265.10373 147.76271, -270.0 142.86642, -270.0 136.82652L -270.0 13.004255C -263.87323 11.922151, -249.8324 -44.034748, -219.18243 -13.436657C -171.4196 34.245335, -145.57545 -25.202515, -145.57545 -61.11865C -145.57545 -97.03478, -168.76982 -156.48265, -219.18243 -108.800644C -250.32895 -79.34121, -264.05652 -130.11469, -270.0 -134.90007L -270.0 -259.0638C -270.0 -265.10373, -265.10373 -270.0, -259.0638 -270.0L -135.24156 -270.0C -134.15945 -263.87323, -78.20255 -249.8324, -108.800644 -219.18243C -156.48265 -171.4196, -97.03478 -145.57545, -61.11865 -145.57545C -25.202515 -145.57545, 34.245335 -168.76982, -13.436657 -219.18243C -42.896107 -250.32895, 7.8773794 -264.05652, 12.662766 -270.0L 136.82652 -270.0C 142.86642 -270.0, 147.76271 -265.10373, 147.76271 -259.0638L 147.76271 -131.93866C 154.65637 -120.16694, 168.57953 -82.493645, 196.39305 -108.800644C 246.80565 -156.48265, 270.0 -97.03478, 270.0 -61.11865C 270.0 -25.202515, 244.1559 34.245335, 196.39305 -13.436657C 168.94252 -40.84073, 154.81458 1.1830969, 147.76271 11.03245L 147.76271 136.82652C 147.76271 142.86642, 142.86642 147.76271, 136.82652 147.76271L 9.701336 147.76271C -2.0703611 154.65637, -39.743637 168.57953, -13.436657 196.39305C 34.245335 246.80565, -25.202515 270.0, -61.11865 270.0C -97.03478 270.0, -156.48265 244.1559, -108.800644 196.39305C -81.39657 168.94252, -123.420395 154.81458, -133.26974 147.76271Z"/>
+  </shape>
+  <shape id="1" label="Rusted Industrial Iron" startTime="32064" endTime="34062" fillType="color" s=".circle">
+    <transform>
+      <location value="352.000061,755.666626"/>
+    </transform>
+    <fillColor value="#FF6D8D55"/>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="fillColor" type="color" value="#FF703334"/>
+      <property name="fillColorBlend" type="float" value="1.000000"/>
+      <property name="strength" type="float" value="0.450000"/>
+      <property name="t1alpha" type="float" value="0.280000"/>
+      <property name="t1angle" type="float" value="38.000000"/>
+      <property name="t1blendMode" type="int" value="0"/>
+      <property name="t1burn" type="float" value="-0.320000"/>
+      <property name="t1grain" type="float" value="4.000000"/>
+      <property name="t1light" type="bool" value="true"/>
+      <property name="t1lightAngle" type="float" value="-59.500000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="t1region" type="int" value="3"/>
+      <property name="t1scale" type="float" value="0.740000"/>
+      <property name="t2angle" type="float" value="49.000000"/>
+      <property name="t2burn" type="float" value="-0.540000"/>
+      <property name="t2gamma" type="float" value="0.275000"/>
+      <property name="t2grain" type="float" value="10.000000"/>
+      <property name="t2active" type="bool" value="true"/>
+      <property name="t2region" type="int" value="3"/>
+      <property name="t2scale" type="float" value="1.490000"/>
+      <property name="t3burn" type="float" value="1.000000"/>
+      <property name="t3color" type="color" value="#FFE05200"/>
+      <property name="t3grain" type="float" value="6.000000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="1"/>
+      <property name="t4blendMode" type="int" value="2"/>
+      <property name="t4burn" type="float" value="-0.040000"/>
+      <property name="t4color" type="color" value="#FFB85E27"/>
+      <property name="t4grain" type="float" value="3.000000"/>
+      <property name="t4active" type="bool" value="true"/>
+      <property name="t4region" type="int" value="2"/>
+      <property name="t4scale" type="float" value="0.580000"/>
+      <property name="t5alpha" type="float" value="0.870000"/>
+      <property name="t5angle" type="float" value="14.000000"/>
+      <property name="t5burn" type="float" value="0.750000"/>
+      <property name="t5color" type="color" value="#FF000000"/>
+      <property name="t5contrast" type="float" value="-0.260000"/>
+      <property name="t5gamma" type="float" value="0.145000"/>
+      <property name="t5grain" type="float" value="4.000000"/>
+      <property name="t5light" type="bool" value="true"/>
+      <property name="t5lightAngle" type="float" value="-48.000000"/>
+      <property name="t5offset" type="vec2" value="-70.000000,0.000000"/>
+      <property name="t5active" type="bool" value="true"/>
+      <property name="t5region" type="int" value="2"/>
+      <property name="t5scale" type="float" value="5.150000"/>
+      <property name="t6alpha" type="float" value="0.390000"/>
+      <property name="t6angle" type="float" value="-40.000000"/>
+      <property name="t6color" type="color" value="#FF202332"/>
+      <property name="t6grain" type="float" value="11.000000"/>
+      <property name="t6active" type="bool" value="true"/>
+      <property name="t6region" type="int" value="2"/>
+      <property name="t7alpha" type="float" value="0.630000"/>
+      <property name="t7angle" type="float" value="-41.500000"/>
+      <property name="t7blendMode" type="int" value="2"/>
+      <property name="t7burn" type="float" value="0.300000"/>
+      <property name="t7color" type="color" value="#FFC6A39F"/>
+      <property name="t7contrast" type="float" value="-0.510000"/>
+      <property name="t7grain" type="float" value="10.000000"/>
+      <property name="t7light" type="bool" value="true"/>
+      <property name="t7lightAngle" type="float" value="-172.500000"/>
+      <property name="t7active" type="bool" value="true"/>
+      <property name="t7region" type="int" value="2"/>
+    </effect>
+    <property name="size" type="vec2" value="260.000000,253.000000"/>
+  </shape>
+  <shape id="3" label="Teal Pumice" startTime="32064" endTime="34063" fillType="color" s=".circle">
+    <transform>
+      <location value="746.333374,313.335938"/>
+    </transform>
+    <fillColor value="#FF71F8B3"/>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="d1angle" type="float" value="22.000000"/>
+      <property name="d1grain" type="float" value="4.000000"/>
+      <property name="d1offset" type="vec2" value="3.000000,10.000000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="d1region" type="int" value="1"/>
+      <property name="d1scale" type="float" value="6.340000"/>
+      <property name="fillColor" type="color" value="#FF7DBFC0"/>
+      <property name="fillColorBlend" type="float" value="1.000000"/>
+      <property name="strength" type="float" value="0.640000"/>
+      <property name="t1angle" type="float" value="-32.500000"/>
+      <property name="t1color" type="color" value="#FF841462"/>
+      <property name="t1gamma" type="float" value="2.180000"/>
+      <property name="t1scale" type="float" value="2.440000"/>
+      <property name="t2alpha" type="float" value="0.610000"/>
+      <property name="t2color" type="color" value="#FF9C2D09"/>
+      <property name="t2contrast" type="float" value="0.180000"/>
+      <property name="t2active" type="bool" value="true"/>
+      <property name="t2region" type="int" value="1"/>
+      <property name="t3angle" type="float" value="-36.000000"/>
+      <property name="t3color" type="color" value="#FF4D4D4D"/>
+      <property name="t3offset" type="vec2" value="-146.000000,0.000000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="2"/>
+      <property name="t3scale" type="float" value="1.910000"/>
+      <property name="t4blendMode" type="int" value="4"/>
+      <property name="t4grain" type="float" value="2.000000"/>
+      <property name="t4active" type="bool" value="true"/>
+      <property name="t4region" type="int" value="3"/>
+      <property name="t4scale" type="float" value="0.500000"/>
+      <property name="t5color" type="color" value="#FF812B34"/>
+      <property name="t5contrast" type="float" value="-0.500000"/>
+      <property name="t5gamma" type="float" value="0.270000"/>
+      <property name="t5grain" type="float" value="2.000000"/>
+      <property name="t5light" type="bool" value="true"/>
+      <property name="t5lightAngle" type="float" value="-59.500000"/>
+      <property name="t5active" type="bool" value="true"/>
+      <property name="t5region" type="int" value="3"/>
+      <property name="t5scale" type="float" value="0.500000"/>
+      <property name="t6color" type="color" value="#FF213244"/>
+      <property name="t6active" type="bool" value="true"/>
+      <property name="t6region" type="int" value="1"/>
+      <property name="t7alpha" type="float" value="0.710000"/>
+      <property name="t7angle" type="float" value="-17.000000"/>
+      <property name="t7color" type="color" value="#FF202332"/>
+      <property name="t7grain" type="float" value="4.000000"/>
+      <property name="t7invert" type="bool" value="true"/>
+      <property name="t7offset" type="vec2" value="-217.000000,251.000000"/>
+      <property name="t7active" type="bool" value="true"/>
+      <property name="t7region" type="int" value="2"/>
+      <property name="t7scale" type="float" value="4.710000"/>
+      <property name="t8alpha" type="float" value="0.350000"/>
+      <property name="t8color" type="color" value="#FF202332"/>
+      <property name="t8grain" type="float" value="5.000000"/>
+      <property name="t8active" type="bool" value="true"/>
+      <property name="t8region" type="int" value="1"/>
+      <property name="t8scale" type="float" value="2.620000"/>
+    </effect>
+    <property name="size" type="vec2" value="244.000000,239.000000"/>
+  </shape>
+  <shape id="6" label="Aged Photo" startTime="34065" endTime="36064" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,557.126709"/>
+      <scale value="0.939319,0.939319"/>
+    </transform>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="fillColorBlend" type="float" value="0.340000"/>
+      <property name="t1angle" type="float" value="-90.500000"/>
+      <property name="t1grain" type="float" value="3.000000"/>
+      <property name="t1scale" type="float" value="1.180000"/>
+      <property name="t2alpha" type="float" value="0.560000"/>
+      <property name="t2angle" type="float" value="-32.000000"/>
+      <property name="t2burn" type="float" value="-0.310000"/>
+      <property name="t2color" type="color" value="#FFEA7420"/>
+      <property name="t2grain" type="float" value="8.000000"/>
+      <property name="t2scale" type="float" value="22.619999"/>
+      <property name="t3alpha" type="float" value="0.520000"/>
+      <property name="t3angle" type="float" value="-89.500000"/>
+      <property name="t3burn" type="float" value="0.440000"/>
+      <property name="t3color" type="color" value="#FFA52F3B"/>
+      <property name="t3contrast" type="float" value="-0.280000"/>
+      <property name="t3grain" type="float" value="3.000000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="3"/>
+      <property name="t3scale" type="float" value="0.860000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="35" label="Paint Stencil" startTime="36064" endTime="38063" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="544.417175,533.926331"/>
+      <scale value="0.950561,0.950561"/>
+    </transform>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="d1offset" type="vec2" value="91.000000,0.000000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="d1region" type="int" value="3"/>
+      <property name="t1blendMode" type="int" value="3"/>
+      <property name="t1contrast" type="float" value="1.000000"/>
+      <property name="t1gamma" type="float" value="0.205000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="t1region" type="int" value="3"/>
+      <property name="t2active" type="bool" value="true"/>
+      <property name="t2region" type="int" value="0"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="34" label="Corrugated Copper" startTime="38065" endTime="40064" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFA27ED0"/>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="d1grain" type="float" value="12.000000"/>
+      <property name="d1offset" type="vec2" value="2.000000,0.000000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="d1region" type="int" value="3"/>
+      <property name="fillColorBlend" type="float" value="1.000000"/>
+      <property name="t2blendMode" type="int" value="0"/>
+      <property name="t3blendMode" type="int" value="2"/>
+      <property name="t3color" type="color" value="#FF432C23"/>
+      <property name="t3grain" type="float" value="16.000000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="2"/>
+      <property name="t4blendMode" type="int" value="0"/>
+      <property name="t4color" type="color" value="#FF461305"/>
+      <property name="t4active" type="bool" value="true"/>
+      <property name="t4region" type="int" value="1"/>
+      <property name="t5alpha" type="float" value="0.230000"/>
+      <property name="t5color" type="color" value="#FF202332"/>
+      <property name="t5grain" type="float" value="12.000000"/>
+      <property name="t5active" type="bool" value="true"/>
+      <property name="t5region" type="int" value="3"/>
+      <property name="t6color" type="color" value="#FFC2F1E3"/>
+      <property name="t6grain" type="float" value="12.000000"/>
+      <property name="t6offset" type="vec2" value="-1.000000,-17.000000"/>
+      <property name="t7angle" type="float" value="46.500000"/>
+      <property name="t7color" type="color" value="#FF202332"/>
+      <property name="t7contrast" type="float" value="0.050000"/>
+      <property name="t7gamma" type="float" value="0.100000"/>
+      <property name="t7grain" type="float" value="5.000000"/>
+      <property name="t7active" type="bool" value="true"/>
+      <property name="t7region" type="int" value="2"/>
+      <property name="t7scale" type="float" value="2.260000"/>
+      <property name="t8alpha" type="float" value="0.300000"/>
+      <property name="t8burn" type="float" value="0.570000"/>
+      <property name="t8grain" type="float" value="6.000000"/>
+      <property name="t8active" type="bool" value="true"/>
+      <property name="t8region" type="int" value="2"/>
+      <property name="t8scale" type="float" value="1.580000"/>
+    </effect>
+    <property name="size" type="vec2" value="262.000000,246.000000"/>
+  </shape>
+  <shape id="36" label="Weathered Stucco" startTime="40064" endTime="42063" fillType="color" s=".roundrect">
+    <transform>
+      <location value="291.328125,809.333252"/>
+    </transform>
+    <fillColor value="#FFEBBA37"/>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="fillColorBlend" type="float" value="1.000000"/>
+      <property name="t1burn" type="float" value="1.000000"/>
+      <property name="t1color" type="color" value="#FF202332"/>
+      <property name="t1gamma" type="float" value="1.170000"/>
+      <property name="t1grain" type="float" value="3.000000"/>
+      <property name="t1spread" type="float" value="0.240000"/>
+      <property name="t2color" type="color" value="#FFC9B6AF"/>
+      <property name="t3alpha" type="float" value="0.500000"/>
+      <property name="t3color" type="color" value="#FF202332"/>
+      <property name="t3grain" type="float" value="3.000000"/>
+      <property name="t3light" type="bool" value="true"/>
+      <property name="t3lightAngle" type="float" value="44.500000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="2"/>
+      <property name="t4blendMode" type="int" value="2"/>
+      <property name="t4burn" type="float" value="-0.930000"/>
+      <property name="t4color" type="color" value="#FFCBDCE3"/>
+      <property name="t4gamma" type="float" value="0.535000"/>
+      <property name="t4grain" type="float" value="3.000000"/>
+      <property name="t4light" type="bool" value="true"/>
+      <property name="t4lightAngle" type="float" value="-45.000000"/>
+      <property name="t4active" type="bool" value="true"/>
+      <property name="t4region" type="int" value="3"/>
+      <property name="t5alpha" type="float" value="0.290000"/>
+      <property name="t5color" type="color" value="#FF202332"/>
+      <property name="t5grain" type="float" value="4.000000"/>
+      <property name="t5active" type="bool" value="true"/>
+      <property name="t5region" type="int" value="3"/>
+      <property name="t5scale" type="float" value="6.880000"/>
+      <property name="t6alpha" type="float" value="0.400000"/>
+      <property name="t6angle" type="float" value="36.000000"/>
+      <property name="t6color" type="color" value="#FF000000"/>
+      <property name="t6contrast" type="float" value="0.430000"/>
+      <property name="t6gamma" type="float" value="0.150000"/>
+      <property name="t6grain" type="float" value="5.000000"/>
+      <property name="t6scale" type="float" value="2.170000"/>
+    </effect>
+    <property name="size" type="vec2" value="199.000000,195.000000"/>
+  </shape>
+  <shape id="37" label="Rough Marble" startTime="40064" endTime="42063" fillType="color" s=".roundrect">
+    <transform>
+      <location value="763.666748,308.333252"/>
+    </transform>
+    <fillColor value="#FFEBBA37"/>
+    <effect id="com.alightcreative.effects.grunge" locallyApplied="true">
+      <property name="d1angle" type="float" value="12.500000"/>
+      <property name="d1grain" type="float" value="2.000000"/>
+      <property name="d1offset" type="vec2" value="10.000000,0.000000"/>
+      <property name="t1active" type="bool" value="true"/>
+      <property name="d1region" type="int" value="1"/>
+      <property name="d1scale" type="float" value="10.290000"/>
+      <property name="fillColorBlend" type="float" value="1.000000"/>
+      <property name="t1burn" type="float" value="1.000000"/>
+      <property name="t1color" type="color" value="#FF202332"/>
+      <property name="t1gamma" type="float" value="1.170000"/>
+      <property name="t1grain" type="float" value="3.000000"/>
+      <property name="t1spread" type="float" value="0.240000"/>
+      <property name="t2color" type="color" value="#FFC9B6AF"/>
+      <property name="t3alpha" type="float" value="0.500000"/>
+      <property name="t3color" type="color" value="#FF202332"/>
+      <property name="t3grain" type="float" value="3.000000"/>
+      <property name="t3light" type="bool" value="true"/>
+      <property name="t3lightAngle" type="float" value="44.500000"/>
+      <property name="t3active" type="bool" value="true"/>
+      <property name="t3region" type="int" value="2"/>
+      <property name="t4blendMode" type="int" value="2"/>
+      <property name="t4burn" type="float" value="-0.930000"/>
+      <property name="t4color" type="color" value="#FFCBDCE3"/>
+      <property name="t4gamma" type="float" value="0.535000"/>
+      <property name="t4grain" type="float" value="3.000000"/>
+      <property name="t4light" type="bool" value="true"/>
+      <property name="t4lightAngle" type="float" value="-45.000000"/>
+      <property name="t4active" type="bool" value="true"/>
+      <property name="t4region" type="int" value="3"/>
+      <property name="t5alpha" type="float" value="0.290000"/>
+      <property name="t5color" type="color" value="#FF202332"/>
+      <property name="t5grain" type="float" value="4.000000"/>
+      <property name="t5active" type="bool" value="true"/>
+      <property name="t5region" type="int" value="3"/>
+      <property name="t5scale" type="float" value="6.880000"/>
+      <property name="t6alpha" type="float" value="0.680000"/>
+      <property name="t6angle" type="float" value="36.000000"/>
+      <property name="t6burn" type="float" value="0.760000"/>
+      <property name="t6color" type="color" value="#FF17467A"/>
+      <property name="t6contrast" type="float" value="0.430000"/>
+      <property name="t6gamma" type="float" value="0.150000"/>
+      <property name="t6grain" type="float" value="5.000000"/>
+      <property name="t6active" type="bool" value="true"/>
+      <property name="t6region" type="int" value="3"/>
+      <property name="t6scale" type="float" value="2.170000"/>
+      <property name="t7alpha" type="float" value="0.490000"/>
+      <property name="t7angle" type="float" value="89.000000"/>
+      <property name="t7burn" type="float" value="1.000000"/>
+      <property name="t7color" type="color" value="#FFA64C78"/>
+      <property name="t7contrast" type="float" value="0.980000"/>
+      <property name="t7gamma" type="float" value="0.880000"/>
+      <property name="t7grain" type="float" value="4.000000"/>
+      <property name="t7invert" type="bool" value="true"/>
+      <property name="t7active" type="bool" value="true"/>
+      <property name="t7region" type="int" value="2"/>
+      <property name="t7scale" type="float" value="4.710000"/>
+    </effect>
+    <property name="size" type="vec2" value="199.000000,195.000000"/>
+  </shape>
+  <shape id="39" label="360° Spin" startTime="48030" endTime="50029" fillType="color" s=".multifoil">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.458063,2.458063"/>
+    </transform>
+    <fillColor value="#FFBEAB41"/>
+    <effect id="com.alightcreative.effects.extrude" locallyApplied="true">
+      <property name="rotate" type="vec3">
+        <kf t="0.000000" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,360.000000,0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="5" label="Transition In: Spin; t:start" startTime="50034" endTime="52033" fillType="color" s=".multifoil">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.458063,2.458063"/>
+    </transform>
+    <fillColor value="#FFBEAB41"/>
+    <effect id="com.alightcreative.effects.extrude" locallyApplied="true">
+      <property name="ambient" type="float" value="0.280000"/>
+      <property name="lightDepth" type="float" value="139.500000"/>
+      <property name="orient" type="quat">
+        <kf t="0.450225" v="0.000000,0.000000,0.000000,1.000000"/>
+      </property>
+      <property name="position" type="vec3">
+        <kf t="0.350175" v="0.000000,100.000000,500.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+        <kf t="0.000000" v="0.000000,100.000000,2948.000000"/>
+      </property>
+      <property name="rotate" type="vec3">
+        <kf t="0.017009" v="0.000000,-336.000000,0.000000"/>
+        <kf t="0.353667" v="0.000000,0.000000,0.000000" e="cubicBezier 0.062169332 0.5742425 0.61507934 0.9348484"/>
+      </property>
+      <property name="shadingType" type="int" value="2"/>
+      <property name="shine" type="float" value="0.000000"/>
+    </effect>
+  </shape>
+  <shape id="41" label="Transition In: Tumble; t:start" startTime="52033" endTime="54032" fillType="color" s=".multifoil">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.458063,2.458063"/>
+    </transform>
+    <fillColor value="#FFBEAB41"/>
+    <effect id="com.alightcreative.effects.extrude" locallyApplied="true">
+      <property name="ambient" type="float" value="0.280000"/>
+      <property name="lightDepth" type="float" value="139.500000"/>
+      <property name="orient" type="quat">
+        <kf t="0.450225" v="0.000000,0.000000,0.000000,1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.000500" v="0.000000,0.000000,0.000000,1.000000"/>
+        <kf t="0.220167" v="0.741869,0.565037,-0.014098,0.360783" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="position" type="vec3">
+        <kf t="0.350175" v="0.000000,100.000000,500.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+        <kf t="0.000000" v="0.000000,100.000000,2948.000000"/>
+      </property>
+      <property name="rotate" type="vec3">
+        <kf t="0.017009" v="-193.000000,-336.000000,107.000000"/>
+        <kf t="0.353667" v="0.000000,0.000000,0.000000" e="cubicBezier 0.062169332 0.5742425 0.61507934 0.9348484"/>
+      </property>
+      <property name="shadingType" type="int" value="2"/>
+      <property name="shine" type="float" value="0.000000"/>
+    </effect>
+  </shape>
+  <shape id="51" startTime="54000" endTime="62733" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="539.579590,532.009033"/>
+      <scale value="1.591414,1.591414"/>
+    </transform>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="52" label="2x Magnifier" startTime="54000" endTime="55999" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.525000,2.525000"/>
+    </transform>
+    <fillColor value="#FF897E78"/>
+    <effect id="com.alightcreative.effects.magnifybg" locallyApplied="true">
+      <property name="scale" type="float" value="2.000000"/>
+    </effect>
+  </shape>
+  <shape id="53" label="3x Magnifier" startTime="56000" endTime="57999" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.525000,2.525000"/>
+    </transform>
+    <fillColor value="#FF897E78"/>
+    <effect id="com.alightcreative.effects.magnifybg" locallyApplied="true">
+      <property name="scale" type="float" value="3.000000"/>
+    </effect>
+  </shape>
+  <shape id="54" label="20x Pixel Inspector" startTime="58000" endTime="59999" fillType="color" s=".circle">
+    <transform>
+      <location value="681.308472,679.626221"/>
+      <scale value="2.525000,2.525000"/>
+    </transform>
+    <fillColor value="#FF897E78"/>
+    <effect id="com.alightcreative.effects.magnifybg" locallyApplied="true">
+      <property name="sample" type="int" value="0"/>
+      <property name="scale" type="float" value="20.000000"/>
+    </effect>
+  </shape>
+  <shape id="55" label="Emphasis Zoom; t:split" startTime="60000" endTime="61999" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.525000,2.525000"/>
+    </transform>
+    <fillColor value="#FF897E78"/>
+    <effect id="com.alightcreative.effects.magnifybg" locallyApplied="true">
+      <property name="scale" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.983992" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.333667" v="2.500000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.677000" v="2.500000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="56" label="Emphasize Area; t:stretch" startTime="62000" endTime="62733" fillType="color" s=".circle">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="2.525000,2.525000"/>
+    </transform>
+    <fillColor value="#FF897E78"/>
+    <effect id="com.alightcreative.effects.magnifybg" locallyApplied="true">
+      <property name="scale" type="float">
+        <kf t="0.091405" v="1.000000"/>
+        <kf t="0.864939" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.409277" v="1.140000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="scaleMask" type="bool" value="true"/>
+    </effect>
+  </shape>
+  <shape id="57" label="Translucent Material; t:end" startTime="62734" endTime="64733" fillType="media" fillImage="am-internal:///C40D618A7179ADAFA1607F2D8C1019E8E572055E.jpg" s=".rect">
+    <transform>
+      <location value="538.317688,538.738281"/>
+      <scale value="0.892720,0.892720"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pagecurl" locallyApplied="true">
+      <property name="alpha" type="float" value="0.180000"/>
+      <property name="angle" type="float" value="12.500000"/>
+      <property name="backAlpha" type="float" value="0.840000"/>
+      <property name="backColor" type="color" value="#FF3B516A"/>
+      <property name="progress" type="float">
+        <kf t="0.983992" v="1.140000" e="cubicBezier 0.4649735 0.0 0.9748677 0.7848486"/>
+        <kf t="0.086667" v="0.000000"/>
+      </property>
+      <property name="radius" type="float" value="0.146000"/>
+      <property name="shineColor" type="color" value="#FF3A4D62"/>
+      <property name="shineSpec" type="float" value="29.500000"/>
+      <property name="strength" type="float" value="0.200000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,405.000000"/>
+  </shape>
+  <shape id="58" label="Float Away; t:end" startTime="64734" endTime="66733" fillType="media" fillImage="am-internal:///C40D618A7179ADAFA1607F2D8C1019E8E572055E.jpg" s=".rect">
+    <transform>
+      <location value="538.317688,538.738281"/>
+      <scale value="0.892720,0.892720"/>
+    </transform>
+    <effect id="com.alightcreative.effects.pagecurl" locallyApplied="true">
+      <property name="dropShadowAlpha" type="float">
+        <kf t="0.733867" v="0.410000"/>
+        <kf t="0.883942" v="0.000000"/>
+      </property>
+      <property name="progress" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.130000"/>
+      </property>
+      <property name="radius" type="float" value="0.721000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,405.000000"/>
+  </shape>
+  <shape id="59" startTime="66734" endTime="92699" fillType="media" fillImage="am-internal:///9ABFCF5A205B0BC55825CA46C5326CF0651E473C.jpeg" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <property name="size" type="vec2" value="540.000000,359.859375"/>
+  </shape>
+  <shape id="60" label="Chromatic Handmade Glass" startTime="66734" endTime="68733" fillType="color" s=".multifoil">
+    <transform>
+      <location value="720.666809,530.666809"/>
+      <scale value="3.128444,3.128444"/>
+    </transform>
+    <fillColor value="#FF795E4C"/>
+    <effect id="com.alightcreative.effects.ominoglass" locallyApplied="true">
+      <property name="aberration" type="float" value="6.100000"/>
+      <property name="roughness" type="float" value="-0.920000"/>
+      <property name="roughnessScale" type="float" value="1.850000"/>
+      <property name="strength" type="float" value="0.170000"/>
+      <property name="useLumaHeight" type="bool" value="false"/>
+    </effect>
+  </shape>
+  <shape id="61" label="Frosted Glass" startTime="68734" endTime="70733" fillType="color" s=".multifoil">
+    <transform>
+      <location value="569.352112,592.333496"/>
+      <scale value="3.128444,3.128444"/>
+    </transform>
+    <fillColor value="#FF795E4C"/>
+    <effect id="com.alightcreative.effects.ominoglass" locallyApplied="true">
+      <property name="aberration" type="float" value="0.700000"/>
+      <property name="blend" type="float" value="0.210000"/>
+      <property name="evolution" type="float" value="0.540000"/>
+      <property name="featureSize" type="float" value="235.000000"/>
+      <property name="refraction" type="float" value="90.900002"/>
+      <property name="roughness" type="float" value="0.490000"/>
+      <property name="roughnessScale" type="float" value="1.730000"/>
+      <property name="samples" type="float" value="5.000000"/>
+      <property name="seed" type="float" value="0.100000"/>
+      <property name="strength" type="float" value="0.060000"/>
+      <property name="tintcolor" type="color" value="#FF00FFE0"/>
+      <property name="useLumaHeight" type="bool" value="false"/>
+    </effect>
+  </shape>
+  <shape id="62" label="Chromatic Bubble" startTime="70734" endTime="72733" fillType="color" s=".multifoil">
+    <transform>
+      <location value="524.018860,527.383484"/>
+      <scale value="3.128444,3.128444"/>
+    </transform>
+    <fillColor value="#FF795E4C"/>
+    <effect id="com.alightcreative.effects.ominoglass" locallyApplied="true">
+      <property name="aberration" type="float" value="52.700001"/>
+      <property name="evolution" type="float" value="0.280000"/>
+      <property name="featureSize" type="float" value="127.000000"/>
+      <property name="lightAmbient" type="float" value="1.000000"/>
+      <property name="lightIntensity" type="float" value="0.941000"/>
+      <property name="lightShine" type="float" value="1.000000"/>
+      <property name="lightSpec" type="float" value="250.000000"/>
+      <property name="refraction" type="float" value="1.000000"/>
+      <property name="samples" type="float" value="5.000000"/>
+      <property name="shadingType" type="int" value="0"/>
+      <property name="strength" type="float" value="0.480000"/>
+      <property name="tintcolor" type="color" value="#FF000000"/>
+    </effect>
+  </shape>
+  <shape id="63" label="Green Glass" startTime="72733" endTime="74732" fillType="color" s=".multifoil">
+    <transform>
+      <location value="540.000061,540.000000"/>
+      <scale value="3.128444,3.128444"/>
+    </transform>
+    <fillColor value="#FF795E4C"/>
+    <effect id="com.alightcreative.effects.ominoglass" locallyApplied="true">
+      <property name="aberration" type="float" value="-0.100000"/>
+      <property name="blend" type="float" value="0.450000"/>
+      <property name="evolution" type="float" value="0.300000"/>
+      <property name="lightAmbient" type="float" value="0.000000"/>
+      <property name="lightColor" type="color" value="#FFD2F5F5"/>
+      <property name="lightDepth" type="float" value="99.500000"/>
+      <property name="lightDir" type="vec2" value="10.000000,-164.000000"/>
+      <property name="lightIntensity" type="float" value="1.497000"/>
+      <property name="lightShine" type="float" value="1.000000"/>
+      <property name="lightSpec" type="float" value="70.500000"/>
+      <property name="refraction" type="float" value="3.900000"/>
+      <property name="roughness" type="float" value="1.000000"/>
+      <property name="roughnessScale" type="float" value="0.460000"/>
+      <property name="samples" type="float" value="5.000000"/>
+      <property name="tintcolor" type="color" value="#FF00FFB5"/>
+      <property name="useLumaHeight" type="bool" value="false"/>
+    </effect>
+  </shape>
+  <shape id="64" label="Molten Red Glass" startTime="74734" endTime="76733" fillType="color" s=".multifoil">
+    <transform>
+      <location value="500.352051,540.000000"/>
+      <scale value="3.128444,3.128444"/>
+    </transform>
+    <fillColor value="#FF795E4C"/>
+    <effect id="com.alightcreative.effects.ominoglass" locallyApplied="true">
+      <property name="aberration" type="float" value="8.800000"/>
+      <property name="blend" type="float" value="1.000000"/>
+      <property name="evolution" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="3.300000"/>
+      </property>
+      <property name="featureSize" type="float" value="192.000000"/>
+      <property name="refraction" type="float" value="12.700000"/>
+      <property name="roughness" type="float" value="1.000000"/>
+      <property name="roughnessScale" type="float" value="0.730000"/>
+      <property name="shadingType" type="int" value="0"/>
+      <property name="strength" type="float" value="0.570000"/>
+      <property name="useLumaHeight" type="bool" value="false"/>
+    </effect>
+  </shape>
+  <shape id="65" label="Burst; t:start" startTime="76734" endTime="78733" fillType="gradient" s=".multifoil">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFF4ABBC"/>
+    <gradient type="linear" startColor="#FF17467A" endColor="#FF00FFB5" start="0.000000,0.000000" end="1.000000,1.000000"/>
+    <effect id="com.alightcreative.effects.transform" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.500250" v="0.000000" e="cubicBezier 0.10650792 0.26363635 0.67126983 0.9909091"/>
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.100050" v="1.000000"/>
+      </property>
+      <property name="fill" type="float">
+        <kf t="0.083542" v="0.000000"/>
+        <kf t="0.117059" v="1.000000"/>
+      </property>
+      <property name="scale" type="float">
+        <kf t="0.000000" v="0.440000"/>
+        <kf t="0.503667" v="1.950000" e="cubicBezier 0.18121696 0.25 0.4351852 0.9712121"/>
+        <kf t="0.103667" v="1.000000" e="cubicBezier 0.37698412 0.1818182 0.7572487 0.47878778"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="66" label="Ghost Pop; t:start" startTime="78734" endTime="80733" fillType="gradient" s=".multifoil">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFF4ABBC"/>
+    <gradient type="linear" startColor="#FF17467A" endColor="#FF00FFB5" start="0.000000,0.000000" end="1.000000,1.000000"/>
+    <effect id="com.alightcreative.effects.transform" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.367184" v="0.000000" e="cubicBezier 0.08597886 0.48787883 0.58 1.0"/>
+        <kf t="0.100550" v="1.000000"/>
+      </property>
+      <property name="fill" type="float" value="1.000000"/>
+      <property name="scale" type="float">
+        <kf t="0.117059" v="1.000000"/>
+        <kf t="0.367184" v="2.140000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="67" label="Left, Right, Up; t:start" startTime="80735" endTime="82734" fillType="gradient" s=".multifoil">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFF4ABBC"/>
+    <gradient type="linear" startColor="#FF17467A" endColor="#FF00FFB5" start="0.000000,0.000000" end="1.000000,1.000000"/>
+    <effect id="com.alightcreative.effects.transform" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.283142" v="0.000000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+        <kf t="0.316658" v="1.000000" e="cubicBezier 1.0 0.0 1.0 0.0"/>
+        <kf t="0.566783" v="0.000000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+        <kf t="0.600300" v="0.000000"/>
+        <kf t="0.616808" v="1.000000"/>
+        <kf t="0.950475" v="0.000000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+      </property>
+      <property name="angle" type="float">
+        <kf t="0.600300" v="0.000000"/>
+        <kf t="0.950475" v="171.000000" e="cubicBezier 0.6335979 0.0 0.67788357 0.57272726"/>
+      </property>
+      <property name="fill" type="float" value="1.000000"/>
+      <property name="offset" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.283142" v="163.000000,0.000000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+        <kf t="0.316658" v="0.000000,0.000000"/>
+        <kf t="0.566783" v="-163.000000,0.000000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+        <kf t="0.600300" v="0.000000,0.000000"/>
+        <kf t="0.616808" v="0.000000,0.000000"/>
+        <kf t="0.950475" v="0.000000,-697.000000" e="cubicBezier 0.0 0.57272726 0.58 1.0"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="68" label="Wobble in Place; t:stretch " startTime="82735" endTime="84734" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="535.373718,541.261719"/>
+      <scale value="0.805305,0.805305"/>
+    </transform>
+    <effect id="com.alightcreative.effects.transform" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="0.000000" v="360.000000"/>
+        <kf t="0.983492" v="360.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.249625" v="375.500000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.499750" v="350.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.749875" v="370.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="maskToLayer" type="bool" value="true"/>
+      <property name="scale" type="float">
+        <kf t="0.016508" v="1.000000"/>
+        <kf t="0.983492" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.183092" v="1.590000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.783392" v="1.580000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="69" label="Dark on Light" startTime="84734" endTime="86733" fillType="media" fillImage="am-internal:///51051EDD14AEDF839C2044DBDA8D11C648967D38.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumastamper" locallyApplied="true">
+      <property name="clipHigh" type="float" value="0.410000"/>
+      <property name="clipLow" type="float" value="0.270000"/>
+      <property name="color" type="color" value="#FFC42D2D"/>
+      <property name="invert" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,405.000000"/>
+  </shape>
+  <shape id="70" label="Light on Dark" startTime="86734" endTime="88733" fillType="media" fillImage="am-internal:///FEE99F71FA2D4BB633F0466418A812F8D77943AE.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumastamper" locallyApplied="true">
+      <property name="clipHigh" type="float" value="0.170000"/>
+      <property name="clipLow" type="float" value="0.730000"/>
+      <property name="color" type="color" value="#FFC42D2D"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,405.000000"/>
+  </shape>
+  <shape id="71" label="Stamp Dark Colors" startTime="88701" endTime="90700" fillType="media" fillImage="am-internal:///CF4BFD8771E4DFDF66D13BC60A03FD82F5A67A60.jpg" s=".rect">
+    <transform>
+      <location value="528.644714,511.822601"/>
+      <scale value="0.262828,0.262828"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumastamper" locallyApplied="true">
+      <property name="color" type="color" value="#FF000000"/>
+      <property name="invert" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,540.000000"/>
+  </shape>
+  <shape id="72" label="Stamp Light Colors" startTime="90701" endTime="92700" fillType="media" fillImage="am-internal:///F2E32BD92936474F46B130ACF831E61FF5A33BC7.png" s=".rect">
+    <transform>
+      <location value="548.411194,543.784607"/>
+      <scale value="0.407989,0.407989"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lumastamper" locallyApplied="true">
+      <property name="clipHigh" type="float" value="0.110000"/>
+      <property name="clipLow" type="float" value="0.170000"/>
+      <property name="color" type="color" value="#FFFFFFFF"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,540.000000"/>
+  </shape>
+  <shape id="73" label="CRT Monitor" startTime="92700" endTime="94699" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,543.784912"/>
+      <scale value="0.712097,0.712097"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="brightness" type="float" value="0.160000"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="saturation" type="float" value="-0.115000"/>
+      <property name="scanLines" type="float" value="0.120000"/>
+      <property name="tintColor" type="color" value="#FF17467A"/>
+      <property name="tintStrength" type="float" value="0.359000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="74" label="Faded Print" startTime="94700" endTime="96699" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,543.784912"/>
+      <scale value="0.712097,0.712097"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="gamma" type="float" value="5.405000"/>
+      <property name="saturation" type="float" value="-1.000000"/>
+      <property name="strength" type="float" value="0.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="75" label="Night" startTime="96700" endTime="98699" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,543.784912"/>
+      <scale value="0.712097,0.712097"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="brightness" type="float" value="-0.760000"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="gamma" type="float" value="2.495000"/>
+      <property name="saturation" type="float" value="-1.000000"/>
+      <property name="strength" type="float" value="0.000000"/>
+      <property name="tintColor" type="color" value="#FF17467A"/>
+      <property name="tintStrength" type="float" value="0.305000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="76" label="Slide; t:split" startTime="98700" endTime="100699" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,543.784912"/>
+      <scale value="0.712097,0.712097"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="fgAlpha" type="float">
+        <kf t="0.933967" v="1.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+        <kf t="0.050025" v="1.000000"/>
+        <kf t="0.000000" v="0.000000"/>
+      </property>
+      <property name="fgOffset" type="vec2">
+        <kf t="0.250125" v="0.000000,0.000000" e="cubicBezier 0.0 0.5787879 0.58 1.0"/>
+        <kf t="0.000000" v="-435.000000,0.000000"/>
+        <kf t="0.750375" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="443.000000,0.000000" e="cubicBezier 0.42000002 0.0 1.0 0.42121208"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="77" label="Overexposed" startTime="100734" endTime="102733" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="565.179626,323.528839"/>
+      <scale value="0.712097,0.712097"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="brightness" type="float" value="0.300000"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="gamma" type="float" value="2.630000"/>
+      <property name="saturation" type="float" value="1.000000"/>
+      <property name="strength" type="float" value="0.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="78" label="Blurry Dark; t:stretch" startTime="102734" endTime="104800" fillType="media" fillVideo="am-internal:///C4189603772C1CA837E006AE7D999FB323E018E6.mp4" inTime="31663" s=".rect">
+    <transform>
+      <location value="540.000000,541.333252"/>
+      <scale value="0.832407,0.832407"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="edgeStrength" type="float" value="0.250000"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="saturation" type="float" value="-0.805000"/>
+    </effect>
+    <property name="size" type="vec2" value="249.750000,540.000000"/>
+  </shape>
+  <shape id="79" label="Sepia" startTime="104800" endTime="106799" fillType="media" fillImage="am-internal:///4ED3C067494EFE429BFEDB4B5D817C2849BE3DC3.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,543.784912"/>
+      <scale value="0.712097,0.712097"/>
+    </transform>
+    <effect id="com.alightcreative.effects.fillbehind" locallyApplied="true">
+      <property name="gamma" type="float" value="0.790000"/>
+      <property name="saturation" type="float" value="-1.000000"/>
+      <property name="strength" type="float" value="0.000000"/>
+      <property name="tintColor" type="color" value="#FF704214"/>
+      <property name="tintStrength" type="float" value="0.750000"/>
+    </effect>
+    <property name="size" type="vec2" value="540.000000,359.308197"/>
+  </shape>
+  <shape id="81" label="Quintuplicate Fade" startTime="106834" endTime="108833" fillType="media" fillImage="am-internal:///F4CE93D39BD43DF28BF61193102AA5DA6C81155F.jpg" s=".rect">
+    <transform>
+      <location value="331.220947,578.721069"/>
+      <scale value="0.628223,0.628223"/>
+    </transform>
+    <effect id="com.alightcreative.effects.repeat.echokf" locallyApplied="true">
+      <property name="alpha" type="float" value="0.500000"/>
+      <property name="count" type="float" value="5.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="460.799988,540.000000"/>
+  </shape>
+  <shape id="82" label="Green Screen;" startTime="108800" endTime="110799" fillType="media" fillImage="am-internal:///5F76B29C21D994E4ED6DD1AE2639564A75E7A940.jpg" s=".rect">
+    <transform>
+      <location value="526.395325,549.418518"/>
+      <scale value="0.548988,0.548988"/>
+    </transform>
+    <effect id="com.alightcreative.effects.chromakey-adv" locallyApplied="true">
+      <property name="c1active" type="bool" value="true"/>
+      <property name="c1color" type="color" value="#FF00B140"/>
+      <property name="c1threshold" type="float" value="0.200000"/>
+    </effect>
+    <property name="size" type="vec2" value="462.381927,540.000000"/>
+  </shape>
+  <shape id="83" label="Blue Screen;" startTime="110800" endTime="112799" fillType="media" fillImage="am-internal:///5F76B29C21D994E4ED6DD1AE2639564A75E7A940.jpg" s=".rect">
+    <transform>
+      <location value="526.395325,549.418518"/>
+      <scale value="0.548988,0.548988"/>
+    </transform>
+    <effect id="com.alightcreative.effects.chromakey-adv" locallyApplied="true">
+      <property name="c1active" type="bool" value="true"/>
+      <property name="c1color" type="color" value="#FF0047BB"/>
+      <property name="c1threshold" type="float" value="0.200000"/>
+      <property name="c2active" type="bool" value="true"/>
+      <property name="c2color" type="color" value="#FF0000FF"/>
+      <property name="c3color" type="color" value="#FF0404E6"/>
+      <property name="c4color" type="color" value="#FF5BA1FF"/>
+    </effect>
+    <property name="size" type="vec2" value="462.381927,540.000000"/>
+  </shape>
+  <shape id="84" label="Photonic Blade On; t:start" startTime="112767" endTime="114766" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF000000"/>
+    <effect id="com.alightcreative.effects.energybeam" locallyApplied="true">
+      <property name="clip" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.333667" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="color1" type="color" value="#FF1E7FF6"/>
+      <property name="color2" type="color" value="#FF156AE0"/>
+      <property name="color3" type="color" value="#FF4A90E2"/>
+      <property name="end" type="vec2" value="218.000000,-223.000000"/>
+      <property name="fstr" type="float" value="0.023000"/>
+      <property name="glowAlpha" type="float" value="0.350000"/>
+      <property name="haloAlpha" type="float" value="0.150000"/>
+      <property name="progress" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.327000" v="0.500000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="spread" type="float" value="38.410000"/>
+      <property name="start" type="vec2" value="-195.000000,260.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="504.000000,504.000000"/>
+  </shape>
+  <shape id="85" label="Photonic Blade Off; t:end" startTime="114767" endTime="116766" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF000000"/>
+    <effect id="com.alightcreative.effects.energybeam" locallyApplied="true">
+      <property name="clip" type="float">
+        <kf t="0.993500" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.677000" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="color1" type="color" value="#FF1E7FF6"/>
+      <property name="color2" type="color" value="#FF156AE0"/>
+      <property name="color3" type="color" value="#FF4A90E2"/>
+      <property name="end" type="vec2" value="218.000000,-223.000000"/>
+      <property name="fstr" type="float" value="0.023000"/>
+      <property name="glowAlpha" type="float" value="0.350000"/>
+      <property name="haloAlpha" type="float" value="0.150000"/>
+      <property name="progress" type="float">
+        <kf t="0.677000" v="0.500000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.993500" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="spread" type="float" value="38.410000"/>
+      <property name="start" type="vec2" value="-195.000000,260.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="504.000000,504.000000"/>
+  </shape>
+  <shape id="86" label="Raygun; t:start" startTime="116734" endTime="117067" speed="6.003003" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="1.086519,1.077844"/>
+    </transform>
+    <fillColor value="#FF000000"/>
+    <effect id="com.alightcreative.effects.energybeam" locallyApplied="true">
+      <property name="blur" type="float" value="1.060000"/>
+      <property name="color1" type="color" value="#FFFF7777"/>
+      <property name="color2" type="color" value="#FFFF0C26"/>
+      <property name="evolution" type="float">
+        <kf t="0.000000" v="0.260000"/>
+        <kf t="0.983992" v="2.090000"/>
+      </property>
+      <property name="glowAlpha" type="float" value="0.210000"/>
+      <property name="haloAlpha" type="float" value="0.110000"/>
+      <property name="haloSpread" type="float" value="30.779999"/>
+      <property name="progress" type="float">
+        <kf t="0.000000" v="-0.500000"/>
+        <kf t="0.983992" v="1.300000"/>
+      </property>
+      <property name="randness" type="float" value="1.000000"/>
+      <property name="spread" type="float" value="42.520000"/>
+      <property name="vfreq" type="float" value="6.360000"/>
+      <property name="vphase" type="float">
+        <kf t="0.000000" v="-0.100000"/>
+        <kf t="0.717359" v="55.000000"/>
+      </property>
+      <property name="vstr" type="float" value="0.073000"/>
+    </effect>
+    <property name="size" type="vec2" value="497.000000,501.000000"/>
+  </shape>
+</scene>

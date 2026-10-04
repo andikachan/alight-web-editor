@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:16 PM
+3.6.0 (146)
+-->
+<scene title="v2-colorandlight -presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="41832" fps="30" modifiedTime="1606907816197" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg" filename="326EBC43F1897683792162BEAFF4251328AB4D89.jpeg" title="Sepia Negative; c:GSN" type="image/jpeg" size="268495" sig="326EBC43F1897683792162BEAFF4251328AB4D89" infoUpdated="1606907816188"/>
+  <media uri="am-internal:///10185111D26835262C26E4B61447FD682A862BF0.jpeg" filename="10185111D26835262C26E4B61447FD682A862BF0.JPEG" title="Monochrome; c:SMC" type="image/jpeg" size="750325" sig="10185111D26835262C26E4B61447FD682A862BF0" infoUpdated="1606907816187"/>
+  <shape id="2" label="Brighten; c:BB" startTime="0" endTime="1999" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.brightcont2" locallyApplied="true">
+      <property name="brightness" type="float" value="0.200000"/>
+      <property name="contrast" type="float" value="-0.200000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="4" label="Autumn; c:CA" startTime="1998" endTime="3997" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colortemperature" locallyApplied="true">
+      <property name="strength" type="float" value="0.970000"/>
+      <property name="temperature" type="float" value="4.580000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="9" label="Winter; c:CW" startTime="4000" endTime="5999" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colortemperature" locallyApplied="true">
+      <property name="temperature" type="float" value="17.629999"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="7" label="Cloudy; c:CC" startTime="5968" endTime="7967" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colortune2" locallyApplied="false">
+      <property name="gain" type="vec3" value="345.369049,0.218185,0.178889"/>
+      <property name="gamma" type="vec3" value="188.972351,0.136785,-0.049556"/>
+      <property name="lift" type="vec3" value="245.318176,0.665217,0.030667"/>
+      <property name="offset" type="vec3" value="13.523134,0.108337,-0.070222"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="10" label="Cappuccino; c:CCP " startTime="7969" endTime="9968" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colortune2" locallyApplied="false">
+      <property name="gain" type="vec3" value="45.595573,0.151172,0.055556"/>
+      <property name="gamma" type="vec3" value="24.958975,0.212758,-0.085333"/>
+      <property name="lift" type="vec3" value="29.744841,0.250826,0.126889"/>
+      <property name="offset" type="vec3" value="31.706823,0.117544,0.107556"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="6" label="Overcast; c:CO" startTime="9965" endTime="11964" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colortune2" locallyApplied="false">
+      <property name="gain" type="vec3" value="313.921570,0.250517,0.188222"/>
+      <property name="gamma" type="vec3" value="179.552338,0.170672,0.178000"/>
+      <property name="lift" type="vec3" value="147.473251,0.352122,0.050889"/>
+      <property name="offset" type="vec3" value="18.600834,0.291212,-0.123556"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="11" label="Monday Morning; c:CMM" startTime="11934" endTime="13933" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colorize" locallyApplied="true">
+      <property name="tint" type="vec3" value="233.025604,0.292623,0.000000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="13" label="Friday Sunset; c:CFS" startTime="13932" endTime="15931" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colorize" locallyApplied="true">
+      <property name="tint" type="vec3" value="328.615601,0.186900,0.000000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="8" label="Verdant; c:CV" startTime="15900" endTime="17899" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.colorize" locallyApplied="true">
+      <property name="tint" type="vec3" value="58.823376,0.205190,0.000000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="14" label="Crispy; c:EC" startTime="17867" endTime="19866" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.exposure" locallyApplied="true">
+      <property name="exposure" type="float" value="0.440000"/>
+      <property name="gamma" type="float" value="0.735000"/>
+      <property name="offset" type="float" value="-0.080000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="12" label="Berry Swirl; t:stretch, c:FBS" startTime="19866" endTime="21865" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.fourcolorgradient" locallyApplied="false">
+      <property name="alpha" type="float" value="0.300000"/>
+      <property name="color1" type="color">
+        <kf t="0.984492" v="#BCFF0038"/>
+        <kf t="0.000500" v="#FFDD44DD"/>
+      </property>
+      <property name="color2" type="color">
+        <kf t="0.992126" v="#4DFA9700"/>
+        <kf t="0.010500" v="#66F87400"/>
+      </property>
+      <property name="color3" type="color">
+        <kf t="0.000500" v="#FFFFA5C0"/>
+        <kf t="0.984492" v="#33FFA5C0"/>
+      </property>
+      <property name="color4" type="color">
+        <kf t="0.007874" v="#FF821346"/>
+        <kf t="0.992126" v="#CDC58C75"/>
+      </property>
+      <property name="offset1" type="vec2">
+        <kf t="0.007874" v="159.433594,-492.050781"/>
+        <kf t="0.984492" v="390.100220,-357.000000"/>
+      </property>
+      <property name="offset2" type="vec2">
+        <kf t="0.007874" v="382.402344,-442.187500"/>
+        <kf t="0.992126" v="25.000000,-553.193787"/>
+      </property>
+      <property name="offset3" type="vec2">
+        <kf t="0.007874" v="307.000000,40.000000"/>
+        <kf t="0.992126" v="500.000000,0.000000"/>
+      </property>
+      <property name="offset4" type="vec2">
+        <kf t="0.007874" v="179.596344,183.134766"/>
+        <kf t="0.992126" v="64.801598,120.000000"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="22" label="Lime Swirl; t:stretch, c:FLS" startTime="21868" endTime="23867" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.fourcolorgradient" locallyApplied="false">
+      <property name="alpha" type="float" value="0.300000"/>
+      <property name="blend" type="float" value="0.700000"/>
+      <property name="color1" type="color">
+        <kf t="0.983992" v="#FFF4B446"/>
+        <kf t="0.016008" v="#809BFFC1"/>
+      </property>
+      <property name="color2" type="color">
+        <kf t="0.016008" v="#81FDFDA1"/>
+        <kf t="0.983492" v="#FFADFA98"/>
+      </property>
+      <property name="color3" type="color">
+        <kf t="0.983492" v="#5BFFFF84"/>
+        <kf t="-0.000500" v="#C0D6FF84"/>
+      </property>
+      <property name="color4" type="color" value="#0F00FF00"/>
+      <property name="offset1" type="vec2">
+        <kf t="0.000000" v="73.000000,56.000000"/>
+        <kf t="0.983992" v="265.803772,265.000000"/>
+        <kf t="0.016008" v="72.000000,59.400101"/>
+      </property>
+      <property name="offset2" type="vec2">
+        <kf t="0.000000" v="438.000000,88.666718"/>
+        <kf t="0.983992" v="303.000031,-631.000000"/>
+      </property>
+      <property name="offset3" type="vec2">
+        <kf t="0.000000" v="112.000000,133.000000"/>
+        <kf t="0.983992" v="567.861572,35.471031"/>
+      </property>
+      <property name="offset4" type="vec2">
+        <kf t="0.000000" v="-75.666672,-109.000000"/>
+        <kf t="0.983992" v="-205.974838,45.732346"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="15" label="Hard Shadows; c:TH" startTime="23835" endTime="25834" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.threshold" locallyApplied="true">
+      <property name="blendMode" type="int" value="1"/>
+      <property name="feather" type="float" value="0.400000"/>
+      <property name="threshold" type="float" value="0.500000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="18" label="Harsh Hightlights; c:THH" startTime="25835" endTime="27834" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="534.143127,427.832275"/>
+      <scale value="1.366198,1.366198"/>
+    </transform>
+    <effect id="com.alightcreative.effects.threshold" locallyApplied="true">
+      <property name="blendMode" type="int" value="2"/>
+      <property name="feather" type="float" value="0.250000"/>
+      <property name="threshold" type="float" value="0.650000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="5" label="Red to Blue; c:RRB" startTime="27835" endTime="29834" fillType="media" fillImage="am-internal:///10185111D26835262C26E4B61447FD682A862BF0.jpeg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.replacecolor" locallyApplied="true">
+      <property name="feather" type="float" value="0.280000"/>
+      <property name="newcolor" type="color" value="#FF4032F4"/>
+      <property name="threshold" type="float" value="1.030000"/>
+    </effect>
+    <path d="M -360.0 -540.0L 360.0 -540.0L 360.0 540.0L -360.0 540.0L -360.0 -540.0Z"/>
+  </shape>
+  <shape id="16" label="Monochrome; c:SMC" startTime="29835" endTime="31834" fillType="media" fillImage="am-internal:///10185111D26835262C26E4B61447FD682A862BF0.jpeg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.satvib" locallyApplied="true">
+      <property name="saturation" type="float" value="-1.000000"/>
+    </effect>
+    <path d="M -360.0 -540.0L 360.0 -540.0L 360.0 540.0L -360.0 540.0L -360.0 -540.0Z"/>
+  </shape>
+  <shape id="17" label="Animated Split; t:split, c:RAS" startTime="31835" endTime="33834" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="533.936768,490.634033"/>
+      <scale value="1.386627,1.386627"/>
+    </transform>
+    <effect id="com.alightcreative.effects.rgbsep" locallyApplied="true">
+      <property name="angle" type="float" value="30.000000"/>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.259500" v="0.350000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.992500" v="0.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+        <kf t="0.742500" v="0.350000"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="20" label="Retro Game; c:PRG" startTime="33834" endTime="35833" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="533.936768,490.634033"/>
+      <scale value="1.386627,1.386627"/>
+    </transform>
+    <effect id="com.alightcreative.effects.palettemap" locallyApplied="true">
+      <property name="alpha" type="float" value="0.400000"/>
+      <property name="palette" type="int" value="4"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="25" label="Pop Art; c:PPA" startTime="35834" endTime="37833" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="533.936768,490.634033"/>
+      <scale value="1.386627,1.386627"/>
+    </transform>
+    <effect id="com.alightcreative.effects.palettemap" locallyApplied="true">
+      <property name="alpha" type="float" value="0.900000"/>
+      <property name="color1" type="color" value="#FF141420"/>
+      <property name="color2" type="color" value="#FFFF4473"/>
+      <property name="color3" type="color" value="#FF5C5CC9"/>
+      <property name="color4" type="color" value="#FFFFF850"/>
+      <property name="palette" type="int" value="7"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="21" label="X-Ray; c:GX" startTime="37835" endTime="39834" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="533.936768,490.634033"/>
+      <scale value="1.386627,1.386627"/>
+    </transform>
+    <effect id="com.alightcreative.gradientmap" locallyApplied="false">
+      <property name="color1" type="color" value="#FFFFFFFF"/>
+      <property name="color2" type="color" value="#FF000000"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+  <shape id="24" label="Sepia Negative; c:GSN" startTime="39833" endTime="41832" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="533.936768,490.634033"/>
+      <scale value="1.386627,1.386627"/>
+    </transform>
+    <effect id="com.alightcreative.gradientmap" locallyApplied="false">
+      <property name="color1" type="color" value="#FFFFF0D7"/>
+      <property name="color2" type="color" value="#FF4C1115"/>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+</scene>

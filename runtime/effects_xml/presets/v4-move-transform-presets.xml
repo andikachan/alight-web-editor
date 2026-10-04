@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:17 PM
+3.6.0 (146)
+-->
+<scene title="v4 move-transform-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="72295" fps="30" modifiedTime="1606907860082" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///2ABD87D81AB79ED66A53B0C5BA21F88255C6F92C.jpg" filename="2ABD87D81AB79ED66A53B0C5BA21F88255C6F92C.JPG" title="Seamless Tiling; c:OST" type="image/jpeg" size="279559" sig="2ABD87D81AB79ED66A53B0C5BA21F88255C6F92C"/>
+  <shape id="5" label="Transition Out: Fast; t:end, c:ASFOT" startTime="0" endTime="1999" fillType="color" s=".plus">
+    <transform>
+      <location value="857.500000,268.500000"/>
+    </transform>
+    <fillColor value="#FF3D4CF5"/>
+    <effect id="com.alightcreative.effects.shake2" locallyApplied="true">
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="mag" type="float">
+        <kf t="0.993500" v="500.000000" e="cubicBezier 0.6618358 0.0 0.62198067 0.16363639"/>
+        <kf t="0.677000" v="0.000000"/>
+      </property>
+      <property name="seed" type="float" value="0.080000"/>
+      <property name="slack" type="float" value="1.000000"/>
+      <property name="speed" type="float" value="200.000000"/>
+    </effect>
+  </shape>
+  <shape id="4" label="Transition In: Fast; t:start, c:ASFIT" startTime="2033" endTime="4032" fillType="color" s=".plus">
+    <transform>
+      <location value="277.500000,257.500000"/>
+    </transform>
+    <fillColor value="#FFFAE965"/>
+    <effect id="com.alightcreative.effects.shake2" locallyApplied="true">
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="mag" type="float">
+        <kf t="0.000000" v="500.000000"/>
+        <kf t="0.343500" v="0.000000" e="cubicBezier 0.3780193 0.8363636 0.33816424 1.0"/>
+      </property>
+      <property name="seed" type="float" value="0.080000"/>
+      <property name="slack" type="float" value="1.000000"/>
+      <property name="speed" type="float" value="200.000000"/>
+    </effect>
+  </shape>
+  <shape id="3" label="Transition In; t:start, c:AS" startTime="4065" endTime="6064" fillType="color" s=".plus">
+    <transform>
+      <location value="339.000000,823.500000"/>
+    </transform>
+    <fillColor value="#FF56FAA0"/>
+    <effect id="com.alightcreative.effects.shake2" locallyApplied="true">
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="mag" type="float">
+        <kf t="0.000000" v="150.000000"/>
+        <kf t="0.343500" v="0.000000"/>
+      </property>
+      <property name="seed" type="float" value="0.080000"/>
+      <property name="slack" type="float" value="1.000000"/>
+      <property name="speed" type="float" value="4.000000"/>
+    </effect>
+  </shape>
+  <shape id="44" label="Transition Out; t:end, c:AS" startTime="4065" endTime="6064" fillType="color" s=".plus">
+    <transform>
+      <location value="736.000000,333.000000"/>
+    </transform>
+    <fillColor value="#FF3D4CF5"/>
+    <effect id="com.alightcreative.effects.shake2" locallyApplied="true">
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="mag" type="float">
+        <kf t="0.994500" v="150.000000"/>
+        <kf t="0.644500" v="0.000000"/>
+      </property>
+      <property name="seed" type="float" value="0.080000"/>
+      <property name="slack" type="float" value="1.000000"/>
+      <property name="speed" type="float" value="4.000000"/>
+    </effect>
+  </shape>
+  <shape id="6" label="Horizontal; c:ASHRS" startTime="6067" endTime="8066" fillType="color" s=".plus">
+    <transform>
+      <location value="277.500000,870.500000"/>
+    </transform>
+    <fillColor value="#FFFF4444"/>
+    <effect id="com.alightcreative.effects.shake2" locallyApplied="true">
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="mag" type="float" value="100.000000"/>
+      <property name="seed" type="float" value="0.080000"/>
+      <property name="slack" type="float" value="0.000000"/>
+      <property name="speed" type="float" value="200.000000"/>
+    </effect>
+  </shape>
+  <shape id="7" label="Vertical; c:ASHRS" startTime="8065" endTime="10064" fillType="color" s=".plus">
+    <transform>
+      <location value="832.500000,870.500000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.shake2" locallyApplied="true">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="mag" type="float" value="100.000000"/>
+      <property name="seed" type="float" value="0.080000"/>
+      <property name="slack" type="float" value="0.000000"/>
+      <property name="speed" type="float" value="200.000000"/>
+    </effect>
+  </shape>
+  <shape id="9" label="Pie 1" startTime="10065" endTime="12064" fillType="color" s=".pie">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFB48E6A"/>
+    <property name="radius" type="float" value="369.199677"/>
+  </shape>
+  <shape id="8" label="Start to End; t:stretch, c:MAPSE" startTime="10066" endTime="12065" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF07AA61"/>
+    <effect id="com.alightcreative.effect.movealongpath3" locallyApplied="false">
+      <property name="progress" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="14" label="Seamless Tiling; c:OST" startTime="12065" endTime="14064" fillType="media" fillImage="am-internal:///2ABD87D81AB79ED66A53B0C5BA21F88255C6F92C.jpg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.offset" locallyApplied="true">
+      <property name="feather" type="float" value="0.250000"/>
+      <property name="offset" type="vec2" value="500.000000,500.000000"/>
+    </effect>
+    <path d="M -482.5131 -540.0L 482.5131 -540.0L 482.5131 540.0L -482.5131 540.0L -482.5131 -540.0Z"/>
+  </shape>
+  <shape id="10" label="Cycle Right; t:stretch, c:OSR" startTime="14065" endTime="16064" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF7441D3"/>
+    <effect id="com.alightcreative.effects.offset" locallyApplied="true">
+      <property name="offset" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="1000.000000,0.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="42" label="Cycle Left; t:stretch, c:OSL" startTime="16065" endTime="18064" fillType="color" s=".plus">
+    <transform>
+      <location value="840.500000,339.000000"/>
+    </transform>
+    <fillColor value="#FFFAE965"/>
+    <effect id="com.alightcreative.effects.offset" locallyApplied="true">
+      <property name="offset" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="-1000.000000,0.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="11" label="Cycle Down; t:stretch, c:OSD" startTime="18065" endTime="20064" fillType="color" s=".plus">
+    <transform>
+      <location value="271.500000,316.000000"/>
+    </transform>
+    <fillColor value="#FF00CDD7"/>
+    <effect id="com.alightcreative.effects.offset" locallyApplied="true">
+      <property name="offset" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,1000.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="43" label="Cycle Up; t:stretch, c:OSU" startTime="20065" endTime="22064" fillType="color" s=".plus">
+    <transform>
+      <location value="290.500000,776.000000"/>
+    </transform>
+    <fillColor value="#FFF4B446"/>
+    <effect id="com.alightcreative.effects.offset" locallyApplied="true">
+      <property name="offset" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="0.000000,-1001.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="17" label="Spiro; t:stretch, c:OC" startTime="26765" endTime="28764" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,570.000000"/>
+    </transform>
+    <fillColor value="#FFFAE965"/>
+    <effect id="com.alightcreative.effects.oscillate3" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="0.001001" v="180.000000"/>
+        <kf t="0.967984" v="0.000000"/>
+      </property>
+      <property name="mag" type="float">
+        <kf t="0.001001" v="1.000000"/>
+        <kf t="0.084542" v="199.599991"/>
+        <kf t="0.917959" v="199.599991"/>
+        <kf t="0.984993" v="1.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="26" label="Vibrate Vertical; c:OVV" startTime="29098" endTime="31097" fillType="color" s=".plus">
+    <transform>
+      <location value="296.000000,820.500000"/>
+    </transform>
+    <fillColor value="#FF3D4CF5"/>
+    <effect id="com.alightcreative.effects.oscillate3" locallyApplied="true">
+      <property name="angle" type="float" value="90.000000"/>
+      <property name="freq" type="float" value="8.000000"/>
+      <property name="mag" type="float" value="15.000000"/>
+    </effect>
+  </shape>
+  <shape id="27" label="Vibrate Horizontal; c:OHV" startTime="31431" endTime="33430" fillType="color" s=".plus">
+    <transform>
+      <location value="836.000000,838.500000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.oscillate3" locallyApplied="true">
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="freq" type="float" value="8.000000"/>
+      <property name="mag" type="float" value="15.000000"/>
+    </effect>
+  </shape>
+  <shape id="21" label="Shrink; c:PSPS" startTime="38132" endTime="40131" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFD2C7F1"/>
+    <effect id="com.alightcreative.effects.pulsate2" locallyApplied="true">
+      <property name="maxsize" type="float" value="1.000000"/>
+      <property name="minsize" type="float" value="0.000000"/>
+    </effect>
+  </shape>
+  <shape id="22" label="Grow; c:PSPG" startTime="40132" endTime="42131" fillType="color" s=".plus">
+    <transform>
+      <location value="322.000000,313.500000"/>
+    </transform>
+    <fillColor value="#FFF4B446"/>
+    <effect id="com.alightcreative.effects.pulsate2" locallyApplied="true">
+      <property name="maxsize" type="float" value="2.000000"/>
+      <property name="minsize" type="float" value="1.000000"/>
+    </effect>
+  </shape>
+  <shape id="23" label="Decaying Pulse; t:end, c:PSDP" startTime="42132" endTime="44131" fillType="color" s=".plus">
+    <transform>
+      <location value="857.000000,304.000000"/>
+    </transform>
+    <fillColor value="#FF0051FF"/>
+    <effect id="com.alightcreative.effects.pulsate2" locallyApplied="true">
+      <property name="maxsize" type="float">
+        <kf t="0.001001" v="1.500000"/>
+        <kf t="0.984492" v="1.000000"/>
+      </property>
+      <property name="minsize" type="float">
+        <kf t="0.001001" v="0.500000"/>
+        <kf t="0.984492" v="1.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="25" label="Handheld; t:extend, c:RDHS" startTime="46196" endTime="48195" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFFF4444"/>
+    <effect id="com.alightcreative.effects.randomdisplace" locallyApplied="true">
+      <property name="evolution" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="3.000000"/>
+      </property>
+      <property name="mag" type="float" value="15.000000"/>
+      <property name="scatter" type="float" value="0.750000"/>
+    </effect>
+  </shape>
+  <shape id="29" label="Too Much Caffeine; t:extend, c:RDTMC" startTime="50194" endTime="52193" fillType="color" s=".plus">
+    <transform>
+      <location value="810.000000,839.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.randomdisplace" locallyApplied="true">
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.993500" v="4.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="34" label="Reverse; c:SCS" startTime="60229" endTime="62228" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF44C6C9"/>
+    <effect id="com.alightcreative.effects.spin" locallyApplied="true">
+      <property name="rpm" type="float" value="-60.000000"/>
+    </effect>
+  </shape>
+  <shape id="35" label="Speed Up; t:start, c:SRI" startTime="62261" endTime="64260" fillType="color" s=".plus">
+    <transform>
+      <location value="840.500000,829.500000"/>
+    </transform>
+    <fillColor value="#FF44C6C9"/>
+    <effect id="com.alightcreative.effects.spin" locallyApplied="true">
+      <property name="rpm" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.991872" v="60.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="36" label="Slow Down; t:end, c:SRD" startTime="64262" endTime="66261" fillType="color" s=".plus">
+    <transform>
+      <location value="253.500000,841.000000"/>
+    </transform>
+    <fillColor value="#FF44C6C9"/>
+    <effect id="com.alightcreative.effects.spin" locallyApplied="true">
+      <property name="rpm" type="float">
+        <kf t="0.993500" v="-2.000000"/>
+        <kf t="0.008495" v="60.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="37" label="Dizzy; t:extend, c:SAD" startTime="66296" endTime="68295" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFA25744"/>
+    <effect id="com.alightcreative.effects.stretch2" locallyApplied="true">
+      <property name="angle" type="float">
+        <kf t="-0.014507" v="0.000000"/>
+        <kf t="0.985993" v="360.000000"/>
+      </property>
+      <property name="scale" type="float" value="2.000000"/>
+    </effect>
+  </shape>
+  <shape id="39" label="Speed Up; t:start, c:SSU" startTime="68296" endTime="70295" fillType="color" s=".plus">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFD5949A"/>
+    <effect id="com.alightcreative.effects.swing2" locallyApplied="true">
+      <property name="a1" type="float">
+        <kf t="0.002001" v="0.000000"/>
+        <kf t="0.335668" v="-30.000000"/>
+      </property>
+      <property name="a2" type="float">
+        <kf t="0.335668" v="30.000000"/>
+        <kf t="0.002001" v="0.000000"/>
+      </property>
+    </effect>
+  </shape>
+  <shape id="41" label="Slow Down; t:end, c:SSD" startTime="70296" endTime="72295" fillType="color" s=".plus">
+    <transform>
+      <location value="832.000000,291.000000"/>
+    </transform>
+    <fillColor value="#FFD5949A"/>
+    <effect id="com.alightcreative.effects.swing2" locallyApplied="true">
+      <property name="a1" type="float">
+        <kf t="0.669335" v="-30.000000"/>
+        <kf t="0.985993" v="0.000000"/>
+      </property>
+      <property name="a2" type="float">
+        <kf t="0.669335" v="30.000000"/>
+        <kf t="0.985993" v="0.000000"/>
+      </property>
+    </effect>
+  </shape>
+</scene>

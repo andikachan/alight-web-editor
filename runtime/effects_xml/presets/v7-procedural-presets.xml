@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-07 07:47 AM
+3.6.0 (147)
+-->
+<scene title="v7-procedural-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="67998" fps="30" modifiedTime="1607294861334" amver="147" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///8A607FDFEA6830762FD2B5BAE5066AE215853CCD.jpg" filename="8A607FDFEA6830762FD2B5BAE5066AE215853CCD.jpg" title="Hex Mosaic; c:HAHM" type="image/jpeg" size="9239217" sig="8A607FDFEA6830762FD2B5BAE5066AE215853CCD" infoUpdated="1607063764602"/>
+  <shape id="2" label="Horizontal Lines; c:BNHL" startTime="0" endTime="1999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.blocknoise2" locallyApplied="false">
+      <property name="stretch" type="vec2" value="10.000000,0.500000"/>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="3" label="Vertical Lines; c:BNVL" startTime="2000" endTime="3999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.blocknoise2" locallyApplied="false">
+      <property name="position" type="vec2" value="0.000000,800.000000"/>
+      <property name="stretch" type="vec2" value="0.490000,10.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="4" label="Punch Out; c:CPO" startTime="4000" endTime="5999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.checker2" locallyApplied="false">
+      <property name="punchout" type="bool" value="true"/>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="38" label="Diamond; c:CD" startTime="6000" endTime="7999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.checker2" locallyApplied="false">
+      <property name="angle" type="float" value="45.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="5" label="Flow Right; t:extend, c:CFR" startTime="8000" endTime="9999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF1ED91E"/>
+    <effect id="com.alightcreative.effects.clouds3" locallyApplied="false">
+      <property name="parr" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="300.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="26" label="Flow Left; t:extend, c:CFL" startTime="10000" endTime="11999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF1ED91E"/>
+    <effect id="com.alightcreative.effects.clouds3" locallyApplied="false">
+      <property name="parr" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="-300.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="6" label="Faint Static; t:extend, c:DFS" startTime="12000" endTime="13999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF000000"/>
+    <effect id="com.alightcreative.effects.dots2" locallyApplied="true">
+      <property name="blendMode" type="int" value="2"/>
+      <property name="density" type="float" value="3.000000"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="radius" type="float" value="0.035000"/>
+      <property name="scale" type="float" value="0.020000"/>
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="679.905701,679.905701"/>
+  </shape>
+  <shape id="7" label="Periodic Fireflies; t:extend, c:DPF" startTime="14000" endTime="15999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF333750"/>
+    <effect id="com.alightcreative.effects.dots2" locallyApplied="false">
+      <property name="blendMode" type="int" value="2"/>
+      <property name="color" type="color" value="#FF39E339"/>
+      <property name="color2" type="color" value="#FFE6D974"/>
+      <property name="density" type="float" value="1.000000"/>
+      <property name="feather" type="float" value="1.000000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+      <property name="radius" type="float" value="0.100000"/>
+      <property name="seed" type="float" value="0.180000"/>
+    </effect>
+    <property name="size" type="vec2" value="679.905701,679.905701"/>
+  </shape>
+  <shape id="8" label="Smooth Ripples; t:extend, c:FRSR" startTime="16000" endTime="17999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.ridges2" locallyApplied="false">
+      <property name="evolution" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+      <property name="octaves" type="float" value="2.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="9" label="Random Energy; t:extend, c:FRRE" startTime="18000" endTime="19999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFC235FF"/>
+    <effect id="com.alightcreative.effects.ridges2" locallyApplied="false">
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="720.660400,720.660400"/>
+  </shape>
+  <shape id="11" label="Transition Out: Grid Wipe; t:stretch, c:GGWT" startTime="20001" endTime="22000" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+      <scale value="1.000000,-1.000000"/>
+    </transform>
+    <fillColor value="#FFD89F58"/>
+    <effect id="com.alightcreative.effects.grid2" locallyApplied="false">
+      <property name="punchout" type="bool" value="true"/>
+      <property name="screenSpace" type="bool" value="true"/>
+      <property name="spacing" type="float" value="0.060000"/>
+      <property name="width" type="float">
+        <kf t="-0.000500" v="0.000000"/>
+        <kf t="0.983492" v="0.060000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="1478.019043,618.773560"/>
+  </shape>
+  <shape id="12" label="Transition Out: Hex Wipe; t:stretch, c:HAHWT" startTime="22000" endTime="23999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFEDD446"/>
+    <effect id="com.alightcreative.effects.hexarray" locallyApplied="false">
+      <property name="blendMode" type="int" value="4"/>
+      <property name="colorMode" type="int" value="0"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="lineWidth" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="605.188721,605.188660"/>
+  </shape>
+  <shape id="33" label="Hex Mosaic; c:HAHM" startTime="24000" endTime="25999" fillType="media" fillImage="am-internal:///8A607FDFEA6830762FD2B5BAE5066AE215853CCD.jpg" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFEDD446"/>
+    <effect id="com.alightcreative.effects.hexarray" locallyApplied="false">
+      <property name="colorMode" type="int" value="0"/>
+      <property name="feather" type="float" value="0.000000"/>
+      <property name="lineWidth" type="float" value="0.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="605.188721,605.188660"/>
+  </shape>
+  <shape id="34" label="Cubes; c:HAC" startTime="25999" endTime="27998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFEDD446"/>
+    <effect id="com.alightcreative.effects.hexarray" locallyApplied="false">
+      <property name="color1" type="color" value="#FF3B3F54"/>
+      <property name="color2" type="color" value="#FF818390"/>
+      <property name="color3" type="color" value="#FFFFFFFF"/>
+      <property name="colorMode" type="int" value="4"/>
+      <property name="lineWidth" type="float" value="0.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="605.188721,605.188660"/>
+  </shape>
+  <shape id="13" label="Flow; t:extend, c:IF" startTime="27999" endTime="29998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFEDD446"/>
+    <effect id="com.alightcreative.effects.irridescence2" locallyApplied="false">
+      <property name="POS" type="vec2">
+        <kf t="0.000000" v="0.000000,0.000000"/>
+        <kf t="0.983992" v="150.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="605.188721,605.188660"/>
+  </shape>
+  <shape id="14" label="Vertical Slide; t:stretch, c:LFVS" startTime="29999" endTime="31998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF6EF8A3"/>
+    <effect id="com.alightcreative.effects.lensflare" locallyApplied="false">
+      <property name="position" type="vec2">
+        <kf t="0.000000" v="250.000000,-250.000000"/>
+        <kf t="0.983992" v="250.000000,249.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="656.132019,656.132019"/>
+  </shape>
+  <shape id="15" label="Energy Arc; t:extend, c:LEA" startTime="31999" endTime="33998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lightning" locallyApplied="false">
+      <property name="blendMode" type="int" value="0"/>
+      <property name="color1" type="color" value="#FFFFFFFF"/>
+      <property name="color2" type="color" value="#FF1ED91E"/>
+      <property name="color3" type="color" value="#FF1ED91E"/>
+      <property name="count" type="float" value="1.000000"/>
+      <property name="end" type="vec2" value="400.000000,0.000000"/>
+      <property name="glow" type="float" value="0.500000"/>
+      <property name="intensity" type="float" value="2.500000"/>
+      <property name="limit" type="float" value="1.000000"/>
+      <property name="seed" type="float">
+        <kf t="0.000000" v="0.350000"/>
+        <kf t="0.983992" v="3.290000"/>
+      </property>
+      <property name="smooth" type="bool" value="true"/>
+      <property name="start" type="vec2" value="-400.000000,0.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="714.716980,714.716980"/>
+  </shape>
+  <shape id="16" label="Harsh Static; c:NHS" startTime="33999" endTime="35998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.noise3" locallyApplied="false">
+      <property name="amount" type="float" value="1.000000"/>
+      <property name="extremes" type="bool" value="true"/>
+      <property name="mono" type="bool" value="true"/>
+      <property name="overshoot" type="float" value="1.995000"/>
+    </effect>
+    <property name="size" type="vec2" value="714.716980,714.716980"/>
+  </shape>
+  <shape id="17" label="Wiggle In; t:extend, c:RRWI" startTime="35999" endTime="37998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF4BD04E"/>
+    <effect id="com.alightcreative.effects.radialrays" locallyApplied="false">
+      <property name="bendPhase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="10.000000"/>
+      </property>
+      <property name="bendStrength" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.250125" v="0.100000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.750375" v="0.100000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.500250" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="pointCount" type="float" value="12.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="714.716980,714.716980"/>
+  </shape>
+  <shape id="27" label="Wiggle Out; t:extend, c:RRWO" startTime="37999" endTime="39998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF4BD04E"/>
+    <effect id="com.alightcreative.effects.radialrays" locallyApplied="false">
+      <property name="bendPhase" type="float">
+        <kf t="0.000000" v="10.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+      </property>
+      <property name="bendStrength" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.250125" v="0.100000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.750375" v="0.100000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.500250" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="pointCount" type="float" value="12.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="714.716980,714.716980"/>
+  </shape>
+  <shape id="18" label="Flow Right; t:extend, c:RFR" startTime="39999" endTime="41998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFF4B446"/>
+    <effect id="com.alightcreative.effects.ribbon" locallyApplied="false">
+      <property name="amplitude" type="float" value="0.193000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="3.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="714.716980,714.716980"/>
+  </shape>
+  <shape id="35" label="Christmas Ribbon; t:extend, c:RCR" startTime="41999" endTime="43998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.ribbon" locallyApplied="false">
+      <property name="amplitude" type="float" value="0.193000"/>
+      <property name="color" type="color" value="#FFFF4444"/>
+      <property name="phase" type="float" value="1.000000"/>
+      <property name="smoothing" type="float" value="0.000000"/>
+      <property name="tint" type="float" value="1.000000"/>
+      <property name="tintColor" type="color" value="#FF1ED91E"/>
+      <property name="width" type="float" value="0.750000"/>
+    </effect>
+    <property name="size" type="vec2" value="714.716980,714.716980"/>
+  </shape>
+  <shape id="19" label="Fly Forward; t:extend, c:SSFF" startTime="43999" endTime="45998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF000000"/>
+    <effect id="com.alightcreative.effects.simplestars2" locallyApplied="false">
+      <property name="starParallax" type="vec3">
+        <kf t="0.000500" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.984492" v="0.000000,0.000000,1000.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="592.452698,592.452698"/>
+  </shape>
+  <shape id="20" label="Fly Right; t:extend, c:SSFR" startTime="45999" endTime="47998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF000000"/>
+    <effect id="com.alightcreative.effects.simplestars2" locallyApplied="false">
+      <property name="starParallax" type="vec3">
+        <kf t="0.000500" v="0.000000,0.000000,0.000000"/>
+        <kf t="0.984492" v="-700.000000,0.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="592.452698,592.452698"/>
+  </shape>
+  <shape id="21" label="Fly Right; t:extend, c:SFR" startTime="47999" endTime="49998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF00FFA8"/>
+    <effect id="com.alightcreative.effects.starfield3" locallyApplied="false">
+      <property name="offset" type="vec2">
+        <kf t="0.000500" v="0.000000,0.000000"/>
+        <kf t="0.984492" v="-150.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="555.094360,555.094421"/>
+  </shape>
+  <shape id="23" label="Transition In: Wipe; t:start, c:SWIT" startTime="49999" endTime="51998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF40CB77"/>
+    <effect id="com.alightcreative.effects.stripes" locallyApplied="false">
+      <property name="punchout" type="bool" value="true"/>
+      <property name="smoothing" type="float" value="0.000000"/>
+      <property name="width" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.344000" v="0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="640.000061,640.000000"/>
+  </shape>
+  <shape id="29" label="Scanlines; t:extend, c:SS" startTime="51999" endTime="53998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF40CB77"/>
+    <effect id="com.alightcreative.effects.stripes" locallyApplied="false">
+      <property name="amount" type="float" value="109.300003"/>
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="color" type="color" value="#FFBEBEBE"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+      </property>
+      <property name="punchout" type="bool" value="true"/>
+      <property name="smoothing" type="float" value="0.500000"/>
+      <property name="width" type="float" value="1.000000"/>
+    </effect>
+    <property name="size" type="vec2" value="640.000061,640.000000"/>
+  </shape>
+  <shape id="24" label="Flow Left; t:extend, c:TFL" startTime="53999" endTime="55998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF5A4EE0"/>
+    <effect id="com.alightcreative.effects.turbulence2" locallyApplied="false">
+      <property name="parr" type="vec2">
+        <kf t="0.000500" v="0.000000,0.000000"/>
+        <kf t="0.984492" v="-75.000000,0.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="592.452759,592.453003"/>
+  </shape>
+  <shape id="30" label="Flow Down; t:extend, c:TFD" startTime="55999" endTime="57998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF5A4EE0"/>
+    <effect id="com.alightcreative.effects.turbulence2" locallyApplied="false">
+      <property name="parr" type="vec2">
+        <kf t="0.000500" v="0.000000,0.000000"/>
+        <kf t="0.984492" v="0.000000,75.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="592.452759,592.453003"/>
+  </shape>
+  <shape id="39" label="Film Scratches; t:extend, c:TFC" startTime="57999" endTime="59998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF5A4EE0"/>
+    <effect id="com.alightcreative.effects.turbulence2" locallyApplied="false">
+      <property name="bias" type="float" value="0.820000"/>
+      <property name="blendMode" type="int" value="1"/>
+      <property name="evolution" type="float">
+        <kf t="0.000500" v="0.000000"/>
+        <kf t="0.984492" v="0.250000"/>
+      </property>
+      <property name="intensity" type="float" value="1.180000"/>
+      <property name="offs" type="vec2">
+        <kf t="0.000500" v="0.000000,0.000000"/>
+        <kf t="0.984492" v="0.000000,6000.000000"/>
+      </property>
+      <property name="stretch" type="vec2" value="5.410000,0.030000"/>
+    </effect>
+    <property name="size" type="vec2" value="592.452759,592.453003"/>
+  </shape>
+  <shape id="43" label="Film Dust; t:extend, c:TFP" startTime="59999" endTime="61933" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF45EBBE"/>
+    <effect id="com.alightcreative.effects.turbulence2" locallyApplied="false">
+      <property name="bias" type="float" value="-0.920000"/>
+      <property name="blendMode" type="int" value="1"/>
+      <property name="color1" type="color" value="#FFFFFFFF"/>
+      <property name="color2" type="color" value="#FF000000"/>
+      <property name="evolution" type="float" value="-0.010000"/>
+      <property name="intensity" type="float" value="1.500000"/>
+      <property name="scale" type="float" value="0.050000"/>
+      <property name="seed" type="float">
+        <kf t="0.000517" v="0.000000"/>
+        <kf t="0.982937" v="5.000000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="592.452759,592.453003"/>
+  </shape>
+  <shape id="25" label="Periodic; t:extend, c:VCP" startTime="64000" endTime="65999" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFE4EDA8"/>
+    <effect id="com.alightcreative.effects.voronoi2" locallyApplied="false">
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="1.000000"/>
+      </property>
+      <property name="scale" type="float" value="0.070000"/>
+    </effect>
+    <property name="size" type="vec2" value="722.358521,722.358398"/>
+  </shape>
+  <shape id="37" label="Random; t:extend, c:VCR" startTime="65999" endTime="67998" fillType="color" s=".rect">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFE4EDA8"/>
+    <effect id="com.alightcreative.effects.voronoi2" locallyApplied="false">
+      <property name="scale" type="float" value="0.070000"/>
+      <property name="seed" type="float">
+        <kf t="0.000500" v="0.000000"/>
+        <kf t="0.984492" v="0.200000"/>
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="722.358521,722.358398"/>
+  </shape>
+</scene>

@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Ngehayal Player</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231fc8ee'/%3E%3Cpolygon points='24,16 48,32 24,48' fill='%23000'/%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --bg:       #111113;
+  --card:     #1c1c1f;
+  --card2:    #252528;
+  --line:     #2e2e33;
+  --accent:   #6c7bff;
+  --accent-s: rgba(108,123,255,0.18);
+  --on:       #22c55e;
+  --warn:     #f59e0b;
+  --danger:   #ef4444;
+  --txt:      #e4e4e7;
+  --txt2:     #71717a;
+  --txt3:     #3f3f46;
+  --r:        10px;
+  --r-sm:     7px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0;
+  -webkit-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 16px 14px 48px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+
+#progWrap{
+  touch-action:none;
+  user-select:none;
+}
+
+#audioEl {
+  display: none;
+}
+
+video {
+  -webkit-touch-out: none;
+  user-select: none;
+}
+/* TOPBAR */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 0 10px;
+}
+.logo { font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; color: #fff; }
+.logo span { color: var(--accent); }
+.hold-badge {
+  display: none; align-items: center; gap: 6px;
+  background: var(--warn); color: #000;
+  font-size: 11px; font-weight: 600;
+  padding: 4px 10px; border-radius: 99px;
+  animation: blink 0.7s ease-in-out infinite alternate;
+}
+.hold-badge.show { display: flex; }
+@keyframes blink { from { opacity:1 } to { opacity:0.55 } }
+
+/* CARD */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; position: relative; }
+.card-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.card-row:last-child { border-bottom: none; }
+
+/* UPLOAD */
+.upload {
+  position: relative; display: flex; align-items: center; gap: 12px;
+  padding: 14px; cursor: pointer; transition: background 0.15s;
+}
+.upload:hover { background: var(--card2); }
+.upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.upload-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--accent-s); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.upload-text strong { display: block; font-size: 13px; font-weight: 600; }
+.upload-text span { font-size: 11px; color: var(--txt2); }
+
+audio, video { width: 100%; display: none; background: #000; }
+
+#syncCvs {
+  position: absolute;
+  display: none;
+  background: #000;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* SPEED DISPLAY */
+.speed-num { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #fff; letter-spacing: -1.5px; line-height: 1; }
+.speed-num small { font-size: 14px; color: var(--txt2); font-weight: 400; }
+.speed-exp { font-size: 11px; color: var(--txt2); margin-top: 3px; font-family: 'JetBrains Mono', monospace; }
+
+/* BIG PLAY BUTTON */
+.big-play-wrap{
+  padding:12px 14px;
+}
+
+.big-play-btn{
+  width:100%;
+  height:52px;
+
+  border:none;
+  border-radius:var(--r);
+
+  background:var(--accent);
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  transition:
+    transform .12s,
+    filter .15s,
+    opacity .15s;
+
+  box-shadow:
+    0 8px 24px rgba(108,123,255,0.22);
+}
+
+.big-play-btn:active{
+  transform:scale(.985);
+  filter:brightness(.93);
+}
+
+.big-play-btn svg{
+  width:24px;
+  height:24px;
+  fill:white;
+}
+
+.big-play-btn.pause svg{
+  width:22px;
+  height:22px;
+}
+
+/* SLIDER */
+.slider-wrap { padding: 4px 14px 12px; }
+input[type=range].speed-slider, input[type=range].dsp-slider {
+  -webkit-appearance: none; width: 100%; height: 36px;
+  background: transparent; outline: none; cursor: pointer;
+}
+input[type=range].speed-slider::-webkit-slider-runnable-track, input[type=range].dsp-slider::-webkit-slider-runnable-track {
+  height: 4px; background: var(--card2); border-radius: 2px;
+}
+input[type=range].speed-slider::-webkit-slider-thumb, input[type=range].dsp-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--accent);
+  border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--accent);
+  margin-top: -8px; transition: box-shadow 0.15s;
+}
+input[type=range].speed-slider:active::-webkit-slider-thumb, input[type=range].dsp-slider:active::-webkit-slider-thumb { box-shadow: 0 0 0 6px var(--accent-s); }
+
+/* STEP BUTTONS */
+.step-btn {
+  width: 36px; height: 36px; background: var(--card2); border: 1px solid var(--line);
+  border-radius: var(--r-sm); color: var(--txt); font-size: 20px; font-weight: 300;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.12s;
+}
+.step-btn:active { background: var(--accent); color: #fff; }
+
+/* PRESETS */
+.presets { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; padding: 0 14px 14px; }
+.preset {
+  height: 34px; background: var(--card2); border: 1px solid var(--line);
+  border-radius: var(--r-sm); color: var(--txt2);
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+  cursor: pointer; transition: all 0.12s;
+}
+.preset:active { transform: scale(0.92); }
+.preset.active { background: var(--accent-s); border-color: var(--accent); color: var(--accent); }
+
+/* PROGRESS */
+.prog-wrap { position: relative; height: 48px; background: var(--card2); cursor: pointer; touch-action: none; }
+.prog-fill { height: 100%; background: var(--accent); opacity: 0.2; width: 0%; pointer-events: none; }
+.prog-head {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: var(--accent);
+  pointer-events: none; transition: left 0.05s linear;
+}
+.prog-head::after {
+  content:''; position: absolute; top:50%; left:50%;
+  transform: translate(-50%,-50%);
+  width: 10px; height: 10px; background: var(--accent);
+  border-radius: 50%; border: 2px solid var(--bg);
+}
+
+/* TRIM */
+.trim-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 6px; }
+.trim-label { font-size: 11px; font-weight: 500; color: var(--txt2); letter-spacing: 0.3px; }
+.trim-readout { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+.trim-track { position: relative; height: 32px; background: var(--card2); touch-action: none; cursor: pointer; }
+.trim-fill { position: absolute; top:0; height:100%; background: var(--accent-s); border-left: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+.trim-handle {
+  position: absolute; top:0; height:100%; width: 20px;
+  display: flex; align-items: center; justify-content: center;
+  transform: translateX(-50%); cursor: ew-resize; z-index: 2;
+}
+.trim-handle::before { content:''; width:3px; height:18px; background:#fff; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,0.4); }
+
+/* GRAPH */
+.graph-hdr { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--line); }
+.graph-meta strong { font-size:13px; font-weight:600; }
+.graph-meta span { font-size:11px; color:var(--txt2); }
+
+.tog { position:relative; width:44px; height:26px; }
+.tog input { opacity:0; width:0; height:0; }
+.tog-track { position:absolute; inset:0; background:var(--card2); border:1.5px solid var(--line); border-radius:99px; cursor:pointer; transition:background 0.2s,border-color 0.2s; }
+.tog input:checked + .tog-track { background:var(--on); border-color:var(--on); }
+.tog-dot { position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; pointer-events:none; transition:left 0.2s; box-shadow:0 1px 4px rgba(0,0,0,0.4); }
+.tog input:checked ~ .tog-dot { left:21px; }
+
+canvas { display:block; width:100%; height:180px; background:#0c0c10; touch-action:none; cursor:crosshair; }
+canvas.off { cursor:not-allowed; opacity:0.35; }
+
+.graph-ftr { display:flex; align-items:center; gap:10px; padding:10px 14px; border-top:1px solid var(--line); }
+.smooth-label { font-size:11px; color:var(--txt2); white-space:nowrap; }
+.smooth-label b { color:var(--txt); font-family:'JetBrains Mono',monospace; }
+input[type=range].smooth-range { -webkit-appearance:none; flex:1; height:4px; background:var(--card2); border-radius:2px; outline:none; cursor:pointer; }
+input[type=range].smooth-range::-webkit-slider-thumb { -webkit-appearance:none; width:14px; height:14px; background:var(--txt2); border-radius:50%; border:2px solid var(--bg); }
+.btn-clear { padding:5px 10px; background:transparent; border:1px solid var(--line); border-radius:var(--r-sm); color:var(--txt2); font-size:11px; font-weight:500; cursor:pointer; white-space:nowrap; transition:all 0.12s; }
+.btn-clear:hover { border-color:var(--danger); color:var(--danger); }
+
+/* OPTIONS & DSP */
+.opt-row { display:flex; align-items:center; justify-content:space-between; padding:13px 14px; border-bottom:1px solid var(--line); }
+.opt-row:last-child { border-bottom:none; }
+.opt-name { font-size:13px; font-weight:500; }
+.opt-desc { font-size:11px; color:var(--txt2); margin-top:1px; }
+.dsp-slider-container { padding: 4px 14px 14px; background: var(--card); border-bottom: 1px solid var(--line); }
+.dsp-slider-container:last-child { border-bottom: none; }
+.dsp-slider-header { display: flex; justify-content: space-between; font-size: 11px; color: var(--txt2); margin-bottom: -4px; font-family: 'JetBrains Mono', monospace; }
+.dsp-slider-header span { color: var(--accent); }
+
+/* SECTION TITLE */
+.stitle { font-size:10px; font-weight:600; color:var(--txt3); letter-spacing:1px; text-transform:uppercase; padding:0 2px; margin-top:4px; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="logo">Ngehayal Media Player<span>.</span></div>
+    <div class="hold-badge" id="holdBadge">⚡ 2× HOLD</div>
+  </div>
+
+  <!-- FILE -->
+  <div class="card">
+    <div class="upload">
+      <input type="file" id="fileInput" accept="audio/*,video/*">
+      <div class="upload-icon">🎵</div>
+      <div class="upload-text">
+        <strong id="uploadLabel">Pilih file audio / video</strong>
+        <span>Tap untuk browse</span>
+      </div>
+    </div>
+    <div style="padding:14px;border-top:1px solid var(--line);">
+      <div style="display:flex;gap:8px;">
+        <input 
+          type="text"
+          id="urlInput"
+          placeholder="Tempel URL audio/video..."
+          style="
+            flex:1;
+            height:42px;
+            background:var(--card2);
+            border:1px solid var(--line);
+            border-radius:var(--r-sm);
+            padding:0 12px;
+            color:var(--txt);
+            outline:none;
+            font-size:13px;
+          "
+        >
+        <button 
+          id="urlBtn"
+          style="
+            width:90px;
+            border:none;
+            border-radius:var(--r-sm);
+            background:var(--accent);
+            color:white;
+            font-weight:600;
+            cursor:pointer;
+          "
+        >
+          Load
+        </button>
+      </div>
+    </div>
+    <audio id="audioEl" loop controls crossorigin="anonymous"></audio>
+    <video id="videoEl" loop controlsList="nodownload noplaybackrate" crossorigin="anonymous"></video>
+    <canvas id="syncCvs"></canvas>
+  </div>
+
+  <div class="stitle">PLAY / PAUSE</div>
+  <div class="card">
+    <button class="big-play-btn" id="playBtn">
+  
+      <svg id="playIcon" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+  
+    </button>
+  </div>
+
+  <!-- PLAYBACK -->
+  <div class="stitle">Posisi &amp; Loop</div>
+  <div class="card">
+    <div class="prog-wrap" id="progWrap">
+      <div class="prog-fill" id="progFill"></div>
+      <div class="prog-head" id="progHead"></div>
+    </div>
+    <div class="trim-header">
+      <div class="trim-label">LOOP RANGE</div>
+      <div class="trim-readout" id="trimReadout">0% – 100%</div>
+    </div>
+    <div class="trim-track" id="trimTrack">
+      <div class="trim-fill" id="trimFill"></div>
+      <div class="trim-handle" id="trimS"></div>
+      <div class="trim-handle" id="trimE"></div>
+    </div>
+    <div style="height:8px"></div>
+  </div>
+
+  <!-- SPEED -->
+  <div class="stitle">Kecepatan</div>
+  <div class="card">
+    <div class="card-row" style="align-items:flex-start;padding:14px;">
+      <div>
+        <div class="speed-num" id="rateDisp">1.00<small>×</small></div>
+        <div class="speed-exp" id="expDisp">e^0 = 1.000000</div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:2px;">
+        <button class="step-btn" id="btnDown">−</button>
+        <button class="step-btn" id="btnUp">+</button>
+      </div>
+    </div>
+    <div class="slider-wrap">
+      <input type="range" class="speed-slider" id="speedRange" min="-2.31" max="2.31" value="0" step="0.01">
+    </div>
+    <div class="presets">
+      <button class="preset" onclick="setSpeed(0.25)">0.25×</button>
+      <button class="preset" onclick="setSpeed(0.5)">0.5×</button>
+      <button class="preset" onclick="setSpeed(1)">1×</button>
+      <button class="preset" onclick="setSpeed(1.5)">1.5×</button>
+      <button class="preset" onclick="setSpeed(2)">2×</button>
+    </div>
+  </div>
+
+  <!-- SYNC -->
+  <div class="stitle">Sinkronisasi Audio/Video</div>
+  <div class="card">
+    <div class="opt-row">
+      <div>
+        <div class="opt-name">Offset Sync</div>
+        <div class="opt-desc" id="syncDesc">0 ms — audio &amp; video pas</div>
+      </div>
+    </div>
+    <div class="slider-wrap">
+      <input type="range" class="speed-slider" id="syncSlider" min="-300" max="500" step="10" value="0">
+    </div>
+    <div class="opt-desc" style="padding:0 14px 12px;">
+      Geser ke kanan (+) kalau suara kedengeran belakangan dari gambar (delay headset bluetooth). Geser ke kiri (−) kalau gambar yang lebih lambat.
+    </div>
+  </div>
+
+  <!-- GRAPH -->
+  <div class="stitle">Speed Graph</div>
+  <div class="card">
+    <div class="graph-hdr">
+      <div class="graph-meta">
+        <strong>Gambar kurva kecepatan</strong>
+        <span>Aktifkan toggle, lalu drag di canvas</span>
+      </div>
+      <label class="tog">
+        <input type="checkbox" id="graphOn">
+        <div class="tog-track"></div>
+        <div class="tog-dot"></div>
+      </label>
+    </div>
+    <canvas id="cvs"></canvas>
+    <div class="graph-ftr">
+      <div class="smooth-label">Smooth <b id="smoothNum">1</b></div>
+      <input type="range" class="smooth-range" id="smoothSlider" min="1" max="50" value="1">
+      <button class="btn-clear" id="btnClear">Hapus</button>
+    </div>
+  </div>
+
+  <!-- DSP EFFECTS PANEL -->
+  <div class="stitle">Efek Audio (DSP)</div>
+  <div class="card">
+    <!-- Lowpass Filter Toggle -->
+    <div class="opt-row">
+      <div>
+        <div class="opt-name">Lowpass Filter</div>
+        <div class="opt-desc">Memotong suara tinggi, membuat ketukan mendem</div>
+      </div>
+      <label class="tog">
+        <input type="checkbox" id="togLP">
+        <div class="tog-track"></div>
+        <div class="tog-dot"></div>
+      </label>
+    </div>
+    <!-- Lowpass Freq Slider -->
+    <div class="dsp-slider-container" id="lpContainer" style="display:none;">
+      <div class="dsp-slider-header">Frekuensi Cutoff: <span id="lpFreqDisp">5000 Hz</span></div>
+      <input type="range" class="dsp-slider" id="lpSlider" min="1.3" max="4.3" value="3.7" step="0.01">
+    </div>
+
+    <!-- Highpass Filter Toggle -->
+    <div class="opt-row">
+      <div>
+        <div class="opt-name">Highpass Filter</div>
+        <div class="opt-desc">Memotong suara rendah/bass, suara jadi cempreng</div>
+      </div>
+      <label class="tog">
+        <input type="checkbox" id="togHP">
+        <div class="tog-track"></div>
+        <div class="tog-dot"></div>
+      </label>
+    </div>
+    <!-- Highpass Freq Slider -->
+    <div class="dsp-slider-container" id="hpContainer" style="display:none;">
+      <div class="dsp-slider-header">Frekuensi Cutoff: <span id="hpFreqDisp">120 Hz</span></div>
+      <input type="range" class="dsp-slider" id="hpSlider" min="1.3" max="4.3" value="2.08" step="0.01">
+    </div>
+
+    <!-- Reverb Toggle -->
+    <div class="opt-row">
+      <div>
+        <div class="opt-name">Reverb</div>
+        <div class="opt-desc">Menambahkan dimensi kedalaman gema akustik</div>
+      </div>
+      <label class="tog">
+        <input type="checkbox" id="togReverb">
+        <div class="tog-track"></div>
+        <div class="tog-dot"></div>
+      </label>
+    </div>
+    <!-- Reverb Sliders -->
+    <div class="dsp-slider-container" id="reverbContainer" style="display:none;">
+      <div style="margin-bottom: 8px;">
+        <div class="dsp-slider-header">Mix: <span id="revWetDisp">35%</span></div>
+        <input type="range" class="dsp-slider" id="revWetSlider" min="0" max="1" value="0.35" step="0.01">
+      </div>
+      <div>
+        <div class="dsp-slider-header">Decay: <span id="revSizeDisp">2.0s</span></div>
+        <input type="range" class="dsp-slider" id="revSizeSlider" min="0.5" max="5.0" value="2.0" step="0.1">
+      </div>
+      <div style="margin-top:8px;">
+        <div class="dsp-slider-header">
+          High Damp:
+          <span id="dampDisp">4500 Hz</span>
+        </div>
+      
+        <input
+          type="range"
+          class="dsp-slider"
+          id="dampSlider"
+          min="3"
+          max="4.3"
+          value="3.65"
+          step="0.01"
+        >
+      </div>
+    </div>
+  </div>
+<div class="stitle">MASTER</div>
+
+<div class="card" style="padding:14px;">
+
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    font-size:11px;
+    color:var(--txt2);
+    font-family:'JetBrains Mono', monospace;
+  ">
+    <span>OUTPUT</span>
+    <span id="dbText">-∞ dB</span>
+  </div>
+
+  <div style="
+    position:relative;
+    height:24px;
+    background:var(--card2);
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid var(--line);
+  ">
+
+    <div id="meterBar" style="
+      height:100%;
+      width:0%;
+      background: var(--accent);
+    "></div>
+    <div id="peakHold" style="
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:1px;
+      background: var(--accent);
+      right:0;
+    "></div>
+  </div>
+
+  <div style="height:12px"></div>
+
+  <div class="dsp-slider-header">
+    Master Volume
+    <span id="masterDisp">100%</span>
+  </div>
+
+  <input
+    type="range"
+    class="dsp-slider"
+    id="masterSlider"
+    min="0"
+    max="3"
+    step="0.01"
+    value="1"
+  >
+
+</div>
+  <!-- OPTIONS -->
+  <div class="stitle">Opsi</div>
+  <div class="card">
+    <div class="opt-row">
+      <div><div class="opt-name">Preserve Pitch</div><div class="opt-desc">Nada tetap saat speed berubah</div></div>
+      <label class="tog"><input type="checkbox" id="togPitch"><div class="tog-track"></div><div class="tog-dot"></div></label>
+    </div>
+    <div class="opt-row">
+      <div><div class="opt-name">Flip Horizontal</div><div class="opt-desc">Mirror video kiri-kanan</div></div>
+      <label class="tog"><input type="checkbox" id="togFlipX"><div class="tog-track"></div><div class="tog-dot"></div></label>
+    </div>
+    <div class="opt-row">
+      <div><div class="opt-name">Flip Vertikal</div><div class="opt-desc">Mirror video atas-bawah</div></div>
+      <label class="tog"><input type="checkbox" id="togFlipY"><div class="tog-track"></div><div class="tog-dot"></div></label>
+    </div>
+    <div class="opt-row">
+      <div><div class="opt-name">Sembunyikan Media</div><div class="opt-desc">Audio tetap jalan di background</div></div>
+      <label class="tog"><input type="checkbox" id="togHide"><div class="tog-track"></div><div class="tog-dot"></div></label>
+    </div>
+  </div>
+
+</div>
+<script>
+const audioEl   = document.getElementById('audioEl');
+const videoEl   = document.getElementById('videoEl');
+const fileInput = document.getElementById('fileInput');
+const uploadLbl = document.getElementById('uploadLabel');
+const rateDisp  = document.getElementById('rateDisp');
+const expDisp   = document.getElementById('expDisp');
+const speedRange= document.getElementById('speedRange');
+const progFill  = document.getElementById('progFill');
+const progHead  = document.getElementById('progHead');
+const progWrap  = document.getElementById('progWrap');
+const trimTrack = document.getElementById('trimTrack');
+const trimFill  = document.getElementById('trimFill');
+const trimS     = document.getElementById('trimS');
+const trimE     = document.getElementById('trimE');
+const trimReadout=document.getElementById('trimReadout');
+const graphOn   = document.getElementById('graphOn');
+const cvs       = document.getElementById('cvs');
+const ctx2      = cvs.getContext('2d');
+const smoothSlider=document.getElementById('smoothSlider');
+const smoothNum = document.getElementById('smoothNum');
+const holdBadge = document.getElementById('holdBadge');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const urlInput = document.getElementById('urlInput');
+const urlBtn   = document.getElementById('urlBtn');
+const syncSlider = document.getElementById('syncSlider');
+const syncDesc   = document.getElementById('syncDesc');
+const syncCvs    = document.getElementById('syncCvs');
+const syncCtx2   = syncCvs.getContext('2d');
+
+let media    = audioEl;
+let expVal   = 0;
+let trimStart= 0, trimEnd = 1;
+let trimDrag = null;
+let rawPts   = [], smoothPts = [];
+let smoothWin= 1;
+
+// ── SYNC OFFSET (Audio <-> Video) ──
+let syncOffsetMs = 0;
+let frameBuf = [];
+let vfcActive = false;
+
+// ── AUDIO DSP NODES (Web Audio API) ──
+let audioCtx = null;
+let audioSrcNode = null;
+let videoSrcNode = null;
+let lowpassNode = null;
+let highpassNode = null;
+let reverbNode = null;
+let dspDryGain = null;
+let dspWetGain = null;
+let dspInitialized = false;
+let dampFilter = null;
+let preDelayNode = null;
+let masterGain = null;
+let analyserNode = null;
+let meterData = null;
+let peakHold = 0;
+let peakHoldTime = 0;
+let syncDelayNode = null;
+
+// ── MEDIA SESSION API (kontrol lock screen & izin background playback) ──
+let wakeLock = null;
+
+function currentMediaTitle() {
+  const label = uploadLbl.textContent || 'Media';
+  return label === 'Pilih file audio / video' ? 'Ngehayal Media Player' : label;
+}
+
+function initMediaSession() {
+  if (!('mediaSession' in navigator)) return;
+
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: currentMediaTitle(),
+    artist: 'Ngehayal Media Player',
+    album: media === videoEl ? 'Video' : 'Audio'
+  });
+
+  navigator.mediaSession.setActionHandler('play', () => {
+    ensureAudioCtxActive();
+    media.play();
+  });
+  navigator.mediaSession.setActionHandler('pause', () => {
+    media.pause();
+  });
+  navigator.mediaSession.setActionHandler('seekbackward', (d) => {
+    media.currentTime = Math.max(0, media.currentTime - (d.seekOffset || 10));
+  });
+  navigator.mediaSession.setActionHandler('seekforward', (d) => {
+    if (media.duration) media.currentTime = Math.min(media.duration, media.currentTime + (d.seekOffset || 10));
+  });
+  try {
+    navigator.mediaSession.setActionHandler('seekto', (d) => {
+      if (d.seekTime != null) media.currentTime = d.seekTime;
+    });
+  } catch (e) { /* not supported di semua browser */ }
+}
+
+function updateMediaSessionPlaybackState(paused) {
+  if (!('mediaSession' in navigator)) return;
+  navigator.mediaSession.playbackState = paused ? 'paused' : 'playing';
+}
+
+function updateMediaSessionPosition() {
+  if (!('mediaSession' in navigator) || !('setPositionState' in navigator.mediaSession)) return;
+  if (!media.duration || !isFinite(media.duration)) return;
+  try {
+    navigator.mediaSession.setPositionState({
+      duration: media.duration,
+      playbackRate: media.playbackRate || 1,
+      position: Math.min(media.currentTime, media.duration)
+    });
+  } catch (e) { /* posisi kadang invalid sesaat setelah seek/rate change, aman diabaikan */ }
+}
+
+// Wake Lock: jaga layar tetap nyala selagi main (opsional, membantu di beberapa browser mobile).
+// Ini TIDAK diperlukan supaya audio tetap jalan saat layar dikunci — cuma buat kalau kamu mau layar tetap nyala.
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    }
+  } catch (e) { /* wake lock bisa ditolak, misal baterai lemah — aman diabaikan */ }
+}
+document.addEventListener('visibilitychange', async () => {
+  if (wakeLock !== null && document.visibilityState === 'visible' && !media.paused) {
+    requestWakeLock();
+  }
+});
+
+// Fungsi inisialisasi Web Audio Routing Graph
+function initDSP() {
+  if (dspInitialized) return;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Sambungkan elemen Media ke Web Audio
+    audioSrcNode = audioCtx.createMediaElementSource(audioEl);
+    videoSrcNode = audioCtx.createMediaElementSource(videoEl);
+    
+    // Inisialisasi Filter
+    lowpassNode = audioCtx.createBiquadFilter();
+    lowpassNode.type = 'lowpass';
+    lowpassNode.frequency.value = 20000; // bypass default
+    
+    highpassNode = audioCtx.createBiquadFilter();
+    highpassNode.type = 'highpass';
+    highpassNode.frequency.value = 10; // bypass default
+    
+    // Inisialisasi Reverb
+    reverbNode = audioCtx.createConvolver();
+    dspDryGain = audioCtx.createGain();
+    dspWetGain = audioCtx.createGain();
+    masterGain = audioCtx.createGain();
+    preDelayNode = audioCtx.createDelay(5.0);
+    preDelayNode.delayTime.value = 0.03; // 30ms
+
+    // Delay node untuk shift sync audio/video (dipakai saat offset < 0)
+    syncDelayNode = audioCtx.createDelay(1.0);
+    syncDelayNode.delayTime.value = 0;
+    
+    dampFilter = audioCtx.createBiquadFilter();
+    dampFilter.type = 'lowpass';
+    dampFilter.frequency.value = 4500;
+    dspDryGain.gain.value = 1.0;
+    dspWetGain.gain.value = 0.0; // dry default
+    masterGain.gain.value = 1;
+    
+    analyserNode = audioCtx.createAnalyser();
+    analyserNode.fftSize = 2048;
+    
+    meterData = new Uint8Array(analyserNode.fftSize);
+    
+    const compressor = audioCtx.createDynamicsCompressor();
+    compressor.threshold.value = -18;
+    compressor.ratio.value = 3;
+    compressor.attack.value = 0.003;
+    compressor.release.value = 0.25;
+
+    // Pembuatan Impulse Response Prosedural untuk Reverb
+    updateReverbImpulse(2.0); // Default decay 2 detik
+    
+    // Sambungkan Struktur Routing:
+    // [Source] ──> [Lowpass] ──> [Highpass] ──> [SyncDelay] ──┬──> [Dry Gain] ──────────> [Destination]
+    //                                                         └──> [Reverb] ──> [Wet Gain] ─┘
+    
+    audioSrcNode.connect(lowpassNode);
+    videoSrcNode.connect(lowpassNode);
+    
+    lowpassNode.connect(highpassNode);
+
+    highpassNode.connect(syncDelayNode);
+    
+    syncDelayNode.connect(dspDryGain);
+    syncDelayNode.connect(preDelayNode);
+    reverbNode.connect(dampFilter);
+    dampFilter.connect(dspWetGain);
+    
+    dspDryGain.connect(masterGain);
+    dspWetGain.connect(masterGain);
+    
+    masterGain.connect(compressor);
+    compressor.connect(analyserNode);
+    
+    analyserNode.connect(audioCtx.destination);
+    
+    dspInitialized = true;
+    applySyncOffset();
+  } catch (e) {
+    console.warn("Gagal menginisialisasi DSP Audio Context:", e);
+  }
+}
+
+// Fungsi membuat gemuruh gema tiruan (White Noise decay) tanpa file eksternal
+function updateReverbImpulse(decayTime) {
+  if (!audioCtx) return;
+  const sampleRate = audioCtx.sampleRate;
+  const length = sampleRate * decayTime;
+  const impulse = audioCtx.createBuffer(2, length, sampleRate);
+  const left = impulse.getChannelData(0);
+  const right = impulse.getChannelData(1);
+  
+  for (let i = 0; i < length; i++) {
+    const percent = i / length;
+    // Menggunakan envelope eksponensial yang halus untuk decay gema alami
+    const envelope = Math.pow(1 - percent, 2.5);
+    left[i] = (Math.random() * 2 - 1) * envelope;
+    right[i] = (Math.random() * 2 - 1) * envelope;
+  }
+  reverbNode.buffer = impulse;
+}
+
+// Aktifkan AudioContext pada gestur interaksi user pertama kali
+function ensureAudioCtxActive() {
+  if (!dspInitialized) initDSP();
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+videoEl.addEventListener('contextmenu', e => {
+  e.preventDefault();
+});
+
+urlBtn.onclick = async () => {
+  const url = urlInput.value.trim();
+  if (!url) return;
+  try {
+    await loadMedia(url);
+  } catch(err) {
+    console.error(err);
+    alert('URL gagal dimuat atau diblokir CORS. Coba gunakan file lokal.');
+  }
+};
+urlInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    urlBtn.click();
+  }
+});
+// ── FILE ──
+fileInput.onchange = function () {
+  const f = this.files[0];
+  if (!f) return;
+  loadMedia(f);
+};
+async function loadMedia(src, type = "auto") {
+  audioEl.pause();
+  videoEl.pause();
+  audioEl.style.display = 'none';
+  videoEl.style.display = 'none';
+  stopFrameBuffer();
+  let finalType = type;
+  // AUTO DETECT
+  if (type === "auto") {
+    if (typeof src === "string") {
+      const ext = src.split('.').pop().toLowerCase();
+      if ([
+        'mp4','webm','mkv','mov'
+      ].includes(ext)) {
+        finalType = 'video';
+      } else {
+        finalType = 'audio';
+      }
+    } else {
+      finalType = src.type.startsWith('video')
+        ? 'video'
+        : 'audio';
+    }
+  }
+  let url;
+  // FILE OBJECT
+  if (src instanceof File || src instanceof Blob) {
+    url = URL.createObjectURL(src);
+  }
+  // URL STRING
+  else if (typeof src === "string") {
+    uploadLbl.textContent = 'Loading URL...';
+    // Gunakan fetching blob agar Web Audio tidak terblokir CORS pada cross-origin stream
+    const res = await fetch(src);
+    if (!res.ok) {
+      throw new Error('Fetch gagal');
+    }
+    const blob = await res.blob();
+    url = URL.createObjectURL(blob);
+  }
+  if (finalType === 'video') {
+    videoEl.src = url;
+    videoEl.style.display = 'block';
+    videoEl.style.visibility = 'visible';
+    videoEl.ew = videoEl.getBoundingClientRect().width;
+    media = videoEl;
+  } else {
+    audioEl.src = url;
+    //audioEl.style.display = 'block';
+    media = audioEl;
+  }
+  syncPitch();
+  media.onloadedmetadata = () => {
+    applySpeed();
+    setTimeout(_=>{media.pause()}, 30*60*1000);
+    ensureAudioCtxActive();
+    media.play();
+    uploadLbl.textContent =
+      typeof src === 'string'
+      ? src.split('/').pop()
+      : src.name || 'media';
+    if (media === videoEl) {
+      syncCanvasPosition();
+    }
+    applySyncOffset();
+    initMediaSession();
+    updateMediaSessionPosition();
+    requestWakeLock();
+  };
+}
+
+function updatePlayUI(paused){
+  playIcon.innerHTML = paused
+    ? `<path d="M8 5v14l11-7z"/>`
+    : `<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>`;
+  updateMediaSessionPlaybackState(paused);
+}
+
+playBtn.onclick = ()=>{
+  ensureAudioCtxActive();
+  if(media.paused){
+    media.play();
+    requestWakeLock();
+  }else{
+    media.pause();
+  }
+};
+
+audioEl.addEventListener('play', ()=>{updatePlayUI(false); updateMediaSessionPosition();});
+audioEl.addEventListener('pause', ()=>updatePlayUI(true));
+audioEl.addEventListener('seeked', updateMediaSessionPosition);
+audioEl.addEventListener('ratechange', updateMediaSessionPosition);
+
+videoEl.addEventListener('play', ()=>{updatePlayUI(false); updateMediaSessionPosition();});
+videoEl.addEventListener('pause', ()=>updatePlayUI(true));
+videoEl.addEventListener('seeked', updateMediaSessionPosition);
+videoEl.addEventListener('ratechange', updateMediaSessionPosition);
+
+// ── OPTIONS ──
+function syncPitch() {
+  const p = document.getElementById('togPitch').checked;
+  media.preservesPitch = p; media.webkitPreservesPitch = p;
+}
+document.getElementById('togPitch').onchange = syncPitch;
+document.getElementById('togFlipX').onchange =
+document.getElementById('togFlipY').onchange = () => {
+  const fx = document.getElementById('togFlipX').checked;
+  const fy = document.getElementById('togFlipY').checked;
+  videoEl.style.transform = `scale(${fx?-1:1},${fy?-1:1})`;
+  syncCvs.style.transform = videoEl.style.transform;
+};
+document.getElementById('togHide').onchange = function() {
+  media.style.display = this.checked ? 'none' : 'block';
+};
+
+// ── SYNC OFFSET LOGIC ──
+// syncOffsetMs > 0 : video ketinggalan dari suara (kasus umum headset bluetooth)
+//                    -> tunda tampilan VIDEO pakai buffer frame di canvas
+// syncOffsetMs < 0 : suara lebih cepat dari video
+//                    -> tunda AUDIO pakai DelayNode di Web Audio graph
+function syncCanvasPosition(){
+  if (media !== videoEl) return;
+  syncCvs.style.top = videoEl.offsetTop + 'px';
+  syncCvs.style.left = videoEl.offsetLeft + 'px';
+  syncCvs.style.width = videoEl.offsetWidth + 'px';
+  syncCvs.style.height = videoEl.offsetHeight + 'px';
+  syncCvs.width = videoEl.videoWidth || videoEl.offsetWidth || 300;
+  syncCvs.height = videoEl.videoHeight || videoEl.offsetHeight || 150;
+}
+window.addEventListener('resize', syncCanvasPosition);
+
+function applySyncOffset(){
+  const ms = parseInt(syncSlider.value, 10);
+  syncOffsetMs = ms;
+  syncDesc.textContent = ms === 0
+    ? '0 ms — audio & video pas'
+    : ms > 0
+      ? `+${ms} ms — video ditunda (kompensasi delay headset)`
+      : `${ms} ms — audio ditunda`;
+
+  if (syncDelayNode) {
+    syncDelayNode.delayTime.value = ms < 0 ? Math.min(1, Math.abs(ms) / 1000) : 0;
+  }
+
+  if (ms > 0 && media === videoEl) {
+    startFrameBuffer();
+  } else {
+    stopFrameBuffer();
+  }
+}
+syncSlider.oninput = applySyncOffset;
+
+function startFrameBuffer(){
+  if (media !== videoEl) return;
+  syncCanvasPosition();
+  videoEl.style.visibility = 'hidden';
+  syncCvs.style.display = 'block';
+  if (vfcActive || !('requestVideoFrameCallback' in videoEl)) return;
+  vfcActive = true;
+  const onFrame = () => {
+    if (syncOffsetMs > 0 && media === videoEl) {
+      const c = document.createElement('canvas');
+      c.width = syncCvs.width; c.height = syncCvs.height;
+      c.getContext('2d').drawImage(videoEl, 0, 0, c.width, c.height);
+      frameBuf.push({ ts: performance.now(), canvas: c });
+      const maxAge = syncOffsetMs + 1000;
+      while (frameBuf.length && performance.now() - frameBuf[0].ts > maxAge) frameBuf.shift();
+    }
+    if (vfcActive) videoEl.requestVideoFrameCallback(onFrame);
+  };
+  videoEl.requestVideoFrameCallback(onFrame);
+}
+function stopFrameBuffer(){
+  vfcActive = false;
+  videoEl.style.visibility = 'visible';
+  syncCvs.style.display = 'none';
+  frameBuf = [];
+}
+
+// ── SPEED ──
+const PRESETS = [0.25, 0.5, 1, 1.5, 2];
+function syncPresets() {
+  const rate = Math.E ** expVal;
+  document.querySelectorAll('.preset').forEach((btn,i) => {
+    btn.classList.toggle('active', Math.abs(PRESETS[i] - rate) < 0.015);
+  });
+}
+function applySpeed() {
+  let rate = Math.E ** expVal;
+  if (expVal >=  2.3) rate = 10;
+  if (expVal <= -2.3) rate = 0.1;
+  if (!holding) media.playbackRate = rate;
+  const rs = rate < 10 ? rate.toFixed(2) : rate.toFixed(0);
+  rateDisp.innerHTML = `${rs}<small>×</small>`;
+  expDisp.textContent = `e^${expVal===0?'0':expVal.toFixed(4)} = ${rate.toFixed(6)}`;
+  syncPresets();
+  updateMediaSessionPosition();
+}
+function setSpeed(rate) {
+  expVal = Math.max(-2.31, Math.min(2.31, Math.log(rate)));
+  speedRange.value = expVal; applySpeed();
+}
+speedRange.oninput = () => { expVal = parseFloat(speedRange.value); applySpeed(); };
+document.getElementById('btnDown').onclick = () => { expVal = Math.max(-2.31, expVal-0.05); speedRange.value = expVal; applySpeed(); };
+document.getElementById('btnUp').onclick   = () => { expVal = Math.min( 2.31, expVal+0.05); speedRange.value = expVal; applySpeed(); };
+
+// ── HOLD 2× ──
+let holding = false;
+let holdTimer = null;
+let holdRate = 1;
+
+const HOLD_MS = 300;
+const MOVE_LIMIT = 10;
+
+let sx = 0;
+let sy = 0;
+
+function cancelHold() {
+  clearTimeout(holdTimer);
+  holdTimer = null;
+
+  if (holding) {
+    holding = false;
+
+    media.playbackRate = holdRate;
+    updateSpeedUI(media.playbackRate);
+    holdBadge.classList.remove('show');
+  }
+}
+
+function updateSpeedUI(rate) {
+  const rs = rate < 10 ? rate.toFixed(2) : rate.toFixed(0);
+
+  rateDisp.innerHTML = `${rs}<small>×</small>`;
+
+  const exp = Math.log(rate);
+
+  expDisp.textContent =
+    `e^${exp === 0 ? '0' : exp.toFixed(4)} = ${rate.toFixed(6)}`;
+}
+
+function holdStart(e) {
+  if (holding) return;
+
+  const el = e.target || e.srcElement;
+
+  if (
+    el.closest('#progWrap') ||
+    el.closest('#trimTrack') ||
+    el.closest('#cvs') ||
+    el.closest('input') ||
+    el.closest('button')
+  ) {
+    return;
+  }
+
+  const p = e.touches ? e.touches[0] : e;
+
+  sx = p.clientX;
+  sy = p.clientY;
+
+  clearTimeout(holdTimer);
+
+  holdTimer = setTimeout(() => {
+    holding = true;
+
+    holdRate = media.playbackRate;
+
+    media.playbackRate = holdRate * 2;
+    updateSpeedUI(media.playbackRate);
+    holdBadge.classList.add('show');
+  }, HOLD_MS);
+}
+
+function holdMove(e) {
+
+  const el = e.target;
+
+  if (
+    el.closest('#progWrap') ||
+    el.closest('#trimTrack') ||
+    el.closest('#cvs')
+  ) return;
+
+  if (!holdTimer) return;
+
+  const p = e.touches ? e.touches[0] : e;
+
+  const dx = Math.abs(p.clientX - sx);
+  const dy = Math.abs(p.clientY - sy);
+
+  if (dx > MOVE_LIMIT || dy > MOVE_LIMIT) {
+    clearTimeout(holdTimer);
+    holdTimer = null;
+  }
+}
+
+window.addEventListener('touchstart', holdStart, { passive:true });
+window.addEventListener('touchmove', holdMove, { passive:true });
+window.addEventListener('touchend', cancelHold, { passive:true });
+
+window.addEventListener('mousedown', holdStart);
+window.addEventListener('mousemove', holdMove);
+window.addEventListener('mouseup', cancelHold);
+
+// PENTING
+window.addEventListener('blur', cancelHold);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) cancelHold();
+});
+
+// ── PROGRESS SEEK ──
+let seeking = false;
+let previewSeek = null;
+
+function seekPct(cx) {
+  const r = progWrap.getBoundingClientRect();
+  return Math.max(
+    0,
+    Math.min(1, (cx - r.left) / r.width)
+  );
+}
+
+function paintSeek(pct) {
+  progFill.style.width = (pct * 100) + '%';
+  progHead.style.left = (pct * 100) + '%';
+}
+
+function beginSeek(cx) {
+  ensureAudioCtxActive();
+  seeking = true;
+  previewSeek = seekPct(cx);
+  paintSeek(previewSeek);
+}
+
+function moveSeek(cx) {
+  if (!seeking) return;
+  previewSeek = seekPct(cx);
+  paintSeek(previewSeek);
+}
+
+function endSeek() {
+  if (!seeking) return;
+  seeking = false;
+  if (previewSeek != null && media.duration) {
+    media.currentTime = previewSeek * media.duration;
+  }
+  previewSeek = null;
+}
+
+// TOUCH
+progWrap.addEventListener('touchstart', e => {
+  beginSeek(e.touches[0].clientX);
+}, { passive:true });
+
+window.addEventListener('touchmove', e => {
+  moveSeek(e.touches[0].clientX);
+}, { passive:true });
+
+window.addEventListener('touchend', endSeek, { passive:true });
+
+// MOUSE
+progWrap.addEventListener('mousedown', e => {
+  beginSeek(e.clientX);
+});
+
+window.addEventListener('mousemove', e => {
+  moveSeek(e.clientX);
+});
+
+window.addEventListener('mouseup', endSeek);
+
+// ── TRIM ──
+function trimPct(cx) {
+  const r = trimTrack.getBoundingClientRect();
+  return Math.max(0, Math.min(1, (cx-r.left)/r.width));
+}
+function paintTrim() {
+  const s = Math.min(trimStart,trimEnd), e = Math.max(trimStart,trimEnd);
+  trimS.style.left = (s*100)+'%'; trimE.style.left = (e*100)+'%';
+  trimFill.style.left = (s*100)+'%'; trimFill.style.width = ((e-s)*100)+'%';
+  trimReadout.textContent = `${Math.round(s*100)}% – ${Math.round(e*100)}%`;
+}
+function trimDown(cx) { const x=trimPct(cx); trimDrag=Math.abs(x-trimStart)<Math.abs(x-trimEnd)?'S':'E'; }
+function trimMove(cx) {
+  if (!trimDrag) return;
+  if (trimDrag==='S') trimStart=trimPct(cx); else trimEnd=trimPct(cx);
+  paintTrim();
+}
+trimTrack.addEventListener('touchstart', e=>{e.stopPropagation();trimDown(e.touches[0].clientX);},{passive:true});
+trimTrack.addEventListener('touchmove',  e=>{e.stopPropagation();trimMove(e.touches[0].clientX);},{passive:true});
+trimTrack.addEventListener('touchend',   e=>{e.stopPropagation();trimDrag=null;},{passive:true});
+trimTrack.addEventListener('mousedown',  e=>{e.stopPropagation();trimDown(e.clientX);});
+window.addEventListener('mousemove', e=>trimMove(e.clientX));
+window.addEventListener('mouseup',   ()=>trimDrag=null);
+
+
+// ── DSP LOGIC (Toggles & Sliders UI interaction) ──
+const togLP = document.getElementById('togLP');
+const lpContainer = document.getElementById('lpContainer');
+const lpSlider = document.getElementById('lpSlider');
+const lpFreqDisp = document.getElementById('lpFreqDisp');
+
+const togHP = document.getElementById('togHP');
+const hpContainer = document.getElementById('hpContainer');
+const hpSlider = document.getElementById('hpSlider');
+const hpFreqDisp = document.getElementById('hpFreqDisp');
+
+const togReverb = document.getElementById('togReverb');
+const reverbContainer = document.getElementById('reverbContainer');
+const revWetSlider = document.getElementById('revWetSlider');
+const revWetDisp = document.getElementById('revWetDisp');
+const revSizeSlider = document.getElementById('revSizeSlider');
+const revSizeDisp = document.getElementById('revSizeDisp');
+const masterSlider = document.getElementById('masterSlider');
+const masterDisp   = document.getElementById('masterDisp');
+const meterBar     = document.getElementById('meterBar');
+const dbText       = document.getElementById('dbText');
+const peakHoldEl = document.getElementById('peakHold');
+  
+// Lowpass Handle
+togLP.onchange = () => {
+  ensureAudioCtxActive();
+  const active = togLP.checked;
+  lpContainer.style.display = active ? 'block' : 'none';
+  if (dspInitialized) {
+    // Jika tidak aktif, set cutoff ke frekuensi batas atas (bypass fungsional)
+    lowpassNode.frequency.value = active ? Math.round(Math.pow(10, lpSlider.value)) : 20000;
+  }
+};
+lpSlider.oninput = () => {
+  const hz = Math.round(Math.pow(10, lpSlider.value));
+  lpFreqDisp.textContent = `${hz} Hz`;
+  if (dspInitialized && togLP.checked) {
+    lowpassNode.frequency.value = hz;
+  }
+};
+
+// Highpass Handle
+togHP.onchange = () => {
+  ensureAudioCtxActive();
+  const active = togHP.checked;
+  hpContainer.style.display = active ? 'block' : 'none';
+  if (dspInitialized) {
+    // Jika tidak aktif, set cutoff ke frekuensi batas bawah (bypass fungsional)
+    highpassNode.frequency.value = active ? Math.round(Math.pow(10, hpSlider.value)) : 10;
+  }
+};
+hpSlider.oninput = () => {
+  const hz = Math.round(Math.pow(10, hpSlider.value));
+  hpFreqDisp.textContent = `${hz} Hz`;
+  if (dspInitialized && togHP.checked) {
+    highpassNode.frequency.value = hz;
+  }
+};
+
+// Reverb Handle
+togReverb.onchange = () => {
+  ensureAudioCtxActive();
+  const active = togReverb.checked;
+  reverbContainer.style.display = active ? 'block' : 'none';
+  if (dspInitialized) {
+    dspWetGain.gain.value = active ? parseFloat(revWetSlider.value) : 0;
+    dspDryGain.gain.value = active ? 1 - parseFloat(revWetSlider.value) : 1;
+  }
+};
+revWetSlider.oninput = () => {
+  const mix = parseFloat(revWetSlider.value);
+  revWetDisp.textContent = `${Math.round(mix * 100)}%`;
+  if (dspInitialized) {
+    dspWetGain.gain.value = mix;
+    dspDryGain.gain.value = 1 - mix;
+  }
+};
+revSizeSlider.oninput = () => {
+  const decay = parseFloat(revSizeSlider.value);
+  revSizeDisp.textContent = `${decay.toFixed(1)}s`;
+  if (dspInitialized) {
+    updateReverbImpulse(decay);
+  }
+};
+// High Damp Handle
+const dampSlider = document.getElementById('dampSlider');
+const dampDisp = document.getElementById('dampDisp');
+
+dampSlider.oninput = () => {
+  const hz = Math.round(Math.pow(10, dampSlider.value));
+  dampDisp.textContent = `${hz} Hz`;
+  if (dspInitialized) {
+    dampFilter.frequency.value = hz;
+  }
+};
+masterSlider.oninput = () => {
+  const v = parseFloat(masterSlider.value);
+
+  masterDisp.textContent =
+    Math.round(v * 100) + '%';
+
+  if (masterGain) {
+    masterGain.gain.value = v;
+  }
+};
+let lastTap = 0;
+masterSlider.addEventListener('touchend', () => {
+  const now = Date.now();
+  if (now - lastTap < 300) {
+    masterSlider.value = 1;
+    masterDisp.textContent = '100%';
+    if (masterGain) {
+      masterGain.gain.value = 1;
+    }
+  }
+  lastTap = now;
+});
+// ── GRAPH ──
+function resizeCvs() { cvs.width=cvs.offsetWidth; cvs.height=180; applySmooth(); }
+window.addEventListener('resize', resizeCvs); resizeCvs();
+
+graphOn.onchange = () => cvs.classList.toggle('off', !graphOn.checked);
+cvs.classList.add('off');
+
+document.getElementById('btnClear').onclick = () => { rawPts=[]; smoothPts=[]; };
+smoothSlider.oninput = () => { smoothWin=parseInt(smoothSlider.value); smoothNum.textContent=smoothWin; applySmooth(); };
+
+function applySmooth() {
+  if (rawPts.length < 2) { smoothPts=[...rawPts]; return; }
+  const w = smoothWin;
+  smoothPts = rawPts.map((p,i) => {
+    let sy=0,n=0;
+    for (let j=i-w;j<=i+w;j++) if(j>=0&&j<rawPts.length){sy+=rawPts[j].y;n++;}
+    return {x:p.x, y:sy/n};
+  });
+}
+function addPt(cx,cy) {
+  if (!graphOn.checked) return;
+  const r = cvs.getBoundingClientRect();
+  const x = Math.max(0,Math.min(cvs.width, (cx-r.left)*(cvs.width/r.width)));
+  const y = Math.max(0,Math.min(cvs.height,(cy-r.top) *(cvs.height/r.height)));
+  rawPts = rawPts.filter(p=>Math.abs(p.x-x)>4);
+  rawPts.push({x,y}); rawPts.sort((a,b)=>a.x-b.x); applySmooth();
+}
+cvs.addEventListener('touchstart',e=>{e.preventDefault();addPt(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+cvs.addEventListener('touchmove', e=>{e.preventDefault();addPt(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+cvs.addEventListener('mousedown', e=>addPt(e.clientX,e.clientY));
+cvs.addEventListener('mousemove', e=>{if(e.buttons===1)addPt(e.clientX,e.clientY);});
+
+function graphSpd(pct) {
+  if (smoothPts.length<2) return 0;
+  const tx=pct*cvs.width, H=cvs.height, mid=H/2;
+  for (let i=0;i<smoothPts.length-1;i++) {
+    const a=smoothPts[i],b=smoothPts[i+1];
+    if(tx>=a.x&&tx<=b.x){ const r=(tx-a.x)/(b.x-a.x||1); return -(((a.y+(b.y-a.y)*r)-mid)/mid)*2.31; }
+  }
+  const f=smoothPts[0],l=smoothPts[smoothPts.length-1],mid2=cvs.height/2;
+  return tx<=f.x ? -((f.y-mid2)/mid2)*2.31 : -((l.y-mid2)/mid2)*2.31;
+}
+
+function drawCvs(prog) {
+  const W=cvs.width,H=cvs.height,mid=H/2;
+  ctx2.clearRect(0,0,W,H);
+  // Grid
+  ctx2.strokeStyle='rgba(255,255,255,0.04)'; ctx2.lineWidth=1;
+  for(let i=1;i<4;i++){ctx2.beginPath();ctx2.moveTo(0,i*H/4);ctx2.lineTo(W,i*H/4);ctx2.stroke();}
+  // 1× line
+  ctx2.strokeStyle='rgba(108,123,255,0.18)'; ctx2.setLineDash([4,6]);
+  ctx2.beginPath();ctx2.moveTo(0,mid);ctx2.lineTo(W,mid);ctx2.stroke();ctx2.setLineDash([]);
+  // Labels
+  ctx2.fillStyle='rgba(255,255,255,0.15)'; ctx2.font='9px JetBrains Mono,monospace';
+  ctx2.fillText('10×',4,12); ctx2.fillText('1×',4,mid-4); ctx2.fillText('0.1×',4,H-4);
+  // Raw
+  if(rawPts.length>1){
+    ctx2.strokeStyle='rgba(255,255,255,0.7)';ctx2.lineWidth=1;ctx2.setLineDash([2,4]);
+    ctx2.beginPath();ctx2.moveTo(rawPts[0].x,rawPts[0].y);
+    rawPts.forEach(p=>ctx2.lineTo(p.x,p.y));ctx2.stroke();ctx2.setLineDash([]);
+  }
+  // Smooth
+  if(smoothPts.length>1){
+    ctx2.beginPath();ctx2.moveTo(smoothPts[0].x,mid);ctx2.lineTo(smoothPts[0].x,smoothPts[0].y);
+    for(let i=1;i<smoothPts.length;i++){const a=smoothPts[i-1],b=smoothPts[i],mx=(a.x+b.x)/2;ctx2.bezierCurveTo(mx,a.y,mx,b.y,b.x,b.y);}
+    ctx2.lineTo(smoothPts[smoothPts.length-1].x,mid);ctx2.closePath();
+    const fg=ctx2.createLinearGradient(0,0,0,H);fg.addColorStop(0,'rgba(108,123,255,0.15)');fg.addColorStop(1,'rgba(108,123,255,0)');
+    ctx2.fillStyle=fg;ctx2.fill();
+    const lg=ctx2.createLinearGradient(0,0,W,0);lg.addColorStop(0,'#6c7bff');lg.addColorStop(1,'#a78bfa');
+    ctx2.strokeStyle=lg;ctx2.lineWidth=2;
+    ctx2.beginPath();ctx2.moveTo(smoothPts[0].x,smoothPts[0].y);
+    for(let i=1;i<smoothPts.length;i++){const a=smoothPts[i-1],b=smoothPts[i],mx=(a.x+b.x)/2;ctx2.bezierCurveTo(mx,a.y,mx,b.y,b.x,b.y);}
+    ctx2.stroke();
+  }
+  // Playhead
+  const px=prog*W;
+  ctx2.strokeStyle='rgba(255,255,255,0.4)';ctx2.lineWidth=1;
+  ctx2.beginPath();ctx2.moveTo(px,0);ctx2.lineTo(px,H);ctx2.stroke();
+  if(smoothPts.length>1){
+    const dotY=-(graphSpd(prog)/2.31)*mid+mid;
+    ctx2.beginPath();ctx2.arc(px,Math.max(4,Math.min(H-4,dotY)),4,0,Math.PI*2);
+    ctx2.fillStyle='#6c7bff';ctx2.fill();
+  }
+}
+
+// ── SYNC FRAME RENDER ──
+function drawSyncFrame(){
+  if (syncOffsetMs > 0 && media === videoEl && frameBuf.length) {
+    const target = performance.now() - syncOffsetMs;
+    let pick = frameBuf[0];
+    for (const f of frameBuf) { if (f.ts <= target) pick = f; else break; }
+    syncCtx2.drawImage(pick.canvas, 0, 0, syncCvs.width, syncCvs.height);
+  }
+}
+
+// ── LOOP ──
+function loop() {
+  let prog=0;
+  if(media.readyState>=1&&media.duration){
+    const dur=media.duration, t=media.currentTime;
+    prog=t/dur;
+    if (!seeking) {
+      progFill.style.width = (prog * 100) + '%';
+      progHead.style.left = (prog * 100) + '%';
+    };
+    const sT=Math.min(trimStart,trimEnd)*dur, eT=Math.max(trimStart,trimEnd)*dur;
+    if(t>=eT||t<sT) media.currentTime=sT+0.001;
+    if(graphOn.checked&&smoothPts.length>1&&!holding){
+      const gs=graphSpd(prog);
+      if(isFinite(gs)){expVal=Math.max(-2.31,Math.min(2.31,gs));speedRange.value=expVal;applySpeed();}
+    }
+  }
+  drawCvs(prog);
+  drawSyncFrame();
+  if (analyserNode && meterData) {
+    analyserNode.getByteTimeDomainData(meterData);
+    let peak = 0;
+    for (let i = 0; i < meterData.length; i++) {
+      const v =
+        Math.abs((meterData[i] - 128) / 128);
+      if (v > peak) peak = v;
+    }
+    let db =
+      peak > 0
+      ? 20 * Math.log10(peak)
+      : -100;
+    db = Math.max(-60, db);
+    const meter =
+      ((db + 60) / 60) * 100;
+    meterBar.style.width =
+      meter + '%';
+    dbText.textContent =
+      db.toFixed(1) + ' dB';
+    // peak hold logic
+    if (meter > peakHold) {
+      peakHold = meter;
+      peakHoldTime = performance.now();
+    } else {
+      const holdMs = 300;
+      if (performance.now() - peakHoldTime > holdMs) {
+        peakHold -= 0.75;
+      }
+    }
+    
+    peakHold = Math.max(0, peakHold);
+    
+    peakHoldEl.style.left =
+    peakHold + '%';
+  
+    // clipping
+    if (db > -0.5) {
+      dbText.style.color = '#ef4444';
+    } else {
+      dbText.style.color = '';
+    }
+  }
+  requestAnimationFrame(loop);
+}
+
+paintTrim(); applySpeed(); loop();
+</script>
+</body>
+</html>

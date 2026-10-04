@@ -1,0 +1,86 @@
+<shape id="com.alightcreative.shapes.arrow" name="@am:string/shape_arrow">
+
+    <params>
+        <point id="start" label="@am:string/effect_param_start" default="0,0" />
+        <point id="end" label="@am:string/effect_param_end" default="250,-250" />
+        <spinner id="lineWidth" min="0" max="2000" default="40" step="1" label="@am:string/effect_param_tail_width"  />
+        <spinner id="headWidth" min="0" max="2000" default="120" step="1" label="@am:string/effect_param_head_width"  />
+        <spinner id="headLength" min="0" max="2000" default="130" step="1" label="@am:string/effect_param_head_length"  />
+</params>
+
+    <handle id="s" param="start" type="xy" icon="dot" />
+    <handle id="e" param="end" type="xy" icon="hollow-dot" />
+    <handle id="lw" param="lineWidth" type="axis" style="square" icon="grip" />
+    <handle id="hw" param="headWidth" type="axis" style="square" icon="grip" />
+    <handle id="hl" param="headLength" type="axis" style="square" icon="grip"  />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            let headWidth = params.headWidth;
+            let headLength = params.headLength;
+            let lineWidth = Math.min(headWidth,params.lineWidth);
+            let end = params.end;
+            let start = params.start;
+            let dx = end.x-start.x;
+            let dy = end.y-start.y;
+            let dlen = Math.hypot(dx,dy);
+            let nx = dx / dlen;
+            let ny = dy / dlen;
+            let tailLength = dlen - headLength;
+            let cwX = -dy / dlen;
+            let cwY = dx / dlen;
+            let ccwX = dy / dlen;
+            let ccwY = -dx / dlen;
+            return {
+                s: params.start,
+                e: params.end,
+                lw: {
+                    x: start.x + cwX * lineWidth + nx * tailLength/3,
+                    y: start.y + cwY * lineWidth + ny * tailLength/3,
+                    axis:[cwX,cwY]
+                },
+                hw: {
+                    x: start.x + cwX * headWidth + nx * tailLength,
+                    y: start.y + cwY * headWidth + ny * tailLength,
+                    axis:[cwX,cwY]
+                },
+                hl: {
+                    x: start.x + ccwX * (lineWidth+headWidth)/2 + nx * tailLength,
+                    y: start.y + ccwY * (lineWidth+headWidth)/2 + ny * tailLength,
+                    axis:[-nx,-ny]
+                }
+            }
+        }
+
+        function getPath(params) {
+            let headWidth = params.headWidth;
+            let headLength = params.headLength;
+            let lineWidth = Math.min(headWidth,params.lineWidth);
+            let end = params.end;
+            let start = params.start;
+            let dx = end.x-start.x;
+            let dy = end.y-start.y;
+            let dlen = Math.hypot(dx,dy);
+            let nx = dx / dlen;
+            let ny = dy / dlen;
+            let tailLength = dlen - headLength;
+            let cwX = -dy / dlen;
+            let cwY = dx / dlen;
+            let ccwX = dy / dlen;
+            let ccwY = -dx / dlen;
+            return [
+                [start.x + cwX * lineWidth, start.y + cwY * lineWidth],
+                [start.x + ccwX * lineWidth, start.y + ccwY * lineWidth],
+                [start.x + ccwX * lineWidth + nx * tailLength, start.y + ccwY * lineWidth + ny * tailLength],
+                [start.x + ccwX * headWidth + nx * tailLength, start.y + ccwY * headWidth + ny * tailLength],
+                [end.x, end.y],
+                [start.x + cwX * headWidth + nx * tailLength, start.y + cwY * headWidth + ny * tailLength],
+                [start.x + cwX * lineWidth + nx * tailLength, start.y + cwY * lineWidth + ny * tailLength],
+                {closed:true}
+            ];
+        }
+
+    ]]></script>
+
+</shape>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Created by Alight Motion (http://alightmotion.com) -->
+<scene title="Proyek baru 321" width="1080" height="1920" exportWidth="1080" exportHeight="1080" precompose="dynamicResolution" bgcolor="#ff000000" totalTime="21615" fps="60" modifiedTime="1751708955841" amver="1002592" ffver="106" am="com.alightcreative.motion/5.0.275" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <media uri="amproj:mix_2025-06-21_13-21-27.wav" filename="mix_2025-06-21_13-21-27.wav" title="mix_2025-06-21_13-21-27.wav" type="audio/x-wav" duration="26261333" size="5042220" sig="85040085B53545DC97E9209611558D741C4EB564" infoUpdated="1751708953164" />
+  <media uri="amproj:1000913283..png" type="image/png" duration="0" sig="9A41AEE1BB3DC105ED67F18B500AE55388100E69" orientation="0" infoUpdated="1751708953164" width="0" height="0" />
+  <media uri="amproj:1000913284..png" type="image/png" duration="0" sig="F1D2C8BB06EA4B549F3968A0407EDBE8EA19CC1A" orientation="0" infoUpdated="1751708953164" width="0" height="0" />
+  <media uri="amproj:1000913282..png" type="image/png" duration="0" sig="ED6C96C16AEE7BB97281536D460C8B2C43B25570" orientation="0" infoUpdated="1751708953164" width="0" height="0" />
+  <audio id="10341627" startTime="0" endTime="21610" src="amproj:mix_2025-06-21_13-21-27.wav" inTime="4666" outTime="26261" mediaFillMode="fill" />
+  <shape id="10341628" startTime="0" endTime="7166" fillType="media" mediaFillMode="fill" src="amproj:1000913283..png" uri="shapes/rect.xml">
+    <transform>
+      <location value="540.000000,960.000000,0.000000" />
+      <scale value="1.000000,1.000000" />
+    </transform>
+  </shape>
+  <shape id="10341629" startTime="7166" endTime="14333" fillType="media" mediaFillMode="fill" src="amproj:1000913284..png" uri="shapes/rect.xml">
+    <transform>
+      <location value="540.000000,960.000000,0.000000" />
+      <scale value="1.000000,1.000000" />
+    </transform>
+  </shape>
+  <shape id="10341630" startTime="14333" endTime="21615" fillType="media" mediaFillMode="fill" src="amproj:1000913282..png" uri="shapes/rect.xml">
+    <transform>
+      <location value="540.000000,960.000000,0.000000" />
+      <scale value="1.000000,1.000000" />
+    </transform>
+  </shape>
+</scene>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:16 PM
+3.6.0 (146)
+-->
+<scene title="blur-presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FF000000" totalTime="6033" fps="30" modifiedTime="1606907795989" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///9969FE59A1E2055031C2ACF412295EBE9F9EEDF7.png" filename="9969FE59A1E2055031C2ACF412295EBE9F9EEDF7.PNG" title="Spin to Right; t:split, c:SSR" type="image/png" size="41569" sig="9969FE59A1E2055031C2ACF412295EBE9F9EEDF7"/>
+  <media uri="am-internal:///6A7D3A7A97BF6C4B2E6CEFD563AA7980BFF1B9EE.jpeg" filename="6A7D3A7A97BF6C4B2E6CEFD563AA7980BFF1B9EE.JPEG" title="Focusing; t:Start, c: LF" type="image/jpeg" size="1626491" sig="6A7D3A7A97BF6C4B2E6CEFD563AA7980BFF1B9EE"/>
+  <media uri="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg" filename="326EBC43F1897683792162BEAFF4251328AB4D89.jpeg" title="Streaks Focusing; t:start, c:LSF" type="image/jpeg" size="268495" sig="326EBC43F1897683792162BEAFF4251328AB4D89"/>
+  <shape id="1" label="Spin to Right; t:split, c:SSR" startTime="0" endTime="2033" fillType="media" fillImage="am-internal:///9969FE59A1E2055031C2ACF412295EBE9F9EEDF7.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.streaks-spin" locallyApplied="false">
+      <property name="alpha" type="float" value="0.800000"/>
+      <property name="amode" type="int" value="3"/>
+      <property name="angle" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.370820" v="57.799999"/>
+        <kf t="0.623217" v="57.799999"/>
+        <kf t="0.983768" v="0.000000"/>
+      </property>
+      <property name="bias" type="float" value="-1.000000"/>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="4" label="Focusing; t:Start, c: LF" startTime="2034" endTime="4033" fillType="media" fillImage="am-internal:///6A7D3A7A97BF6C4B2E6CEFD563AA7980BFF1B9EE.jpeg">
+    <transform>
+      <location value="505.766693,508.527710"/>
+      <scale value="1.566733,1.566733"/>
+    </transform>
+    <effect id="com.alightcreative.effects.lensblur2" locallyApplied="false">
+      <property name="radius" type="float" value="0.000000"/>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="1.000000"/>
+        <kf t="0.460000" v="0.000000" e="cubicBezier 0.5558544 0.0 1.0 1.0"/>
+      </property>
+    </effect>
+    <path d="M -404.963 -540.0L 404.963 -540.0L 404.963 540.0L -404.963 540.0L -404.963 -540.0Z"/>
+  </shape>
+  <shape id="5" label="Streaks Focusing; t:start, c:LSF" startTime="4034" endTime="6033" fillType="media" fillImage="am-internal:///326EBC43F1897683792162BEAFF4251328AB4D89.jpeg">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.streaks" locallyApplied="true">
+      <property name="alpha" type="float" value="0.830000"/>
+      <property name="amode" type="int" value="2"/>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.290000"/>
+        <kf t="0.476500" v="0.000000" e="cubicBezier 0.57266104 0.0 1.0 1.0"/>
+      </property>
+    </effect>
+    <path d="M -405.0 -540.0L 405.0 -540.0L 405.0 540.0L -405.0 540.0L -405.0 -540.0Z"/>
+  </shape>
+</scene>

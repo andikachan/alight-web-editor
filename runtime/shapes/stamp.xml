@@ -1,0 +1,193 @@
+<shape id="com.alightcreative.shapes.stamp"  name="@am:string/shape_stamp">
+
+    <params>
+        <point id="size" label="@am:string/effect_param_size" default="150,150" type="size" />
+        <spinner id="cornerRadius" min="0" max="2000" default="5" step="1" label="@am:string/effect_param_radius"  />
+        <spinner id="perforationSize" min="0" max="500" default="40" step="1" label="@am:string/effect_param_perfsize"  />
+        <spinner id="perforationSpacing" min="0" max="500" default="20" step="1" label="@am:string/effect_param_spacing"  />
+    </params>
+
+    <handle id="r" param="cornerRadius" type="x" style="square" icon="grip" />
+    <handle id="e" param="size" type="x" />
+    <handle id="w" param="size" type="x" invert="x" />
+    <handle id="n" param="size" type="y" invert="y" />
+    <handle id="s" param="size" type="y" />
+    <handle id="se" param="size" type="xy" lock-ratio="true" />
+    <handle id="ne" param="size" type="xy" invert="y" lock-ratio="true" />
+    <handle id="sw" param="size" type="xy" invert="x" lock-ratio="true" />
+    <handle id="nw" param="size" type="xy" invert="xy" lock-ratio="true" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            let width = params.size.x;
+            let height = params.size.y;
+            let r = Math.min(Math.max(0.0,params.cornerRadius),Math.min(width,height));
+
+            return {
+                r: [-width + r, -height],
+                n: [0, -height],
+                s: [0, height],
+                e: [width, 0],
+                w: [-width, 0],
+                ne: [width, -height],
+                se: [width, height],
+                nw: [-width, -height],
+                sw: [-width, height]
+            }
+        }
+
+        function getPath(params) {
+            let width = params.size.x;
+            let height = params.size.y;
+            let r = Math.min(Math.max(0.0,params.cornerRadius),Math.min(width,height));
+            let cornerPointOffs = r * (1.0-0.552228474);
+            let perfSize = params.perforationSize;
+            let perfSpace = params.perforationSpacing;
+            let perfDist = perfSize + perfSpace;
+            let hspace = (width - r)*2;
+            let vspace = (height - r)*2;
+            let hcount = Math.floor((hspace-perfSpace) / perfDist);
+            let vcount = Math.floor((vspace-perfSpace) / perfDist);
+            let hspacing = (hspace - (hcount * perfSize)) / (hcount+1);
+            let vspacing = (vspace - (vcount * perfSize)) / (vcount+1);
+            let perfRad = perfSize / 2;
+            //let perfPointOffs = (perfSize/2) * (1.0-0.552228474);
+            let perfPointOffs = perfRad * 0.552228474;
+
+            //AM.log("[stamp] getPath : perfSize="+perfSize + " perfDist="+perfDist + " hspace="+hspace + " hcount="+hcount + " hspacing="+hspacing + " perfPointOffs="+perfPointOffs);
+
+            let topEdge = [];
+            let bottomEdge = [];
+            let leftEdge = [];
+            let rightEdge = [];
+
+            let top = -height;
+            let bottom = height;
+            let left = -width;
+            let right = width;
+
+            let x = left + r + hspacing;
+            for( let i = 0; i < hcount; i++ ) {
+                topEdge.push({
+                    p: [x, top]
+                });
+                topEdge.push({
+                    p: [x + perfRad, top + perfRad],
+                    in: [x + perfRad - perfPointOffs, top + perfRad],
+                    out: [x + perfRad + perfPointOffs, top + perfRad]
+                });
+                x += perfSize;
+                topEdge.push({
+                    p: [x, top]
+                });
+                x += hspacing;
+            }
+
+            //AM.log("[stamp] getPath(2) : topEdge=" + (topEdge.length) );
+
+            x = right - r - hspacing;
+            for( let i = 0; i < hcount; i++ ) {
+                bottomEdge.push({
+                    p: [x, bottom]
+                });
+                bottomEdge.push({
+                    p: [x - perfRad, bottom - perfRad],
+                    in: [x - perfRad + perfPointOffs, bottom - perfRad],
+                    out: [x - perfRad - perfPointOffs, bottom - perfRad]
+                });
+                x -= perfSize;
+                bottomEdge.push({
+                    p: [x, bottom]
+                });
+                x -= hspacing;
+            }
+
+            let y = top + r + vspacing;
+            for( let i = 0; i < vcount; i++ ) {
+                rightEdge.push({
+                    p: [right, y]
+                });
+                rightEdge.push({
+                    p: [right - perfRad, y + perfRad],
+                    in: [right - perfRad, y + perfRad - perfPointOffs],
+                    out: [right - perfRad, y + perfRad + perfPointOffs]
+                });
+                y += perfSize;
+                rightEdge.push({
+                    p: [right, y]
+                });
+                y += vspacing;
+            }
+
+            y = bottom - r - vspacing;
+            for( let i = 0; i < vcount; i++ ) {
+                leftEdge.push({
+                    p: [left, y]
+                });
+                leftEdge.push({
+                    p: [left + perfRad, y - perfRad],
+                    in: [left + perfRad, y - perfRad + perfPointOffs],
+                    out: [left + perfRad, y - perfRad - perfPointOffs]
+                });
+                y -= perfSize;
+                leftEdge.push({
+                    p: [left, y]
+                });
+                y -= vspacing;
+            }
+
+            let beginTopLeft = [{
+                    p: [-width + r, -height],
+                    in: [-width + cornerPointOffs, -height]
+                }];
+
+            let topRight = [{
+                    p: [width - r, -height],
+                    out: [width-cornerPointOffs, -height]
+                },
+                {
+                    p: [width, -height + r],
+                    in: [width, -height + cornerPointOffs]
+                }];
+
+            let bottomRight = [{
+                    p: [width, height-r],
+                    out: [width, height - cornerPointOffs]
+                },
+                {
+                    p: [width-r, height],
+                    in: [width-cornerPointOffs, height]
+                }];
+
+            let bottomLeft = [{
+                    p: [-width + r, height],
+                    out: [-width + cornerPointOffs, height]
+                },
+                {
+                    p: [-width, height-r],
+                    in: [-width, height-cornerPointOffs]
+                }];
+
+            let endTopLeftAndClose = [{
+                    p: [-width, -height + r],
+                    out: [-width, -height + cornerPointOffs]
+                },
+                {closed:true}]
+
+            return [].concat(
+                beginTopLeft,
+                topEdge,
+                topRight,
+                rightEdge,
+                bottomRight,
+                bottomEdge,
+                bottomLeft,
+                leftEdge,
+                endTopLeftAndClose
+            );
+        }
+
+    ]]></script>
+
+</shape>

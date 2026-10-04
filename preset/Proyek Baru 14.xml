@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?><!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2026-09-24 05:15 AM
+5.0.273.1028425 (1028425)
+2d5c0f8 (20 Mei 2026 04.16.19)
+-->
+<scene title="Proyek Baru 14" width="720" height="1280" exportWidth="720" exportHeight="1280" precompose="dynamicResolution" bgcolor="#ff000000" totalTime="1833" fps="30" modifiedTime="1790201711048" amver="1028425" ffver="106" am="com.alightcreative.motion/5.0.273.1028425" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <text id="2999475485" startTime="0" endTime="732" fillType="color" mediaFillMode="fill" size="18.000000" font="googlefonts?name=Open Sans&amp;weight=800" wrapWidth="512" align="left">
+    <transform>
+      <location value="490.926270,539.061890,0.000000" />
+    </transform>
+    <fillColor value="#ff7f7f7f" />
+    <content>hsjsj</content>
+  </text>
+  <text id="2999475486" startTime="700" endTime="1833" fillType="color" mediaFillMode="fill" size="18.000000" font="imported?name=MADEOkineSansPERSONALUSE-Light.otf" wrapWidth="512" align="left">
+    <transform>
+      <location value="474.655090,796.689026,0.000000" />
+    </transform>
+    <content>hsjsj</content>
+  </text>
+</scene>

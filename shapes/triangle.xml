@@ -1,0 +1,35 @@
+<shape id="com.alightcreative.shapes.triangle" name="@am:string/shape_triangle">
+
+    <params>
+        <point id="p1" label="@am:string/effect_param_point_1" default="-100,100" />
+        <point id="p2" label="@am:string/effect_param_point_2" default="0,-100" />
+        <point id="p3" label="@am:string/effect_param_point_3" default="100,100" />
+        <switch id="closed" default="true" label="@am:string/effect_param_closed" />
+    </params>
+
+    <handle id="p1" param="p1" type="xy" icon="hollow-dot" />
+    <handle id="p2" param="p2" type="xy" icon="hollow-dot" />
+    <handle id="p3" param="p3" type="xy" icon="hollow-dot" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            return {
+                p1: params.p1,
+                p2: params.p2,
+                p3: params.p3
+            }
+        }
+
+        function getPath(params) {
+            return [
+                [params.p1.x,params.p1.y],
+                [params.p2.x,params.p2.y],
+                [params.p3.x,params.p3.y],
+                {closed:params.closed}
+            ];
+        }
+
+    ]]></script>
+
+</shape>

@@ -1,0 +1,54 @@
+<shape id="com.alightcreative.shapes.star" name="@am:string/shape_star">
+
+    <params>
+        <slider id="pointCount" default="5" min="3" max="32" label="@am:string/effect_param_num_points" step="1" type="integer" ticks="3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32" />
+        <spinner id="outerRadius" min="0" max="2000" default="100" step="1" label="@am:string/effect_param_radius_out"  />
+        <spinner id="innerRadius" min="0" max="2000" default="50" step="1" label="@am:string/effect_param_radius_in"  />
+        <spinner id="offsetAngle" min="-3600" max="3600" default="0" step="1" label="@am:string/effect_param_angle" ticks="45,90,135,180,225,270" type="angle" />
+    </params>
+
+    <handle id="in" param="innerRadius" type="radius" icon="grip" />
+    <handle id="out" param="outerRadius" type="radius" icon="grip" />
+    <handle id="a" param="offsetAngle" type="angle" icon="grip" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            let innerRadius = params.innerRadius;
+            let outerRadius = params.outerRadius;
+            let pointCount = params.pointCount;
+            let radsPerPoint = 2.0*Math.PI/pointCount;
+            let radsPerHalfPoint = radsPerPoint / 2.0;
+            let offsetAngle = params.offsetAngle * Math.PI / 180.0;
+
+            let outerHandleAngle = Math.PI/2.0 + offsetAngle - radsPerPoint * Math.floor(pointCount/3);
+            let innerHandleAngle = radsPerPoint * Math.floor(pointCount*2/3) + Math.PI/2.0 + offsetAngle - radsPerHalfPoint;
+
+            return {
+                in: [innerRadius*Math.cos(innerHandleAngle),innerRadius*-Math.sin(innerHandleAngle)],
+                out: [outerRadius*Math.cos(outerHandleAngle),outerRadius*-Math.sin(outerHandleAngle)],
+                a: [outerRadius*Math.cos(offsetAngle + Math.PI/2.0),outerRadius*-Math.sin(offsetAngle + Math.PI/2.0)],
+            }
+        }
+
+        function getPath(params) {
+            let innerRadius = params.innerRadius;
+            let outerRadius = params.outerRadius;
+            let pointCount = params.pointCount;
+            let offsetAngle = params.offsetAngle * Math.PI / 180.0;
+            let points = [];
+            let radsPerPoint = 2.0*Math.PI/pointCount;
+            let radsPerHalfPoint = radsPerPoint / 2.0;
+            for( let i=0; i<pointCount; i++ ) {
+                let angle = radsPerPoint*i + Math.PI/2.0 + offsetAngle;
+                points.push([outerRadius*Math.cos(angle),outerRadius*-Math.sin(angle)]);
+                angle += radsPerHalfPoint;
+                points.push([innerRadius*Math.cos(angle),innerRadius*-Math.sin(angle)]);
+            }
+            points.push({closed:true});
+            return points;
+        }
+
+    ]]></script>
+
+</shape>

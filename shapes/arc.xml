@@ -1,0 +1,198 @@
+<shape id="com.alightcreative.shapes.arc" name="@am:string/shape_arc">
+
+    <params>
+        <spinner id="startAngle" min="-3600" max="3600" default="0" step="1" label="@am:string/effect_param_start" ticks="0,45,90,135,180,225,270,315,360" type="angle" />
+        <spinner id="endAngle" min="-3600" max="3600" default="90" step="1" label="@am:string/effect_param_end" ticks="0,45,90,135,180,225,270,315,360" type="angle" />
+        <spinner id="radius" min="0" max="2000" default="100" step="1" label="@am:string/effect_param_radius"  />
+        <switch id="closed" default="false" label="@am:string/effect_param_closed" />
+    </params>
+
+    <handle id="r" param="radius" type="radius" icon="grip"  />
+    <handle id="s" param="startAngle" type="angle" style="square" icon="grip"  />
+    <handle id="e" param="endAngle" type="angle" style="square" icon="grip"  />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+
+            let startAngle = params.startAngle * Math.PI / 180
+            let endAngle = params.endAngle * Math.PI / 180
+            let radius = params.radius;
+            startAngle += 2000 * Math.PI;
+            endAngle += 2000 * Math.PI;
+
+            let lowAngle = Math.min(startAngle,endAngle)
+            let highAngle = Math.max(startAngle,endAngle)
+            let diff = ((highAngle - lowAngle)/(Math.PI*2.0)) % 2.0;
+
+            lowAngle %= (Math.PI*2.0);
+            highAngle %= (Math.PI*2.0);
+
+            if( diff < 1.0 ) {
+                lowAngle += Math.PI*2.0;
+            } else {
+                highAngle += Math.PI*2.0;
+            }
+
+            //let radiusAngle = (lowAngle + Math.abs(highAngle-lowAngle)/2.0);
+            //let radiusAngle = (highAngle+lowAngle)/2.0;
+            let radiusAngle = (startAngle+endAngle)/2.0 + Math.PI;
+
+            //if( diff < 1.0 ) {
+            //    radiusAngle = (radiusAngle + Math.PI) % (Math.PI*2.0);
+            //}
+
+            //AM.log(`arcShape: diff=${diff} lowAngle=${lowAngle} highAngle=${highAngle} radiusAngle=${radiusAngle} l>h=${lowAngle>highAngle} d=${(highAngle-lowAngle)/(Math.PI*2.0)}`);
+
+            //if( Math.abs(lowAngle-highAngle) < Math.PI/6.0 ) {
+            //    radiusAngle += Math.PI/3.0;
+            //}
+
+            //let radiusHandle = [radius,0];
+            //let rightHandleOK = Math.abs(startAngle) > Math.PI / 3 && Math.abs(endAngle) > Math.PI / 3 && Math.abs(startAngle-Math.PI*2.0) > Math.PI / 3 && Math.abs(endAngle-Math.PI*2.0) > Math.PI / 3;
+            //let leftHandleOK = Math.abs(startAngle-Math.PI) > Math.PI / 4 && Math.abs(endAngle-Math.PI) > Math.PI / 4;
+            //let topHandleOK = Math.abs(startAngle-Math.PI/2) > Math.PI / 4 && Math.abs(endAngle-Math.PI/2) > Math.PI / 4;
+            //
+            //if( rightHandleOK ) {
+            //    radiusHandle = [radius,0];
+            //} else if( leftHandleOK ) {
+            //    radiusHandle = [-radius,0];
+            //} else if( topHandleOK ) {
+            //    radiusHandle = [0,-radius];
+            //}
+
+            return {
+                r: [radius*Math.cos(radiusAngle),radius*-Math.sin(radiusAngle)],
+                s: [radius*Math.cos(startAngle),radius*-Math.sin(startAngle)],
+                e: [radius*Math.cos(endAngle),radius*-Math.sin(endAngle)]
+            }
+        }
+
+        /**
+         * Create a series of arcs approximating a circular arc around (0,0)
+         * with radius radius and the given startAngle and endAngle (angles
+         * considered counter-clockwise from the x axis).
+        */
+        function createArc(radius, startAngle, endAngle) {
+            let twoPI = Math.PI * 2;
+            let angleDiff = (endAngle - startAngle) % twoPI;
+            let startAngleN = Math.abs(startAngle) > twoPI ? startAngle % twoPI : startAngle;
+            let endAngleN = startAngleN + angleDiff; //Math.abs(endAngle) > twoPI ? endAngle % twoPI : endAngle;
+            let curves = [];
+            let piOverTwo = Math.PI / 2.0;
+            let sgn = (startAngle < endAngle) ? +1 : -1; // clockwise or counterclockwise
+            let a1 = startAngle;
+
+            //AM.log(`PieShape createArc: sgn=${sgn}`);
+
+            //if( (startAngle < endAngle) != (startAngleN < endAngleN) ) {
+            //    [startAngleN,endAngleN] = [endAngleN,startAngleN];
+            //}
+
+            for (var totalAngle = Math.min(twoPI, Math.abs(endAngleN - startAngleN)); totalAngle > 0.00001; ) {
+                var a2 = a1 + sgn * Math.min(totalAngle, piOverTwo);
+                curves.push(createSmallArc(radius, a1, a2));
+                totalAngle -= Math.abs(a2 - a1);
+                a1 = a2;
+            }
+
+            return curves;
+        }
+
+        /**
+         * Cubic bezier approximation of a circular arc centered at teh origin,
+         * from (radians) a1 to a2, where a2 - a1 < pi / 2. The arc's radius is r.
+         *
+         * Returns an object with four points, where x1, y1, and x4, y4 are the arc's
+         * end points and x2, y2 and x3, y3 are the cubic bezier's control points.
+         *
+         * This algorithm is based on teh approach described in:
+         * A. Riskus, "Approximation of a cubic Bezier Curbe by Circular Arcs and Vice Versa,"
+         * Information Technology and Control, 35(4) 2006 pp. 371-378.
+         *
+         * create[Small]Arc translated from the original AS version by Hans Muller
+         * https://hansmuller-flex.blogspot.com/2011/10/more-about-approximating-circular-arcs.html
+         * Licensed under Creative Commons 3.0 by Attribution
+         * http://creativecommons.org/licenses/by/3.0/
+         */
+        function createSmallArc(r, a1, a2) {
+          // compute for an arc of the same angle, but centered around the x-axis
+          var
+          a = (a2 - a1) / 2.0,
+
+          x4 = r * Math.cos(a),
+          y4 = r * Math.sin(a),
+          x1 = x4,
+          y1 = -y4,
+
+          q1 = x1 * x1 + y1 * y1,
+          q2 = q1 + x1 * x4 + y1 * y4,
+          k2 = 4/3 * (Math.sqrt(2 * q1 * q2) - q2) / (x1 * y4 - y1 * x4),
+
+          x2 = x1 - k2 * y1,
+          y2 = y1 + k2 * x1,
+          x3 = x2,
+          y3 = -y2,
+
+          ar = a + a1,
+          cos_ar = Math.cos(ar),
+          sin_ar = Math.sin(ar);
+
+          return {
+            'x1': r * Math.cos(a1),
+            'y1': r * Math.sin(a1),
+            'x2': x2 * cos_ar - y2 * sin_ar,
+            'y2': x2 * sin_ar + y2 * cos_ar,
+            'x3': x3 * cos_ar - y3 * sin_ar,
+            'y3': x3 * sin_ar + y3 * cos_ar,
+            'x4': r * Math.cos(a2),
+            'y4': r * Math.sin(a2)
+          };
+        }
+
+        function posMod(x,m) {return (x % m + m) % m}
+
+        function getPath(params) {
+
+            let startAngle = -params.startAngle * Math.PI / 180
+            let endAngle = -params.endAngle * Math.PI / 180
+            let radius = params.radius;
+            startAngle += 2000 * Math.PI;
+            endAngle += 2000 * Math.PI;
+
+            let lowAngle = Math.min(startAngle,endAngle)
+            let highAngle = Math.max(startAngle,endAngle)
+            let diff = ((highAngle - lowAngle)/(Math.PI*2.0)) % 2.0;
+
+            lowAngle %= (Math.PI*2.0);
+            highAngle %= (Math.PI*2.0);
+
+            if( diff < 1.0 ) {
+                lowAngle += Math.PI*2.0;
+            } else {
+                highAngle += Math.PI*2.0;
+            }
+
+            let curves = createArc(radius,lowAngle,highAngle)
+
+            let xscale = 1.0;
+            let points = []
+            for( let i=0; i<curves.length; i++ ) {
+                let c = curves[i]
+                if( points.length > 0 ) {
+                    points[points.length-1].out = [c.x2 * xscale, c.y2];
+                } else {
+                    points.push({p:[c.x1 * xscale,c.y1], out:[c.x2 * xscale,c.y2]})
+                }
+                points.push({in:[c.x3 * xscale,c.y3], p:[c.x4 * xscale,c.y4]})
+            }
+            //points.push([0,0]);
+            points.push({closed:params.closed});
+            return points;
+
+
+        }
+
+    ]]></script>
+
+</shape>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:15 PM
+3.6.0 (146)
+-->
+<scene title="v1 Hexagon Presets" width="1080" height="1080" exportWidth="1080" exportHeight="1080" bgcolor="#FFD8D8D8" totalTime="8565" fps="30" modifiedTime="1606907728403" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///4073A9A25F28C7DEC1123EE4C83CFA9764359693.jpg" filename="pexels-pixabay-163100.jpg" title="pexels-pixabay-163100.jpg" type="image/jpeg" size="1531118" sig="4073A9A25F28C7DEC1123EE4C83CFA9764359693" orientation="0" infoUpdated="1606907728401" width="4194" height="2796"/>
+  <shape id="12" label="Liquid Vibrations; t: extend" startTime="0" endTime="2032" fillType="media" fillImage="am-internal:///4073A9A25F28C7DEC1123EE4C83CFA9764359693.jpg">
+    <transform>
+      <location value="538.866333,544.558899"/>
+      <scale value="0.805426,0.805426"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hexrotate" locallyApplied="true">
+      <property name="maskToLayer" type="bool" value="true"/>
+      <property name="position" type="vec2">
+        <kf t="0.007874" v="0.000000,0.000000"/>
+        <kf t="0.992126" v="0.000000,-4381.000000"/>
+      </property>
+      <property name="rotate" type="float" value="270.000000"/>
+      <property name="size" type="float" value="5.000000"/>
+      <property name="stretch" type="vec2" value="1.990000,1.000000"/>
+      <property name="warpAngle" type="float" value="112.000000"/>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="13" label="Clockwise Whole Rotation" startTime="2100" endTime="4132" fillType="media" fillImage="am-internal:///4073A9A25F28C7DEC1123EE4C83CFA9764359693.jpg">
+    <transform>
+      <location value="538.866333,544.558899"/>
+      <scale value="0.805426,0.805426"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hexrotate" locallyApplied="true">
+      <property name="maskToLayer" type="bool" value="true"/>
+      <property name="rotate" type="float">
+        <kf t="0.007874" v="0.000000"/>
+        <kf t="0.992126" v="360.000000" e="local cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="14" label="Transition Out; t:end" startTime="4500" endTime="6532" fillType="media" fillImage="am-internal:///4073A9A25F28C7DEC1123EE4C83CFA9764359693.jpg">
+    <transform>
+      <location value="538.866333,544.558899"/>
+      <scale value="0.805426,0.805426"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hexshift" locallyApplied="true">
+      <property name="maskToLayer" type="bool" value="true"/>
+      <property name="strength" type="float">
+        <kf t="0.500000" v="0.000000"/>
+        <kf t="1.000000" v="0.100000" e="local cubicBezier 0.71531796 0.0 0.98066616 0.32915902"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+  <shape id="15" label="Transition In; t:start" startTime="6533" endTime="8565" fillType="media" fillImage="am-internal:///4073A9A25F28C7DEC1123EE4C83CFA9764359693.jpg">
+    <transform>
+      <location value="538.866333,544.558899"/>
+      <scale value="0.805426,0.805426"/>
+    </transform>
+    <effect id="com.alightcreative.effects.hexshift" locallyApplied="true">
+      <property name="maskToLayer" type="bool" value="true"/>
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.100000" e="local cubicBezier 0.71531796 0.0 0.98066616 0.32915902"/>
+        <kf t="0.500000" v="0.000000" e="local cubicBezier 0.01999998 0.66999996 0.27999997 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -360.0L 540.0 -360.0L 540.0 360.0L -540.0 360.0L -540.0 -360.0Z"/>
+  </shape>
+</scene>

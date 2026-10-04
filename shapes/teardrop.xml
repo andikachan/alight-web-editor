@@ -1,0 +1,86 @@
+<shape id="com.alightcreative.shapes.teardrop" name="@am:string/shape_teardrop">
+
+    <params>
+        <spinner id="radius" label="@am:string/effect_param_radius" min="0" max="2000" step="1" default="100" />
+        <spinner id="tail" label="@am:string/effect_param_tail" min="0" max="5000" step="1" default="200" />
+        <spinner id="squeeze" label="@am:string/effect_param_squeeze" min="1" max="10" step="0.01" default="2.5" />
+        <spinner id="tailWidth" label="@am:string/effect_param_width" min="0" max="100" step="0.1" default="0" />
+    </params>
+
+    <handle id="radius" param="radius" type="x" icon="grip" />
+    <handle id="tail" param="tail" type="y" invert="y" icon="grip" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            return {
+                radius: [params.radius, 0],
+                tail: [0, -(params.radius*params.tail/100)]
+            }
+        }
+
+        function getPath(params) {
+            let width = params.radius;
+            let height = params.radius;
+            let tail = params.tail;
+            let tailWidth = params.tailWidth;
+            let squeeze = params.squeeze;
+            let cw = 0.551915024494 * width;
+            let ch = 0.551915024494 * height;
+            if( tailWidth > 0.001 ) {
+                return [
+                    {
+                        in:[-width/squeeze,-height*tail/(squeeze*100)],
+                        p:[-width*tailWidth/100,-height*tail/100]
+                    },
+                    {
+                        p:[width*tailWidth/100,-height*tail/100],
+                        out:[width/squeeze,-height*tail/(squeeze*100)]
+                    },
+                    {
+                        in:[width,-ch], // *tail/100
+                        p:[width,0],
+                        out:[width,ch]
+                    },
+                    {
+                        in:[cw,height],
+                        p:[0,height],
+                        out:[-cw,height]
+                    },
+                    {
+                        in:[-width,ch],
+                        p:[-width,0],
+                        out:[-width,-ch] // *tail/100
+                    },
+                    {closed:true}
+                ];
+            } else {
+                return [
+                    {
+                        in:[-width/squeeze,-height*tail/(squeeze*100)],
+                        p:[0,-height*tail/100],
+                        out:[width/squeeze,-height*tail/(squeeze*100)]
+                    },
+                    {
+                        in:[width,-ch], // *tail/100
+                        p:[width,0],
+                        out:[width,ch]
+                    },
+                    {
+                        in:[cw,height],
+                        p:[0,height],
+                        out:[-cw,height]
+                    },
+                    {
+                        in:[-width,ch],
+                        p:[-width,0],
+                        out:[-width,-ch] // *tail/100
+                    },
+                    {closed:true}
+                ];
+            }
+        }
+
+    ]]></script>
+
+</shape>

@@ -1,0 +1,20 @@
+{
+  "name": "am-preset-player-clone",
+  "version": "1.0.0",
+  "description": "Full clone of Alight Motion Web Preset Player & Runtime Engine ready for Cloudflare Pages deployment",
+  "main": "server.cjs",
+  "type": "module",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "node server.cjs",
+    "deploy": "wrangler pages deploy ."
+  },
+  "keywords": [
+    "alight-motion",
+    "preset-player",
+    "webgl",
+    "cloudflare-pages"
+  ],
+  "author": "",
+  "license": "ISC"
+}

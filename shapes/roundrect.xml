@@ -1,0 +1,82 @@
+<shape id="com.alightcreative.shapes.roundrect"  name="@am:string/shape_roundrect">
+
+    <params>
+        <point id="size" label="@am:string/effect_param_size" default="100,100" type="size" />
+        <spinner id="cornerRadius" min="0" max="2000" default="25" step="1" label="@am:string/effect_param_radius"  />
+    </params>
+
+    <handle id="r" param="cornerRadius" type="x" style="square" icon="grip" />
+    <handle id="e" param="size" type="x" />
+    <handle id="w" param="size" type="x" invert="x" />
+    <handle id="n" param="size" type="y" invert="y" />
+    <handle id="s" param="size" type="y" />
+    <handle id="se" param="size" type="xy" lock-ratio="true" />
+    <handle id="ne" param="size" type="xy" invert="y" lock-ratio="true" />
+    <handle id="sw" param="size" type="xy" invert="x" lock-ratio="true" />
+    <handle id="nw" param="size" type="xy" invert="xy" lock-ratio="true" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            let width = params.size.x;
+            let height = params.size.y;
+            let r = Math.min(Math.max(0.0,params.cornerRadius),Math.min(width,height));
+
+            return {
+                r: [-width + r, -height],
+                n: [0, -height],
+                s: [0, height],
+                e: [width, 0],
+                w: [-width, 0],
+                ne: [width, -height],
+                se: [width, height],
+                nw: [-width, -height],
+                sw: [-width, height]
+            }
+        }
+
+        function getPath(params) {
+            let width = params.size.x;
+            let height = params.size.y;
+            let r = Math.min(Math.max(0.0,params.cornerRadius),Math.min(width,height));
+            let pointOffs = r * (1.0-0.552228474);
+            return [
+                {
+                    p: [-width + r, -height],
+                    in: [-width + pointOffs, -height]
+                },
+                {
+                    p: [width - r, -height],
+                    out: [width-pointOffs, -height]
+                },
+                {
+                    p: [width, -height + r],
+                    in: [width, -height + pointOffs]
+                },
+                {
+                    p: [width, height-r],
+                    out: [width, height - pointOffs]
+                },
+                {
+                    p: [width-r, height],
+                    in: [width-pointOffs, height]
+                },
+                {
+                    p: [-width + r, height],
+                    out: [-width + pointOffs, height]
+                },
+                {
+                    p: [-width, height-r],
+                    in: [-width, height-pointOffs]
+                },
+                {
+                    p: [-width, -height + r],
+                    out: [-width, -height + pointOffs]
+                },
+                {closed:true}
+            ];
+        }
+
+    ]]></script>
+
+</shape>

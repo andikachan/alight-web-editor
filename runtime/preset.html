@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#090a0e">
+<title>AM Preset Player</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231fc8ee'/%3E%3Cpolygon points='24,16 48,32 24,48' fill='%23000'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #090a0e; --panel: #11131a; --card: #171a22; --card2: #1e222c;
+        --line: #252a36; --line2: #323949;
+        --text: #e9ecf3; --muted: #8c93a7;
+        --accent: #1fc8ee; --accent-ink: #03222c; --violet: #a793ff;
+        --ok: #79dc98; --warn: #f0b866; --bad: #ff8a8a;
+        --tl-label: 112px; --nav-h: 56px; --top-h: 52px;
+        --safe-b: env(safe-area-inset-bottom, 0px);
+        --stage-h: minmax(190px, 36vh);
+    }
+    @supports (height: 1dvh) { :root { --stage-h: minmax(190px, 36dvh); } }
+    body.stage-big { --stage-h: minmax(190px, 54vh); }
+    @supports (height: 1dvh) { body.stage-big { --stage-h: minmax(190px, 54dvh); } }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    [hidden] { display: none !important; }
+    html, body { height: 100%; }
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px; line-height: 1.4; background: var(--bg); color: var(--text); overflow: hidden;
+    }
+    button, input, select { font: inherit; color: inherit; }
+    svg.i { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+    svg.i.sm { width: 15px; height: 15px; }
+
+    /* ─────────── Kerangka: HP tegak (bawaan) ─────────── */
+    #app {
+        height: 100vh; height: 100dvh; display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: var(--top-h) var(--stage-h) auto minmax(0, 1fr) calc(var(--nav-h) + var(--safe-b));
+        grid-template-areas: "top" "stage" "transport" "content" "nav";
+    }
+    #top { grid-area: top; }
+    #stage { grid-area: stage; }
+    #transport { grid-area: transport; }
+    #side { display: contents; }
+    #panes { grid-area: content; }
+    #tabs { grid-area: nav; }
+    #timelineDock { display: none; }
+
+    /* ─────────── Header ─────────── */
+    #top {
+        display: flex; align-items: center; gap: 8px; padding: 0 10px 0 12px;
+        background: var(--panel); border-bottom: 1px solid var(--line); min-width: 0;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+    .logo { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); display: flex; align-items: center; justify-content: center; flex: none; }
+    .logo svg { fill: currentColor; stroke: none; width: 14px; height: 14px; margin-left: 2px; }
+    .brand-text { min-width: 0; }
+    h1 { font-size: .92rem; font-weight: 600; line-height: 1.15; white-space: nowrap; }
+    .subtitle { font-size: .68rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+    .top-actions { display: flex; align-items: center; gap: 2px; flex: none; }
+
+    /* ─────────── Tombol ─────────── */
+    .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+        min-height: 40px; padding: 0 14px; background: var(--card2); border: 1px solid var(--line2);
+        border-radius: 10px; font-size: .8rem; font-weight: 600; color: var(--text); cursor: pointer;
+        text-decoration: none; white-space: nowrap; transition: background .15s, border-color .15s;
+    }
+    .btn:hover { background: #282d3a; }
+    .btn:active { transform: scale(.98); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    .btn.primary:hover { background: #4fd9f6; }
+    .btn.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+    .btn.ghost:hover { background: var(--card2); color: var(--text); }
+    .btn.sm { min-height: 34px; padding: 0 11px; font-size: .74rem; border-radius: 8px; }
+    .btn.icon { width: 40px; padding: 0; }
+    .btn.sm.icon { width: 34px; }
+    .btn.block { width: 100%; }
+    .btn.on { color: var(--accent); border-color: rgba(31,200,238,.5); background: rgba(31,200,238,.1); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn:focus-visible, .tab-btn:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ─────────── Panggung (preview) ─────────── */
+    #stage {
+        position: relative; min-height: 0; padding: 10px; overflow: hidden; cursor: pointer; touch-action: manipulation;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(circle at 50% 35%, #141722 0%, #050508 75%);
+    }
+    #view { display: block; background: #000; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,.7); }
+    .stage-hint { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: opacity .2s; }
+    .stage-hint span { width: 60px; height: 60px; border-radius: 50%; background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.28); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+    .stage-hint svg { width: 24px; height: 24px; fill: #fff; stroke: #fff; margin-left: 3px; }
+    #stage.is-playing .stage-hint { opacity: 0; }
+    .stage-btn {
+        position: absolute; top: 8px; right: 8px; z-index: 3; width: 36px; height: 36px; border-radius: 50%;
+        background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.2); color: #fff;
+        display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(6px);
+    }
+    #dropHint {
+        position: absolute; inset: 8px; z-index: 4; display: none; align-items: center; justify-content: center;
+        border: 2px dashed var(--accent); border-radius: 12px; background: rgba(9,10,14,.82);
+        color: var(--accent); font-weight: 600; font-size: .9rem; pointer-events: none;
+    }
+    body.dragging #dropHint { display: flex; }
+
+    #stageBusy {
+        position: absolute; inset: 0; z-index: 30; padding: 16px; cursor: default;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+        background: rgba(5,5,8,.8); backdrop-filter: blur(3px); text-align: center;
+    }
+    #stageBusy.error .busy-spinner { display: none; }
+    .busy-spinner { width: 32px; height: 32px; border-radius: 50%; border: 3px solid rgba(31,200,238,.22); border-top-color: var(--accent); animation: busy-spin .85s linear infinite; }
+    @keyframes busy-spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .busy-spinner { animation-duration: 2.4s; } }
+    .busy-label { font-size: .86rem; font-weight: 600; }
+    .busy-detail { font-size: .72rem; color: var(--muted); white-space: pre-wrap; line-height: 1.45; max-width: 92%; word-break: break-word; }
+    #stageBusy.error .busy-label { color: var(--bad); }
+
+    /* ─────────── Kontrol putar ─────────── */
+    #transport { background: var(--panel); border-top: 1px solid var(--line); padding: 4px 12px 8px; display: flex; flex-direction: column; gap: 0; }
+    .ctl-row { display: flex; align-items: center; gap: 8px; }
+    #play { min-width: 104px; }
+    #loopBtn { padding: 0 12px; }
+    .time { margin-left: auto; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    /* ─────────── Slider ─────────── */
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; cursor: pointer; --pct: 0%; }
+    input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--accent) var(--pct), #2b3040 var(--pct)); }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.5); }
+    input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: #2b3040; }
+    input[type=range]::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--accent); }
+    input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border: none; border-radius: 50%; background: #fff; }
+    input[type=range]:disabled { opacity: .45; cursor: not-allowed; }
+
+    /* ─────────── Menu tab ─────────── */
+    #tabs { display: flex; background: var(--panel); border-top: 1px solid var(--line); padding-bottom: var(--safe-b); }
+    .tab-btn {
+        flex: 1; min-height: var(--nav-h); position: relative; cursor: pointer; background: none; border: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+        color: var(--muted); font-size: .68rem; font-weight: 600;
+    }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::before { content: ''; position: absolute; top: 0; left: 24%; right: 24%; height: 2px; background: var(--accent); border-radius: 0 0 2px 2px; }
+
+    /* ─────────── Isi tab ─────────── */
+    #panes { overflow-y: auto; overflow-x: hidden; padding: 12px; background: var(--panel); overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+    /* Di HP hanya #panes yang boleh menggulir vertikal (lihat #timeline-body):
+       contain di sumbu Y membuat scroll "macet" saat track panjang. */
+    #panes { overscroll-behavior-x: contain; overscroll-behavior-y: auto; }
+    .pane { display: none; flex-direction: column; gap: 12px; }
+    .pane.active { display: flex; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .card-head { display: flex; align-items: center; gap: 8px; min-height: 22px; }
+    .card-head svg { color: var(--accent); }
+    .card-head h2 { font-size: .84rem; font-weight: 600; }
+    .card-head .sub { margin-left: auto; font-size: .7rem; color: var(--muted); }
+    .hint { font-size: .72rem; color: var(--muted); line-height: 1.5; }
+    .empty { font-size: .76rem; color: var(--muted); text-align: center; padding: 14px 8px; line-height: 1.5; }
+    .stack { display: flex; flex-direction: column; gap: 8px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .status-box {
+        background: #0d0f14; border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px;
+        font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .7rem; line-height: 1.5; color: #a4b3cb;
+        white-space: pre-wrap; word-break: break-word;
+    }
+    .status-box.warn { color: var(--warn); }
+    #urlAmState, #urlTiktokState { word-break: break-all; max-height: 96px; overflow-y: auto; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; font-size: .74rem; color: var(--muted); }
+    .label-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .val { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+    select, input[type=number], input[type=url] {
+        width: 100%; min-height: 40px; padding: 0 10px; background: #0d0f14; border: 1px solid var(--line2);
+        border-radius: 9px; color: var(--text); font-size: .82rem; outline: none;
+    }
+    select:focus, input[type=number]:focus, input[type=url]:focus { border-color: var(--accent); }
+    .check { display: flex; align-items: center; gap: 10px; min-height: 38px; font-size: .8rem; color: var(--text); cursor: pointer; }
+    .check input { width: 20px; height: 20px; flex: none; accent-color: var(--accent); }
+    .check small { display: block; color: var(--muted); font-size: .68rem; line-height: 1.4; }
+    .url-row { display: flex; gap: 8px; }
+    .url-row input { flex: 1; min-width: 0; }
+
+    .drop {
+        display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 18px 12px;
+        border: 1.5px dashed rgba(31,200,238,.4); border-radius: 12px; background: rgba(31,200,238,.05);
+        cursor: pointer; transition: background .15s, border-color .15s;
+    }
+    .drop:hover { background: rgba(31,200,238,.1); border-color: var(--accent); }
+    .drop svg { width: 26px; height: 26px; color: var(--accent); }
+    .drop-title { font-weight: 600; font-size: .86rem; }
+    .drop-sub { font-size: .7rem; color: var(--muted); line-height: 1.45; }
+
+    .badge { display: inline-flex; align-items: center; height: 18px; padding: 0 7px; border-radius: 9px; font-size: .62rem; font-weight: 600; background: rgba(31,200,238,.14); color: var(--accent); white-space: nowrap; }
+    .badge.video { background: rgba(167,147,255,.18); color: var(--violet); }
+    .badge.audio { background: rgba(121,220,152,.15); color: var(--ok); }
+    .badge.used { background: rgba(240,184,102,.16); color: var(--warn); }
+
+    /* Slot media */
+    .slot { display: flex; gap: 10px; align-items: center; padding: 8px; background: var(--card2); border: 1px solid var(--line); border-radius: 10px; }
+    .thumb-holder { flex: none; }
+    .thumb { display: block; width: 60px; height: 60px; object-fit: cover; border-radius: 8px; background: #0b0c10; border: 1px solid var(--line); cursor: zoom-in; }
+    .thumb.lg { width: 100%; height: auto; max-height: 150px; object-fit: contain; }
+    .thumb-empty { display: flex; align-items: center; justify-content: center; color: var(--muted); cursor: default; }
+    .slot-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+    .slot-title { display: flex; align-items: center; gap: 6px; font-size: .76rem; font-weight: 600; }
+    .slot-sub { font-size: .66rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .swap-btn { width: 100%; justify-content: center; background: rgba(31,200,238,.12); border-color: var(--accent); color: var(--accent); font-weight: 700; }
+    .swap-btn:hover { background: rgba(31,200,238,.2); }
+    .slot select, .track select { min-height: 36px; font-size: .78rem; }
+
+    /* Galeri */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+    .g-item { position: relative; display: flex; flex-direction: column; background: var(--card2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .g-item.pick-btn { text-align: left; cursor: pointer; padding: 0; font: inherit; }
+    .g-item.pick-btn:hover { border-color: var(--accent); }
+    .g-item.g-current { outline: 2px solid var(--accent); outline-offset: -2px; }
+    .g-thumb { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: #0b0c10; cursor: zoom-in; }
+    .g-badges { position: absolute; top: 5px; left: 5px; display: flex; gap: 4px; flex-wrap: wrap; }
+    .g-meta { padding: 6px 7px 5px; font-size: .64rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .g-actions { padding: 0 6px 6px; }
+    .g-actions .btn { width: 100%; min-height: 30px; font-size: .68rem; padding: 0 6px; }
+
+    /* Track audio */
+    .track { display: flex; flex-direction: column; gap: 8px; padding: 10px; background: var(--card2); border: 1px solid var(--line); border-radius: 10px; }
+    .track-head { display: flex; align-items: center; gap: 8px; font-size: .78rem; min-width: 0; }
+    .track-head strong { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+    .track-time { font-size: .68rem; color: var(--muted); white-space: nowrap; }
+
+    /* Ekspor */
+    progress { width: 100%; height: 8px; border: 0; border-radius: 4px; overflow: hidden; -webkit-appearance: none; appearance: none; background: #0d0f14; }
+    progress::-webkit-progress-bar { background: #0d0f14; }
+    progress::-webkit-progress-value { background: var(--accent); }
+    progress::-moz-progress-bar { background: var(--accent); }
+    #expResult { display: flex; flex-direction: column; gap: 8px; }
+    #expResult video { width: 100%; max-height: 50vh; border-radius: 10px; background: #000; touch-action: pan-y; }
+    .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .7rem; color: var(--muted); }
+
+    /* ─────────── Timeline layer ─────────── */
+    .tl-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; }
+    .tl-toolbar h2 { font-size: .84rem; font-weight: 600; }
+    .tl-count { font-size: .7rem; color: var(--muted); }
+    .tl-zoomctl { display: flex; align-items: center; gap: 6px; flex: 1 1 230px; min-width: 0; justify-content: flex-end; }
+    .tl-zoomctl input[type=range] { flex: 1; min-width: 60px; max-width: 160px; }
+    .tl-zoom-label { min-width: 34px; text-align: right; font-size: .7rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .tl-main { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+    #timeline-wrap { position: relative; background: #08090d; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+    /* HP: tidak ada scroll vertikal KEDUA di dalam halaman. Tingginya mengikuti
+       jumlah track (max-height: none) dan overflow-y dimatikan, jadi satu-satunya
+       gulir vertikal adalah #panes.
+       touch-action HARUS menyebut pan-y juga: "pan-x" saja membuat browser
+       MEMBLOKIR gestur vertikal di area ini (scroll layer terasa mati), padahal
+       yang kita mau gestur itu diteruskan ke halaman. Penggaris waktu tetap
+       touch-action: none supaya menyeretnya = scrub, bukan scroll. */
+    #timeline-body {
+        position: relative; overflow-x: auto; overflow-y: hidden; min-height: 96px; max-height: none;
+        overscroll-behavior-x: contain; touch-action: pan-x pan-y pinch-zoom;
+    }
+    #timeline-body::-webkit-scrollbar { width: 6px; height: 6px; }
+    #timeline-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.16); border-radius: 3px; }
+    #timeline-inner { position: relative; min-width: 100%; }
+    #timeline-ruler { position: sticky; top: 0; z-index: 9; display: flex; height: 26px; background: #0f1117; border-bottom: 1px solid var(--line); cursor: col-resize; touch-action: none; user-select: none; -webkit-user-select: none; }
+    .tl-corner { position: sticky; left: 0; z-index: 3; flex: none; width: var(--tl-label); display: flex; align-items: center; padding: 0 10px; background: #0c0e13; border-right: 1px solid var(--line); font-size: .66rem; color: var(--muted); }
+    #timeline-ruler-canvas { display: block; flex: none; height: 26px; }
+    #tl-cap { position: absolute; top: 0; height: 26px; width: 2px; background: #ff4b6e; z-index: 1; pointer-events: none; transform: translateX(-1px); }
+    #tl-cap::after { content: ''; position: absolute; top: 0; left: -4px; border: 5px solid transparent; border-top-color: #ff4b6e; }
+    #tl-playhead { position: absolute; top: 26px; bottom: 0; width: 2px; background: #ff4b6e; z-index: 6; pointer-events: none; transform: translateX(-1px); }
+    .tl-track { display: flex; height: 34px; border-bottom: 1px solid rgba(255,255,255,.045); }
+    .tl-sub-track { height: 26px; background: rgba(0,0,0,.18); }
+
+    .tl-label {
+        position: sticky; left: 0; z-index: 8; flex: none; width: var(--tl-label); display: flex; align-items: center; gap: 2px;
+        padding: 0 6px 0 2px; background: #0c0e13; border-right: 1px solid var(--line); cursor: pointer; overflow: hidden;
+        font-size: .66rem; color: #aab1c4; user-select: none; -webkit-user-select: none;
+    }
+    .tl-label.sel { color: #fff; background: #171b26; }
+    .tl-label.tl-hidden { opacity: .5; }
+    .tl-label span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    /* Chevron kecil di label track = isi embedScene sedang dibuka (klik untuk tutup). */
+    .tl-chev {
+        flex: none; width: 16px; height: 100%; display: flex; align-items: center; justify-content: center;
+        background: none; border: 0; color: var(--accent); font-size: .7rem; cursor: pointer;
+    }
+    .tl-chev.closed { color: #5a6380; }
+    .tl-eye { flex: none; width: 26px; height: 30px; display: flex; align-items: center; justify-content: center; background: none; border: 0; color: var(--accent); cursor: pointer; }
+    .tl-eye.off { color: #6a7085; }
+    .tl-eye svg { width: 14px; height: 14px; }
+    .tl-canvas-area { position: relative; flex: none; height: 100%; }
+    .tl-block {
+        position: absolute; top: 5px; bottom: 5px; min-width: 4px; padding: 0 6px; border-radius: 5px; cursor: pointer;
+        display: flex; align-items: center; overflow: hidden; white-space: nowrap; font-size: .64rem; font-weight: 600;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.18); user-select: none; -webkit-user-select: none;
+    }
+    .tl-block.tl-selected { outline: 2px solid #fff; outline-offset: 1px; }
+    .tl-block.tl-hidden-block { opacity: .3; }
+    .tl-sub-label { font-size: .6rem; color: #7e8499; background: #090b10; }
+    .tl-sub-label.sel { color: #cdd1e0; background: #111520; }
+    .tl-sub-block { top: 4px; bottom: 4px; font-size: .58rem; font-weight: 500; opacity: .82; border-radius: 3px; }
+    /* Thumbnail media di label track: editor video sungguhan menampilkan isi
+       layer-nya, bukan cuma nama, jadi user kenal layer tanpa harus klik. */
+    .tl-thumb {
+        flex: none; width: 26px; height: 24px; margin-right: 3px; border-radius: 3px; overflow: hidden;
+        background: #12151d; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+        font-size: .55rem; color: #6f7893; cursor: zoom-in;
+    }
+    .tl-thumb img, .tl-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    .tl-thumb-empty { background: repeating-linear-gradient(45deg, #12151d, #12151d 3px, #171b26 3px, #171b26 6px); }
+    /* Penanda keyframe di blok layer + di strip bawah timeline. */
+    .tl-kf {
+        position: absolute; top: 50%; width: 5px; height: 5px; margin: -3px 0 0 -3px; padding: 0;
+        background: #ffd75e; border: 1px solid rgba(0,0,0,.55); transform: rotate(45deg);
+        pointer-events: none; z-index: 2;
+    }
+    .tl-kf.tl-kf-edge { opacity: .45; }
+    /* Bookmark (penanda merah ala AM) di penggaris + strip bookmark yang bisa diklik. */
+    /* Penanda waktu (bookmark): centak merah pendek di penggaris waktu saja.
+       Dulu garis panjang menembus semua track dan menutupi layer. */
+    .tl-bookmark {
+        position: absolute; top: 0; height: 10px; width: 2px; margin-left: -1px; background: #ff4b6e;
+        pointer-events: none; z-index: 10;   /* di atas penggaris waktu (z 9), bukan di atas track */
+    }
+
+    /* Penanda waktu yang bisa diklik: flag kecil di bawah penggaris waktu. */
+    .tl-bm-flag {
+        position: absolute; top: 10px; left: 0; width: 9px; height: 9px; margin-left: -2px; padding: 0;
+        background: #ff4b6e; border: 0; clip-path: polygon(0 0, 100% 0, 0 100%);
+        cursor: pointer; z-index: 11;
+    }
+    .tl-bm-flag:hover, .tl-bm-flag.active { background: #ffd166; }
+    .tl-bm-flag:hover::after {
+        content: attr(data-time); position: absolute; top: 9px; left: 3px; z-index: 20; padding: 1px 5px;
+        background: #1c2130; border: 1px solid var(--line); border-radius: 4px; font-size: .58rem;
+        color: #cfd5e6; white-space: nowrap;
+    }
+    /* ── Scene Tree Panel ── */
+    #scene-tree-panel { background: #090c12; border-bottom: 1px solid var(--line); }
+    .scene-tree-header { display: flex; align-items: center; gap: 8px; padding: 5px 10px; background: #0d1018; border-bottom: 1px solid var(--line); min-height: 32px; }
+    #scene-tree-breadcrumb { flex: 1; font-size: .68rem; color: #8c95ae; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    /* Daftar pohon hanya untuk layout desktop (lihat @media desktop di bawah).
+       Di HP/HP mendatar yang ditampilkan cuma baris breadcrumb + Naik, jadi
+       selalu ADA SATU daftar layer (timeline) yang digulir -- dulu dua daftar
+       bertumpuk dan scroll-nya saling merebut. Isi grup tetap bisa dibuka lewat
+       chevron di label track atau tombol "Buka grup" di panel info. */
+    #scene-tree-list { display: none; }
+    #scene-tree-panel { border-bottom: 0; }
+    #scene-tree-panel { display: flex; flex-direction: column; min-width: 0; }
+    .st-row { display: flex; align-items: center; height: 30px; padding-right: 6px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,.03); user-select: none; -webkit-user-select: none; }
+    .st-row:hover { background: rgba(255,255,255,.05); }
+    .st-row.st-sel { background: rgba(90,120,200,.18); }
+    .st-indent { flex: none; display: flex; align-items: center; }
+    .st-indent-line { width: 18px; height: 100%; border-left: 1px dashed rgba(255,255,255,.1); margin-left: 8px; }
+    .st-chevron { flex: none; width: 20px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: .75rem; color: #5a6380; transition: transform .15s; }
+    .st-chevron.open { transform: rotate(90deg); }
+    .st-chevron.leaf { color: transparent; pointer-events: none; }
+    .st-icon { flex: none; width: 16px; height: 16px; border-radius: 3px; margin: 0 5px 0 2px; }
+    .st-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .69rem; color: #c0c8de; }
+    .st-tag { flex: none; font-size: .58rem; color: #5a6380; padding: 1px 5px; border-radius: 10px; background: rgba(255,255,255,.06); margin-left: 4px; }
+    .st-open-btn { flex: none; padding: 2px 7px; font-size: .6rem; border-radius: 4px; background: rgba(120,140,220,.18); color: #8aa4f0; border: 1px solid rgba(120,140,220,.3); cursor: pointer; white-space: nowrap; }
+    .st-open-btn:hover { background: rgba(120,140,220,.32); }
+    .st-eye { flex: none; width: 22px; height: 28px; display: flex; align-items: center; justify-content: center; background: none; border: 0; color: #4a5270; cursor: pointer; font-size: .8rem; }
+    .st-eye.on { color: var(--accent); }
+    .st-eye svg { width: 14px; height: 14px; }
+    .st-empty { padding: 10px 14px; font-size: .68rem; color: var(--muted); }
+    .st-sub-row { background: rgba(0,0,0,.22); }
+    .st-sub-row .st-name { color: #8c95ae; font-size: .65rem; }
+
+
+    #layer-info { min-width: 0; gap: 8px; }
+    .li-head { display: flex; align-items: center; gap: 8px; font-size: .82rem; min-width: 0; }
+    .li-head strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+    .li-dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+    .li-table { width: 100%; border-collapse: collapse; font-size: .72rem; }
+    .li-table td { padding: 3px 0; vertical-align: top; }
+    .li-table td:first-child { color: var(--muted); padding-right: 12px; white-space: nowrap; }
+    .li-table td:last-child { word-break: break-all; }
+    .li-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    /* Daftar efek di panel info layer. Nama efek panjang harus tetap terbaca di HP. */
+    .li-fx { display: flex; flex-direction: column; gap: 5px; font-size: .7rem; }
+    .li-fx-item { background: var(--card2); border: 1px solid var(--line); border-radius: 8px; padding: 5px 7px; }
+    .li-fx-name { display: flex; align-items: center; gap: 6px; font-weight: 600; color: var(--text); }
+    .li-fx-state { flex: none; font-size: .58rem; font-weight: 600; padding: 1px 5px; border-radius: 9px; background: rgba(31,200,238,.16); color: var(--accent); }
+    .li-fx-state.off { background: rgba(255,255,255,.07); color: var(--muted); }
+    .li-fx-state.bad { background: rgba(255,138,138,.14); color: var(--bad); }
+    .li-fx-params { color: var(--muted); font-size: .65rem; line-height: 1.5; margin-top: 3px; word-break: break-word; }
+    .li-group { margin-top: 2px; }
+    .li-group-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: .7rem; color: var(--muted); }
+    .li-group-head b { color: var(--text); font-weight: 600; }
+    /* Baris slider yang bisa direset: label + nilai + tombol kembali ke bawaan. */
+    .range-row { display: flex; align-items: center; gap: 8px; }
+    .range-row input[type=range] { flex: 1; min-width: 0; }
+    .range-reset { flex: none; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; padding: 0; background: var(--card2); border: 1px solid var(--line); border-radius: 8px; color: var(--muted); cursor: pointer; }
+    .range-reset:active { color: var(--accent); }
+    kbd {
+        font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .66rem; padding: 1px 5px;
+        background: var(--card2); border: 1px solid var(--line2); border-bottom-width: 2px; border-radius: 5px;
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .68rem; color: var(--muted); }
+    .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+
+    /* ─────────── Dialog (setelan, pratinjau media) ─────────── */
+    dialog { margin: auto; padding: 0; border: 1px solid var(--line2); border-radius: 16px; background: var(--panel); color: var(--text); width: 100%; max-width: min(560px, 94vw); max-height: 88vh; overflow: hidden; box-shadow: 0 20px 80px rgba(0,0,0,.7); }
+    dialog[open] { display: flex; flex-direction: column; }
+    dialog::backdrop { background: rgba(0,0,0,.62); backdrop-filter: blur(3px); }
+    .dlg-head { display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 16px; border-bottom: 1px solid var(--line); }
+    .dlg-head h2 { flex: 1; min-width: 0; font-size: .92rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dlg-body { padding: 12px 14px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    #lightboxBody { align-items: center; background: #000; }
+    #lightboxBody img, #lightboxBody video { display: block; max-width: 100%; max-height: 70vh; margin: 0 auto; object-fit: contain; }
+    #log { height: 150px; overflow-y: auto; padding: 8px; background: #0b0c10; border: 1px solid var(--line); border-radius: 8px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .66rem; line-height: 1.5; color: #9ad0e0; white-space: pre-wrap; word-break: break-word; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.14); border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    @media (max-width: 640px) {
+        dialog#settingsDlg, dialog#lightbox { margin: auto 0 0; max-width: none; border-radius: 16px 16px 0 0; border-bottom: 0; padding-bottom: var(--safe-b); }
+        .hide-sm { display: none; }
+    }
+
+    /* ─────────── HP mendatar ─────────── */
+    @media (orientation: landscape) and (max-height: 619px) and (min-width: 560px) {
+        :root { --top-h: 46px; }
+        #app {
+            grid-template-columns: minmax(0, 1fr) minmax(330px, 46%);
+            grid-template-rows: var(--top-h) minmax(0, 1fr) auto;
+            grid-template-areas: "top top" "stage side" "transport side";
+        }
+        #side { display: flex; flex-direction: column; grid-area: side; min-height: 0; min-width: 0; background: var(--panel); border-left: 1px solid var(--line); }
+        #tabs { grid-area: auto; border-top: 0; border-bottom: 1px solid var(--line); padding-bottom: 0; }
+        .tab-btn { min-height: 46px; }
+        #panes { grid-area: auto; flex: 1; min-height: 0; }
+        #stageBtnSize { display: none; }
+    }
+
+    /* ─────────── Desktop / tablet lebar ─────────── */
+    @media (min-width: 900px) and (min-height: 620px) {
+        #app {
+            grid-template-columns: minmax(0, 1fr) 400px;
+            grid-template-rows: var(--top-h) minmax(0, 1fr) auto 270px;
+            grid-template-areas: "top top" "stage side" "transport side" "dock side";
+        }
+        #side { display: flex; flex-direction: column; grid-area: side; min-height: 0; min-width: 0; background: var(--panel); border-left: 1px solid var(--line); }
+        #tabs { grid-area: auto; border-top: 0; border-bottom: 1px solid var(--line); padding-bottom: 0; }
+        .tab-btn { flex-direction: row; gap: 8px; min-height: 46px; font-size: .78rem; }
+        .tab-btn.active::before { top: auto; bottom: -1px; left: 12%; right: 12%; border-radius: 2px 2px 0 0; }
+        .tab-btn[data-tab="layer"] { display: none; }
+        #panes { grid-area: auto; flex: 1; min-height: 0; }
+        #timelineDock { display: flex; grid-area: dock; min-width: 0; min-height: 0; padding: 10px 14px 12px; background: var(--panel); border-top: 1px solid var(--line); }
+        #timelineDock .pane { display: flex; flex: 1; min-width: 0; min-height: 0; gap: 8px; }
+        .tl-main { flex: 1; flex-direction: row; }
+        #scene-tree-panel { width: 214px; flex: none; border-right: 1px solid var(--line); border-bottom: 0; }
+        #scene-tree-list { display: block; flex: 1; max-height: none; overflow-y: auto; }
+        #timeline-wrap { flex: 1; }
+        /* Desktop: tinggi dock tetap, jadi daftar track boleh menggulir sendiri. */
+        #timeline-body { max-height: none; flex: 1; overflow: auto; touch-action: auto; }
+        #layer-info { width: 250px; flex: none; overflow-y: auto; }
+        .legend { display: none; }
+        #stageBtnSize { display: none; }
+        #stage { padding: 16px; }
+    }
+    @media (min-width: 1500px) and (min-height: 620px) {
+        #app { grid-template-columns: minmax(0, 1fr) 440px; }
+    }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+        <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+        <symbol id="i-restart" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2-9.5L1 10"/></symbol>
+        <symbol id="i-loop" viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+        <symbol id="i-sliders" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+        <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><polyline points="14 3 14 8 19 8"/></symbol>
+        <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+        <symbol id="i-music" viewBox="0 0 24 24"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M9 18V5l12-2v13"/></symbol>
+        <symbol id="i-layers" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="4" rx="1"/><rect x="3" y="10" width="12" height="4" rx="1"/><rect x="3" y="17" width="15" height="4" rx="1"/></symbol>
+        <symbol id="i-film" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="7" y1="3" x2="7" y2="21"/><line x1="17" y1="3" x2="17" y2="21"/><line x1="2" y1="8" x2="7" y2="8"/><line x1="2" y1="16" x2="7" y2="16"/><line x1="17" y1="8" x2="22" y2="8"/><line x1="17" y1="16" x2="22" y2="16"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+        <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+        <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l2-2a5 5 0 0 0-7.07-7.07l-1 1"/><path d="M14 11a5 5 0 0 0-7.07 0l-2 2a5 5 0 0 0 7.07 7.07l1-1"/></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+        <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 7 11 7a21.6 21.6 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+        <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+    </defs>
+</svg>
+
+<div id="app">
+
+    <!-- ══ Header ══ -->
+    <header id="top">
+        <div class="brand">
+            <div class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg></div>
+            <div class="brand-text">
+                <h1>AM Preset Player</h1>
+                <div class="subtitle" id="subtitle">Memuat preset...</div>
+            </div>
+        </div>
+        <div class="top-actions">
+            <button id="hdrOpen" class="btn ghost" type="button" title="Buka file preset XML"><svg class="i"><use href="#i-file"/></svg><span class="hide-sm">Buka XML</span></button>
+            <a class="btn ghost" href="preview.html" title="Preview efek"><svg class="i"><use href="#i-zap"/></svg><span class="hide-sm">Preview efek</span></a>
+            <button id="openSettings" class="btn ghost icon" type="button" aria-label="Setelan" title="Setelan"><svg class="i"><use href="#i-sliders"/></svg></button>
+        </div>
+    </header>
+
+    <!-- ══ Panggung preview ══ -->
+    <div id="stage">
+        <canvas id="view" width="270" height="480"></canvas>
+        <canvas id="debugCanvas" width="270" height="480" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;"></canvas>
+        <div class="stage-hint"><span><svg class="i"><use href="#i-play"/></svg></span></div>
+        <button id="stageBtnSize" class="stage-btn" type="button" aria-label="Perbesar atau perkecil preview" title="Perbesar / perkecil preview"><svg class="i sm"><use href="#i-expand"/></svg></button>
+        <div id="dropHint">Lepas file di sini (XML, foto, video, audio)</div>
+        <div id="debugOverlay" style="display:none; position:absolute; top:8px; left:8px; z-index:10; background:rgba(0,0,0,0.85); border:1px solid rgba(31,200,238,0.5); border-radius:8px; padding:8px; max-width:280px; max-height:85%; overflow-y:auto; font-family:monospace; font-size:11px; color:#fff; backdrop-filter:blur(4px);">
+            <div style="font-weight:bold; color:var(--accent); margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+                <span>🔍 Inspector Debug Engine</span>
+                <span id="dbgCloseBtn" style="cursor:pointer; padding:0 4px;">✕</span>
+            </div>
+            <div id="dbgContent" style="display:flex; flex-direction:column; gap:6px;">
+                <div>Ketuk layer mana saja untuk melihat rantai efek render & matrix transform.</div>
+            </div>
+        </div>
+        <div id="stageBusy" hidden>
+            <div class="busy-spinner"></div>
+            <div class="busy-label" id="busyLabel">Memuat…</div>
+            <div class="busy-detail" id="busyDetail"></div>
+            <button id="busyDismiss" class="btn sm" type="button" hidden>Tutup pesan</button>
+        </div>
+    </div>
+
+    <!-- ══ Kontrol putar ══ -->
+    <div id="transport">
+        <div class="range-row">
+            <input type="range" id="seek" min="0" max="21032" value="0" step="1" aria-label="Posisi putar">
+            <button id="seekReset" class="range-reset" type="button" aria-label="Reset posisi ke awal" title="Reset posisi ke 0"><svg class="i sm"><use href="#i-restart"/></svg></button>
+        </div>
+        <div class="ctl-row">
+            <button id="restart" class="btn icon" type="button" aria-label="Ke awal" title="Ke awal"><svg class="i"><use href="#i-restart"/></svg></button>
+            <button id="play" class="btn primary" type="button"><svg class="i sm"><use href="#i-play"/></svg>Putar</button>
+            <button id="loopBtn" class="btn on" type="button" title="Ulangi otomatis"><svg class="i sm"><use href="#i-loop"/></svg><span id="loopLabel" class="hide-sm">Loop</span></button>
+            <span class="time" id="timeLabel">0.00s / 0.00s</span>
+        </div>
+    </div>
+
+    <!-- Desktop: timeline layer ditaruh di sini oleh JS -->
+    <div id="timelineDock"></div>
+
+    <!-- ══ Menu + isi ══ -->
+    <aside id="side">
+        <nav id="tabs" role="tablist" aria-label="Menu utama">
+            <button type="button" class="tab-btn active" data-tab="proyek" role="tab" aria-selected="true"><svg class="i"><use href="#i-file"/></svg><span>Proyek</span></button>
+            <button type="button" class="tab-btn" data-tab="media" role="tab" aria-selected="false"><svg class="i"><use href="#i-image"/></svg><span>Media</span></button>
+            <button type="button" class="tab-btn" data-tab="audio" role="tab" aria-selected="false"><svg class="i"><use href="#i-music"/></svg><span>Audio</span></button>
+            <button type="button" class="tab-btn" data-tab="layer" role="tab" aria-selected="false"><svg class="i"><use href="#i-layers"/></svg><span>Layer</span></button>
+            <button type="button" class="tab-btn" data-tab="ekspor" role="tab" aria-selected="false"><svg class="i"><use href="#i-film"/></svg><span>Ekspor</span></button>
+        </nav>
+
+        <div id="panes">
+
+            <!-- ── Proyek ── -->
+            <section id="pane-proyek" class="pane active">
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-file"/></svg><h2>Preset XML</h2></div>
+                    <label class="drop">
+                        <svg class="i"><use href="#i-upload"/></svg>
+                        <span class="drop-title" id="xmlBtnTxt">Pilih file .xml</span>
+                        <span class="drop-sub">Boleh 2 file sekaligus (preset + grup/cc). File juga bisa diseret ke layar ini.</span>
+                        <input type="file" id="impXml" accept=".xml,text/xml,application/xml" multiple hidden>
+                    </label>
+                    <label class="field" id="impPickRow" style="display:none">Preset yang dimainkan
+                        <select id="impPick"></select>
+                    </label>
+                    <div class="status-box" id="impState">pilih file .xml untuk mulai</div>
+                    <button id="impReset" class="btn sm" type="button"><svg class="i sm"><use href="#i-restart"/></svg>Kembali ke preset contoh</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-link"/></svg><h2>Ambil dari link Alight Motion</h2></div>
+                    <div class="url-row">
+                        <input type="url" id="urlAm" placeholder="https://alightcreative.com/am/share/..." inputmode="url" autocapitalize="off" spellcheck="false" aria-label="Link Alight Motion">
+                        <button id="urlAmGo" class="btn" type="button">Ambil</button>
+                    </div>
+                    <label class="field" id="urlAmPickRow" style="display:none">Project XML dari Paket
+                        <select id="urlAmPick"></select>
+                    </label>
+                    <div class="status-box" id="urlAmState">belum ada XML</div>
+                    <div class="hint">XML dan media (foto, video, audio) dari link share langsung dimasukkan ke preset.</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-download"/></svg><h2>Ambil XML dari Google Drive</h2></div>
+                    <div class="url-row">
+                        <input type="url" id="urlDrive" placeholder="https://drive.google.com/file/d/ID/view?usp=drivesdk" inputmode="url" autocapitalize="off" spellcheck="false" aria-label="Link Google Drive">
+                        <button id="urlDriveGo" class="btn" type="button">Ambil</button>
+                    </div>
+                    <div class="status-box" id="urlDriveState">belum ada XML</div>
+                    <div class="hint">Untuk file <b>.xml</b> yang dishare di Drive dengan akses "Siapa saja dengan tautan". File media preset (foto/video/audio) tetap harus ditambahkan sendiri.</div>
+                </div>
+            </section>
+
+            <!-- ── Media ── -->
+            <section id="pane-media" class="pane">
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-image"/></svg><h2>Slot media preset</h2><span class="sub" id="slotCount"></span></div>
+                    <div class="hint">Tiap slot punya tombol <b>Ganti media</b> — ketuk, lalu pilih foto/video dari galeri lewat thumbnail-nya. Belum ada media sendiri? Impor dulu lewat "Galeri media" di bawah.</div>
+                    <div id="mediaRows" class="stack">-</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-layers"/></svg><h2>Galeri media</h2><span class="sub" id="galleryCount"></span></div>
+                    <label class="btn primary block">
+                        <svg class="i sm"><use href="#i-plus"/></svg><span id="photoBtnTxt">Tambah foto, video, atau audio</span>
+                        <input type="file" id="impPhoto" accept="image/*,video/*,audio/*" multiple hidden>
+                    </label>
+                    <div class="hint">Media baru ditambahkan ke galeri, tidak menimpa yang lama. Audio yang ditambahkan masuk ke tab Audio.</div>
+                    <div id="photoGallery" class="gallery"><div class="empty">Memuat galeri…</div></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-expand"/></svg><h2>Ukuran tampilan</h2></div>
+                    <label class="field">
+                        <span class="label-row"><span>Skala foto</span><span class="val" id="scaleLabel">1.00x</span></span>
+                        <span class="range-row">
+                            <input type="range" id="scale" min="0.5" max="2.5" step="0.05" value="1">
+                            <button class="range-reset" type="button" data-reset="scale" data-default="1" aria-label="Reset skala foto" title="Kembali ke 1.00x"><svg class="i sm"><use href="#i-restart"/></svg></button>
+                        </span>
+                    </label>
+                    <label class="field">Ukuran kotak layer
+                        <select id="sizeScale">
+                            <option value="auto" selected>Auto x2 (bawaan AM)</option>
+                            <option value="1">1x = bentang penuh</option>
+                            <option value="2">x2 = setengah bentang</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-sliders"/></svg><h2>Mode Debug Visual</h2></div>
+                    <label class="check"><input type="checkbox" id="debugModeToggle"><span>Tampilkan Border Layer (Debug Mode)<small>Semua visible layer = HIJAU, selected layer = MERAH. Tidak ikut ekspor.</small></span></label>
+                </div>
+            </section>
+
+            <!-- ── Audio ── -->
+            <section id="pane-audio" class="pane">
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-music"/></svg><h2>Track audio scene</h2></div>
+                    <div class="hint">Track audio dari XML. Pilih file audio untuk tiap slot atau unggah yang baru.</div>
+                    <div id="audioRows" class="stack"><div class="empty">Memuat audio...</div></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-sliders"/></svg><h2>Sinkronisasi</h2></div>
+                    <div class="status-box" id="audioState">audio: -</div>
+                    <div class="status-box warn" id="syncState">sync: -</div>
+                    <button id="rateAuto" class="btn sm" type="button">Cocokkan kecepatan audio ke project</button>
+                    <label class="field">
+                        <span class="label-row"><span>Kecepatan audio</span><span class="val" id="rateLabel">1.000x</span></span>
+                        <span class="range-row">
+                            <input type="range" id="rate" min="0.5" max="1.5" step="0.001" value="1">
+                            <button class="range-reset" type="button" data-reset="rate" data-default="1" aria-label="Reset kecepatan audio" title="Kembali ke 1.000x"><svg class="i sm"><use href="#i-restart"/></svg></button>
+                        </span>
+                    </label>
+                    <label class="check"><input type="checkbox" id="pitchKeep" checked><span>Pertahankan pitch</span></label>
+                    <label class="field">
+                        <span class="label-row"><span>Geser gambar terhadap audio</span><span class="val" id="offsetLabel">0 ms</span></span>
+                        <span class="range-row">
+                            <input type="range" id="offset" min="-5000" max="5000" step="5" value="0">
+                            <button class="range-reset" type="button" data-reset="offset" data-default="0" aria-label="Reset geser audio" title="Kembali ke 0 ms"><svg class="i sm"><use href="#i-restart"/></svg></button>
+                        </span>
+                    </label>
+                    <label class="check"><input type="checkbox" id="videoAudioMute" checked><span>Putar suara dari layer video<small>Nonaktif = semua layer video dibisukan (layer video hidden tetap dianggap audio-only)</small></span></label>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-link"/></svg><h2>Audio dari TikTok</h2></div>
+                    <div class="url-row">
+                        <input type="url" id="urlTiktok" placeholder="https://vt.tiktok.com/..." inputmode="url" autocapitalize="off" spellcheck="false" aria-label="Link TikTok">
+                        <button id="urlTiktokGo" class="btn" type="button">Ambil</button>
+                    </div>
+                    <div class="status-box" id="urlTiktokState">belum ada media</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-download"/></svg><h2>Audio dari Google Drive</h2></div>
+                    <div class="url-row">
+                        <input type="url" id="urlDriveAudio" placeholder="https://drive.google.com/file/d/ID/view?usp=drivesdk" inputmode="url" autocapitalize="off" spellcheck="false" aria-label="Link Google Drive untuk audio">
+                        <button id="urlDriveAudioGo" class="btn" type="button">Ambil</button>
+                    </div>
+                    <div class="status-box" id="urlDriveAudioState">belum ada audio</div>
+                    <div class="hint">Untuk file <b>mp3 / m4a / wav / ogg</b> (atau video yang diambil suaranya) yang dishare di Drive dengan akses "Siapa saja dengan tautan". Audio dipakai untuk preview maupun ekspor.</div>
+                </div>
+            </section>
+
+            <!-- ── Layer (di desktop dipindah ke dock bawah panggung) ── -->
+            <section id="pane-layer" class="pane">
+                <div class="tl-toolbar">
+                    <h2>Layer</h2><span class="tl-count" id="layers-count"></span>
+                    <button id="tl-groups" class="btn sm" type="button" hidden>Buka Semua Grup</button>
+                    <button id="tl-bm" class="btn sm" type="button" title="Pasang/buang penanda di posisi saat ini (pintasan B)">&#9873; Penanda</button>
+                    <button id="tl-bm-prev" class="btn sm icon" type="button" aria-label="Ke penanda sebelumnya" title="Ke penanda sebelumnya">&#8249;</button>
+                    <button id="tl-bm-next" class="btn sm icon" type="button" aria-label="Ke penanda berikutnya" title="Ke penanda berikutnya (B)">&#8250;</button>
+                    <div class="tl-zoomctl">
+                        <button id="tl-here" class="btn sm icon" type="button" aria-label="Gulir ke posisi saat ini" title="Gulir timeline ke posisi saat ini"><svg class="i sm"><use href="#i-expand"/></svg></button>
+                        <button id="tl-zoom-out" class="btn sm icon" type="button" aria-label="Perkecil timeline"><svg class="i sm"><use href="#i-minus"/></svg></button>
+                        <input type="range" id="tl-zoom" min="0.2" max="20" step="0.1" value="3" aria-label="Zoom timeline">
+                        <button id="tl-zoom-in" class="btn sm icon" type="button" aria-label="Perbesar timeline"><svg class="i sm"><use href="#i-plus"/></svg></button>
+                        <span class="tl-zoom-label" id="tl-zoom-label">3.0x</span>
+                        <button id="tl-fit" class="btn sm" type="button">Muat layar</button>
+                    </div>
+                </div>
+                <div class="tl-main">
+                    <!-- Panel Scene Tree (folder hierarki embedScene) -->
+                    <div id="scene-tree-panel">
+                        <div class="scene-tree-header">
+                            <span id="scene-tree-breadcrumb">Proyek</span>
+                            <button id="scene-tree-up" class="btn sm" type="button" style="display:none">↩ Naik</button>
+                        </div>
+                        <div id="scene-tree-list"></div>
+                    </div>
+                    <div id="timeline-wrap">
+                        <div id="timeline-body">
+                            <div id="timeline-inner">
+                                <div id="timeline-ruler">
+                                    <div class="tl-corner">Layer</div>
+                                    <canvas id="timeline-ruler-canvas" width="10" height="26"></canvas>
+                                    <div id="tl-cap"></div>
+                                </div>
+                                <div id="timeline-tracks"><div class="empty">Muat preset terlebih dahulu</div></div>
+                                <div id="tl-playhead"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="layer-info" class="card"><div class="empty">Ketuk blok layer untuk melihat detail dan preview medianya.</div></div>
+                </div>
+                <div class="legend">
+                    <span><i style="background:#1f6f9f"></i>Gambar</span>
+                    <span><i style="background:#2d5fb0"></i>Video</span>
+                    <span><i style="background:#2a7a4b"></i>Audio</span>
+                    <span><i style="background:#7245a3"></i>Teks</span>
+                    <span><i style="background:#3d4f9a"></i>Bentuk</span>
+                    <span><i style="background:#8a6a1f"></i>Scene</span>
+                </div>
+            </section>
+
+            <!-- ── Ekspor ── -->
+            <section id="pane-ekspor" class="pane">
+                <div class="card">
+                    <div class="card-head"><svg class="i"><use href="#i-film"/></svg><h2>Ekspor video MP4</h2></div>
+                    <div class="grid2">
+                        <label class="field">Resolusi
+                            <select id="expRes">
+                                <optgroup label="Hemat">
+                                    <option value="270">270p (hemat)</option>
+                                    <option value="360">360p</option>
+                                    <option value="480">480p</option>
+                                </optgroup>
+                                <optgroup label="Umum">
+                                    <option value="720" selected>720p (HD)</option>
+                                    <option value="960">960p (qHD)</option>
+                                    <option value="1080">1080p (Full HD)</option>
+                                </optgroup>
+                                <optgroup label="Tinggi - perlu HP/GPU kuat">
+                                    <option value="1440">1440p (2K)</option>
+                                    <option value="2160">2160p (4K UHD)</option>
+                                    <option value="2880">2880p (5K)</option>
+                                    <option value="4320">4320p (8K UHD)</option>
+                                </optgroup>
+                                <option value="same">Sama preview</option>
+                            </select>
+                        </label>
+                        <label class="field">FPS
+                            <select id="expFps">
+                                <option value="24">24</option>
+                                <option value="30" selected>30</option>
+                                <option value="60">60</option>
+                                <option value="custom">Custom...</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="field" id="expFpsCustomRow" style="display:none">FPS ekspor (1-120)
+                        <input type="number" id="expFpsCustom" inputmode="numeric" min="1" max="120" step="1" value="45">
+                    </label>
+                    <div class="hint" id="expResHint">Resolusi di atas 1080p jauh lebih berat: waktu ekspor bisa berlipat dan GPU HP sering menolak di atas batas tekstur (otomatis diturunkan).</div>
+                    <div class="grid2">
+                        <label class="field">
+                            <span class="label-row"><span>Kualitas Video</span><span class="val" id="expBitrateLabel">Sedang</span></span>
+                            <span class="range-row">
+                                <input type="range" id="expBitrate" min="0.035" max="2" step="0.001" value="0.08">
+                                <button class="range-reset" type="button" data-reset="expBitrate" data-default="0.08" aria-label="Reset kualitas video" title="Kembali ke Sedang"><svg class="i sm"><use href="#i-restart"/></svg></button>
+                            </span>
+                        </label>
+                        <label class="field">Audio Export
+                            <select id="expAudioSr">
+                                <option value="auto" selected>Auto / Kompatibel (Fallback)</option>
+                                <option value="48000">AAC 48.0 kHz</option>
+                                <option value="44100">AAC 44.1 kHz (Standar Luas)</option>
+                                <option value="32000">AAC 32.0 kHz</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field" style="gap:4px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span>Mulai ekspor dari</span>
+                            <span id="expStartSecLabel" style="font-variant-numeric:tabular-nums;color:var(--accent);">0.0 s</span>
+                            <button class="range-reset" type="button" id="expStartReset" aria-label="Reset ke awal"><svg class="i sm"><use href="#i-restart"/></svg></button>
+                        </div>
+                        <input type="range" id="expStartSec" min="0" max="100" step="0.1" value="0">
+                    </div>
+                    <div class="field" style="gap:4px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span>Sampai</span>
+                            <span id="expEndSecLabel" style="font-variant-numeric:tabular-nums;color:var(--accent);">full</span>
+                            <button class="range-reset" type="button" id="expEndReset" aria-label="Reset ke akhir"><svg class="i sm"><use href="#i-restart"/></svg></button>
+                        </div>
+                        <input type="range" id="expEndSec" min="0" max="100" step="0.1" value="100">
+                    </div>
+                    <div class="grid2">
+                        <button id="expStart" class="btn primary" type="button"><svg class="i sm"><use href="#i-film"/></svg>Mulai ekspor</button>
+                        <button id="expCancel" class="btn" type="button"><svg class="i sm"><use href="#i-x"/></svg>Batal</button>
+                    </div>
+                    <progress id="expBar" value="0" max="1"></progress>
+                    <div class="status-box" id="expStats">siap - pilih resolusi dan FPS</div>
+                    <div id="expResult"></div>
+                </div>
+            </section>
+
+        </div>
+    </aside>
+</div>
+
+<!-- ══ Setelan ══ -->
+<dialog id="settingsDlg" aria-labelledby="settingsTitle">
+    <div class="dlg-head">
+        <svg class="i"><use href="#i-sliders"/></svg>
+        <h2 id="settingsTitle">Setelan</h2>
+        <button class="btn ghost icon" type="button" data-close aria-label="Tutup"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="dlg-body">
+        <div class="card">
+            <div class="card-head"><h2>Kualitas render preview</h2></div>
+            <select id="quality" aria-label="Kualitas render">
+                <option value="270">270p (paling cepat)</option>
+                <option value="360" selected>360p (bawaan)</option>
+                <option value="480">480p</option>
+                <option value="640">640p</option>
+                <option value="960">960p (berat)</option>
+            </select>
+            <div class="status-box" id="resLabel">-</div>
+        </div>
+        <div class="card">
+            <div class="card-head"><h2>Performa</h2></div>
+            <label class="field">Target FPS
+                <select id="fpsTarget">
+                    <option value="60">60 (mulus)</option>
+                    <option value="30" selected>30 (hemat)</option>
+                    <option value="24">24</option>
+                    <option value="15">15 (paling ringan)</option>
+                    <option value="custom">Custom...</option>
+                </select>
+            </label>
+            <label class="field" id="fpsCustomRow" style="display:none">FPS custom
+                <input type="number" id="fpsCustom" inputmode="numeric" min="1" max="120" step="1" value="45">
+            </label>
+            <label class="check"><input type="checkbox" id="autoQuality" checked><span>Turunkan kualitas otomatis saat ngelag</span></label>
+            <label class="check"><input type="checkbox" id="fxToggle" checked><span>Jalankan efek</span></label>
+            <label class="check"><input type="checkbox" id="debugModeToggle2"><span><b>Mode Debug Rendering (Inspector Gacor)</b></span></label>
+        </div>
+        <div class="card">
+            <div class="card-head"><h2>Konfigurasi Renderer</h2></div>
+            <div class="hint">Semua knob mesin. Yang bertanda "perlu muat ulang" disimpan dan diterapkan setelah refresh.</div>
+            <div id="engineRows"></div>
+            <button class="btn sm" type="button" id="engineReset"><svg class="i sm"><use href="#i-restart"/></svg>Kembalikan ke bawaan</button>
+            <div class="status-box" id="engineHint">-</div>
+        </div>
+        <div class="card" id="expPanel">
+            <div class="card-head"><h2>Eksperimental (berisiko)</h2></div>
+            <div class="hint">Mati secara bawaan. Kalau mati, perilaku renderer sama persis seperti biasa. Kalau ada yang aktif, hasil render/ekspor bisa berbeda dan ditandai di log.</div>
+            <label class="check"><input type="checkbox" id="exp-enabled"><span><b>Aktifkan mode eksperimental</b></span></label>
+            <div id="expRows"></div>
+            <div class="hint">Kategori efek (angka = jumlah efek di scene ini)</div>
+            <div id="expCats"></div>
+            <div class="hint">Preset</div>
+            <div class="row">
+                <button class="btn sm" type="button" id="expPresetAman">Aman</button>
+                <button class="btn sm" type="button" id="expPresetCepat">Cepat</button>
+                <button class="btn sm" type="button" id="expPresetEkstrem">Ekstrem</button>
+                <button class="btn sm" type="button" id="expPresetProfil">Profil</button>
+            </div>
+            <div class="row">
+                <button class="btn sm" type="button" id="expProfCopy">Salin profil</button>
+                <button class="btn sm" type="button" id="expProfReset">Reset profil</button>
+                <button class="btn sm" type="button" id="expReset">Reset eksperimen</button>
+            </div>
+            <div class="status-box" id="expHint">-</div>
+        </div>
+        <div class="card">
+            <div class="card-head"><h2>Pintasan papan tik</h2></div>
+            <div class="hint">Aktif di desktop, saat kursor tidak berada di kolom isian.</div>
+            <table class="li-table" id="shortcutRows"></table>
+        </div>
+        <div class="card">
+            <div class="card-head"><h2>Info render</h2></div>
+            <div class="status-box" id="status">-</div>
+            <div class="status-box" id="perfLabel">fps - | frame -</div>
+        </div>
+        <div class="card">
+            <div class="card-head"><h2>Log</h2><button type="button" class="btn sm" id="copyLogBtn">Salin log</button></div>
+            <div id="log"></div>
+        </div>
+    </div>
+</dialog>
+
+<!-- ══ Preview media ══ -->
+<dialog id="lightbox" aria-labelledby="lightboxTitle">
+    <div class="dlg-head">
+        <h2 id="lightboxTitle">Preview</h2>
+        <button class="btn ghost icon" type="button" data-close aria-label="Tutup"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="dlg-body" id="lightboxBody"></div>
+</dialog>
+
+<!-- ══ Pilih media pengganti ══ -->
+<dialog id="mediaPickerDlg" aria-labelledby="mediaPickerTitle">
+    <div class="dlg-head">
+        <h2 id="mediaPickerTitle">Ganti media</h2>
+        <button class="btn ghost icon" type="button" data-close aria-label="Tutup"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="dlg-body">
+        <div class="hint">Ketuk salah satu media di bawah untuk memasangnya ke slot ini.</div>
+        <div id="mediaPickerGrid" class="gallery"></div>
+    </div>
+</dialog>
+
+<!-- ══ Debug: XML sumber layer terpilih (bukan rekonstruksi) ══ -->
+<dialog id="layerXmlDlg" aria-labelledby="layerXmlTitle">
+    <div class="dlg-head">
+        <h2 id="layerXmlTitle">XML Layer</h2>
+        <button class="btn ghost icon" type="button" data-close aria-label="Tutup"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="dlg-body">
+        <div class="hint">Sumber XML asli layer ini dari file project.</div>
+        <pre id="layerXmlBody" style="white-space:pre-wrap;word-break:break-word;max-height:60vh;overflow:auto;font-size:11px;margin:0"></pre>
+    </div>
+</dialog>
+
+<script type="module" src="./assets/preset-DUPK32D7.js"></script>
+</body>
+</html>

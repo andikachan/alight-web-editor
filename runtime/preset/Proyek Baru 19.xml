@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?><!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2026-09-30 02:55 AM
+5.0.273.1028425 (1028425)
+2d5c0f8 (20 Mei 2026 04.16.19)
+-->
+<scene title="Proyek Baru 19" width="1080" height="1350" exportWidth="1080" exportHeight="1350" precompose="dynamicResolution" bgcolor="#ff00b140" totalTime="7148" fps="60" modifiedTime="1790711706386" amver="1028425" ffver="106" am="com.alightcreative.motion/5.0.273.1028425" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <media uri="content://media/external/images/media/1000891919" filename="mascot-wink-cutout.png" title="mascot-wink-cutout.png" type="image/png" size="1019645" orientation="0" infoUpdated="1790711701374" width="782" height="941" />
+  <media uri="am:4DA4437668755B26FE88E3FB73A9D712C287E1EA.png" filename="Profil Copy 3 Copy 3 [3C65A93].png" title="Profil Copy 3 Copy 3 [3C65A93].png" type="image/png" size="3601000" sig="4DA4437668755B26FE88E3FB73A9D712C287E1EA" orientation="0" infoUpdated="1790711701374" width="2160" height="3840" />
+  <media uri="content://media/external/images/media/1000899918" type="image/png" duration="0" orientation="0" infoUpdated="1790711701374" width="0" height="0" />
+  <shape id="1787713685974" label="mascot-wink-cutout.png" startTime="0" endTime="2015" fillType="media" fillImage="content://media/external/images/media/1000891919" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location>
+        <kf t="0.003970" v="540.000000,675.000000,0.000000" />
+        <kf t="0.186104" v="588.500000,715.500000,0.000000" />
+        <kf t="0.260546" v="633.000000,525.000000,0.000000" />
+      </location>
+    </transform>
+    <effect id="com.alightcreative.effects.fade" locallyApplied="true">
+      <property name="inTime" type="float" value="0.600000" />
+      <property name="outTime" type="float" value="0.300000" />
+    </effect>
+    <property name="size" type="vec2" value="540.000000,649.500000" />
+  </shape>
+  <shape id="1787713685975" startTime="2016" endTime="7148" fillType="media" fillImage="am:4DA4437668755B26FE88E3FB73A9D712C287E1EA.png" mediaFillMode="fill">
+    <transform>
+      <location>
+        <kf t="0.706742" v="540.210266,960.149780,0.000000" />
+        <kf t="0.999026" v="540.210266,960.149780,0.000000" />
+        <kf t="0.862627" v="540.210266,1396.574097,0.000000" e="cubicBezier 0.9 -0.91 1.0 1.0" />
+        <kf t="0.950507" v="570.840637,812.174683,0.000000" />
+      </location>
+      <scale>
+        <kf t="0.270850" v="1.500000,1.500000" e="cubicBezier 0.42 0.0 0.0 1.0" />
+        <kf t="0.501754" v="2.478515,2.478515" e="cubicBezier 0.7184972 0.0 0.44273883 1.0" />
+        <kf t="0.706742" v="1.500000,1.500000" e="cubicBezier 0.31319663 0.0 0.08122213 1.0" />
+        <kf t="0.000585" v="2.579479,2.579479" />
+        <kf t="0.862627" v="2.208864,2.208864" e="cubicBezier 0.89643914 -0.91275054 1.0 1.0" />
+        <kf t="0.999026" v="2.207012,2.207012" e="cubicBezier 1.0 0.0 1.0 1.0" />
+        <kf t="0.960055" v="1.649235,1.649235" e="cubicBezier 0.0 0.0 0.22396892 1.0" />
+      </scale>
+    </transform>
+    <path d="M -360.0 -640.0L 360.0 -640.0L 360.0 640.0L -360.0 640.0L -360.0 -640.0Z" />
+  </shape>
+  <shape id="1787713685979" label="Bentuk 1" startTime="850" endTime="1365" fillType="media" fillImage="content://media/external/images/media/1000899918" mediaFillMode="fit">
+    <transform>
+      <location value="540.000000,675.000000,0.000000" />
+    </transform>
+    <fillColor value="#ffecb455" />
+    <path-stroke direction="centered" end-size="1.500000">
+      <size value="6.500000" />
+    </path-stroke>
+    <path d="M -359.73874 256.04205L -162.86777 -82.89453L 185.36041 78.60547L 143.92258 221.64441L -529.2438 -334.3945L -34.49997 352.5L -359.73874 256.04205" />
+  </shape>
+  <shape id="1787713685980" label="Bentuk 1" startTime="1350" endTime="1899" fillType="media" fillImage="content://media/external/images/media/1000899918" mediaFillMode="fill">
+    <transform>
+      <location value="540.000000,675.000000,0.000000" />
+    </transform>
+    <fillColor value="#ffecb455" />
+    <border direction="inside" id="1">
+      <size value="13.000000" />
+    </border>
+    <path-stroke direction="centered" cap="square" end-size="1.500000">
+      <size value="3.500000" />
+    </path-stroke>
+    <shadow direction="outside">
+      <size value="9.000000" />
+    </shadow>
+    <path d="M -359.73874 256.04205L -162.86777 -82.89453L 185.36041 78.60547L 143.92258 221.64441L 66.00003 246.0L -34.49997 352.5L -359.73874 256.04205" />
+  </shape>
+  <shape id="1787713685981" label="Bentuk 1" startTime="1883" endTime="2865" fillType="media" fillImage="content://media/external/images/media/1000899918" mediaFillMode="stretch">
+    <transform>
+      <location value="540.000000,675.000000,0.000000" />
+    </transform>
+    <fillColor value="#ffecb455" />
+    <path d="M -359.73874 256.04205L -162.86777 -82.89453L 185.36041 78.60547L 143.92258 221.64441L 66.00003 246.0L -34.49997 352.5L -359.73874 256.04205" />
+  </shape>
+</scene>

@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:15 PM
+3.6.0 (146)
+-->
+<scene title="v2 - Presets - Drawing &amp; Edge - Other - Move &amp; Transform Partial" width="1920" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FFD8D8D8" totalTime="52700" fps="30" modifiedTime="1606907700013" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg" filename="FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg" title="Flowing Dots; t:extend" type="image/jpeg" size="779873" sig="FC27549DAF0CBD4D4A6CDE55170B5A943297FB72" infoUpdated="1606907700001"/>
+  <shape id="2" label="Draw gradually; t:start" startTime="0" endTime="1999" fillType="none" s=".circle">
+    <transform>
+      <location value="184.352051,188.133621"/>
+    </transform>
+    <fillColor value="#FFF081BD"/>
+    <effect id="com.alightcreative.effects.drawing.progress" locallyApplied="true">
+      <property name="end" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.503500" v="100.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path-stroke direction="centered" end-size="1.5">
+      <color value="#FFD41374"/>
+      <size value="16.000000"/>
+    </path-stroke>
+  </shape>
+  <shape id="3" label="Erase gradually; t:end" startTime="2000" endTime="3999" fillType="none" s=".circle">
+    <transform>
+      <location value="477.146027,186.849472"/>
+    </transform>
+    <fillColor value="#FFF081BD"/>
+    <effect id="com.alightcreative.effects.drawing.progress" locallyApplied="true">
+      <property name="start" type="float">
+        <kf t="0.983992" v="100.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.520000" v="0.000000"/>
+      </property>
+    </effect>
+    <path-stroke direction="centered" end-size="1.5">
+      <color value="#FFD41374"/>
+      <size value="16.000000"/>
+    </path-stroke>
+  </shape>
+  <shape id="4" label="Draw then erase; t:split" startTime="3999" endTime="6466" fillType="none" s=".circle">
+    <transform>
+      <location value="787.901428,181.755112"/>
+    </transform>
+    <fillColor value="#FFF081BD"/>
+    <effect id="com.alightcreative.effects.drawing.progress" locallyApplied="true">
+      <property name="end" type="float">
+        <kf t="0.000405" v="0.000000"/>
+        <kf t="0.405756" v="100.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="1.003378" v="100.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.611351" v="0.000000"/>
+      </property>
+    </effect>
+    <path-stroke direction="centered" end-size="1.5">
+      <color value="#FFD41374"/>
+      <size value="16.000000"/>
+    </path-stroke>
+  </shape>
+  <shape id="5" label="Flow from start to end; t:stretch" startTime="6465" endTime="8932" fillType="none" s=".circle">
+    <transform>
+      <location value="1168.278809,183.453247"/>
+    </transform>
+    <fillColor value="#FFF081BD"/>
+    <effect id="com.alightcreative.effects.drawing.progress" locallyApplied="true">
+      <property name="end" type="float">
+        <kf t="0.000811" v="0.000000"/>
+        <kf t="0.824889" v="100.000000"/>
+      </property>
+      <property name="start" type="float">
+        <kf t="0.216863" v="0.000000"/>
+        <kf t="0.987029" v="100.000000"/>
+      </property>
+    </effect>
+    <path-stroke direction="centered" end-size="1.5">
+      <color value="#FFD41374"/>
+      <size value="16.000000"/>
+    </path-stroke>
+  </shape>
+  <shape id="6" label="Rainbow Stroke; t:stretch" startTime="9032" endTime="11031" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF4061D2"/>
+    <effect id="com.alightcreative.effects.drawing.strokecolor" locallyApplied="true">
+      <property name="color" type="color">
+        <kf t="0.000500" v="#FFFF4444"/>
+        <kf t="0.983992" v="#FFFF4444"/>
+        <kf t="0.500750" v="#FF17E1E1"/>
+        <kf t="0.667334" v="#FF3D4CF5"/>
+        <kf t="0.833917" v="#FFDD44DD"/>
+        <kf t="0.154000" v="#FFFAE965"/>
+        <kf t="0.321000" v="#FF1ED91E"/>
+      </property>
+    </effect>
+    <path-stroke direction="centered" end-size="1.5">
+      <size value="29.000000"/>
+    </path-stroke>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="7" label="Coastline" startTime="11067" endTime="13066" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFDBB23F"/>
+    <effect id="com.alightcreative.contour" locallyApplied="true">
+      <property name="color" type="color" value="#AD717171"/>
+      <property name="count" type="float" value="3.000000"/>
+      <property name="offset" type="float" value="9.600000"/>
+      <property name="width" type="float" value="40.799999"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="8" label="Radiowaves; t:extend" startTime="13067" endTime="15066" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFDBB23F"/>
+    <effect id="com.alightcreative.contour" locallyApplied="true">
+      <property name="color" type="color" value="#FF3D4CF5"/>
+      <property name="count" type="float" value="5.000000"/>
+      <property name="fade" type="bool" value="true"/>
+      <property name="offset" type="float" value="9.600000"/>
+      <property name="phase" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.983992" v="-1.850000"/>
+      </property>
+      <property name="width" type="float" value="58.100002"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="9" label="Edge First; t:split" startTime="15400" endTime="17399" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FFDBB23F"/>
+    <effect id="com.alightcreative.contour" locallyApplied="true">
+      <property name="alpha" type="float">
+        <kf t="0.120000" v="1.000000"/>
+        <kf t="0.237000" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.033517" v="1.000000"/>
+        <kf t="-0.016508" v="0.000000"/>
+        <kf t="0.637000" v="0.000000"/>
+        <kf t="0.787000" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.917459" v="1.000000"/>
+        <kf t="0.983992" v="0.000000"/>
+      </property>
+      <property name="color" type="color" value="#FF122E47"/>
+      <property name="fill" type="float">
+        <kf t="0.117059" v="0.000000"/>
+        <kf t="0.250125" v="1.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+        <kf t="0.633817" v="1.000000"/>
+        <kf t="0.783892" v="0.000000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+      </property>
+      <property name="offset" type="float">
+        <kf t="0.000000" v="55.500000"/>
+        <kf t="0.983992" v="55.500000" e="cubicBezier 0.42 0.0 1.0 1.0"/>
+        <kf t="0.200100" v="0.000000" e="cubicBezier 0.0 0.0 0.58 1.0"/>
+        <kf t="0.700350" v="0.000000"/>
+      </property>
+      <property name="width" type="float" value="8.400001"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="10" label="Pink Haze Punchout" startTime="17466" endTime="19465" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF6AD8EE"/>
+    <effect id="com.alightcreative.contourgrad" locallyApplied="false">
+      <property name="color1" type="color" value="#FFD41374"/>
+      <property name="color2" type="color" value="#FFFAE965"/>
+      <property name="fade" type="bool" value="true"/>
+      <property name="fill" type="float" value="0.000000"/>
+      <property name="width" type="float" value="66.800003"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="11" label="Iron Ring" startTime="19499" endTime="21498" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF6AD8EE"/>
+    <effect id="com.alightcreative.contourgrad" locallyApplied="false">
+      <property name="color1" type="color" value="#FF1E2022"/>
+      <property name="color2" type="color" value="#FFB7CFE4"/>
+      <property name="offset" type="float" value="24.500000"/>
+      <property name="width" type="float" value="13.600000"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="12" label="Subtle White Glow" startTime="21499" endTime="23498" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF6AD8EE"/>
+    <effect id="com.alightcreative.glow" locallyApplied="true">
+      <property name="alpha" type="float" value="0.420000"/>
+      <property name="color" type="color" value="#FFFFFFFF"/>
+      <property name="hardness" type="float" value="0.640000"/>
+      <property name="radius" type="float" value="49.600002"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="14" label="Rubberstamp" startTime="23699" endTime="25698" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF122E47"/>
+    <effect id="com.alightcreative.effects.roughenedges" locallyApplied="true">
+      <property name="detail" type="float" value="6.580000"/>
+      <property name="evolution" type="float" value="0.840000"/>
+      <property name="octaves" type="float" value="3.000000"/>
+      <property name="strength" type="float" value="0.305000"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="29" label="Fluid Edge; t:extend" startTime="25766" endTime="27765" fillType="color">
+    <transform>
+      <location value="937.924500,543.396179"/>
+    </transform>
+    <fillColor value="#FF122E47"/>
+    <effect id="com.alightcreative.effects.roughenedges" locallyApplied="true">
+      <property name="evolution" type="float">
+        <kf t="0.000500" v="0.000000"/>
+        <kf t="0.984492" v="2.710000"/>
+      </property>
+      <property name="octaves" type="float" value="2.000000"/>
+      <property name="strength" type="float" value="0.473000"/>
+    </effect>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+  <shape id="17" label="Contour Scan; t:stretch" startTime="27901" endTime="29900" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.glowscan" locallyApplied="false">
+      <property name="threshold" type="float">
+        <kf t="0.016508" v="0.080000"/>
+        <kf t="0.983492" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="18" label="Line Art" startTime="30001" endTime="32000" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.findedges" locallyApplied="true">
+      <property name="threshold" type="float" value="0.797000"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="19" label="Neon Lines" startTime="32068" endTime="34067" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.findedges" locallyApplied="true">
+      <property name="invert" type="bool" value="true"/>
+      <property name="smoothing" type="float" value="3.720000"/>
+      <property name="threshold" type="float" value="1.000000"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="20" label="Faux Cyanotype" startTime="34101" endTime="36100" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.channelmap" locallyApplied="true">
+      <property name="alpha" type="int" value="6"/>
+      <property name="blue" type="int" value="4"/>
+      <property name="green" type="int" value="4"/>
+      <property name="red" type="int" value="2"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="21" label="Alpha Mask from Luminance" startTime="36134" endTime="38133" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.channelmap" locallyApplied="true">
+      <property name="alpha" type="int" value="4"/>
+      <property name="blue" type="int" value="6"/>
+      <property name="green" type="int" value="6"/>
+      <property name="red" type="int" value="6"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="22" label="Monochrome" startTime="38200" endTime="40199" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.channelmap" locallyApplied="true">
+      <property name="blue" type="int" value="4"/>
+      <property name="green" type="int" value="4"/>
+      <property name="red" type="int" value="4"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="23" label="Faux Thermal Camera" startTime="40266" endTime="42265" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.channelmaphsv" locallyApplied="false">
+      <property name="hue" type="int" value="2"/>
+      <property name="sat" type="int" value="6"/>
+      <property name="val" type="int" value="6"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="24" label="Spectral Highlights" startTime="42333" endTime="44332" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.channelmaphsv" locallyApplied="false">
+      <property name="hue" type="int" value="1"/>
+      <property name="sat" type="int" value="2"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="25" label="Dot Matrix" startTime="44398" endTime="46397" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.halftonelines" locallyApplied="true">
+      <property name="amount" type="float" value="290.000000"/>
+      <property name="angle" type="float" value="0.000000"/>
+      <property name="color1" type="color" value="#FF3C3C3C"/>
+      <property name="color2" type="color" value="#FFFFFFFF"/>
+      <property name="phase" type="float" value="0.590000"/>
+      <property name="strength" type="float" value="0.306000"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="26" label="Flowing Dots; t:extend" startTime="46464" endTime="48463" fillType="media" fillImage="am-internal:///FC27549DAF0CBD4D4A6CDE55170B5A943297FB72.jpg">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.halftonedots" locallyApplied="true">
+      <property name="amount" type="float" value="19.600000"/>
+      <property name="angle" type="float">
+        <kf t="0.001501" v="210.500000"/>
+        <kf t="0.985493" v="214.000000"/>
+      </property>
+      <property name="color1" type="color" value="#FFFAE965"/>
+      <property name="color2" type="color" value="#FF000000"/>
+      <property name="phase" type="float">
+        <kf t="0.001501" v="2.060000"/>
+        <kf t="0.985493" v="-0.620000"/>
+      </property>
+      <property name="strength" type="float" value="0.470000"/>
+    </effect>
+    <path d="M -726.3892 -540.0L 726.3892 -540.0L 726.3892 540.0L -726.3892 540.0L -726.3892 -540.0Z"/>
+  </shape>
+  <shape id="28" label="Spin up and Spin down; t:split" startTime="48534" endTime="50533" fillType="color" s=".multifoil">
+    <transform>
+      <location value="923.750000,586.250000"/>
+    </transform>
+    <fillColor value="#FF9A9755"/>
+    <effect id="com.alightcreative.effects.spin" locallyApplied="true">
+      <property name="rpm" type="float">
+        <kf t="0.000000" v="0.000000"/>
+        <kf t="0.666833" v="40.000000"/>
+        <kf t="0.983492" v="0.000000"/>
+        <kf t="0.270000" v="40.000000"/>
+      </property>
+    </effect>
+    <property name="innerRadius" type="float" value="54.275864"/>
+    <property name="outerRadius" type="float" value="288.331207"/>
+  </shape>
+  <shape id="31" label="Shape 1" startTime="50701" endTime="52700" fillType="color">
+    <transform>
+      <location value="960.000000,540.000000"/>
+    </transform>
+    <fillColor value="#FF122E47"/>
+    <path d="M -318.34653 -110.82674C -318.34653 -198.7357, -247.08221 -270.0, -159.17326 -270.0C -92.79996 -270.0, -20.203556 -221.45805, 1.9132335 -158.51976C 24.534714 -218.87631, 90.91831 -270.0, 159.17326 -270.0C 247.08223 -270.0, 318.34653 -198.7357, 318.34653 -110.82674C 318.34653 -36.942245, 211.0805 90.0, -3.451499 270.0C -213.38152 90.0, -318.34653 -36.942245, -318.34653 -110.82674Z"/>
+  </shape>
+</scene>

@@ -1,0 +1,58 @@
+<shape id="com.alightcreative.shapes.plus" name="@am:string/shape_plus">
+
+    <params>
+        <point id="size" label="@am:string/effect_param_size" default="100,100" type="size" />
+        <spinner id="stemSize" min="0" max="2000" default="50" step="1" label="@am:string/effect_param_width"  />
+    </params>
+
+    <handle id="e" param="size" type="x" />
+    <handle id="w" param="size" type="x" invert="x" />
+    <handle id="n" param="size" type="y" invert="y" />
+    <handle id="s" param="size" type="y" />
+    <handle id="se" param="size" type="xy" lock-ratio="true" />
+    <handle id="ne" param="size" type="xy" invert="y" lock-ratio="true" />
+    <handle id="sw" param="size" type="xy" invert="x" lock-ratio="true" />
+    <handle id="nw" param="size" type="xy" invert="xy" lock-ratio="true" />
+    <handle id="ss" param="stemSize" type="x" style="square" icon="grip" />
+
+    <script lang="js"><![CDATA[
+
+        function getHandles(params) {
+            let stemSize = params.stemSize;
+            return {
+                ss: [stemSize/2, stemSize/2],
+                n: [0, -params.size.y],
+                s: [0, params.size.y],
+                e: [params.size.x, 0],
+                w: [-params.size.x, 0],
+                ne: [params.size.x, -params.size.y],
+                se: [params.size.x, params.size.y],
+                nw: [-params.size.x, -params.size.y],
+                sw: [-params.size.x, params.size.y]
+            }
+        }
+
+        function getPath(params) {
+            let width = params.size.x;
+            let height = params.size.y;
+            let stemSize = params.stemSize;
+            return [
+                [-stemSize/2,-height],
+                [stemSize/2,-height],
+                [stemSize/2,-stemSize/2],
+                [width,-stemSize/2],
+                [width,stemSize/2],
+                [stemSize/2,stemSize/2],
+                [stemSize/2,height],
+                [-stemSize/2,height],
+                [-stemSize/2,stemSize/2],
+                [-width,stemSize/2],
+                [-width,-stemSize/2],
+                [-stemSize/2,-stemSize/2],
+                {closed:true}
+            ];
+        }
+
+    ]]></script>
+
+</shape>

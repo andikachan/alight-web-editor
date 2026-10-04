@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2020-12-02 08:50 PM
+3.6.0 (146)
+-->
+<scene title="V3-Opacity visibility -presets" width="1080" height="1080" exportWidth="1920" exportHeight="1080" bgcolor="#FFFFFFFF" totalTime="9994" fps="30" modifiedTime="1606909859803" amver="146" ffver="101" am="com.alightcreative.motion/3.6.0" amplatform="ios">
+  <media uri="am-internal:///3804C519534C8745E251509FB50879D383A13017.png" filename="3804C519534C8745E251509FB50879D383A13017.PNG" title="Digital Dropout; t:extend, c:CDD" type="image/png" size="1479687" sig="3804C519534C8745E251509FB50879D383A13017" infoUpdated="1606909859801"/>
+  <shape id="7" label="Transition Out; t:end, c:CO" startTime="0" endTime="1999" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.checkerdissolve2" locallyApplied="false">
+      <property name="amount" type="float">
+        <kf t="0.250125" v="0.000000"/>
+        <kf t="0.983992" v="1.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="fade" type="float">
+        <kf t="0.250125" v="0.500000"/>
+        <kf t="0.983992" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="seed" type="float">
+        <kf t="0.983992" v="0.010000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="0.250125" v="0.000000"/>
+      </property>
+      <property name="size" type="float" value="55.000000"/>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="5" label="Transition In; t:start, c:CI" startTime="1999" endTime="3998" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.checkerdissolve2" locallyApplied="false">
+      <property name="amount" type="float">
+        <kf t="0.750875" v="0.000000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="-0.016008" v="1.000000"/>
+      </property>
+      <property name="fade" type="float">
+        <kf t="-0.016008" v="0.500000"/>
+        <kf t="0.750875" v="0.010000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="seed" type="float">
+        <kf t="0.750875" v="0.010000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+        <kf t="-0.016008" v="0.000000"/>
+      </property>
+      <property name="size" type="float" value="55.000000"/>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="3" label="Transition Out; t:end, c:DO" startTime="4000" endTime="5999" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.dissolve" locallyApplied="true">
+      <property name="amount" type="float">
+        <kf t="0.001001" v="0.000000"/>
+        <kf t="0.984993" v="1.000000" e="cubicBezier 0.57406163 0.0 0.44274512 1.0"/>
+      </property>
+      <property name="seed" type="float">
+        <kf t="0.001001" v="0.000000"/>
+        <kf t="0.984993" v="0.100000" e="cubicBezier 0.57406163 0.0 0.44274512 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="4" label="Transparent Noise; c:DTN" startTime="6000" endTime="7999" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.dissolve" locallyApplied="true">
+      <property name="amount" type="float" value="0.045000"/>
+      <property name="seed" type="float">
+        <kf t="0.001001" v="0.000000"/>
+        <kf t="0.984993" v="0.100000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+  <shape id="6" label="Digital Dropout; t:extend, c:CDD" startTime="7995" endTime="9994" fillType="media" fillImage="am-internal:///3804C519534C8745E251509FB50879D383A13017.png">
+    <transform>
+      <location value="540.000000,540.000000"/>
+    </transform>
+    <effect id="com.alightcreative.effects.checkerdissolve2" locallyApplied="false">
+      <property name="amount" type="float" value="0.365000"/>
+      <property name="fade" type="float" value="0.500000"/>
+      <property name="offset" type="vec2" value="13.000000,0.000000"/>
+      <property name="seed" type="float">
+        <kf t="-0.014007" v="0.000000"/>
+        <kf t="0.969985" v="0.440000" e="cubicBezier 0.42 0.0 0.58 1.0"/>
+      </property>
+      <property name="size" type="float" value="50.000000"/>
+      <property name="stretch" type="vec2" value="5.530000,1.220000"/>
+    </effect>
+    <path d="M -540.0 -540.0L 540.0 -540.0L 540.0 540.0L -540.0 540.0L -540.0 -540.0Z"/>
+  </shape>
+</scene>

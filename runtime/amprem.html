@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Klaim Alight Motion Premium</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231fc8ee'/%3E%3Cpolygon points='24,16 48,32 24,48' fill='%23000'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#0b0e13;
+  --panel:rgba(255,255,255,.045);
+  --line:rgba(255,255,255,.09);
+  --text:#f7f8fa;
+  --muted:#eef1f6;
+  --blue:#38bdf8;
+  --green:#34d399;
+  --amber:#fbbf24;
+  --red:#f87171;
+}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  padding:26px 16px 64px;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+}
+a{color:inherit}
+.container{width:100%;max-width:760px;margin:auto}
+
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;gap:12px}
+.back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel);
+  color:var(--muted);font-size:.74rem;font-weight:700;text-decoration:none;transition:.2s;
+}
+.back:hover{color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.09)}
+.badge{
+  padding:7px 12px;border-radius:999px;
+  border:1px solid rgba(56,189,248,.3);background:rgba(56,189,248,.1);
+  color:var(--blue);font-size:.68rem;font-weight:700;letter-spacing:.02em;
+}
+
+header{margin-bottom:30px}
+h1{
+  margin:0 0 10px;
+  font-family:Outfit,sans-serif;
+  font-size:clamp(1.7rem,6vw,2.5rem);
+  font-weight:800;letter-spacing:-.04em;line-height:1.05;
+}
+.subtitle{margin:0;color:var(--muted);line-height:1.65;font-size:.86rem}
+
+.step{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+}
+.step-number{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;margin-bottom:12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fff,#aeb5c2);color:#090b10;
+  font-size:14px;font-weight:800;
+}
+.step h2{margin:0 0 10px;font-family:Outfit,sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:-.03em}
+.step p{margin:0 0 14px;color:var(--muted);line-height:1.7;font-size:.84rem}
+.step p:last-child{margin-bottom:0}
+.step img{
+  display:block;width:100%;height:auto;
+  border-radius:12px;border:1px solid var(--line);background:#000;
+}
+
+.form-box{margin:16px 0 4px;padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.form-box label{display:block;margin-bottom:7px;font-size:.76rem;font-weight:700;color:#fff}
+.form-box input{
+  width:100%;padding:12px 13px;
+  border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  background:rgba(0,0,0,.35);color:var(--text);
+  font-size:.9rem;outline:none;transition:border-color .2s;
+}
+.form-box input::placeholder{color:rgba(255,255,255,.45)}
+.form-box input:focus{border-color:var(--blue)}
+.form-box button{
+  width:100%;margin-top:10px;padding:12px;
+  border:0;border-radius:10px;
+  background:linear-gradient(135deg,#38bdf8,#6366f1);color:#06070b;
+  font-size:.88rem;font-weight:800;cursor:pointer;transition:.2s;
+}
+.form-box button:hover{filter:brightness(1.08)}
+.form-box button:disabled{opacity:.55;cursor:progress}
+
+.status{
+  display:flex;align-items:center;gap:9px;
+  margin-top:12px;padding:11px 13px;
+  border-radius:10px;
+  font-size:.78rem;line-height:1.5;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.85);
+}
+.status[hidden]{display:none}
+.status::before{content:"";width:8px;height:8px;flex:none;border-radius:50%;background:currentColor}
+.status.is-loading::before{
+  width:11px;height:11px;background:transparent;
+  border:2px solid rgba(255,255,255,.25);border-top-color:var(--blue);
+  animation:spin .7s linear infinite;
+}
+.status.is-ok{color:var(--green);border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.08)}
+.status.is-warn{color:var(--amber);border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.08)}
+.status.is-error{color:var(--red);border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.08)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.divider{height:1px;margin:20px 0;background:var(--line)}
+.email-pill{
+  display:inline-block;margin:0 0 10px;padding:5px 10px;
+  border-radius:999px;background:rgba(56,189,248,.12);color:var(--blue);
+  font-size:.72rem;font-weight:700;word-break:break-all;
+}
+.email-pill[hidden]{display:none}
+
+.final-step{text-align:center}
+.final-step .step-number{background:linear-gradient(135deg,#34d399,#22c55e);color:#04120b}
+.final-step p{color:var(--muted)}
+.wa-button{
+  display:inline-block;margin-top:8px;padding:13px 20px;
+  border-radius:10px;background:#25d366;color:#fff;
+  font-size:.85rem;font-weight:800;text-decoration:none;transition:.2s;
+}
+.wa-button:hover{transform:translateY(-2px);opacity:.92}
+
+footer{margin-top:30px;text-align:center;color:rgba(255,255,255,.6);font-size:.7rem}
+footer a{color:rgba(255,255,255,.8);text-decoration:none}
+footer a:hover{color:#fff}
+
+@media (max-width:500px){
+  body{padding:18px 10px 48px}
+  .step{padding:15px;border-radius:14px}
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <div class="top">
+    <a class="back" href="/">← Beranda</a>
+    <span class="badge">AM · Premium</span>
+  </div>
+
+  <header>
+    <h1>Klaim Alight Motion Premium</h1>
+    <p class="subtitle">
+      Ikuti langkah berikut secara berurutan. Halaman ini memakai alur login resmi
+      Alight Motion lewat link yang dikirim ke email kamu.
+    </p>
+  </header>
+
+  <!-- STEP 1 -->
+  <section class="step">
+    <div class="step-number">1</div>
+    <h2>Login</h2>
+    <p>Login dulu di aplikasi Alight Motion pakai akun Google.</p>
+    <img src="./amprem-step1.jpg" alt="Login Alight Motion dengan Google" loading="lazy">
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step">
+    <div class="step-number">2</div>
+    <h2>Masukkan Email</h2>
+    <p>Setelah login, masukkan email-nya di bawah ini lalu klik kirim link.</p>
+
+    <div class="form-box">
+      <label for="emailInput">Email akun Alight Motion</label>
+      <input id="emailInput" type="email" inputmode="email" autocomplete="email"
+             placeholder="nama@gmail.com">
+      <button id="sendLinkBtn" type="button">Kirim Link</button>
+      <div class="status" id="linkStatus" hidden></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p>Setelah itu cek email. Cari email seperti di gambar ini, biasanya ada di folder/menu Spam.</p>
+    <img src="./amprem-step2.jpg" alt="Email sign in dari Alight Creative" loading="lazy">
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step">
+    <div class="step-number">3</div>
+    <h2>Buka Email</h2>
+    <p>Buka email, cari tulisan <b>Sign in to Alight Creative</b>, lalu <b>tekan tahan</b> tulisan itu.</p>
+    <img src="./amprem-step3.jpg" alt="Tekan tahan link di email" loading="lazy">
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step">
+    <div class="step-number">4</div>
+    <h2>Salin URL</h2>
+    <p>Setelah tekan tahan akan muncul menu seperti ini. Klik <b>salin URL</b>.</p>
+    <img src="./amprem-step4.jpg" alt="Salin URL dari email" loading="lazy">
+
+    <div class="divider"></div>
+
+    <p>Lalu tempel URL yang barusan disalin ke input di bawah ini.</p>
+
+    <div class="form-box">
+      <span class="email-pill" id="claimEmail" hidden></span>
+      <label for="linkInput">URL dari email</label>
+      <input id="linkInput" type="text" autocomplete="off" spellcheck="false"
+             placeholder="https://alight-creative.fireb...">
+      <button id="claimBtn" type="button">Klaim Premium</button>
+      <div class="status" id="claimStatus" hidden></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p>Setelah berhasil, lanjutkan ke langkah terakhir.</p>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step">
+    <div class="step-number">5</div>
+    <h2>Cek Kembali</h2>
+    <p>
+      Ini langkah terakhir. Cukup cek kembali akun Alight Motion kamu apakah sudah premium atau belum.
+      Kamu akan melihat akunmu premium sampai <b>3 Juli 2027.</b>
+    </p>
+    <img src="./amprem-step5.jpg" alt="Cek status premium di Alight Motion" loading="lazy">
+  </section>
+
+  <!-- FINAL -->
+  <section class="step final-step">
+    <div class="step-number">✓</div>
+    <h2>Udah selesai?</h2>
+    <p>Kalau semua langkahnya udah selesai, kabari aku ya.</p>
+    <a class="wa-button" href="https://wa.me/6285174378627" target="_blank" rel="noopener noreferrer">
+      Kabari Aku di WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    <a href="/">Home</a> · <a href="/runtime/about.html">About</a> · AM Web
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  const emailInput = document.getElementById('emailInput');
+  const sendLinkBtn = document.getElementById('sendLinkBtn');
+  const linkStatus = document.getElementById('linkStatus');
+  const linkInput = document.getElementById('linkInput');
+  const claimBtn = document.getElementById('claimBtn');
+  const claimStatus = document.getElementById('claimStatus');
+  const claimEmail = document.getElementById('claimEmail');
+
+  const EMAIL_KEY = 'amprem-email';
+  let email = '';
+  try { email = localStorage.getItem(EMAIL_KEY) || ''; } catch { /* private mode */ }
+  if (email) emailInput.value = email;
+
+  const isEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  function syncClaimEmail() {
+    if (email) {
+      claimEmail.textContent = email;
+      claimEmail.hidden = false;
+    } else {
+      claimEmail.hidden = true;
+    }
+  }
+  syncClaimEmail();
+
+  function setStatus(el, kind, text) {
+    el.className = 'status is-' + kind;
+    el.textContent = text;
+    el.hidden = false;
+  }
+
+  function setBusy(button, busy, label) {
+    button.disabled = busy;
+    button.textContent = label;
+  }
+
+  async function post(url, body) {
+    let response;
+    try {
+      response = await fetch(url, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+    } catch {
+      throw new Error('Tidak bisa menghubungi server. Coba lagi.');
+    }
+    let data = null;
+    try { data = await response.json(); } catch { /* biarkan null */ }
+    if (!response.ok) throw new Error((data && data.error) || ('Permintaan gagal (HTTP ' + response.status + ').'));
+    return data || {};
+  }
+
+  async function handleSendLink() {
+    const value = emailInput.value.trim();
+    if (!isEmail(value)) {
+      setStatus(linkStatus, 'error', 'Masukkan email yang valid dulu ya.');
+      return;
+    }
+    email = value;
+    try { localStorage.setItem(EMAIL_KEY, email); } catch { /* private mode */ }
+    syncClaimEmail();
+
+    setBusy(sendLinkBtn, true, 'Mengirim...');
+    setStatus(linkStatus, 'loading', 'Mengirim link ke email...');
+    try {
+      const result = await post('/api/amprem/link', { email });
+      if (result.status === 'premium') {
+        setStatus(linkStatus, 'ok', 'Premium aktif! Akun ' + email + ' sudah premium, lanjut ke langkah 5.');
+      } else {
+        setStatus(linkStatus, 'ok', 'Link terkirim. Cek inbox/spam email ' + email + ', lalu lanjut ke langkah 3.');
+      }
+    } catch (err) {
+      setStatus(linkStatus, 'error', err.message);
+    } finally {
+      setBusy(sendLinkBtn, false, 'Kirim Link');
+    }
+  }
+
+  async function handleClaim() {
+    const link = linkInput.value.trim();
+    if (!email) {
+      setStatus(claimStatus, 'error', 'Isi email di langkah 2 dulu, baru tempel URL di sini.');
+      return;
+    }
+    if (!link) {
+      setStatus(claimStatus, 'error', 'Tempel URL dari email dulu ya.');
+      return;
+    }
+
+    setBusy(claimBtn, true, 'Memproses...');
+    setStatus(claimStatus, 'loading', 'Login dan mengklaim premium...');
+    try {
+      const result = await post('/api/amprem/claim', { email, link });
+      if (result.status === 'premium') {
+        setStatus(claimStatus, 'ok', 'Premium aktif! Cek akun Alight Motion kamu di langkah 5.');
+        claimBtn.disabled = true;
+        claimBtn.textContent = 'Premium Aktif';
+      } else {
+        setStatus(claimStatus, 'warn',
+          'Sesi tersimpan, tapi klaim belum berhasil: ' + (result.error || 'coba lagi nanti') + '. Coba lagi sebentar lagi.');
+        setBusy(claimBtn, false, 'Klaim Premium');
+      }
+    } catch (err) {
+      setStatus(claimStatus, 'error', err.message);
+      setBusy(claimBtn, false, 'Klaim Premium');
+    }
+  }
+
+  sendLinkBtn.addEventListener('click', handleSendLink);
+  claimBtn.addEventListener('click', handleClaim);
+  emailInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSendLink(); });
+  linkInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleClaim(); });
+})();
+</script>
+</body>
+</html>

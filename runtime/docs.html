@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumentasi API Otomatisasi AM Web Runtime (window.AM)</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231fc8ee'/%3E%3Cpolygon points='24,16 48,32 24,48' fill='%23000'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #090b10;
+        --panel: #111520;
+        --card: #181d2c;
+        --line: #242c42;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --accent-glow: rgba(56, 189, 248, 0.12);
+        --ok: #34d399;
+        --pink: #f472b6;
+        --amber: #fbbf24;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        font-size: 15px;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 920px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    header {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: color 0.15s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    h1 {
+        font-size: 2rem;
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
+    .section-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        color: #ffffff;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+        color: var(--accent);
+        font-weight: 600;
+        margin-top: 8px;
+    }
+
+    p, li {
+        font-size: 0.94rem;
+        color: #cbd5e1;
+        line-height: 1.7;
+    }
+
+    ul, ol {
+        margin-left: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    code {
+        font-family: 'Fira Code', monospace;
+        background: #06080c;
+        color: var(--accent);
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    pre {
+        background: #05070a;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 18px 20px;
+        overflow-x: auto;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.85rem;
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+
+    pre .kw { color: #f472b6; font-weight: 600; }
+    pre .fn { color: #38bdf8; }
+    pre .str { color: #fde047; }
+    pre .cm { color: #64748b; font-style: italic; }
+    pre .num { color: #c084fc; }
+
+    .method-block {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .method-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .method-name {
+        font-family: 'Fira Code', monospace;
+        font-size: 1.08rem;
+        font-weight: 600;
+        color: var(--ok);
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--accent-glow);
+        color: var(--accent);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge.audio-badge {
+        background: rgba(244, 114, 182, 0.15);
+        color: var(--pink);
+        border-color: rgba(244, 114, 182, 0.3);
+    }
+
+    .param-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.9rem;
+        background: #0a0d14;
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+    }
+
+    .param-item {
+        display: flex;
+        gap: 12px;
+    }
+    .param-item strong { color: #ffffff; min-width: 120px; font-family: 'Fira Code', monospace; font-size: 0.84rem; }
+
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a class="back-btn" href="/">&#8592; Kembali ke Beranda Utama</a>
+        <h1>Dokumentasi Automasi API (window.AM)</h1>
+        <div class="subtitle">Panduan lengkap otomatisasi Headless (Puppeteer / Playwright) untuk AM Preset Player tanpa bergantung pada elemen UI.</div>
+    </header>
+
+    <!-- Overview -->
+    <div class="section-card">
+        <h2>Panduan Umum</h2>
+        <p>API global <code>window.AM</code> di-inject langsung ke halaman <code>/runtime/preset.html</code>. API ini bersifat <strong>Async / Promise-Based</strong>, aman dari perubahan UI (antarmuka tombol), dan menangani tugas berat secara otomatis.</p>
+        <ul>
+            <li><strong>Base Domain Publik:</strong> <code>https://alight-web-editor.pages.dev</code></li>
+            <li><strong>URL Player Target:</strong> <code>https://alight-web-editor.pages.dev/runtime/preset.html</code></li>
+            <li><strong>Local Dev Target:</strong> <code>http://localhost:3000/runtime/preset.html</code></li>
+        </ul>
+    </div>
+
+    <!-- Referensi API utama -->
+    <div class="section-card">
+        <h2>Referensi API (window.AM)</h2>
+
+        <!-- Method: stopDefaultLoad -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.stopDefaultLoad()</span>
+                <span class="badge">Fast Execution</span>
+            </div>
+            <p>Membatalkan / menghentikan proses pemuatan preset default bawaan halaman agar skrip otomatisasi Anda tidak perlu menunggu preset sampel selesai di-decode.</p>
+            <pre><span class="cm">// Otomatis dipanggil saat loadPreset(), atau bisa dipanggil manual:</span>
+window.AM.<span class="fn">stopDefaultLoad</span>();</pre>
+        </div>
+
+        <!-- Method: loadPreset -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.loadPreset(source, [projectName])</span>
+                <span class="badge">Async / Promise</span>
+            </div>
+            <p>Memuat preset dari berbagai sumber (Share Link AM, Google Drive XML, URL Direct XML, atau Blob/File). Secara otomatis membatalkan pemuatan preset sampel default.</p>
+            <div class="param-list">
+                <div class="param-item"><strong>source</strong> <span>String (URL) atau File Object XML</span></div>
+                <div class="param-item"><strong>projectName</strong> <span>(Opsional) String nama project spesifik jika paket AM memiliki >1 project</span></div>
+            </div>
+            <pre><span class="cm">// Contoh 1: Link Share Alight Motion (bisa sertakan nama project jika paket punya >1 project)</span>
+<span class="kw">await</span> window.AM.<span class="fn">loadPreset</span>(<span class="str">'https://alight.link/xxxx'</span>, <span class="str">'Project 2.xml'</span>);
+
+<span class="cm">// Contoh 2: Link Google Drive (.xml)</span>
+<span class="kw">await</span> window.AM.<span class="fn">loadPreset</span>(<span class="str">'https://drive.google.com/file/d/FILE_ID/view'</span>);
+
+<span class="cm">// Contoh 3: Direct URL File .xml</span>
+<span class="kw">await</span> window.AM.<span class="fn">loadPreset</span>(<span class="str">'https://alight-web-editor.pages.dev/preset/TestVideo.xml'</span>);</pre>
+        </div>
+
+        <!-- Method: getAvailableProjects & selectProject -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.getAvailableProjects() &amp; selectProject(projectName)</span>
+                <span class="badge">Multi-Project Support</span>
+            </div>
+            <p>Mengecek daftar project XML dalam paket Alight Motion (jika ada >1 project) dan berganti ke project lain tanpa perlu mengunduh ulang paket media.</p>
+            <pre><span class="cm">// Cek daftar project XML dalam paket share link yang sudah dimuat</span>
+<span class="kw">const</span> projects = window.AM.<span class="fn">getAvailableProjects</span>();
+console.log(projects);
+<span class="cm">// Return: [{ name: 'Project 1.xml', title: 'Main', selected: true }, { name: 'Project 2.xml', title: 'Intro', selected: false }]</span>
+
+<span class="cm">// Pindah ke Project 2</span>
+<span class="kw">await</span> window.AM.<span class="fn">selectProject</span>(<span class="str">'Project 2.xml'</span>);</pre>
+        </div>
+
+        <!-- Method: getMediaSlots -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.getMediaSlots()</span>
+                <span class="badge">Synchronous</span>
+            </div>
+            <p>Mengambil daftar slot media (gambar/video) yang dibutuhkan preset beserta ID, tipe, dan thumbnail preview Base64.</p>
+            <pre><span class="kw">const</span> slots = window.AM.<span class="fn">getMediaSlots</span>();
+console.log(slots);
+<span class="cm">/*
+Result:
+[
+  {
+    index: 0,
+    id: "am:sig123.jpg",
+    name: "photo_1.jpg",
+    type: "image",
+    previewUrl: "data:image/jpeg;base64,...",
+    isReplaceable: true
+  }
+]
+*/</span></pre>
+        </div>
+
+        <!-- Method: applyMedia -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.applyMedia(slotIdOrIndex, mediaInput)</span>
+                <span class="badge">Async / Promise</span>
+            </div>
+            <p>Mengganti gambar / video pada slot media tertentu.</p>
+            <div class="param-list">
+                <div class="param-item"><strong>slotIdOrIndex</strong> <span>String ID slot (mis. <code>'am:sig123.jpg'</code>) atau Index angka (<code>0</code>)</span></div>
+                <div class="param-item"><strong>mediaInput</strong> <span>URL direct, DataURL (Base64), Blob, atau File Object</span></div>
+            </div>
+            <pre><span class="cm">// Mengganti slot ke-0 menggunakan Base64</span>
+<span class="kw">await</span> window.AM.<span class="fn">applyMedia</span>(<span class="num">0</span>, <span class="str">'data:image/jpeg;base64,...'</span>);
+
+<span class="cm">// Mengganti berdasarkan ID Slot menggunakan Remote URL</span>
+<span class="kw">await</span> window.AM.<span class="fn">applyMedia</span>(<span class="str">'am:sig123.jpg'</span>, <span class="str">'https://picsum.photos/800/1200'</span>);</pre>
+        </div>
+
+        <!-- Method: setAudio (Rinci: Cara A, B, C) -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.setAudio(audioInput)</span>
+                <span class="badge audio-badge">Multi-Source Audio</span>
+            </div>
+            <p>Memasang atau mengganti lagu latar belakang project. Sangat fleksibel mendukung berbagai sumber audio:</p>
+
+            <h3>Cara A: Audio dari Link TikTok</h3>
+            <p>Mengambil file suara/video publik dari TikTok lewat API internal server.</p>
+            <pre><span class="kw">await</span> window.AM.<span class="fn">setAudio</span>(<span class="str">'https://www.tiktok.com/@user/video/123456789'</span>);</pre>
+
+            <h3>Cara B: Audio dari Google Drive</h3>
+            <p>Memutar audio publik dari Google Drive dengan penanganan Range-header otomatis dari server.</p>
+            <pre><span class="kw">await</span> window.AM.<span class="fn">setAudio</span>(<span class="str">'https://drive.google.com/file/d/DRIVE_AUDIO_ID/view'</span>);</pre>
+
+            <h3>Cara C: Audio Direct URL / File / Base64</h3>
+            <p>Memuat file audio langsung dari URL MP3/WAV, DataURL Base64, atau File lokal.</p>
+            <pre><span class="cm">// Direct URL</span>
+<span class="kw">await</span> window.AM.<span class="fn">setAudio</span>(<span class="str">'https://example.com/song.mp3'</span>);
+
+<span class="cm">// Base64 Audio</span>
+<span class="kw">await</span> window.AM.<span class="fn">setAudio</span>(<span class="str">'data:audio/mp3;base64,...'</span>);</pre>
+        </div>
+
+        <!-- Method: onLog & getRenderProgress & cancelRender -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.onLog(callback) &amp; getRenderProgress()</span>
+                <span class="badge">Real-time Observer</span>
+            </div>
+            <p>Dengarkan log internal player secara real-time atau cek progress rendering video yang sedang berjalan.</p>
+            <pre><span class="cm">// Panggil listener log</span>
+window.AM.<span class="fn">onLog</span>((msg) => console.log(<span class="str">'[BROWSER LOG]'</span>, msg));
+
+<span class="cm">// Cek progress render</span>
+<span class="kw">const</span> prog = window.AM.<span class="fn">getRenderProgress</span>();
+console.log(prog.status, prog.progressPct, prog.currentFrame, prog.totalFrames);
+<span class="cm">// status: 'idle' | 'running' | 'success' | 'failed' | 'cancelled'
+// prog.error berisi alasan singkat kalau status 'failed'</span>
+
+<span class="cm">// Batalkan render jika perlu</span>
+window.AM.<span class="fn">cancelRender</span>();</pre>
+            <p><code>status</code> eksplisit: ekspor baru dianggap <code>success</code> setelah file selesai
+            di-finalize. Audio yang diminta tetapi gagal membuat status <code>failed</code> (bukan video tanpa suara).</p>
+        </div>
+
+        <!-- Method: checkExportSupport -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.checkExportSupport(options)</span>
+                <span class="badge">Capability Probe</span>
+            </div>
+            <p>Memeriksa kemampuan encoder perangkat <strong>yang sebenarnya</strong> (memanggil
+            <code>VideoEncoder.isConfigSupported()</code> / <code>AudioEncoder.isConfigSupported()</code>,
+            bukan hanya mengecek keberadaan API) sebelum ekspor dijalankan.</p>
+            <pre><span class="kw">const</span> cap = <span class="kw">await</span> window.AM.<span class="fn">checkExportSupport</span>({
+    width: <span class="num">720</span>, height: <span class="num">1280</span>, bitrate: <span class="num">6000000</span>, fps: <span class="num">30</span>, needAudio: <span class="kw">true</span>
+});
+<span class="cm">// cap.mode: 'webcodecs' (MP4/H.264 + AAC) | 'mediarecorder' (WEBM tanpa audio) | 'none'
+// cap.video: { ok, codec, reason }   cap.audio: { ok, needed, sampleRate, channels, reason }
+// cap.reason: alasan singkat kalau mode === 'none'</span></pre>
+        </div>
+
+        <!-- Method: renderVideo -->
+        <div class="method-block">
+            <div class="method-header">
+                <span class="method-name">window.AM.renderVideo(options)</span>
+                <span class="badge">Async Render Engine</span>
+            </div>
+            <p>Mengekspor video secara headless dan mengembalikan hasil berupa DataURL Base64 &amp; Blob URL. Mendukung callback <code>onProgress</code> untuk memantau status secara langsung.
+    Promise <strong>reject</strong> kalau ekspor gagal atau dibatalkan &mdash; tidak pernah mengembalikan hasil setengah jadi.</p>
+            <pre><span class="kw">const</span> result = <span class="kw">await</span> window.AM.<span class="fn">renderVideo</span>({
+    resolution: <span class="num">720</span>,             <span class="cm">// Resolusi: 360, 540, 720, 1080</span>
+    fps: <span class="num">30</span>,                     <span class="cm">// Target FPS: 30, 60</span>
+    quality: <span class="str">'high'</span>,             <span class="cm">// Kualitas bitrate: 'low', 'medium', 'high'</span>
+    onProgress: (p) => {         <span class="cm">// Callback progress real-time</span>
+        console.log(<span class="str">`Progress: ${p.progressPct}% (frame ${p.currentFrame}/${p.totalFrames})`</span>);
+    }
+});
+
+console.log(result.durationSec, result.sizeBytes);
+<span class="cm">// result.base64 berisi "data:video/mp4;base64,..."
+// Kalau audio diminta tapi gagal di-encode, promise ini REJECT (bukan hasil video tanpa suara).</span></pre>
+        </div>
+    </div>
+
+    <!-- Complete Code Examples -->
+    <div class="section-card">
+        <h2>Contoh Lengkap Skrip Node.js (Playwright)</h2>
+        <p>Gunakan mode <code>headless: false</code> saat pertama kali mencoba agar Anda dapat melihat langsung proses eksekusi di layar browser:</p>
+        <pre><span class="kw">const</span> { chromium } = <span class="fn">require</span>(<span class="str">'playwright'</span>);
+<span class="kw">const</span> fs = <span class="fn">require</span>(<span class="str">'fs'</span>);
+
+(<span class="kw">async</span> () => {
+    <span class="cm">// Gunakan headless: false agar proses terlihat visual</span>
+    <span class="kw">const</span> browser = <span class="kw">await</span> chromium.<span class="fn">launch</span>({ headless: <span class="kw">false</span> });
+    <span class="kw">const</span> page = <span class="kw">await</span> browser.<span class="fn">newPage</span>();
+
+    <span class="cm">// Buka runtime preset player</span>
+    <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'https://alight-web-editor.pages.dev/runtime/preset.html'</span>);
+
+    <span class="cm">// Langkah 1: Muat Preset (Secara otomatis membatalkan preset default)</span>
+    console.log(<span class="str">'Memuat preset...'</span>);
+    <span class="kw">await</span> page.<span class="fn">evaluate</span>(<span class="kw">async</span> () => {
+        <span class="kw">await</span> window.AM.<span class="fn">loadPreset</span>(<span class="str">'https://alight.link/xxxx'</span>);
+    });
+
+    <span class="cm">// Langkah 2: Cek Slot Media & Upload Gambar Pengganti</span>
+    <span class="kw">const</span> slots = <span class="kw">await</span> page.<span class="fn">evaluate</span>(() => window.AM.<span class="fn">getMediaSlots</span>());
+    <span class="kw">if</span> (slots.length > <span class="num">0</span>) {
+        <span class="kw">const</span> myPhotoBase64 = <span class="str">'data:image/jpeg;base64,'</span> + fs.<span class="fn">readFileSync</span>(<span class="str">'photo.jpg'</span>).<span class="fn">toString</span>(<span class="str">'base64'</span>);
+        <span class="kw">await</span> page.<span class="fn">evaluate</span>(<span class="kw">async</span> ({ slotId, img }) => {
+            <span class="kw">await</span> window.AM.<span class="fn">applyMedia</span>(slotId, img);
+        }, { slotId: slots[<span class="num">0</span>].id, img: myPhotoBase64 });
+    }
+
+    <span class="cm">// Langkah 3: Pasang Musik (TikTok / Drive)</span>
+    <span class="kw">await</span> page.<span class="fn">evaluate</span>(<span class="kw">async</span> () => {
+        <span class="kw">await</span> window.AM.<span class="fn">setAudio</span>(<span class="str">'https://www.tiktok.com/@user/video/7123456789'</span>);
+    });
+
+    <span class="cm">// Langkah 4: Render Video</span>
+    console.log(<span class="str">'Mulai rendering video...'</span>);
+    <span class="kw">const</span> render = <span class="kw">await</span> page.<span class="fn">evaluate</span>(<span class="kw">async</span> () => {
+        <span class="kw">return await</span> window.AM.<span class="fn">renderVideo</span>({ resolution: <span class="num">720</span>, fps: <span class="num">30</span>, quality: <span class="str">'high'</span> });
+    });
+
+    <span class="cm">// Simpan hasil video ke disk</span>
+    <span class="kw">const</span> buffer = Buffer.<span class="fn">from</span>(render.base64.<span class="fn">split</span>(<span class="str">','</span>)[<span class="num">1</span>], <span class="str">'base64'</span>);
+    fs.<span class="fn">writeFileSync</span>(<span class="str">'output.mp4'</span>, buffer);
+    console.log(<span class="str">'Selesai! File tersimpan ke output.mp4'</span>);
+
+    <span class="kw">await</span> browser.<span class="fn">close</span>();
+})();</pre>
+    </div>
+</div>
+</body>
+</html>
