@@ -34,8 +34,9 @@ export async function onRequestGet(context) {
         const pkgResp = await context.env.ASSETS.fetch(pkgXmlUrl);
         if (pkgResp.ok) {
           const xmlContent = await pkgResp.text();
-          const titleMatch = xmlContent.match(/<scene[^>]*title="([^"]+)"/);
-          const title = titleMatch ? titleMatch[1] : "Alight Motion Project";
+          if (xmlContent.includes('<scene') || (xmlContent.includes('<?xml') && xmlContent.includes('<scene'))) {
+            const titleMatch = xmlContent.match(/<scene[^>]*title="([^"]+)"/);
+            const title = titleMatch ? titleMatch[1] : "Alight Motion Project";
 
           if (packageId === '54bZI53R1P-d6cb038096fd41bb') {
             return new Response(JSON.stringify({
@@ -128,6 +129,7 @@ export async function onRequestGet(context) {
               'Access-Control-Allow-Origin': '*'
             }
           });
+        }
         }
       } catch (e) {}
     }
