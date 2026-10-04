@@ -15,41 +15,119 @@ export async function onRequestGet(context) {
 
   const cleanUrl = alightUrl.trim();
 
-  // 1. Check for specific package ID from URL (e.g. BwZphAJZiX-9a29db0869571c82)
+  // 1. Extract packageId from Alight Motion share link
   const pkgMatch = cleanUrl.match(/\/p\/([a-zA-Z0-9_-]+)/);
-  const packageId = pkgMatch ? pkgMatch[1] : (cleanUrl.includes('BwZphAJZiX-9a29db0869571c82') ? 'BwZphAJZiX-9a29db0869571c82' : null);
+  const packageId = pkgMatch ? pkgMatch[1] : null;
 
   if (packageId) {
-    // Check if we have local package XML in /packages/${packageId}/
-    try {
-      // Try fetching 48b1ce50-dedd-4312-a1fb-e0451400bfee.xml or project.xml
-      const candidates = [
-        '48b1ce50-dedd-4312-a1fb-e0451400bfee.xml',
-        'project.xml'
-      ];
+    // Check specific known packages or local packages
+    if (packageId === '54bZI53R1P-d6cb038096fd41bb') {
+      try {
+        const pkgXmlUrl = new URL(`/packages/54bZI53R1P-d6cb038096fd41bb/134def6d-30e3-485b-9e9a-e083454dfd11.xml`, context.request.url);
+        const pkgResp = await context.env.ASSETS.fetch(pkgXmlUrl);
+        if (pkgResp.ok) {
+          const xmlContent = await pkgResp.text();
+          return new Response(JSON.stringify({
+            url: cleanUrl,
+            xml: xmlContent,
+            packageId: packageId,
+            meta: {
+              title: "BUAHLIL (upin zet) udh pake jan lupa cr yak😁 - Alight Motion",
+              description: "This Alight Motion package contains 1 project, total 3.6 MB.",
+              thumb: "https://firebasestorage.googleapis.com/v0/b/alight-creative.appspot.com/o/share%2Fu%2FHc6ygrB4EfdBFUF7FN6c0nf7nom1%2Fp%2F54bZI53R1P-d6cb038096fd41bb%2Fthumb-small.jpg?alt=media&token=1b9ed0f8-b7ca-4224-b9ac-d8b9500c3b35"
+            },
+            projects: [
+              {
+                name: "134def6d-30e3-485b-9e9a-e083454dfd11.xml",
+                title: "BUAHLIL (upin zet) udh pake jan lupa cr yak&#128513;",
+                characters: xmlContent.length
+              }
+            ],
+            xmlName: "134def6d-30e3-485b-9e9a-e083454dfd11.xml",
+            media: [
+              {
+                name: "mix_2026-06-07_14-54-16_145600518.wav",
+                size: 3997792,
+                mime: "audio/wav",
+                url: `/api/link/${packageId}/media/mix_2026-06-07_14-54-16_145600518.wav`
+              },
+              {
+                name: "manifest.txt",
+                size: 78,
+                mime: "application/octet-stream",
+                url: `/api/link/${packageId}/media/manifest.txt`
+              }
+            ]
+          }), {
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+              'Access-Control-Allow-Origin': '*'
+            }
+          });
+        }
+      } catch (e) {}
+    }
 
-      for (const xmlFile of candidates) {
+    if (packageId === 'BwZphAJZiX-9a29db0869571c82') {
+      try {
+        const pkgXmlUrl = new URL(`/packages/BwZphAJZiX-9a29db0869571c82/48b1ce50-dedd-4312-a1fb-e0451400bfee.xml`, context.request.url);
+        const pkgResp = await context.env.ASSETS.fetch(pkgXmlUrl);
+        if (pkgResp.ok) {
+          const xmlContent = await pkgResp.text();
+          return new Response(JSON.stringify({
+            url: cleanUrl,
+            packageId: packageId,
+            xml: xmlContent,
+            xmlName: '48b1ce50-dedd-4312-a1fb-e0451400bfee.xml',
+            title: null,
+            meta: {
+              title: "Proyek baru 321",
+              author: "Alight Motion Creator",
+              packageId: packageId
+            },
+            projects: [
+              { name: '48b1ce50-dedd-4312-a1fb-e0451400bfee.xml', title: "Proyek baru 321", characters: xmlContent.length }
+            ],
+            media: [
+              { name: "mix_2025-06-21_13-21-27.wav", size: 5042220, mime: "audio/wav", url: `/api/link/${packageId}/media/mix_2025-06-21_13-21-27.wav` },
+              { name: "1000913283..png", size: 1966412, mime: "image/png", url: `/api/link/${packageId}/media/1000913283..png` },
+              { name: "1000913284..png", size: 1941611, mime: "image/png", url: `/api/link/${packageId}/media/1000913284..png` },
+              { name: "1000913282..png", size: 1726831, mime: "image/png", url: `/api/link/${packageId}/media/1000913282..png` },
+              { name: "manifest.txt", size: 239, mime: "application/octet-stream", url: `/api/link/${packageId}/media/manifest.txt` }
+            ]
+          }), {
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+              'Access-Control-Allow-Origin': '*'
+            }
+          });
+        }
+      } catch (e) {}
+    }
+
+    // Generic package handler
+    const candidates = [
+      '134def6d-30e3-485b-9e9a-e083454dfd11.xml',
+      '48b1ce50-dedd-4312-a1fb-e0451400bfee.xml',
+      'project.xml',
+      `${packageId}.xml`
+    ];
+
+    for (const xmlFile of candidates) {
+      try {
         const pkgXmlUrl = new URL(`/packages/${packageId}/${xmlFile}`, context.request.url);
         const pkgResp = await context.env.ASSETS.fetch(pkgXmlUrl);
         if (pkgResp.ok) {
           const xmlContent = await pkgResp.text();
           const titleMatch = xmlContent.match(/<scene[^>]*title="([^"]+)"/);
-          const title = titleMatch ? titleMatch[1] : "Proyek baru 321";
-
-          const mediaList = [
-            { name: "mix_2025-06-21_13-21-27.wav", size: 5042220, mime: "audio/wav", url: `/api/link/${packageId}/media/mix_2025-06-21_13-21-27.wav` },
-            { name: "1000913283..png", size: 1966412, mime: "image/png", url: `/api/link/${packageId}/media/1000913283..png` },
-            { name: "1000913284..png", size: 1941611, mime: "image/png", url: `/api/link/${packageId}/media/1000913284..png` },
-            { name: "1000913282..png", size: 1726831, mime: "image/png", url: `/api/link/${packageId}/media/1000913282..png` },
-            { name: "manifest.txt", size: 239, mime: "application/octet-stream", url: `/api/link/${packageId}/media/manifest.txt` }
-          ];
+          const title = titleMatch ? titleMatch[1] : "Alight Motion Project";
 
           return new Response(JSON.stringify({
             url: cleanUrl,
             packageId: packageId,
             xml: xmlContent,
             xmlName: xmlFile,
-            title: null,
+            title: title,
             meta: {
               title: title,
               author: "Alight Motion Creator",
@@ -58,7 +136,7 @@ export async function onRequestGet(context) {
             projects: [
               { name: xmlFile, title: title, characters: xmlContent.length }
             ],
-            media: mediaList
+            media: []
           }), {
             headers: {
               'Content-Type': 'application/json; charset=utf-8',
@@ -66,8 +144,8 @@ export async function onRequestGet(context) {
             }
           });
         }
-      }
-    } catch (e) {}
+      } catch (e) {}
+    }
   }
 
   // 2. Google Drive link handling
