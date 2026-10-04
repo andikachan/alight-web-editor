@@ -21,9 +21,10 @@ export async function onRequest(context) {
   }
 
   const packageId = match[1];
-  const filename = match[2];
+  const rawFilename = match[2];
+  const filename = decodeURIComponent(rawFilename);
 
-  // Try serving from /packages/${packageId}/${filename}
+  // 1. Try serving from local static assets (/packages/${packageId}/${filename})
   try {
     const assetUrl = new URL(`/packages/${packageId}/${filename}`, context.request.url);
     const assetResp = await context.env.ASSETS.fetch(assetUrl);
@@ -45,6 +46,27 @@ export async function onRequest(context) {
           'Access-Control-Allow-Origin': '*',
           'Cache-Control': 'public, max-age=604800'
         }
+      });
+    }
+  } catch (e) {}
+
+  // 2. Automatic fallback / proxy from upstream resolver
+  try {
+    const upstreamUrl = `https://am.zervida.my.id/api/link/${packageId}/media/${encodeURIComponent(filename)}`;
+    const upstreamResp = await fetch(upstreamUrl, {
+      method: context.request.method,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      }
+    });
+
+    if (upstreamResp.ok) {
+      const respHeaders = new Headers(upstreamResp.headers);
+      respHeaders.set('Access-Control-Allow-Origin', '*');
+      respHeaders.set('Cache-Control', 'public, max-age=604800');
+      return new Response(upstreamResp.body, {
+        status: upstreamResp.status,
+        headers: respHeaders
       });
     }
   } catch (e) {}

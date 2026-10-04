@@ -156,6 +156,48 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // API: /api/link/:packageId/media/:filename
+  const linkMatch = pathname.match(/\/api\/link\/([^/]+)\/media\/(.+)/);
+  if (linkMatch) {
+    const packageId = linkMatch[1];
+    const filename = decodeURIComponent(linkMatch[2]);
+    const localFile = path.join(__dirname, 'packages', packageId, filename);
+    if (fs.existsSync(localFile)) {
+      const ext = path.extname(localFile).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+      const buffer = fs.readFileSync(localFile);
+      res.writeHead(200, {
+        'Content-Type': contentType,
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'public, max-age=604800'
+      });
+      res.end(buffer);
+      return;
+    }
+
+    // Proxy upstream
+    try {
+      const upstreamUrl = `https://am.zervida.my.id/api/link/${packageId}/media/${encodeURIComponent(filename)}`;
+      const upResp = await fetch(upstreamUrl, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+      });
+      if (upResp.ok) {
+        res.writeHead(upResp.status, {
+          'Content-Type': upResp.headers.get('content-type') || 'application/octet-stream',
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'public, max-age=604800'
+        });
+        const buffer = Buffer.from(await upResp.arrayBuffer());
+        res.end(buffer);
+        return;
+      }
+    } catch (e) {}
+
+    res.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ error: "Media not found" }));
+    return;
+  }
+
   // API: /api/project-xml
   if (pathname === '/api/project-xml') {
     const alightUrl = reqUrl.searchParams.get('url');
@@ -167,8 +209,82 @@ const server = http.createServer(async (req, res) => {
     }
 
     const cleanUrl = alightUrl.trim();
+    const pkgMatch = cleanUrl.match(/\/p\/([a-zA-Z0-9_-]+)/);
+    const packageId = pkgMatch ? pkgMatch[1] : null;
 
-    // 1. Google Drive direct check
+    // Check local package first
+    if (packageId) {
+      const pkgDir = path.join(__dirname, 'packages', packageId);
+      if (fs.existsSync(pkgDir)) {
+        const files = fs.readdirSync(pkgDir);
+        const xmlFile = files.find(f => f.endsWith('.xml'));
+        if (xmlFile) {
+          const xmlContent = fs.readFileSync(path.join(pkgDir, xmlFile), 'utf8');
+          const titleMatch = xmlContent.match(/<scene[^>]*title="([^"]+)"/);
+          const title = titleMatch ? titleMatch[1] : "Alight Motion Project";
+          const mediaFiles = files.filter(f => !f.endsWith('.xml')).map(f => {
+            const ext = path.extname(f).toLowerCase();
+            return {
+              name: f,
+              size: fs.statSync(path.join(pkgDir, f)).size,
+              mime: MIME_TYPES[ext] || 'application/octet-stream',
+              url: `/api/link/${packageId}/media/${encodeURIComponent(f)}`
+            };
+          });
+
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({
+            url: cleanUrl,
+            packageId: packageId,
+            xml: xmlContent,
+            xmlName: xmlFile,
+            title: title,
+            meta: {
+              title: title,
+              author: "Alight Motion Creator",
+              packageId: packageId
+            },
+            projects: [
+              { name: xmlFile, title: title, characters: xmlContent.length }
+            ],
+            media: mediaFiles
+          }));
+          return;
+        }
+      }
+    }
+
+    // Dynamic upstream resolution
+    try {
+      let upstreamUrl = `https://am.zervida.my.id/api/project-xml?url=${encodeURIComponent(cleanUrl)}`;
+      if (projectParam) upstreamUrl += `&project=${encodeURIComponent(projectParam)}`;
+      const upResp = await fetch(upstreamUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Accept': 'application/json'
+        }
+      });
+      if (upResp.ok) {
+        const data = await upResp.json();
+        if (data && (data.xml || data.projects)) {
+          if (Array.isArray(data.media)) {
+            data.media = data.media.map(m => {
+              const mediaName = m.name || (m.url ? m.url.split('/').pop() : 'media');
+              const pkg = data.packageId || packageId || 'unknown';
+              return {
+                ...m,
+                url: `/api/link/${pkg}/media/${encodeURIComponent(mediaName)}`
+              };
+            });
+          }
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify(data));
+          return;
+        }
+      }
+    } catch (e) {}
+
+    // Google Drive direct check
     const driveIdMatch = cleanUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || cleanUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if (driveIdMatch || cleanUrl.includes('drive.google.com')) {
       const fileId = driveIdMatch ? driveIdMatch[1] : null;
@@ -198,7 +314,7 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
-    // 2. Direct XML URL
+    // Direct XML URL
     if (cleanUrl.endsWith('.xml') || cleanUrl.includes('.xml?') || cleanUrl.startsWith('http')) {
       try {
         const directResp = await fetch(cleanUrl, {
@@ -226,28 +342,8 @@ const server = http.createServer(async (req, res) => {
       } catch (e) {}
     }
 
-    // 3. Serve from local packages directory
-    const linkMatch = pathname.match(/\/api\/link\/([^/]+)\/media\/(.+)/);
-    if (linkMatch) {
-      const packageId = linkMatch[1];
-      const filename = linkMatch[2];
-      const localFile = path.join(__dirname, 'packages', packageId, filename);
-      if (fs.existsSync(localFile)) {
-        const ext = path.extname(localFile).toLowerCase();
-        const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-        const buffer = fs.readFileSync(localFile);
-        res.writeHead(200, {
-          'Content-Type': contentType,
-          'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'public, max-age=604800'
-        });
-        res.end(buffer);
-        return;
-      }
-    }
-
-    res.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' });
-    res.end(JSON.stringify({ error: "Media not found" }));
+    res.writeHead(422, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ error: "Gagal memproses link Alight Motion. Silakan gunakan link share Alight Motion yang valid, link XML, atau upload file .xml." }));
     return;
   }
 
